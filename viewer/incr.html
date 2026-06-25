@@ -148,8 +148,8 @@ function updateColors() {
     let baseColor = PASTEL_PALETTE['default'];
     if (pd.part.group && PASTEL_PALETTE[pd.part.group]) {
       baseColor = PASTEL_PALETTE[pd.part.group];
-    } else if (pd.part.ref) {
-      baseColor = paletteValues[hashString(pd.part.ref) % paletteValues.length];
+    } else if (pd.part.url) {
+      baseColor = paletteValues[hashString(pd.part.url) % paletteValues.length];
     }
     
     if(isNew) baseColor = 0xffcf3f;
