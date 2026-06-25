@@ -53,6 +53,7 @@ const scene = new THREE.Scene();
 scene.background = new THREE.Color('#e9e1cf');
 
 const camera = new THREE.PerspectiveCamera(40, innerWidth/innerHeight, 0.0005, 100);
+camera.up.set(0, 0, 1);
 
 scene.add(new THREE.AmbientLight(0xffffff, 0.6));
 const k = new THREE.DirectionalLight(0xffffff, 1.2); 
@@ -80,13 +81,20 @@ let boundingRadius = 0.05;
 const controls = new OrbitControls(camera, renderer.domElement);
 
 const PASTEL_PALETTE = {
-  'stationary': 0xa0c0d0,
-  'rotating': 0xd0a0a0,
-  'pulley': 0xc0d0a0,
-  'payload': 0xd0c0e0,
-  'fastener': 0x999999,
-  'default': 0xbac0c5
+  'stationary': 0x98b8c8,
+  'rotating': 0xc89898,
+  'pulley': 0xa8c898,
+  'payload': 0xb898c8,
+  'fastener': 0x888888,
+  'default': 0xaaaaaa
 };
+
+function hashString(str) {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) hash = Math.imul(31, hash) + str.charCodeAt(i) | 0;
+  return Math.abs(hash);
+}
+const paletteValues = [0x98b8c8, 0xc89898, 0xa8c898, 0xb898c8, 0xc8c898, 0xc8a898];
 
 const colors = new Uint8Array([
   80, 80, 80, 255,
@@ -136,7 +144,15 @@ function frameCamera(dir) {
 function updateColors() {
   for(const pd of partsData) {
     const isNew = pd.part.ref === NEW;
-    let baseColor = isNew ? 0xffcf3f : (PASTEL_PALETTE[pd.part.group] || PASTEL_PALETTE['default']);
+    
+    let baseColor = PASTEL_PALETTE['default'];
+    if (pd.part.group && PASTEL_PALETTE[pd.part.group]) {
+      baseColor = PASTEL_PALETTE[pd.part.group];
+    } else if (pd.part.ref) {
+      baseColor = paletteValues[hashString(pd.part.ref) % paletteValues.length];
+    }
+    
+    if(isNew) baseColor = 0xffcf3f;
     if(state.gateColor && pd.part.state === 'UNHELD') baseColor = 0xd83030;
     const opacity = NEW ? (isNew ? 1.0 : 0.32) : 1.0;
     
@@ -172,9 +188,9 @@ function toggleParts() {
   const group = new THREE.Group(); 
   scene.add(group);
   
-  for(const part of place._render){
-    if(HIDE.has(part.ref)) continue;
-    if(ONLY.size && !ONLY.has(part.ref)) continue;
+  const loadPromises = place._render.map(async part => {
+    if(HIDE.has(part.ref)) return;
+    if(ONLY.size && !ONLY.has(part.ref)) return;
     
     state.parts[part.ref] = true;
     
@@ -190,7 +206,6 @@ function toggleParts() {
     });
     
     const pd = { part, p, obj: o, labelObj: null };
-    partsData.push(pd);
     
     if(p) {
       o.matrixAutoUpdate = false;
@@ -212,8 +227,15 @@ function toggleParts() {
       o.add(labelObj);
       pd.labelObj = labelObj;
     }
-    
-    group.add(o);
+    return pd;
+  });
+
+  const loadedParts = await Promise.all(loadPromises);
+  for (const pd of loadedParts) {
+    if (pd) {
+      partsData.push(pd);
+      group.add(pd.obj);
+    }
   }
   
   updateColors();

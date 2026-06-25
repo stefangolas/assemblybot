@@ -4,20 +4,25 @@
   <meta charset="utf-8">
   <title>AssemblyBot Viewer</title>
 </head>
-<body>
-  <p>Loading project...</p>
+<body style="margin:0; overflow:hidden;">
   <script>
     (async function() {
-      const projectId = window.PROJECT_ID || 'rung3_rotary'; // fallback
+      const projectId = window.PROJECT_ID || 'rung3_rotary';
       try {
         const res = await fetch(`/${projectId}/project.json`);
-        if (!res.ok) throw new Error('project.json not found');
-        const pjson = await res.json();
-        const assemblyPath = pjson.canonical_assembly || `out/${projectId}_assembly.json`;
-        window.location.replace(`/_app/incr.html?src=/${projectId}/${assemblyPath}`);
+        let assemblyPath = `out/${projectId}_assembly.json`;
+        if (res.ok) {
+          const pjson = await res.json();
+          if (pjson.canonical_assembly) assemblyPath = pjson.canonical_assembly;
+        }
+        const iframe = document.createElement('iframe');
+        iframe.src = `/_app/incr.html?src=/${projectId}/${assemblyPath}`;
+        iframe.style.width = '100vw';
+        iframe.style.height = '100vh';
+        iframe.style.border = 'none';
+        document.body.appendChild(iframe);
       } catch (e) {
-        console.warn('Falling back to default assembly path:', e);
-        window.location.replace(`/_app/incr.html?src=/${projectId}/out/${projectId}_assembly.json`);
+        console.error('Failed to load project:', e);
       }
     })();
   </script>
