@@ -15,7 +15,7 @@ def shoot(src="projects/rung3_rotary/out/rung3_assembly.json", prefix="out/shot"
     """Render `src` placements from each angle to `{prefix}_{ang}.png`."""
     if isinstance(angles, str):
         angles = angles.split(",")
-    src_url = "/" + str(Path(src)).replace("\\", "/")
+    src_url = "/" + str(Path(src)).replace("\\", "/").replace("projects/", "")
     out_files = []
     
     PORT = 8000
@@ -26,6 +26,8 @@ def shoot(src="projects/rung3_rotary/out/rung3_assembly.json", prefix="out/shot"
             # software GL: hardware GL races on pixel readback here and yields blank frames
             b = pw.chromium.launch(args=["--use-gl=swiftshader", "--enable-unsafe-swiftshader"])
             pg = b.new_page(viewport={"width": 1000, "height": 800})
+            pg.on("console", lambda msg: print(f"CONSOLE [{msg.type}]: {msg.text}"))
+            pg.on("pageerror", lambda err: print(f"PAGEERROR: {err}"))
             for ang in angles:
                 url = f"http://127.0.0.1:{PORT}/_app/incr.html?src={src_url}&dir={ang}&new={new}{extra}"
                 pg.goto(url)

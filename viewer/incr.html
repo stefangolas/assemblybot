@@ -151,7 +151,7 @@ function updateColors() {
     const opacity = NEW ? (isNew ? 1.0 : 0.32) : 1.0;
     
     pd.obj.traverse(n => {
-      if(n.isMesh) {
+      if(n.isMesh && !n.isLineSegments2) {
         if (!n.material.isMeshToonMaterial) {
           n.material = new THREE.MeshToonMaterial({
             color: baseColor,
