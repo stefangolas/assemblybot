@@ -80,21 +80,6 @@ let boundingRadius = 0.05;
 
 const controls = new OrbitControls(camera, renderer.domElement);
 
-const PASTEL_PALETTE = {
-  'stationary': 0x98b8c8,
-  'rotating': 0xc89898,
-  'pulley': 0xa8c898,
-  'payload': 0xb898c8,
-  'fastener': 0x888888,
-  'default': 0xaaaaaa
-};
-
-function hashString(str) {
-  let hash = 0;
-  for (let i = 0; i < str.length; i++) hash = Math.imul(31, hash) + str.charCodeAt(i) | 0;
-  return Math.abs(hash);
-}
-const paletteValues = [0x98b8c8, 0xc89898, 0xa8c898, 0xb898c8, 0xc8c898, 0xc8a898];
 
 const colors = new Uint8Array([
   80, 80, 80, 255,
@@ -145,11 +130,10 @@ function updateColors() {
   for(const pd of partsData) {
     const isNew = pd.part.ref === NEW;
     
-    let baseColor = PASTEL_PALETTE['default'];
-    if (pd.part.group && PASTEL_PALETTE[pd.part.group]) {
-      baseColor = PASTEL_PALETTE[pd.part.group];
-    } else if (pd.part.url) {
-      baseColor = paletteValues[hashString(pd.part.url) % paletteValues.length];
+    let baseColor = 0x98b8c8; // light blue pastel
+    const ident = ((pd.part.group||'') + ' ' + (pd.part.ref||'') + ' ' + (pd.part.url||'')).toLowerCase();
+    if (ident.includes('fastener') || ident.includes('screw') || ident.includes('washer') || ident.includes('nut') || ident.includes('bolt') || ident.includes('shcs') || /m\d/.test(ident)) {
+      baseColor = 0x222222; // black
     }
     
     if(isNew) baseColor = 0xffcf3f;
