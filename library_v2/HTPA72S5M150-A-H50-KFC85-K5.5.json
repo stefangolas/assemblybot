@@ -1,0 +1,585 @@
+{
+  "schema_version": 2,
+  "part_number": "HTPA72S5M150-A-H50-KFC85-K5.5",
+  "classification": {
+    "catalog_family": "timing_pulley",
+    "broader_families": [
+      "rotary_power_transmission"
+    ],
+    "aliases": [
+      "S5M_72T_driven"
+    ]
+  },
+  "source": {
+    "url": "misumi:HTPA72S5M150-A-H50-KFC85-K5.5",
+    "retrieved_at": "2026-06-22",
+    "brand": "MSM1"
+  },
+  "raw_spec": {},
+  "normalized_parameters": {
+    "teeth": 72,
+    "pitch_mm": 5.0,
+    "belt_width_mm": 15,
+    "bore_mm": 50,
+    "bolt_PCD_mm": 85,
+    "bolt_dia_mm": 5.5,
+    "OD_mm": 119,
+    "width_mm": 22
+  },
+  "cad": {
+    "source_uri": "cad/HTPA72S5M150-A-H50-KFC85-K5.5_STEP.zip",
+    "gltf_uri": "cad/HTPA72S5M150.glb",
+    "units": "metre"
+  },
+  "part_frame": {
+    "units": "millimetre",
+    "drawing_to_cad": {
+      "scale": 1.0,
+      "rotation": "identity",
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    "note": "bore axis = local X (CAD); body X 0..22; mount face X=0 seats on adapter Z=12; teeth on OD."
+  },
+  "ports": [
+    {
+      "id": "bore",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            1.0,
+            0,
+            0
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 25.0,
+          "max": 25.0,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 22.0,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "H50_bore",
+        "pilot_fit"
+      ],
+      "evidence_refs": [
+        "ev_cad"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "mount_face",
+      "family": "planar",
+      "polarity": "contact",
+      "geometry": {
+        "plane": {
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "normal": [
+            -1.0,
+            0,
+            0
+          ]
+        },
+        "boundary_uv_mm": {
+          "outer": [
+            [
+              57.0,
+              0.0
+            ],
+            [
+              55.058,
+              14.753
+            ],
+            [
+              49.363,
+              28.5
+            ],
+            [
+              40.305,
+              40.305
+            ],
+            [
+              28.5,
+              49.363
+            ],
+            [
+              14.753,
+              55.058
+            ],
+            [
+              0.0,
+              57.0
+            ],
+            [
+              -14.753,
+              55.058
+            ],
+            [
+              -28.5,
+              49.363
+            ],
+            [
+              -40.305,
+              40.305
+            ],
+            [
+              -49.363,
+              28.5
+            ],
+            [
+              -55.058,
+              14.753
+            ],
+            [
+              -57.0,
+              0.0
+            ],
+            [
+              -55.058,
+              -14.753
+            ],
+            [
+              -49.363,
+              -28.5
+            ],
+            [
+              -40.305,
+              -40.305
+            ],
+            [
+              -28.5,
+              -49.363
+            ],
+            [
+              -14.753,
+              -55.058
+            ],
+            [
+              -0.0,
+              -57.0
+            ],
+            [
+              14.753,
+              -55.058
+            ],
+            [
+              28.5,
+              -49.363
+            ],
+            [
+              40.305,
+              -40.305
+            ],
+            [
+              49.363,
+              -28.5
+            ],
+            [
+              55.058,
+              -14.753
+            ]
+          ],
+          "holes": [
+            [
+              [
+                25.0,
+                0.0
+              ],
+              [
+                24.148,
+                6.47
+              ],
+              [
+                21.651,
+                12.5
+              ],
+              [
+                17.678,
+                17.678
+              ],
+              [
+                12.5,
+                21.651
+              ],
+              [
+                6.47,
+                24.148
+              ],
+              [
+                0.0,
+                25.0
+              ],
+              [
+                -6.47,
+                24.148
+              ],
+              [
+                -12.5,
+                21.651
+              ],
+              [
+                -17.678,
+                17.678
+              ],
+              [
+                -21.651,
+                12.5
+              ],
+              [
+                -24.148,
+                6.47
+              ],
+              [
+                -25.0,
+                0.0
+              ],
+              [
+                -24.148,
+                -6.47
+              ],
+              [
+                -21.651,
+                -12.5
+              ],
+              [
+                -17.678,
+                -17.678
+              ],
+              [
+                -12.5,
+                -21.651
+              ],
+              [
+                -6.47,
+                -24.148
+              ],
+              [
+                -0.0,
+                -25.0
+              ],
+              [
+                6.47,
+                -24.148
+              ],
+              [
+                12.5,
+                -21.651
+              ],
+              [
+                17.678,
+                -17.678
+              ],
+              [
+                21.651,
+                -12.5
+              ],
+              [
+                24.148,
+                -6.47
+              ]
+            ]
+          ]
+        },
+        "material_side": "positive_normal"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "pulley_mount_face"
+      ],
+      "evidence_refs": [
+        "ev_cad"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "teeth",
+      "family": "periodic",
+      "polarity": "external",
+      "geometry": {
+        "subtype": "rotary",
+        "support": {
+          "axis": {
+            "origin": [
+              11.0,
+              0,
+              0
+            ],
+            "direction": [
+              1.0,
+              0,
+              0
+            ]
+          },
+          "radius_mm": 57.296,
+          "axial_interval_mm": {
+            "min": -7.5,
+            "max": 7.5,
+            "unit": "mm"
+          }
+        },
+        "periodicity": {
+          "pitch_mm": 5.0,
+          "count": 72,
+          "phase": null,
+          "active_width_mm": {
+            "min": 0.0,
+            "max": 15.0,
+            "unit": "mm"
+          }
+        },
+        "profile": {
+          "family": "S5M",
+          "parameters": {}
+        }
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "pitch_circle"
+      ],
+      "evidence_refs": [
+        "ev_cad"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "mount_hole_1",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            0.0,
+            42.5,
+            0.0
+          ],
+          "direction": [
+            1.0,
+            0,
+            0
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 2.75,
+          "max": 2.75,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 22.0,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "mount_clearance"
+      ],
+      "evidence_refs": [
+        "ev_cad"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "mount_hole_2",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            0.0,
+            0.0,
+            42.5
+          ],
+          "direction": [
+            1.0,
+            0,
+            0
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 2.75,
+          "max": 2.75,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 22.0,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "mount_clearance"
+      ],
+      "evidence_refs": [
+        "ev_cad"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "mount_hole_3",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            0.0,
+            -42.5,
+            0.0
+          ],
+          "direction": [
+            1.0,
+            0,
+            0
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 2.75,
+          "max": 2.75,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 22.0,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "mount_clearance"
+      ],
+      "evidence_refs": [
+        "ev_cad"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "mount_hole_4",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            0.0,
+            -0.0,
+            -42.5
+          ],
+          "direction": [
+            1.0,
+            0,
+            0
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 2.75,
+          "max": 2.75,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 22.0,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "mount_clearance"
+      ],
+      "evidence_refs": [
+        "ev_cad"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    }
+  ],
+  "port_groups": [
+    {
+      "id": "mount_pattern",
+      "kind": "repeated_ports",
+      "members": [
+        {
+          "port": "mount_hole_1"
+        },
+        {
+          "port": "mount_hole_2"
+        },
+        {
+          "port": "mount_hole_3"
+        },
+        {
+          "port": "mount_hole_4"
+        }
+      ],
+      "frame": null,
+      "symmetry": {
+        "generators": [
+          {
+            "rotation_deg": 90
+          }
+        ]
+      },
+      "placement_domain": null,
+      "evidence_refs": [
+        "ev_cad"
+      ]
+    }
+  ],
+  "annotation_status": {
+    "overall": "complete",
+    "expected_ports": {}
+  },
+  "evidence": [
+    {
+      "id": "ev_cad",
+      "source_type": "cad",
+      "raw_value": "measured from downloaded Misumi STEP",
+      "normalized_claim": {},
+      "source_uri": "cad/HTPA72S5M150.glb",
+      "locator": "",
+      "extraction_method": "cad_measurement",
+      "confidence": 0.95,
+      "notes": "mid-section x=11: bore Oe50 (R25), 4x Oe5.5 @ PCD85 (R42.5); OD119, width22; S5M 72T. Matches spec."
+    }
+  ],
+  "provenance": {
+    "discovered_by": "lead direct fetch (known PN)",
+    "annotated_by": "mesh-section measurement"
+  }
+}

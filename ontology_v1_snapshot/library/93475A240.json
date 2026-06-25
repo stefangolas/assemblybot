@@ -1,0 +1,85 @@
+{
+  "part_number": "93475A240",
+  "class": "flat_washer",
+  "source_url": "https://www.mcmaster.com/93475A240/",
+  "retrieved_at": "2026-06-18",
+  "raw_spec": {
+    "For Screw Size": "M5",
+    "ID": "5.3 mm",
+    "OD": "10.0 mm",
+    "Thickness": "0.9 mm to 1.1 mm",
+    "Washer Type": "Flat",
+    "Material": "18-8 Stainless Steel",
+    "Specifications Met": "DIN 125, ISO 7089"
+  },
+  "spec": {
+    "id": 5.3,
+    "od": 10.0,
+    "material": "18-8 Stainless Steel",
+    "thickness": 1.0
+  },
+  "cad": {
+    "dwg_uri": "C:\\Users\\stefa\\assemblybot\\cad\\93475A240.dwg",
+    "step_uri": "C:\\Users\\stefa\\assemblybot\\cad\\93475A240.step",
+    "gltf_uri": "C:\\Users\\stefa\\assemblybot\\cad\\93475A240.glb",
+    "variant": "as_modeled_no_threads"
+  },
+  "frame": {
+    "origin": [
+      0,
+      0,
+      0
+    ],
+    "handedness": "right",
+    "datum": "centre of mating face, +Z away from head"
+  },
+  "features": [
+    {
+      "id": "bore",
+      "geometry": {
+        "type": "axis",
+        "origin": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "direction": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "role": "clearance_hole",
+      "params": {
+        "diameter": 5.3
+      }
+    },
+    {
+      "id": "top_face",
+      "geometry": {
+        "type": "plane",
+        "origin": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "normal": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "role": "mounting_face",
+      "params": {
+        "od": 10.0,
+        "thickness": 1.0
+      }
+    }
+  ],
+  "provenance": {
+    "discovered_by": "playwright",
+    "annotated_by": "manual",
+    "confidence": 0.95,
+    "note": "specs + DWG + STEP retrieved live off mcmaster.com (no sign-in); mesh bbox 10x10x1.1mm confirms OD and thickness"
+  }
+}

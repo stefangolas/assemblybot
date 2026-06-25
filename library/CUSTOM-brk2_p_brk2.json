@@ -1,0 +1,66 @@
+{
+  "part_number": "CUSTOM-brk2",
+  "class": "bearing_bracket",
+  "source_url": "fabricated",
+  "retrieved_at": "2026-06-18",
+  "raw_spec": {},
+  "spec": {
+    "note": "extrusion -> bearing seat"
+  },
+  "cad": {
+    "gltf_uri": "C:\\Users\\stefa\\assemblybot\\cad\\CUSTOM-brk2.glb"
+  },
+  "frame": {
+    "origin": [
+      0,
+      0,
+      0
+    ],
+    "handedness": "right"
+  },
+  "features": [
+    {
+      "id": "seat",
+      "geometry": {
+        "type": "axis",
+        "origin": [
+          25.0,
+          13.0,
+          -66.03624055597791
+        ],
+        "direction": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      },
+      "role": "bearing_seat",
+      "params": {
+        "diameter": 6.35
+      }
+    },
+    {
+      "id": "foot",
+      "geometry": {
+        "type": "plane",
+        "origin": [
+          6.0,
+          12.5,
+          -66.03624055597791
+        ],
+        "normal": [
+          0.0,
+          1.0,
+          0.0
+        ]
+      },
+      "role": "mounting_face",
+      "params": {}
+    }
+  ],
+  "provenance": {
+    "discovered_by": "design",
+    "annotated_by": "manual",
+    "confidence": 0.9
+  }
+}

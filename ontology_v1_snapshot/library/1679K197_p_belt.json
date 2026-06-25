@@ -1,0 +1,29 @@
+{
+  "part_number": "1679K197",
+  "class": "timing_belt",
+  "source_url": "https://www.mcmaster.com/1679K197/",
+  "retrieved_at": "2026-06-18",
+  "raw_spec": {},
+  "spec": {
+    "pitch_in": 0.2,
+    "teeth": 67,
+    "width_in": 0.25
+  },
+  "cad": {
+    "gltf_uri": null
+  },
+  "frame": {
+    "origin": [
+      0,
+      0,
+      0
+    ],
+    "handedness": "right"
+  },
+  "features": [],
+  "provenance": {
+    "discovered_by": "playwright",
+    "annotated_by": "manual",
+    "confidence": 0.9
+  }
+}

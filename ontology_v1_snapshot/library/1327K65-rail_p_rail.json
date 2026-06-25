@@ -1,0 +1,28 @@
+{
+  "part_number": "1327K65-rail",
+  "class": "round_rail",
+  "source_url": "https://www.mcmaster.com/1327K65-rail/",
+  "retrieved_at": "2026-06-18",
+  "raw_spec": {},
+  "spec": {
+    "diameter_mm": 6.35,
+    "length_mm": 152.4
+  },
+  "cad": {
+    "gltf_uri": null
+  },
+  "frame": {
+    "origin": [
+      0,
+      0,
+      0
+    ],
+    "handedness": "right"
+  },
+  "features": [],
+  "provenance": {
+    "discovered_by": "playwright",
+    "annotated_by": "manual",
+    "confidence": 0.9
+  }
+}

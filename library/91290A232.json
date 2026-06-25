@@ -1,0 +1,92 @@
+{
+  "part_number": "91290A232",
+  "class": "socket_head_screw",
+  "source_url": "https://www.mcmaster.com/91290A232/",
+  "retrieved_at": "2026-06-18",
+  "raw_spec": {
+    "Thread Size": "M5",
+    "Thread Pitch": "0.8 mm",
+    "Length": "16 mm",
+    "Head Diameter": "8.5 mm",
+    "Head Height": "5 mm",
+    "Threading": "Fully Threaded",
+    "Material": "Black-Oxide Alloy Steel",
+    "Fastener Strength Grade/Class": "Class 12.9"
+  },
+  "spec": {
+    "thread": "M5",
+    "length": 16.0,
+    "head_od": 8.5,
+    "head_height": 5.0,
+    "material": "Black-Oxide Alloy Steel",
+    "thread_major": 5.0
+  },
+  "cad": {
+    "dwg_uri": "C:\\Users\\stefa\\assemblybot\\cad\\91290A232.dwg",
+    "step_uri": "C:\\Users\\stefa\\assemblybot\\cad\\91290A232.step",
+    "gltf_uri": "C:\\Users\\stefa\\assemblybot\\cad\\91290A232.glb",
+    "variant": "simplified_nonthreaded",
+    "step_href": "/mvC/Library/CAD2/.../91290A232_NO THREADS_....STEP"
+  },
+  "frame": {
+    "origin": [
+      0,
+      0,
+      0
+    ],
+    "handedness": "right",
+    "datum": "centre of under-head bearing face, +Z head->tip",
+    "mesh_seat_z": 5.5
+  },
+  "features": [
+    {
+      "id": "axis",
+      "geometry": {
+        "type": "axis",
+        "origin": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "direction": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "role": "shaft_bore",
+      "params": {
+        "diameter": 5.0,
+        "kind": "external",
+        "thread": "M5"
+      }
+    },
+    {
+      "id": "head_seat",
+      "geometry": {
+        "type": "plane",
+        "origin": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "normal": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      },
+      "role": "mounting_face",
+      "params": {
+        "od": 8.5,
+        "feature": "under_head_bearing_face"
+      }
+    }
+  ],
+  "provenance": {
+    "discovered_by": "playwright",
+    "annotated_by": "manual",
+    "confidence": 0.95,
+    "note": "specs + DWG + STEP retrieved live off mcmaster.com (no sign-in); mesh bbox 8.5x8.5x21mm confirms head \u00d8 and 21mm overall length"
+  }
+}

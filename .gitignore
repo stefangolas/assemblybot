@@ -1,0 +1,43 @@
+__pycache__/
+*.py[cod]
+*$py.class
+
+.Python
+.venv/
+venv/
+env/
+ENV/
+
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+build/
+dist/
+*.egg-info/
+
+.DS_Store
+Thumbs.db
+
+# --- project workspaces (compositions/artifacts) -- git-ignored except the committed template ---
+projects/*
+!projects/_example/
+
+# --- shared CAD model binaries: regenerable/refetchable cache, NOT committed (decision 2026-06-24) ---
+# (the catalog DEFS in library*/ ARE committed; only the heavy 3D model binaries are ignored.
+#  generated parts regenerate; catalog-fetched parts refetch via data/. drawings .pdf/.png/.dwg kept.)
+cad/*.glb
+cad/*.step
+cad/*.stp
+cad/*.zip
+
+# --- legacy root artifacts (migrate into projects/<name>/out/, then delete) ---
+out/
+out_*.txt
+*.output
+jl.json
+
+# NOTE: files already staged/tracked are NOT auto-ignored -- run `git rm -r --cached <path>`
+# (e.g. cad/*.glb cad/*.step out/) during migration A to actually stop tracking them.

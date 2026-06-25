@@ -1,0 +1,28 @@
+{
+  "part_number": "57155K324",
+  "class": "ball_bearing",
+  "source_url": "https://www.mcmaster.com/57155K324/",
+  "retrieved_at": "2026-06-18",
+  "raw_spec": {},
+  "spec": {
+    "bore_mm": 6.35,
+    "od_mm": 15.875
+  },
+  "cad": {
+    "gltf_uri": null
+  },
+  "frame": {
+    "origin": [
+      0,
+      0,
+      0
+    ],
+    "handedness": "right"
+  },
+  "features": [],
+  "provenance": {
+    "discovered_by": "playwright",
+    "annotated_by": "manual",
+    "confidence": 0.9
+  }
+}

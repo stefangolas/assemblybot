@@ -1,0 +1,65 @@
+{
+  "schema_version": 2,
+  "part_number": "ISO4762-M4x0.7-12",
+  "classification": {
+    "catalog_family": "socket_head_cap_screw",
+    "broader_families": ["fastener", "standard_part"],
+    "aliases": ["SHCS", "M4x12_cap_screw"],
+    "generative": true
+  },
+  "source": {
+    "standard": "ISO 4762",
+    "real_exemplar_pn": "McMaster 91290A / Misumi SCB (M4x12 is a universally stocked standard length)",
+    "note": "GENERATED standard part: geometry fully determined by ISO 4762 for (M4x0.7, length 12). Fastens the SL-TBLG plate (M4 clearance) down onto the SSEB20 block top (M4 tap). No spec-sheet lookup required -- the standard supplies the geometry.",
+    "retrieved_at": "2026-06-21"
+  },
+  "raw_spec": {"standard": "ISO 4762 hex socket head cap screw", "thread": "M4x0.7", "length_mm": "12",
+               "head_dia_mm": "7.0", "head_height_mm": "4.0", "socket_mm": "3"},
+  "normalized_parameters": {
+    "thread_designation": "M4x0.7", "nominal_length_mm": 12.0, "shank_diameter_mm": 4.0,
+    "head_diameter_mm": 7.0, "head_height_mm": 4.0, "qty_in_assembly": 4,
+    "role": "plate->block guide-mount clamp screw (4x at 25x30 pattern)"
+  },
+  "cad": {"source_uri": null, "gltf_uri": "cad/ISO4762-M4x0.7-12.glb", "units": "metre",
+          "note": "generated primitive (head + shank cylinders) per ISO 4762"},
+  "part_frame": {
+    "units": "millimetre",
+    "drawing_to_cad": {"scale": 1.0, "rotation": "identity", "translation": [0, 0, 0]},
+    "note": "axis = local Z. head +Z (0..4, Ø7.0), threaded shank -Z (0..-12, Ø4). head underside (head_seat) at Z=0 seats on the plate; the thread taps into the block."
+  },
+  "ports": [
+    {
+      "id": "thread", "family": "threaded", "polarity": "external",
+      "geometry": {
+        "axis": {"origin": [0.0, 0.0, 0.0], "direction": [0, 0, 1]},
+        "axial_interval_mm": {"min": -12.0, "max": 0.0, "unit": "mm"},
+        "thread": {"standard": "ISO_metric", "designation": "M4x0.7", "pitch_mm": 0.7,
+                   "handedness": "right", "starts": 1, "major_diameter_mm": {"min": 3.82, "max": 4.0},
+                   "minor_diameter_mm": {"min": 3.14, "max": 3.3},
+                   "evidence_status": "confirmed", "evidence_source": "standard"}
+      },
+      "semantic_aliases": ["screw_thread"], "annotation_status": "confirmed", "evidence_refs": ["ev_std"]
+    },
+    {
+      "id": "head_seat", "family": "planar", "polarity": "contact",
+      "geometry": {
+        "plane": {"origin": [0.0, 0.0, 0.0], "normal": [0, 0, -1]},
+        "boundary_uv_mm": {"outer": [[-3.5, -3.5], [3.5, -3.5], [3.5, 3.5], [-3.5, 3.5]],
+                           "holes": [[[-2.0, -2.0], [2.0, -2.0], [2.0, 2.0], [-2.0, 2.0]]]},
+        "material_side": "positive_normal"
+      },
+      "semantic_aliases": ["head_underside", "axial_stop"], "annotation_status": "confirmed", "evidence_refs": ["ev_std"]
+    }
+  ],
+  "port_groups": [],
+  "annotation_status": {"overall": "complete", "expected_ports": {}},
+  "evidence": [
+    {"id": "ev_std", "source_type": "standard",
+     "source_uri": "ISO 4762:2004",
+     "locator": "ISO 4762 hex socket head cap screw, M4: dk=7.0, k=4.0, s=3.0, thread M4x0.7; length 12 on the standard size grid",
+     "raw_value": "ISO 4762 M4: dk=7.0, k=4.0, s=3, thread M4x0.7; length 12",
+     "normalized_claim": {"target_path": "ports.thread.geometry.thread.designation", "value": "M4x0.7", "unit": "mm"},
+     "extraction_method": "standard_lookup", "confidence": 0.98}
+  ],
+  "provenance": {"discovered_by": "generated from ISO 4762 (standard-fastener rule)", "annotated_by": "lead", "acquired": "2026-06-21"}
+}

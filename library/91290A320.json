@@ -1,0 +1,63 @@
+{
+  "part_number": "91290A320",
+  "class": "socket_head_screw",
+  "source_url": "https://www.mcmaster.com/91290A320/",
+  "retrieved_at": "2026-06-18",
+  "raw_spec": {
+    "Thread Size": "M6",
+    "Thread Pitch": "1 mm",
+    "Length": "15 mm",
+    "Head Diameter": "10 mm",
+    "Head Height": "6 mm"
+  },
+  "spec": {
+    "thread": "M6",
+    "length": 15.0,
+    "head_od": 10.0,
+    "thread_major": 6.0
+  },
+  "cad": {
+    "dwg_uri": null,
+    "step_uri": "C:\\Users\\stefa\\assemblybot\\cad\\91290A320.step",
+    "gltf_uri": "C:\\Users\\stefa\\assemblybot\\cad\\91290A320.glb",
+    "variant": "simplified_nonthreaded"
+  },
+  "frame": {
+    "origin": [
+      0,
+      0,
+      0
+    ],
+    "handedness": "right"
+  },
+  "features": [
+    {
+      "id": "axis",
+      "geometry": {
+        "type": "axis",
+        "origin": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "direction": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "role": "shaft_bore",
+      "params": {
+        "diameter": 6.0,
+        "kind": "external",
+        "thread": "M6"
+      }
+    }
+  ],
+  "provenance": {
+    "discovered_by": "playwright",
+    "annotated_by": "manual",
+    "confidence": 0.95,
+    "note": "M6x15 fills bolt_joint `requires`"
+  }
+}

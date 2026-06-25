@@ -1,0 +1,11 @@
+# Assembly Agent dependencies.
+# Data layer (Section 3): Playwright drives mcmaster.com -- NO API, ever.
+playwright==1.60.0      # after install: `python -m playwright install chromium`
+# Geometry / assembly core
+numpy==2.4.4
+# CAD pipeline: STEP -> glTF tessellation + mesh interference (Section 3, 9)
+cascadio==0.0.17        # OCCT-backed STEP -> .glb
+trimesh==4.12.2
+python-fcl==0.7.0.11    # FCL mesh collision for the interference gate
+scipy                   # trimesh dependency for non-convex mesh collision
+pymupdf                 # render the 2-D PDF drawing for VLM reading of hole patterns

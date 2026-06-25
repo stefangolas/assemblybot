@@ -1,0 +1,430 @@
+{
+  "schema_version": 2,
+  "part_number": "FPT-Adapter-Plate",
+  "classification": {
+    "catalog_family": "configurable_plate"
+  },
+  "source": {
+    "url": "fabricated",
+    "retrieved_at": "2026-06-22"
+  },
+  "normalized_parameters": {},
+  "cad": {
+    "gltf_uri": "cad/CUSTOM-plate.glb",
+    "units": "metre"
+  },
+  "part_frame": {
+    "units": "millimetre",
+    "drawing_to_cad": {
+      "scale": 1.0,
+      "rotation": "identity",
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "ports": [
+    {
+      "id": "bot_face",
+      "family": "planar",
+      "polarity": "contact",
+      "geometry": {
+        "plane": {
+          "origin": [
+            0.0,
+            -2.0,
+            0.0
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        "boundary_uv_mm": {
+          "outer": [
+            [
+              -31,
+              -22
+            ],
+            [
+              31,
+              -22
+            ],
+            [
+              31,
+              22
+            ],
+            [
+              -31,
+              22
+            ]
+          ],
+          "holes": []
+        },
+        "material_side": "positive_normal"
+      }
+    },
+    {
+      "id": "top_face",
+      "family": "planar",
+      "polarity": "contact",
+      "geometry": {
+        "plane": {
+          "origin": [
+            0.0,
+            2.0,
+            0.0
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        "boundary_uv_mm": {
+          "outer": [
+            [
+              -31,
+              -22
+            ],
+            [
+              31,
+              -22
+            ],
+            [
+              31,
+              22
+            ],
+            [
+              -31,
+              22
+            ]
+          ],
+          "holes": []
+        },
+        "material_side": "negative_normal"
+      }
+    },
+    {
+      "id": "grip_teeth",
+      "family": "periodic",
+      "polarity": "opposing",
+      "geometry": {
+        "subtype": "linear",
+        "support": {
+          "plane": {
+            "origin": [
+              0.0,
+              2.0,
+              0.0
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ]
+          },
+          "direction": [
+            1,
+            0,
+            0
+          ]
+        },
+        "periodicity": {
+          "pitch_mm": 3.0,
+          "count": null,
+          "active_width_mm": {
+            "min": 10,
+            "max": 10,
+            "unit": "mm"
+          }
+        },
+        "profile": {
+          "family": "S3M",
+          "parameters": {}
+        }
+      }
+    },
+    {
+      "id": "guide_mount_a",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            -12.5,
+            -2.0,
+            15.0
+          ],
+          "direction": [
+            0,
+            -1,
+            0
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 1.5,
+          "max": 1.5,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0,
+          "max": 4,
+          "unit": "mm"
+        },
+        "material_side": "outside"
+      }
+    },
+    {
+      "id": "guide_mount_b",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            12.5,
+            -2.0,
+            15.0
+          ],
+          "direction": [
+            0,
+            -1,
+            0
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 1.5,
+          "max": 1.5,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0,
+          "max": 4,
+          "unit": "mm"
+        },
+        "material_side": "outside"
+      }
+    },
+    {
+      "id": "guide_mount_c",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            -12.5,
+            -2.0,
+            -15.0
+          ],
+          "direction": [
+            0,
+            -1,
+            0
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 1.5,
+          "max": 1.5,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0,
+          "max": 4,
+          "unit": "mm"
+        },
+        "material_side": "outside"
+      }
+    },
+    {
+      "id": "guide_mount_d",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            12.5,
+            -2.0,
+            -15.0
+          ],
+          "direction": [
+            0,
+            -1,
+            0
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 1.5,
+          "max": 1.5,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0,
+          "max": 4,
+          "unit": "mm"
+        },
+        "material_side": "outside"
+      }
+    },
+    {
+      "id": "clamp_mount_a",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            -15.5,
+            -2.0,
+            -5.5
+          ],
+          "direction": [
+            0,
+            -1,
+            0
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 1.5,
+          "max": 1.5,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0,
+          "max": 4,
+          "unit": "mm"
+        },
+        "material_side": "outside"
+      }
+    },
+    {
+      "id": "clamp_mount_b",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            -4.5,
+            -2.0,
+            -5.5
+          ],
+          "direction": [
+            0,
+            -1,
+            0
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 1.5,
+          "max": 1.5,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0,
+          "max": 4,
+          "unit": "mm"
+        },
+        "material_side": "outside"
+      }
+    },
+    {
+      "id": "clamp_mount_c",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            -15.5,
+            -2.0,
+            5.5
+          ],
+          "direction": [
+            0,
+            -1,
+            0
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 1.5,
+          "max": 1.5,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0,
+          "max": 4,
+          "unit": "mm"
+        },
+        "material_side": "outside"
+      }
+    },
+    {
+      "id": "clamp_mount_d",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            -4.5,
+            -2.0,
+            5.5
+          ],
+          "direction": [
+            0,
+            -1,
+            0
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 1.5,
+          "max": 1.5,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0,
+          "max": 4,
+          "unit": "mm"
+        },
+        "material_side": "outside"
+      }
+    }
+  ],
+  "port_groups": [
+    {
+      "id": "guide_mount",
+      "kind": "repeated_ports",
+      "members": [
+        {
+          "port": "guide_mount_a"
+        },
+        {
+          "port": "guide_mount_b"
+        },
+        {
+          "port": "guide_mount_c"
+        },
+        {
+          "port": "guide_mount_d"
+        }
+      ]
+    },
+    {
+      "id": "clamp_mount",
+      "kind": "repeated_ports",
+      "members": [
+        {
+          "port": "clamp_mount_a"
+        },
+        {
+          "port": "clamp_mount_b"
+        },
+        {
+          "port": "clamp_mount_c"
+        },
+        {
+          "port": "clamp_mount_d"
+        }
+      ]
+    }
+  ]
+}

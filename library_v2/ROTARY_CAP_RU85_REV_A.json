@@ -1,0 +1,1339 @@
+{
+  "schema_version": 2,
+  "part_number": "ROTARY_CAP_RU85_REV_A",
+  "classification": {
+    "catalog_family": "custom_machined",
+    "broader_families": [
+      "rotating_hub"
+    ],
+    "aliases": [
+      "rotor_cap"
+    ]
+  },
+  "source": {
+    "url": "custom_drawing:ROTARY_CAP_RU85_REV_A",
+    "retrieved_at": "2026-06-24",
+    "revision": "A",
+    "material": "6061-T651"
+  },
+  "raw_spec": {},
+  "normalized_parameters": {
+    "OD_mm": 180,
+    "thickness_mm": 10,
+    "bore_mm": 45,
+    "cap_bolt_PCD_mm": 85,
+    "tabletop_holes": "4x M6 @ (+-55)",
+    "cap_bolt_holes": "4x Oe5.5 clearance @ PCD85 + Oe9 head counterbore (5 deep from top) so the tabletop seats flat"
+  },
+  "cad": {
+    "source_uri": "cad/ROTARY_CAP_RU85_REV_A.step",
+    "gltf_uri": "cad/ROTARY_CAP_RU85_REV_A.glb",
+    "units": "metre"
+  },
+  "part_frame": {
+    "units": "millimetre",
+    "drawing_to_cad": {
+      "scale": 1.0,
+      "rotation": "identity",
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    "note": "Z=0 bottom (on pulley top); Oe180 (12mm edge margin on +-55 taps); cap bolts head-recessed; installed AFTER the pulley."
+  },
+  "ports": [
+    {
+      "id": "bot_face",
+      "family": "planar",
+      "polarity": "contact",
+      "geometry": {
+        "plane": {
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "normal": [
+            0,
+            0,
+            -1.0
+          ]
+        },
+        "boundary_uv_mm": {
+          "outer": [
+            [
+              90.0,
+              0.0
+            ],
+            [
+              89.23,
+              11.747
+            ],
+            [
+              86.933,
+              23.294
+            ],
+            [
+              83.149,
+              34.442
+            ],
+            [
+              77.942,
+              45.0
+            ],
+            [
+              71.402,
+              54.789
+            ],
+            [
+              63.64,
+              63.64
+            ],
+            [
+              54.789,
+              71.402
+            ],
+            [
+              45.0,
+              77.942
+            ],
+            [
+              34.442,
+              83.149
+            ],
+            [
+              23.294,
+              86.933
+            ],
+            [
+              11.747,
+              89.23
+            ],
+            [
+              0.0,
+              90.0
+            ],
+            [
+              -11.747,
+              89.23
+            ],
+            [
+              -23.294,
+              86.933
+            ],
+            [
+              -34.442,
+              83.149
+            ],
+            [
+              -45.0,
+              77.942
+            ],
+            [
+              -54.789,
+              71.402
+            ],
+            [
+              -63.64,
+              63.64
+            ],
+            [
+              -71.402,
+              54.789
+            ],
+            [
+              -77.942,
+              45.0
+            ],
+            [
+              -83.149,
+              34.442
+            ],
+            [
+              -86.933,
+              23.294
+            ],
+            [
+              -89.23,
+              11.747
+            ],
+            [
+              -90.0,
+              0.0
+            ],
+            [
+              -89.23,
+              -11.747
+            ],
+            [
+              -86.933,
+              -23.294
+            ],
+            [
+              -83.149,
+              -34.442
+            ],
+            [
+              -77.942,
+              -45.0
+            ],
+            [
+              -71.402,
+              -54.789
+            ],
+            [
+              -63.64,
+              -63.64
+            ],
+            [
+              -54.789,
+              -71.402
+            ],
+            [
+              -45.0,
+              -77.942
+            ],
+            [
+              -34.442,
+              -83.149
+            ],
+            [
+              -23.294,
+              -86.933
+            ],
+            [
+              -11.747,
+              -89.23
+            ],
+            [
+              -0.0,
+              -90.0
+            ],
+            [
+              11.747,
+              -89.23
+            ],
+            [
+              23.294,
+              -86.933
+            ],
+            [
+              34.442,
+              -83.149
+            ],
+            [
+              45.0,
+              -77.942
+            ],
+            [
+              54.789,
+              -71.402
+            ],
+            [
+              63.64,
+              -63.64
+            ],
+            [
+              71.402,
+              -54.789
+            ],
+            [
+              77.942,
+              -45.0
+            ],
+            [
+              83.149,
+              -34.442
+            ],
+            [
+              86.933,
+              -23.294
+            ],
+            [
+              89.23,
+              -11.747
+            ]
+          ],
+          "holes": [
+            [
+              [
+                22.5,
+                0.0
+              ],
+              [
+                22.308,
+                2.937
+              ],
+              [
+                21.733,
+                5.823
+              ],
+              [
+                20.787,
+                8.61
+              ],
+              [
+                19.486,
+                11.25
+              ],
+              [
+                17.85,
+                13.697
+              ],
+              [
+                15.91,
+                15.91
+              ],
+              [
+                13.697,
+                17.85
+              ],
+              [
+                11.25,
+                19.486
+              ],
+              [
+                8.61,
+                20.787
+              ],
+              [
+                5.823,
+                21.733
+              ],
+              [
+                2.937,
+                22.308
+              ],
+              [
+                0.0,
+                22.5
+              ],
+              [
+                -2.937,
+                22.308
+              ],
+              [
+                -5.823,
+                21.733
+              ],
+              [
+                -8.61,
+                20.787
+              ],
+              [
+                -11.25,
+                19.486
+              ],
+              [
+                -13.697,
+                17.85
+              ],
+              [
+                -15.91,
+                15.91
+              ],
+              [
+                -17.85,
+                13.697
+              ],
+              [
+                -19.486,
+                11.25
+              ],
+              [
+                -20.787,
+                8.61
+              ],
+              [
+                -21.733,
+                5.823
+              ],
+              [
+                -22.308,
+                2.937
+              ],
+              [
+                -22.5,
+                0.0
+              ],
+              [
+                -22.308,
+                -2.937
+              ],
+              [
+                -21.733,
+                -5.823
+              ],
+              [
+                -20.787,
+                -8.61
+              ],
+              [
+                -19.486,
+                -11.25
+              ],
+              [
+                -17.85,
+                -13.697
+              ],
+              [
+                -15.91,
+                -15.91
+              ],
+              [
+                -13.697,
+                -17.85
+              ],
+              [
+                -11.25,
+                -19.486
+              ],
+              [
+                -8.61,
+                -20.787
+              ],
+              [
+                -5.823,
+                -21.733
+              ],
+              [
+                -2.937,
+                -22.308
+              ],
+              [
+                -0.0,
+                -22.5
+              ],
+              [
+                2.937,
+                -22.308
+              ],
+              [
+                5.823,
+                -21.733
+              ],
+              [
+                8.61,
+                -20.787
+              ],
+              [
+                11.25,
+                -19.486
+              ],
+              [
+                13.697,
+                -17.85
+              ],
+              [
+                15.91,
+                -15.91
+              ],
+              [
+                17.85,
+                -13.697
+              ],
+              [
+                19.486,
+                -11.25
+              ],
+              [
+                20.787,
+                -8.61
+              ],
+              [
+                21.733,
+                -5.823
+              ],
+              [
+                22.308,
+                -2.937
+              ]
+            ]
+          ]
+        },
+        "material_side": "positive_normal"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "seats_on_pulley_top"
+      ],
+      "evidence_refs": [
+        "ev"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "top_face",
+      "family": "planar",
+      "polarity": "contact",
+      "geometry": {
+        "plane": {
+          "origin": [
+            0,
+            0,
+            10
+          ],
+          "normal": [
+            0,
+            0,
+            1.0
+          ]
+        },
+        "boundary_uv_mm": {
+          "outer": [
+            [
+              90.0,
+              0.0
+            ],
+            [
+              89.23,
+              11.747
+            ],
+            [
+              86.933,
+              23.294
+            ],
+            [
+              83.149,
+              34.442
+            ],
+            [
+              77.942,
+              45.0
+            ],
+            [
+              71.402,
+              54.789
+            ],
+            [
+              63.64,
+              63.64
+            ],
+            [
+              54.789,
+              71.402
+            ],
+            [
+              45.0,
+              77.942
+            ],
+            [
+              34.442,
+              83.149
+            ],
+            [
+              23.294,
+              86.933
+            ],
+            [
+              11.747,
+              89.23
+            ],
+            [
+              0.0,
+              90.0
+            ],
+            [
+              -11.747,
+              89.23
+            ],
+            [
+              -23.294,
+              86.933
+            ],
+            [
+              -34.442,
+              83.149
+            ],
+            [
+              -45.0,
+              77.942
+            ],
+            [
+              -54.789,
+              71.402
+            ],
+            [
+              -63.64,
+              63.64
+            ],
+            [
+              -71.402,
+              54.789
+            ],
+            [
+              -77.942,
+              45.0
+            ],
+            [
+              -83.149,
+              34.442
+            ],
+            [
+              -86.933,
+              23.294
+            ],
+            [
+              -89.23,
+              11.747
+            ],
+            [
+              -90.0,
+              0.0
+            ],
+            [
+              -89.23,
+              -11.747
+            ],
+            [
+              -86.933,
+              -23.294
+            ],
+            [
+              -83.149,
+              -34.442
+            ],
+            [
+              -77.942,
+              -45.0
+            ],
+            [
+              -71.402,
+              -54.789
+            ],
+            [
+              -63.64,
+              -63.64
+            ],
+            [
+              -54.789,
+              -71.402
+            ],
+            [
+              -45.0,
+              -77.942
+            ],
+            [
+              -34.442,
+              -83.149
+            ],
+            [
+              -23.294,
+              -86.933
+            ],
+            [
+              -11.747,
+              -89.23
+            ],
+            [
+              -0.0,
+              -90.0
+            ],
+            [
+              11.747,
+              -89.23
+            ],
+            [
+              23.294,
+              -86.933
+            ],
+            [
+              34.442,
+              -83.149
+            ],
+            [
+              45.0,
+              -77.942
+            ],
+            [
+              54.789,
+              -71.402
+            ],
+            [
+              63.64,
+              -63.64
+            ],
+            [
+              71.402,
+              -54.789
+            ],
+            [
+              77.942,
+              -45.0
+            ],
+            [
+              83.149,
+              -34.442
+            ],
+            [
+              86.933,
+              -23.294
+            ],
+            [
+              89.23,
+              -11.747
+            ]
+          ],
+          "holes": [
+            [
+              [
+                22.5,
+                0.0
+              ],
+              [
+                22.308,
+                2.937
+              ],
+              [
+                21.733,
+                5.823
+              ],
+              [
+                20.787,
+                8.61
+              ],
+              [
+                19.486,
+                11.25
+              ],
+              [
+                17.85,
+                13.697
+              ],
+              [
+                15.91,
+                15.91
+              ],
+              [
+                13.697,
+                17.85
+              ],
+              [
+                11.25,
+                19.486
+              ],
+              [
+                8.61,
+                20.787
+              ],
+              [
+                5.823,
+                21.733
+              ],
+              [
+                2.937,
+                22.308
+              ],
+              [
+                0.0,
+                22.5
+              ],
+              [
+                -2.937,
+                22.308
+              ],
+              [
+                -5.823,
+                21.733
+              ],
+              [
+                -8.61,
+                20.787
+              ],
+              [
+                -11.25,
+                19.486
+              ],
+              [
+                -13.697,
+                17.85
+              ],
+              [
+                -15.91,
+                15.91
+              ],
+              [
+                -17.85,
+                13.697
+              ],
+              [
+                -19.486,
+                11.25
+              ],
+              [
+                -20.787,
+                8.61
+              ],
+              [
+                -21.733,
+                5.823
+              ],
+              [
+                -22.308,
+                2.937
+              ],
+              [
+                -22.5,
+                0.0
+              ],
+              [
+                -22.308,
+                -2.937
+              ],
+              [
+                -21.733,
+                -5.823
+              ],
+              [
+                -20.787,
+                -8.61
+              ],
+              [
+                -19.486,
+                -11.25
+              ],
+              [
+                -17.85,
+                -13.697
+              ],
+              [
+                -15.91,
+                -15.91
+              ],
+              [
+                -13.697,
+                -17.85
+              ],
+              [
+                -11.25,
+                -19.486
+              ],
+              [
+                -8.61,
+                -20.787
+              ],
+              [
+                -5.823,
+                -21.733
+              ],
+              [
+                -2.937,
+                -22.308
+              ],
+              [
+                -0.0,
+                -22.5
+              ],
+              [
+                2.937,
+                -22.308
+              ],
+              [
+                5.823,
+                -21.733
+              ],
+              [
+                8.61,
+                -20.787
+              ],
+              [
+                11.25,
+                -19.486
+              ],
+              [
+                13.697,
+                -17.85
+              ],
+              [
+                15.91,
+                -15.91
+              ],
+              [
+                17.85,
+                -13.697
+              ],
+              [
+                19.486,
+                -11.25
+              ],
+              [
+                20.787,
+                -8.61
+              ],
+              [
+                21.733,
+                -5.823
+              ],
+              [
+                22.308,
+                -2.937
+              ]
+            ]
+          ]
+        },
+        "material_side": "negative_normal"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "tabletop_seat"
+      ],
+      "evidence_refs": [
+        "ev"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "pass_through",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0,
+            0,
+            1.0
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 22.5,
+          "max": 22.5,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0,
+          "max": 10,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "pass_through"
+      ],
+      "evidence_refs": [
+        "ev"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "mount_hole_1",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            42.5,
+            0.0,
+            0
+          ],
+          "direction": [
+            0,
+            0,
+            1.0
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 2.75,
+          "max": 2.75,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0,
+          "max": 10,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "cap_bolt_clearance_counterbored"
+      ],
+      "evidence_refs": [
+        "ev"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "mount_hole_2",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            0.0,
+            42.5,
+            0
+          ],
+          "direction": [
+            0,
+            0,
+            1.0
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 2.75,
+          "max": 2.75,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0,
+          "max": 10,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "cap_bolt_clearance_counterbored"
+      ],
+      "evidence_refs": [
+        "ev"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "mount_hole_3",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            -42.5,
+            0.0,
+            0
+          ],
+          "direction": [
+            0,
+            0,
+            1.0
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 2.75,
+          "max": 2.75,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0,
+          "max": 10,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "cap_bolt_clearance_counterbored"
+      ],
+      "evidence_refs": [
+        "ev"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "mount_hole_4",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            0.0,
+            -42.5,
+            0
+          ],
+          "direction": [
+            0,
+            0,
+            1.0
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 2.75,
+          "max": 2.75,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0,
+          "max": 10,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "cap_bolt_clearance_counterbored"
+      ],
+      "evidence_refs": [
+        "ev"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "tabletop_thread_1",
+      "family": "threaded",
+      "polarity": "internal",
+      "geometry": {
+        "axis": {
+          "origin": [
+            55.0,
+            55.0,
+            10
+          ],
+          "direction": [
+            0,
+            0,
+            -1.0
+          ]
+        },
+        "axial_interval_mm": {
+          "min": 0,
+          "max": 8,
+          "unit": "mm"
+        },
+        "thread": {
+          "standard": "ISO_metric",
+          "designation": "M6x1.0",
+          "pitch_mm": 1.0,
+          "handedness": "right",
+          "starts": 1
+        }
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "tabletop_mount"
+      ],
+      "evidence_refs": [
+        "ev"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "tabletop_thread_2",
+      "family": "threaded",
+      "polarity": "internal",
+      "geometry": {
+        "axis": {
+          "origin": [
+            -55.0,
+            55.0,
+            10
+          ],
+          "direction": [
+            0,
+            0,
+            -1.0
+          ]
+        },
+        "axial_interval_mm": {
+          "min": 0,
+          "max": 8,
+          "unit": "mm"
+        },
+        "thread": {
+          "standard": "ISO_metric",
+          "designation": "M6x1.0",
+          "pitch_mm": 1.0,
+          "handedness": "right",
+          "starts": 1
+        }
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "tabletop_mount"
+      ],
+      "evidence_refs": [
+        "ev"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "tabletop_thread_3",
+      "family": "threaded",
+      "polarity": "internal",
+      "geometry": {
+        "axis": {
+          "origin": [
+            -55.0,
+            -55.0,
+            10
+          ],
+          "direction": [
+            0,
+            0,
+            -1.0
+          ]
+        },
+        "axial_interval_mm": {
+          "min": 0,
+          "max": 8,
+          "unit": "mm"
+        },
+        "thread": {
+          "standard": "ISO_metric",
+          "designation": "M6x1.0",
+          "pitch_mm": 1.0,
+          "handedness": "right",
+          "starts": 1
+        }
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "tabletop_mount"
+      ],
+      "evidence_refs": [
+        "ev"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "tabletop_thread_4",
+      "family": "threaded",
+      "polarity": "internal",
+      "geometry": {
+        "axis": {
+          "origin": [
+            55.0,
+            -55.0,
+            10
+          ],
+          "direction": [
+            0,
+            0,
+            -1.0
+          ]
+        },
+        "axial_interval_mm": {
+          "min": 0,
+          "max": 8,
+          "unit": "mm"
+        },
+        "thread": {
+          "standard": "ISO_metric",
+          "designation": "M6x1.0",
+          "pitch_mm": 1.0,
+          "handedness": "right",
+          "starts": 1
+        }
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "tabletop_mount"
+      ],
+      "evidence_refs": [
+        "ev"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    }
+  ],
+  "port_groups": [
+    {
+      "id": "mount_pattern",
+      "kind": "repeated_ports",
+      "members": [
+        {
+          "port": "mount_hole_1"
+        },
+        {
+          "port": "mount_hole_2"
+        },
+        {
+          "port": "mount_hole_3"
+        },
+        {
+          "port": "mount_hole_4"
+        }
+      ],
+      "frame": null,
+      "symmetry": {
+        "generators": [
+          {
+            "rotation_deg": 90
+          }
+        ]
+      },
+      "placement_domain": null,
+      "evidence_refs": [
+        "ev"
+      ]
+    },
+    {
+      "id": "tabletop_pattern",
+      "kind": "repeated_ports",
+      "members": [
+        {
+          "port": "tabletop_thread_1"
+        },
+        {
+          "port": "tabletop_thread_2"
+        },
+        {
+          "port": "tabletop_thread_3"
+        },
+        {
+          "port": "tabletop_thread_4"
+        }
+      ],
+      "frame": null,
+      "symmetry": {
+        "generators": [
+          {
+            "rotation_deg": 90
+          }
+        ]
+      },
+      "placement_domain": null,
+      "evidence_refs": [
+        "ev"
+      ]
+    }
+  ],
+  "annotation_status": {
+    "overall": "complete",
+    "expected_ports": {}
+  },
+  "evidence": [
+    {
+      "id": "ev",
+      "source_type": "custom_drawing",
+      "raw_value": "ROTARY_CAP_RU85_REV_A bolt-on rotor cap",
+      "normalized_claim": {},
+      "source_uri": "cad/ROTARY_CAP_RU85_REV_A.glb",
+      "locator": "",
+      "extraction_method": "cad_measurement",
+      "confidence": 0.95,
+      "notes": "3rd custom part (user-OKd): bolt-on cap so the pulley isnt trapped. Oe160x10; attaches at PCD85 (inside belt, 4 long M5 cap->pulley->adapter); fans to +-55 for the tabletop, above the belt. Carries payload off the pulley."
+    }
+  ],
+  "provenance": {
+    "authored_by": "custom REV_A drawing",
+    "reason": "bolt-on cap resolves the trapped-pulley flaw of the one-piece drum"
+  }
+}

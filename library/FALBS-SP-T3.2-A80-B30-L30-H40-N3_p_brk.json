@@ -1,0 +1,27 @@
+{
+  "part_number": "FALBS-SP-T3.2-A80-B30-L30-H40-N3",
+  "class": "l_bracket_idler_riser",
+  "source_url": "https://us.misumi-ec.com/vona2/detail/110302706750/?HissuCode=FALBS-SP-T3.2-A80-B30-L30-H40-N3",
+  "retrieved_at": "2026-06-20",
+  "raw_spec": {},
+  "spec": {
+    "series": "FALBS-SP",
+    "A_height_mm": 80, "B_base_mm": 30, "L_width_mm": 30, "T_mm": 3.2,
+    "hole_height_H_mm": 40,
+    "axle_hole_dia_mm": 3.5,
+    "note": "configurable L-bracket; H set to 40 so the centred axle hole lands at the belt height"
+  },
+  "cad": {
+    "gltf_uri": "C:\\Users\\stefa\\assemblybot\\cad\\FALBS-SP-T3.2-A80-B30-L30-H40-N3.glb"
+  },
+  "frame": {
+    "origin": [0, 0, 0],
+    "handedness": "right",
+    "note": "bracket-local: base (foot, 2 mounting holes) lies at Y=0..3.2 spanning Z 0..30, X -15..15; vertical leg at Z~0..3.2 spanning Y 0..80. Axle hole MEASURED at (0,40,1.6), axis local Z. Foot seats on extrusion top (Y=0)."
+  },
+  "features": [
+    {"id": "axle", "geometry": {"type": "axis", "origin": [0.0, 40.0, 1.6], "direction": [0, 0, 1]}, "role": "shaft_bore", "params": {"diameter": 3.5, "for": "M4 shoulder screw 90263A239"}},
+    {"id": "foot", "geometry": {"type": "plane", "origin": [0.0, 0.0, 15.0], "normal": [0, -1, 0]}, "role": "mounting_face", "params": {"note": "2 holes into extrusion T-slot (T-nut, anywhere along slot)"}}
+  ],
+  "provenance": {"discovered_by": "raw-CDP Misumi (data/rawcdp.py)", "annotated_by": "mesh-section measurement", "confidence": 0.9}
+}

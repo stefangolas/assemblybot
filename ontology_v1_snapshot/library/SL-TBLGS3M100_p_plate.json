@@ -1,0 +1,31 @@
+{
+  "part_number": "SL-TBLGS3M100-50-80-20-30-25-4",
+  "class": "timing_belt_clamp_plate",
+  "source_url": "https://us.misumi-ec.com/vona2/detail/110302683840/?HissuCode=SL-TBLGS3M100-50-80-20-30-25-4",
+  "retrieved_at": "2026-06-20",
+  "raw_spec": {},
+  "spec": {
+    "belt_type": "S3M",
+    "belt_width_mm": 10,
+    "A": 50, "L": 80, "B": 20, "S": 30, "C": 25, "Z": "M4",
+    "guide_mount_pattern": "4x M4 clearance @ 25 longitudinal x 30 transverse"
+  },
+  "cad": {
+    "gltf_uri": "C:\\Users\\stefa\\assemblybot\\cad\\SL-TBLGS3M100-50-80-20-30-25-4.glb"
+  },
+  "frame": {
+    "origin": [0, 0, 0],
+    "handedness": "right",
+    "note": "plate-local: X=longitudinal, Y=up, Z=transverse. Bottom (mating) face Y=-4. Guide-mount counterbored M4 holes (r=4 counterbore measured) at X in {80,105}, Z in {+-15}; belt-clamp screw holes at X in {5,20}, Z in {+-7.5}. Hole origins recorded at the bottom mating face Y=-4."
+  },
+  "features": [
+    {"id": "mount_face", "geometry": {"type": "plane", "origin": [92.5, -4.0, 0.0], "normal": [0, -1, 0]}, "role": "mounting_face", "params": {"pattern": "4x M4 clearance @ 25x30"}},
+    {"id": "c_a", "geometry": {"type": "axis", "origin": [80.0,  -4.0,  15.0], "direction": [0, -1, 0]}, "role": "clearance_hole", "params": {"thread": "M4"}},
+    {"id": "c_b", "geometry": {"type": "axis", "origin": [105.0, -4.0,  15.0], "direction": [0, -1, 0]}, "role": "clearance_hole", "params": {"thread": "M4"}},
+    {"id": "c_c", "geometry": {"type": "axis", "origin": [80.0,  -4.0, -15.0], "direction": [0, -1, 0]}, "role": "clearance_hole", "params": {"thread": "M4"}},
+    {"id": "c_d", "geometry": {"type": "axis", "origin": [105.0, -4.0, -15.0], "direction": [0, -1, 0]}, "role": "clearance_hole", "params": {"thread": "M4"}},
+    {"id": "grip", "geometry": {"type": "plane", "origin": [12.5, 6.0, 0.0], "normal": [0, 1, 0]}, "role": "mounting_face", "params": {"toothed": true, "note": "belt-clamp end TOP face; belt run lies here, jaw bolts down via clamp screw holes X in {5,20} Z in {+-7.5}"}},
+    {"id": "grip_tooth", "geometry": {"type": "axis", "origin": [12.5, 6.0, 0.0], "direction": [0, 0, 1]}, "role": "shoulder", "params": {"pitch_mm": 3.0, "belt": "S3M"}}
+  ],
+  "provenance": {"discovered_by": "playwright", "annotated_by": "mesh-section measurement", "confidence": 0.95}
+}

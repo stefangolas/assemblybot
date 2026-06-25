@@ -1,0 +1,89 @@
+{
+  "part_number": "6575N368",
+  "class": "t_slot_extrusion",
+  "source_url": "https://www.mcmaster.com/6575N368/",
+  "retrieved_at": "2026-06-18",
+  "raw_spec": {},
+  "spec": {
+    "length": 304.8
+  },
+  "cad": {
+    "gltf_uri": "C:\\Users\\stefa\\assemblybot\\cad\\6575N368.glb"
+  },
+  "frame": {
+    "origin": [
+      0,
+      0,
+      0
+    ],
+    "handedness": "right"
+  },
+  "features": [
+    {
+      "id": "seat1",
+      "geometry": {
+        "type": "axis",
+        "origin": [
+          0.0,
+          25.0,
+          -31.75
+        ],
+        "direction": [
+          0.0,
+          1.0,
+          0.0
+        ]
+      },
+      "role": "bearing_seat",
+      "params": {
+        "diameter": 6.35
+      }
+    },
+    {
+      "id": "seat2",
+      "geometry": {
+        "type": "axis",
+        "origin": [
+          0.0,
+          25.0,
+          31.75
+        ],
+        "direction": [
+          0.0,
+          1.0,
+          0.0
+        ]
+      },
+      "role": "bearing_seat",
+      "params": {
+        "diameter": 6.35
+      }
+    },
+    {
+      "id": "rail_axis",
+      "geometry": {
+        "type": "axis",
+        "origin": [
+          30.0,
+          25.0,
+          0.0
+        ],
+        "direction": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "role": "shaft_bore",
+      "params": {
+        "diameter": 6.35,
+        "kind": "rail"
+      }
+    }
+  ],
+  "provenance": {
+    "discovered_by": "playwright",
+    "annotated_by": "manual",
+    "confidence": 0.9
+  }
+}

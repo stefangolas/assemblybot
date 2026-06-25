@@ -1,0 +1,58 @@
+{
+  "schema_version": 2,
+  "part_number": "HTUN540S3M-100",
+  "classification": {
+    "catalog_family": "timing_belt",
+    "broader_families": ["rotary_power_transmission", "generated_instance"],
+    "aliases": ["S3M_closed_belt", "endless_timing_belt"]
+  },
+  "source": {
+    "url": "https://us.misumi-ec.com/vona2/detail/110302652940/?HissuCode=HTUN540S3M-100",
+    "retrieved_at": "2026-06-21",
+    "note": "Real catalog belt: MISUMI HTUN540S3M-100 (S3M, 10 mm, CLOSED, 540 mm / 180T). The installed routed loop is the ONE allowed generated element (assembly/belt.py); this PartDefinition is its installed-instance representation in world coordinates. Vendor STEP is a non-toothed placeholder, so geometry uses the spec-table S3M profile, not that mesh."
+  },
+  "raw_spec": {"belt_type": "S3M", "pitch_mm": "3", "width_mm": "10", "length_mm": "540", "teeth": "180",
+               "closure": "closed/endless", "material": "polyurethane + aramid core"},
+  "normalized_parameters": {"belt_type": "S3M", "pitch_mm": 3.0, "width_mm": 10.0,
+                            "pitch_length_mm": 540.0, "teeth": 180},
+  "cad": {"source_uri": null, "gltf_uri": "cad/belt_s3m.glb", "units": "metre",
+          "note": "generated routed loop from assembly/belt.make_belt over the two idler pitch circles (C=240)"},
+  "part_frame": {
+    "units": "millimetre",
+    "drawing_to_cad": {"scale": 1.0, "rotation": "identity", "translation": [0, 0, 0]},
+    "note": "belt-local == WORLD (the loop is generated in world coords; placed at identity). X=travel, Y=up, Z=transverse(width). The loop runs over the two S3M-20 idler pitch circles centred at (-30,40,0) and (210,40,0), PR=9.549. LOWER run (the carriage-clamped run) is at Y = 40 - 9.549 = 30.45, teeth facing UP (+Y toward the idler axes); UPPER run at Y = 49.55. Width spans Z = -5..5."
+  },
+  "ports": [
+    {"id": "run_lower", "family": "periodic", "polarity": "opposing",
+     "geometry": {"subtype": "linear",
+                  "support": {"plane": {"origin": [90.0, 30.45, 0.0], "normal": [0, 1, 0]},
+                              "active_region_mm": {"min": -120, "max": 120, "unit": "mm"}, "direction": [1, 0, 0]},
+                  "periodicity": {"pitch_mm": 3.0, "count": null, "active_width_mm": {"min": 10, "max": 10, "unit": "mm"}},
+                  "profile": {"family": "S3M", "parameters": {}}},
+     "semantic_aliases": ["belt_lower_run", "captured_run"], "annotation_status": "confirmed", "evidence_refs": ["ev_belt"]},
+    {"id": "wrap_a", "family": "periodic", "polarity": "opposing",
+     "geometry": {"subtype": "rotary",
+                  "support": {"axis": {"origin": [-30.0, 40.0, 0.0], "direction": [0, 0, 1]},
+                              "radius_mm": 9.549, "axial_interval_mm": {"min": -5.0, "max": 5.0, "unit": "mm"}},
+                  "periodicity": {"pitch_mm": 3.0, "count": null, "active_width_mm": {"min": 10, "max": 10, "unit": "mm"}},
+                  "profile": {"family": "S3M", "parameters": {}}},
+     "semantic_aliases": ["belt_wrap_idler1"], "annotation_status": "confirmed", "evidence_refs": ["ev_belt"]},
+    {"id": "wrap_b", "family": "periodic", "polarity": "opposing",
+     "geometry": {"subtype": "rotary",
+                  "support": {"axis": {"origin": [210.0, 40.0, 0.0], "direction": [0, 0, 1]},
+                              "radius_mm": 9.549, "axial_interval_mm": {"min": -5.0, "max": 5.0, "unit": "mm"}},
+                  "periodicity": {"pitch_mm": 3.0, "count": null, "active_width_mm": {"min": 10, "max": 10, "unit": "mm"}},
+                  "profile": {"family": "S3M", "parameters": {}}},
+     "semantic_aliases": ["belt_wrap_idler2"], "annotation_status": "confirmed", "evidence_refs": ["ev_belt"]}
+  ],
+  "port_groups": [],
+  "annotation_status": {"overall": "complete", "expected_ports": {}},
+  "evidence": [
+    {"id": "ev_belt", "source_type": "product_page",
+     "raw_value": "HTUN540S3M-100: S3M pitch 3, width 10, closed 540 mm / 180T (MISUMI configured page)",
+     "normalized_claim": {"target_path": "normalized_parameters.pitch_length_mm", "value": 540.0, "unit": "mm"},
+     "extraction_method": "dom", "confidence": 0.95,
+     "source_refs": ["candidate_evidence/rung2-s3m-belt/report.json"]}
+  ],
+  "provenance": {"discovered_by": "part-evidence-scout (Misumi)", "annotated_by": "lead: installed-instance run/wrap ports in world frame", "acquired": "2026-06-21"}
+}

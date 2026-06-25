@@ -1,0 +1,201 @@
+{
+  "schema_version": 2,
+  "part_number": "ISO4762-M5x0.8-35",
+  "classification": {
+    "catalog_family": "socket_head_cap_screw",
+    "broader_families": [
+      "fastener",
+      "standard_part"
+    ],
+    "aliases": [
+      "SHCS",
+      "M5x16_cap_screw"
+    ],
+    "generative": true
+  },
+  "source": {
+    "standard": "ISO 4762",
+    "real_exemplar_pn": "91290A232",
+    "exemplar_url": "https://www.mcmaster.com/91290A232/",
+    "note": "GENERATED standard part: geometry is fully determined by ISO 4762 for (M5x0.8, length 16). M5x16 is on the real manufactured size grid -- McMaster 91290A232 (Black-Oxide Alloy Steel SHCS, M5x0.8, 16 mm) is a real catalog exemplar proving existence (real CAD also cached at cad/91290A232.step). Per the standard-fastener-generation rule, no spec-sheet lookup is required; the standard supplies the geometry.",
+    "retrieved_at": "2026-06-21"
+  },
+  "raw_spec": {
+    "standard": "ISO 4762 hex socket head cap screw",
+    "thread": "M5x0.8",
+    "length_mm": "16",
+    "head_dia_mm": "8.5",
+    "head_height_mm": "5.0",
+    "socket_mm": "4"
+  },
+  "normalized_parameters": {
+    "thread_designation": "M5x0.8",
+    "nominal_length_mm": 35.0,
+    "shank_diameter_mm": 5.0,
+    "head_diameter_mm": 8.5,
+    "head_height_mm": 5.0,
+    "qty_in_assembly": 4,
+    "role": "cap clamp bolt: cap->pulley->adapter, head recessed in cap counterbore"
+  },
+  "cad": {
+    "source_uri": "cad/ISO4762-M5x0.8-35.step",
+    "gltf_uri": "cad/ISO4762-M5x0.8-35.glb",
+    "units": "metre",
+    "note": "generated primitive (head + shank cylinders) per ISO 4762; real exemplar CAD at cad/91290A232.step if a beauty render is wanted"
+  },
+  "part_frame": {
+    "units": "millimetre",
+    "drawing_to_cad": {
+      "scale": 1.0,
+      "rotation": "identity",
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    "note": "axis = local Z. head +Z (0..5, \u00c3\u02dc8.5), threaded shank -Z (0..-16, \u00c3\u02dc5). head underside (head_seat) at Z=0 seats on the part being clamped; the thread enters the receiver below."
+  },
+  "ports": [
+    {
+      "id": "thread",
+      "family": "threaded",
+      "polarity": "external",
+      "geometry": {
+        "axis": {
+          "origin": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ]
+        },
+        "axial_interval_mm": {
+          "min": -35.0,
+          "max": 0.0,
+          "unit": "mm"
+        },
+        "thread": {
+          "standard": "ISO_metric",
+          "designation": "M5x0.8",
+          "pitch_mm": 0.8,
+          "handedness": "right",
+          "starts": 1,
+          "major_diameter_mm": {
+            "min": 4.8,
+            "max": 5.0
+          },
+          "minor_diameter_mm": {
+            "min": 4.0,
+            "max": 4.13
+          },
+          "evidence_status": "confirmed",
+          "evidence_source": "standard"
+        }
+      },
+      "semantic_aliases": [
+        "screw_thread"
+      ],
+      "annotation_status": "confirmed",
+      "evidence_refs": [
+        "ev_std"
+      ]
+    },
+    {
+      "id": "head_seat",
+      "family": "planar",
+      "polarity": "contact",
+      "geometry": {
+        "plane": {
+          "origin": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ]
+        },
+        "boundary_uv_mm": {
+          "outer": [
+            [
+              -4.25,
+              -4.25
+            ],
+            [
+              4.25,
+              -4.25
+            ],
+            [
+              4.25,
+              4.25
+            ],
+            [
+              -4.25,
+              4.25
+            ]
+          ],
+          "holes": [
+            [
+              [
+                -2.5,
+                -2.5
+              ],
+              [
+                2.5,
+                -2.5
+              ],
+              [
+                2.5,
+                2.5
+              ],
+              [
+                -2.5,
+                2.5
+              ]
+            ]
+          ]
+        },
+        "material_side": "positive_normal"
+      },
+      "semantic_aliases": [
+        "head_underside",
+        "axial_stop"
+      ],
+      "annotation_status": "confirmed",
+      "evidence_refs": [
+        "ev_std"
+      ]
+    }
+  ],
+  "port_groups": [],
+  "annotation_status": {
+    "overall": "complete",
+    "expected_ports": {}
+  },
+  "evidence": [
+    {
+      "id": "ev_std",
+      "source_type": "standard",
+      "raw_value": "ISO 4762 M5: dk=8.5, k=5.0, s=4, thread M5x0.8; length 16 on the standard size grid",
+      "normalized_claim": {
+        "target_path": "ports.thread.geometry.thread.designation",
+        "value": "M5x0.8",
+        "unit": "mm"
+      },
+      "extraction_method": "standard_lookup",
+      "confidence": 0.98
+    }
+  ],
+  "provenance": {
+    "discovered_by": "generated from ISO 4762 (standard-fastener rule)",
+    "annotated_by": "lead",
+    "acquired": "2026-06-21"
+  }
+}

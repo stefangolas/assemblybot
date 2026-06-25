@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><title>Assembly Viewer</title>
+<style>
+html,body{margin:0;height:100%;background:#e9e1cf;overflow:hidden;font-family:sans-serif;}
+.label {
+  color: #333;
+  font-size: 11px;
+  padding: 2px 4px;
+  background: rgba(255,255,255,0.7);
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 3px;
+  pointer-events: none;
+  white-space: nowrap;
+}
+</style>
+</head><body>
+<script type="importmap">
+{ "imports": {
+  "three": "/_app/vendor/three.module.js",
+  "three/addons/": "/_app/vendor/addons/",
+  "lil-gui": "/_app/vendor/lil-gui.esm.min.js"
+}}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
+import GUI from 'lil-gui';
+
+const Q = new URLSearchParams(location.search);
+const SRC = Q.get('src');
+const INITIAL_DIR = Q.get('dir')||'iso';
+const NEW = Q.get('new')||'';
+const INITIAL_EXPLODE = parseFloat(Q.get('explode')||'0');
+const HIDE = new Set((Q.get('hide')||'').split(',').filter(x=>x));
+const ONLY = new Set((Q.get('only')||'').split(',').filter(x=>x));
+const COLOR_MODE = Q.get('color')||'';
+
+const renderer = new THREE.WebGLRenderer({antialias:true, alpha:true});
+renderer.setSize(innerWidth, innerHeight); 
+renderer.setPixelRatio(devicePixelRatio);
+document.body.appendChild(renderer.domElement);
+
+const labelRenderer = new CSS2DRenderer();
+labelRenderer.setSize(innerWidth, innerHeight);
+labelRenderer.domElement.style.position = 'absolute';
+labelRenderer.domElement.style.top = '0px';
+labelRenderer.domElement.style.pointerEvents = 'none';
+document.body.appendChild(labelRenderer.domElement);
+
+const scene = new THREE.Scene(); 
+scene.background = new THREE.Color('#e9e1cf');
+
+const camera = new THREE.PerspectiveCamera(40, innerWidth/innerHeight, 0.0005, 100);
+
+scene.add(new THREE.AmbientLight(0xffffff, 0.6));
+const k = new THREE.DirectionalLight(0xffffff, 1.2); 
+k.position.set(1, 1.4, 1); 
+scene.add(k);
+const hemi = new THREE.HemisphereLight(0xffffff, 0xd0cbbd, 0.6);
+scene.add(hemi);
+
+const loader = new GLTFLoader();
+const load = u => new Promise((res,rej)=>loader.load(u, g=>res(g.scene), undefined, rej));
+
+const state = {
+  explode: INITIAL_EXPLODE,
+  showLabels: true,
+  gateColor: COLOR_MODE === 'gate',
+  view: INITIAL_DIR,
+  parts: {}
+};
+
+const partsData = [];
+let assemblyAxis = [0,0,1];
+let boundingCenter = new THREE.Vector3();
+let boundingRadius = 0.05;
+
+const controls = new OrbitControls(camera, renderer.domElement);
+
+const PASTEL_PALETTE = {
+  'stationary': 0xa0c0d0,
+  'rotating': 0xd0a0a0,
+  'pulley': 0xc0d0a0,
+  'payload': 0xd0c0e0,
+  'fastener': 0x999999,
+  'default': 0xbac0c5
+};
+
+const colors = new Uint8Array([
+  80, 80, 80, 255,
+  160, 160, 160, 255,
+  255, 255, 255, 255
+]);
+const gradientMap = new THREE.DataTexture(colors, 3, 1, THREE.RGBAFormat);
+gradientMap.needsUpdate = true;
+gradientMap.minFilter = THREE.NearestFilter;
+gradientMap.magFilter = THREE.NearestFilter;
+gradientMap.generateMipmaps = false;
+
+function mat(p,off){ 
+  const R=p.R, o=off||[0,0,0], t=p.t_mm.map((v,i)=>(v+o[i])*0.001);
+  return new THREE.Matrix4().set(
+    R[0][0],R[0][1],R[0][2],t[0], 
+    R[1][0],R[1][1],R[1][2],t[1],
+    R[2][0],R[2][1],R[2][2],t[2], 
+    0,0,0,1
+  ); 
+}
+
+function updateExplode() {
+  for(const pd of partsData) {
+    if(pd.p) {
+      const off = state.explode ? assemblyAxis.map(a=>a*(pd.part.explode||0)*state.explode) : [0,0,0];
+      pd.obj.matrixAutoUpdate = false;
+      pd.obj.matrix.copy(mat(pd.p, off));
+    }
+    if (pd.labelObj) {
+      pd.labelObj.visible = state.showLabels && state.parts[pd.part.ref];
+    }
+  }
+}
+
+function frameCamera(dir) {
+  const dist = boundingRadius/Math.sin((camera.fov*Math.PI/180)/2) * 1.15;
+  const dirs = { x:[1,0.15,0.05], y:[0.05,1,0.05], z:[0.05,0.15,1], iso:[0.8,0.55,0.9] };
+  const d = new THREE.Vector3(...(dirs[dir]||dirs.iso)).normalize();
+  camera.position.copy(boundingCenter.clone().add(d.multiplyScalar(dist)));
+  camera.lookAt(boundingCenter); 
+  camera.updateProjectionMatrix();
+  controls.target.copy(boundingCenter);
+  controls.update();
+}
+
+function updateColors() {
+  for(const pd of partsData) {
+    const isNew = pd.part.ref === NEW;
+    let baseColor = isNew ? 0xffcf3f : (PASTEL_PALETTE[pd.part.group] || PASTEL_PALETTE['default']);
+    if(state.gateColor && pd.part.state === 'UNHELD') baseColor = 0xd83030;
+    const opacity = NEW ? (isNew ? 1.0 : 0.32) : 1.0;
+    
+    pd.obj.traverse(n => {
+      if(n.isMesh) {
+        if (!n.material.isMeshToonMaterial) {
+          n.material = new THREE.MeshToonMaterial({
+            color: baseColor,
+            gradientMap: gradientMap,
+            transparent: opacity < 1,
+            opacity: opacity
+          });
+        } else {
+          n.material.color.setHex(baseColor);
+          n.material.transparent = opacity < 1;
+          n.material.opacity = opacity;
+        }
+      }
+    });
+  }
+}
+
+function toggleParts() {
+  for(const pd of partsData) {
+    pd.obj.visible = state.parts[pd.part.ref];
+    if(pd.labelObj) pd.labelObj.visible = state.showLabels && state.parts[pd.part.ref];
+  }
+}
+
+(async ()=>{
+  const place = await (await fetch(SRC)).json();
+  assemblyAxis = place._axis || [0,0,1];
+  const group = new THREE.Group(); 
+  scene.add(group);
+  
+  for(const part of place._render){
+    if(HIDE.has(part.ref)) continue;
+    if(ONLY.size && !ONLY.has(part.ref)) continue;
+    
+    state.parts[part.ref] = true;
+    
+    const o = await load(part.url);
+    const p = place[part.ref];
+    
+    o.traverse(n => {
+      if(n.isMesh) {
+        const edges = new THREE.EdgesGeometry(n.geometry, 15);
+        const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0x333333, opacity: 0.5, transparent: true }));
+        n.add(line);
+      }
+    });
+    
+    const pd = { part, p, obj: o, labelObj: null };
+    partsData.push(pd);
+    
+    if(p) {
+      o.matrixAutoUpdate = false;
+      o.matrix.copy(mat(p, [0,0,0]));
+    }
+    
+    if (part.label && part.group !== 'fastener') {
+      const div = document.createElement('div');
+      div.className = 'label';
+      div.textContent = part.label;
+      const labelObj = new CSS2DObject(div);
+      
+      const box = new THREE.Box3().setFromObject(o);
+      const center = box.getCenter(new THREE.Vector3());
+      const invMat = new THREE.Matrix4().copy(o.matrix).invert();
+      const localCenter = center.clone().applyMatrix4(invMat);
+      labelObj.position.copy(localCenter);
+      
+      o.add(labelObj);
+      pd.labelObj = labelObj;
+    }
+    
+    group.add(o);
+  }
+  
+  updateColors();
+  updateExplode();
+  
+  const box = new THREE.Box3().setFromObject(group);
+  boundingCenter = box.getCenter(new THREE.Vector3());
+  boundingRadius = box.getSize(new THREE.Vector3()).length()/2 || 0.05;
+  
+  frameCamera(state.view);
+
+  const gui = new GUI({ title: 'Assembly Control' });
+  gui.add(state, 'explode', 0, 1.5).name('Explode').onChange(updateExplode);
+  gui.add(state, 'showLabels').name('Labels').onChange(updateExplode);
+  gui.add(state, 'gateColor').name('Gate Color (Red)').onChange(updateColors);
+  
+  const viewModes = ['iso', 'x', 'y', 'z'];
+  gui.add(state, 'view', viewModes).name('View').onChange(frameCamera);
+  gui.add({ reset: () => {
+    state.explode = 0; state.view = 'iso'; state.showLabels = true;
+    for(let k in state.parts) state.parts[k] = true;
+    gui.controllersRecursive().forEach(c => c.updateDisplay());
+    updateExplode(); frameCamera('iso'); toggleParts();
+  }}, 'reset').name('Reset');
+  
+  const folder = gui.addFolder('Parts');
+  for(let ref in state.parts) {
+    folder.add(state.parts, ref).name(ref).onChange(toggleParts);
+  }
+  folder.close();
+
+  renderer.setAnimationLoop(() => {
+    controls.update();
+    renderer.render(scene, camera);
+    labelRenderer.render(scene, camera);
+  });
+  
+  window.__ready = true;
+  
+  window.addEventListener('resize', () => {
+    camera.aspect = innerWidth / innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(innerWidth, innerHeight);
+    labelRenderer.setSize(innerWidth, innerHeight);
+  });
+})();
+</script>
+</body></html>

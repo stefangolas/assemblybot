@@ -1,0 +1,49 @@
+{
+  "part_number": "1327K65",
+  "class": "rotary_shaft",
+  "source_url": "https://www.mcmaster.com/1327K65/",
+  "retrieved_at": "2026-06-18",
+  "raw_spec": {},
+  "spec": {
+    "od_mm": 6.35
+  },
+  "cad": {
+    "gltf_uri": "C:\\Users\\stefa\\assemblybot\\cad\\1327K65.glb"
+  },
+  "frame": {
+    "origin": [
+      0,
+      0,
+      0
+    ],
+    "handedness": "right"
+  },
+  "features": [
+    {
+      "id": "axis",
+      "geometry": {
+        "type": "axis",
+        "origin": [
+          25.0,
+          13.0,
+          -66.03624055597791
+        ],
+        "direction": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      },
+      "role": "shaft_bore",
+      "params": {
+        "diameter": 6.35,
+        "kind": "external"
+      }
+    }
+  ],
+  "provenance": {
+    "discovered_by": "playwright",
+    "annotated_by": "manual",
+    "confidence": 0.9
+  }
+}

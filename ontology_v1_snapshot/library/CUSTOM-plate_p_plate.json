@@ -1,0 +1,64 @@
+{
+  "part_number": "CUSTOM-plate",
+  "class": "carriage_plate",
+  "source_url": "fabricated",
+  "retrieved_at": "2026-06-18",
+  "raw_spec": {},
+  "spec": {
+    "note": "4x M2 to carriage; holds clamp"
+  },
+  "cad": {
+    "gltf_uri": "C:\\Users\\stefa\\assemblybot\\cad\\CUSTOM-plate.glb"
+  },
+  "frame": {
+    "origin": [
+      0,
+      0,
+      0
+    ],
+    "handedness": "right"
+  },
+  "features": [
+    {
+      "id": "bot",
+      "geometry": {
+        "type": "plane",
+        "origin": [
+          0.0,
+          27.0,
+          0.0
+        ],
+        "normal": [
+          0.0,
+          -1.0,
+          0.0
+        ]
+      },
+      "role": "mounting_face",
+      "params": {}
+    },
+    {
+      "id": "clamp_face",
+      "geometry": {
+        "type": "plane",
+        "origin": [
+          25.0,
+          27.0,
+          0.0
+        ],
+        "normal": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      },
+      "role": "mounting_face",
+      "params": {}
+    }
+  ],
+  "provenance": {
+    "discovered_by": "design",
+    "annotated_by": "manual",
+    "confidence": 0.9
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": 2,
+  "part_number": "6575N203",
+  "classification": {
+    "catalog_family": "t_slot_extrusion",
+    "broader_families": ["structural_framing"],
+    "aliases": ["40mm_four_slot_rail", "frame"]
+  },
+  "source": {"url": "https://www.mcmaster.com/6575N203/", "retrieved_at": "2026-06-20"},
+  "raw_spec": {"profile": "40x40 single four slot", "length_in": "12", "slot_width_mm": "8", "slot_depth_mm": "12.2"},
+  "normalized_parameters": {"section_mm": 40, "length_mm": 304.8, "slot_width_mm": 8.0, "slot_depth_mm": 12.2},
+  "cad": {"source_uri": "cad/6575N203.step", "gltf_uri": "cad/6575N203.glb", "units": "metre"},
+  "part_frame": {
+    "units": "millimetre",
+    "drawing_to_cad": {"scale": 1.0, "rotation": "identity", "translation": [0, 0, 0]},
+    "note": "extrusion-local: length along Z (0..304.8), 40x40 section in X-Y, top face Y=0 (mount face). T-slot is a continuous placement domain along Z (T-nut anywhere)."
+  },
+  "ports": [
+    {"id": "top", "family": "planar", "polarity": "contact",
+     "geometry": {"plane": {"origin": [0.0, 0.0, 15.0], "normal": [0, 1, 0]},
+                  "boundary_uv_mm": {"outer": [[-20, -150], [20, -150], [20, 150], [-20, 150]], "holes": []},
+                  "material_side": "negative_normal"},
+     "semantic_aliases": ["mounting_face", "extrusion_top"], "annotation_status": "confirmed", "evidence_refs": ["ev_top"]},
+    {"id": "tslot_top", "family": "swept_profile", "polarity": "receiver",
+     "geometry": {"sweep_path": {"axis": {"origin": [0, 0, 0], "direction": [0, 0, 1]}},
+                  "sweep_interval_mm": {"min": 0, "max": 304.8, "unit": "mm"},
+                  "section_frame": {"origin": [0, 0, 0], "x_axis": [1, 0, 0], "y_axis": [0, 1, 0], "z_axis": [0, 0, 1]},
+                  "section_profile_uv_mm": {"outer": [[-4, 0], [4, 0], [4, -2.2], [8, -2.2], [8, -12.2], [-8, -12.2], [-8, -2.2], [-4, -2.2]], "holes": []},
+                  "material_side": "inside_profile"},
+     "semantic_aliases": ["t_slot", "profile_identity", "capture_geometry"],
+     "annotation_status": "confirmed", "evidence_refs": ["ev_slot"],
+     "unknowns": ["internal lip radii idealized as sharp corners; the 8 mm opening / 16 mm cavity / 12.2 mm depth are catalog-confirmed"]},
+    {"id": "mount_a", "family": "cylindrical", "polarity": "receiver",
+     "geometry": {"axis": {"origin": [0.0, 0.0, 8.0], "direction": [0, -1, 0]},
+                  "radial_interval_mm": {"min": 2.5, "max": 2.5, "unit": "mm"},
+                  "axial_interval_mm": {"min": 0, "max": 6, "unit": "mm"}, "material_side": "outside"},
+     "semantic_aliases": ["t_nut_position"], "annotation_status": "nominal", "evidence_refs": ["ev_slot"],
+     "unknowns": ["T-nut position is a continuous domain along the slot; this is one chosen station"]},
+    {"id": "mount_b", "family": "cylindrical", "polarity": "receiver",
+     "geometry": {"axis": {"origin": [0.0, 0.0, 22.0], "direction": [0, -1, 0]},
+                  "radial_interval_mm": {"min": 2.5, "max": 2.5, "unit": "mm"},
+                  "axial_interval_mm": {"min": 0, "max": 6, "unit": "mm"}, "material_side": "outside"},
+     "semantic_aliases": ["t_nut_position"], "annotation_status": "nominal", "evidence_refs": ["ev_slot"]}
+  ],
+  "port_groups": [
+    {"id": "mount_stations", "kind": "repeated_ports", "members": [{"port": "mount_a"}, {"port": "mount_b"}],
+     "placement_domain": {"axis": "Z", "interval_mm": {"min": 0, "max": 304.8}}, "evidence_refs": ["ev_slot"]}
+  ],
+  "annotation_status": {"overall": "partial", "expected_ports": {"other_three_slots": "unmodeled"}},
+  "evidence": [
+    {"id": "ev_top", "source_type": "cad", "raw_value": "40x40 top face Y=0", "extraction_method": "cad_measurement", "confidence": 0.9},
+    {"id": "ev_slot", "source_type": "drawing",
+     "source_uri": "https://www.mcmaster.com/6575N203/",
+     "locator": "McMaster 6575N203 product drawing / cross-section: T-slot opening 8 mm, internal cavity 16 mm, slot depth 12.2 mm (40x40 four-slot profile)",
+     "raw_value": "slot opening 8 mm, cavity 16 mm, depth 12.2 mm",
+     "normalized_claim": {"target_path": "ports.tslot_top.geometry.section_profile_uv_mm", "value": {"opening_mm": 8.0, "cavity_mm": 16.0, "depth_mm": 12.2}, "unit": "mm"},
+     "extraction_method": "pdf_text", "confidence": 0.85}
+  ],
+  "provenance": {"discovered_by": "playwright McMaster", "annotated_by": "drawing + mesh", "migrated_from_v1": "6575N203_p_ext.json"}
+}

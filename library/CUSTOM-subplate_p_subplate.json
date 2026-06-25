@@ -1,0 +1,64 @@
+{
+  "part_number": "CUSTOM-subplate",
+  "class": "mount_plate",
+  "source_url": "fabricated",
+  "retrieved_at": "2026-06-18",
+  "raw_spec": {},
+  "spec": {
+    "note": "rail(M3) -> plate -> extrusion(M5 T-nut)"
+  },
+  "cad": {
+    "gltf_uri": "C:\\Users\\stefa\\assemblybot\\cad\\CUSTOM-subplate.glb"
+  },
+  "frame": {
+    "origin": [
+      0,
+      0,
+      0
+    ],
+    "handedness": "right"
+  },
+  "features": [
+    {
+      "id": "bot",
+      "geometry": {
+        "type": "plane",
+        "origin": [
+          0.0,
+          12.5,
+          0.0
+        ],
+        "normal": [
+          0.0,
+          -1.0,
+          0.0
+        ]
+      },
+      "role": "mounting_face",
+      "params": {}
+    },
+    {
+      "id": "top",
+      "geometry": {
+        "type": "plane",
+        "origin": [
+          0.0,
+          16.5,
+          0.0
+        ],
+        "normal": [
+          0.0,
+          1.0,
+          0.0
+        ]
+      },
+      "role": "mounting_face",
+      "params": {}
+    }
+  ],
+  "provenance": {
+    "discovered_by": "design",
+    "annotated_by": "manual",
+    "confidence": 0.9
+  }
+}

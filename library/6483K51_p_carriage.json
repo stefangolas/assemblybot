@@ -1,0 +1,66 @@
+{
+  "part_number": "6483K51",
+  "class": "linear_bearing",
+  "source_url": "https://www.mcmaster.com/6483K51/",
+  "retrieved_at": "2026-06-18",
+  "raw_spec": {},
+  "spec": {
+    "for_shaft_mm": 6.35
+  },
+  "cad": {
+    "gltf_uri": "C:\\Users\\stefa\\assemblybot\\cad\\6483K51.glb"
+  },
+  "frame": {
+    "origin": [
+      0,
+      0,
+      0
+    ],
+    "handedness": "right"
+  },
+  "features": [
+    {
+      "id": "bore",
+      "geometry": {
+        "type": "axis",
+        "origin": [
+          30.0,
+          25.0,
+          0.0
+        ],
+        "direction": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "role": "shaft_bore",
+      "params": {
+        "diameter": 6.35
+      }
+    },
+    {
+      "id": "clamp",
+      "geometry": {
+        "type": "plane",
+        "origin": [
+          12.13,
+          25.0,
+          0.0
+        ],
+        "normal": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      },
+      "role": "mounting_face",
+      "params": {}
+    }
+  ],
+  "provenance": {
+    "discovered_by": "playwright",
+    "annotated_by": "manual",
+    "confidence": 0.9
+  }
+}

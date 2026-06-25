@@ -1,0 +1,150 @@
+{
+  "part_number": "6575N368",
+  "class": "t_slot_extrusion",
+  "source_url": "https://www.mcmaster.com/6575N368/",
+  "retrieved_at": "2026-06-18",
+  "raw_spec": {
+    "Rail Height": "25mm",
+    "Rail Width": "25mm",
+    "T-Slot Width": "6.5mm",
+    "T-Slot Depth": "8.1mm",
+    "Material": "6560 Aluminum",
+    "Rail Construction": "Solid"
+  },
+  "spec": {
+    "height": 25.0,
+    "width": 25.0,
+    "slot_width": 6.5,
+    "slot_depth": 8.1,
+    "material": "6560 Aluminum",
+    "length": 304.8
+  },
+  "cad": {
+    "dwg_uri": "C:\\Users\\stefa\\assemblybot\\cad\\6575N368.dwg",
+    "step_uri": "C:\\Users\\stefa\\assemblybot\\cad\\6575N368.step",
+    "gltf_uri": "C:\\Users\\stefa\\assemblybot\\cad\\6575N368.glb",
+    "variant": "as_modeled"
+  },
+  "frame": {
+    "origin": [
+      0,
+      0,
+      0
+    ],
+    "handedness": "right",
+    "datum": "cross-section centre, length +Z, mount on +X face",
+    "mount_face_mesh_x": 12.5
+  },
+  "features": [
+    {
+      "id": "mount_face",
+      "geometry": {
+        "type": "plane",
+        "origin": [
+          12.5,
+          0.0,
+          0.0
+        ],
+        "normal": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      },
+      "role": "mounting_face",
+      "params": {
+        "face": "+X slot face"
+      }
+    },
+    {
+      "id": "tnut_0",
+      "geometry": {
+        "type": "axis",
+        "origin": [
+          12.5,
+          0.0,
+          -37.5
+        ],
+        "direction": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      },
+      "role": "threaded_hole",
+      "params": {
+        "diameter": 6.0,
+        "thread": "M6"
+      }
+    },
+    {
+      "id": "tnut_1",
+      "geometry": {
+        "type": "axis",
+        "origin": [
+          12.5,
+          0.0,
+          -12.5
+        ],
+        "direction": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      },
+      "role": "threaded_hole",
+      "params": {
+        "diameter": 6.0,
+        "thread": "M6"
+      }
+    },
+    {
+      "id": "tnut_2",
+      "geometry": {
+        "type": "axis",
+        "origin": [
+          12.5,
+          0.0,
+          12.5
+        ],
+        "direction": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      },
+      "role": "threaded_hole",
+      "params": {
+        "diameter": 6.0,
+        "thread": "M6"
+      }
+    },
+    {
+      "id": "tnut_3",
+      "geometry": {
+        "type": "axis",
+        "origin": [
+          12.5,
+          0.0,
+          37.5
+        ],
+        "direction": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      },
+      "role": "threaded_hole",
+      "params": {
+        "diameter": 6.0,
+        "thread": "M6"
+      }
+    }
+  ],
+  "provenance": {
+    "discovered_by": "playwright",
+    "annotated_by": "manual",
+    "confidence": 0.9,
+    "note": "25mm single 4-slot; slot centred on each face (cross-section DWG); T-nut positions induced by the bracket pattern along the slot"
+  }
+}

@@ -1,0 +1,2193 @@
+{
+  "schema_version": 2,
+  "part_number": "ROTARY_ADAPTER_RU85_S5M_REV_A",
+  "classification": {
+    "catalog_family": "custom_machined",
+    "broader_families": [
+      "rotating_hub"
+    ],
+    "aliases": [
+      "rotary_stage_adapter"
+    ]
+  },
+  "source": {
+    "url": "custom_drawing:ROTARY_ADAPTER_RU85_S5M_REV_A",
+    "retrieved_at": "2026-06-22",
+    "revision": "A",
+    "material": "6061-T651"
+  },
+  "raw_spec": {},
+  "normalized_parameters": {
+    "outside_dia_mm": 180.0,
+    "central_pass_through_mm": 45.0,
+    "inner_race_boss_OD_mm": 76.0,
+    "relief_depth_mm": 0.5,
+    "pilot_dia_mm": 50.0,
+    "inner_race_PCD_mm": 65.0,
+    "pulley_PCD_mm": 85.0
+  },
+  "cad": {
+    "source_uri": "cad/ROTARY_ADAPTER_RU85_S5M_REV_A.step",
+    "gltf_uri": "cad/ROTARY_ADAPTER_RU85_S5M_REV_A.glb",
+    "units": "metre"
+  },
+  "part_frame": {
+    "units": "millimetre",
+    "drawing_to_cad": {
+      "scale": 1.0,
+      "rotation": "identity",
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    "note": "origin = bearing+pulley axis; Z=0 lower inner-race contact face; +Z toward pulley/tabletop; RU85 pattern clocked 22.5deg, pulley pattern 0deg."
+  },
+  "ports": [
+    {
+      "id": "inner_race_boss",
+      "family": "planar",
+      "polarity": "contact",
+      "geometry": {
+        "plane": {
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "normal": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        "boundary_uv_mm": {
+          "outer": [
+            [
+              38.0,
+              0.0
+            ],
+            [
+              37.6749,
+              4.96
+            ],
+            [
+              36.7052,
+              9.8351
+            ],
+            [
+              35.1074,
+              14.542
+            ],
+            [
+              32.909,
+              19.0
+            ],
+            [
+              30.1474,
+              23.1329
+            ],
+            [
+              26.8701,
+              26.8701
+            ],
+            [
+              23.1329,
+              30.1474
+            ],
+            [
+              19.0,
+              32.909
+            ],
+            [
+              14.542,
+              35.1074
+            ],
+            [
+              9.8351,
+              36.7052
+            ],
+            [
+              4.96,
+              37.6749
+            ],
+            [
+              0.0,
+              38.0
+            ],
+            [
+              -4.96,
+              37.6749
+            ],
+            [
+              -9.8351,
+              36.7052
+            ],
+            [
+              -14.542,
+              35.1074
+            ],
+            [
+              -19.0,
+              32.909
+            ],
+            [
+              -23.1329,
+              30.1474
+            ],
+            [
+              -26.8701,
+              26.8701
+            ],
+            [
+              -30.1474,
+              23.1329
+            ],
+            [
+              -32.909,
+              19.0
+            ],
+            [
+              -35.1074,
+              14.542
+            ],
+            [
+              -36.7052,
+              9.8351
+            ],
+            [
+              -37.6749,
+              4.96
+            ],
+            [
+              -38.0,
+              0.0
+            ],
+            [
+              -37.6749,
+              -4.96
+            ],
+            [
+              -36.7052,
+              -9.8351
+            ],
+            [
+              -35.1074,
+              -14.542
+            ],
+            [
+              -32.909,
+              -19.0
+            ],
+            [
+              -30.1474,
+              -23.1329
+            ],
+            [
+              -26.8701,
+              -26.8701
+            ],
+            [
+              -23.1329,
+              -30.1474
+            ],
+            [
+              -19.0,
+              -32.909
+            ],
+            [
+              -14.542,
+              -35.1074
+            ],
+            [
+              -9.8351,
+              -36.7052
+            ],
+            [
+              -4.96,
+              -37.6749
+            ],
+            [
+              -0.0,
+              -38.0
+            ],
+            [
+              4.96,
+              -37.6749
+            ],
+            [
+              9.8351,
+              -36.7052
+            ],
+            [
+              14.542,
+              -35.1074
+            ],
+            [
+              19.0,
+              -32.909
+            ],
+            [
+              23.1329,
+              -30.1474
+            ],
+            [
+              26.8701,
+              -26.8701
+            ],
+            [
+              30.1474,
+              -23.1329
+            ],
+            [
+              32.909,
+              -19.0
+            ],
+            [
+              35.1074,
+              -14.542
+            ],
+            [
+              36.7052,
+              -9.8351
+            ],
+            [
+              37.6749,
+              -4.96
+            ]
+          ],
+          "holes": [
+            [
+              [
+                22.5,
+                0.0
+              ],
+              [
+                22.3075,
+                2.9368
+              ],
+              [
+                21.7333,
+                5.8234
+              ],
+              [
+                20.7873,
+                8.6104
+              ],
+              [
+                19.4856,
+                11.25
+              ],
+              [
+                17.8505,
+                13.6971
+              ],
+              [
+                15.9099,
+                15.9099
+              ],
+              [
+                13.6971,
+                17.8505
+              ],
+              [
+                11.25,
+                19.4856
+              ],
+              [
+                8.6104,
+                20.7873
+              ],
+              [
+                5.8234,
+                21.7333
+              ],
+              [
+                2.9368,
+                22.3075
+              ],
+              [
+                0.0,
+                22.5
+              ],
+              [
+                -2.9368,
+                22.3075
+              ],
+              [
+                -5.8234,
+                21.7333
+              ],
+              [
+                -8.6104,
+                20.7873
+              ],
+              [
+                -11.25,
+                19.4856
+              ],
+              [
+                -13.6971,
+                17.8505
+              ],
+              [
+                -15.9099,
+                15.9099
+              ],
+              [
+                -17.8505,
+                13.6971
+              ],
+              [
+                -19.4856,
+                11.25
+              ],
+              [
+                -20.7873,
+                8.6104
+              ],
+              [
+                -21.7333,
+                5.8234
+              ],
+              [
+                -22.3075,
+                2.9368
+              ],
+              [
+                -22.5,
+                0.0
+              ],
+              [
+                -22.3075,
+                -2.9368
+              ],
+              [
+                -21.7333,
+                -5.8234
+              ],
+              [
+                -20.7873,
+                -8.6104
+              ],
+              [
+                -19.4856,
+                -11.25
+              ],
+              [
+                -17.8505,
+                -13.6971
+              ],
+              [
+                -15.9099,
+                -15.9099
+              ],
+              [
+                -13.6971,
+                -17.8505
+              ],
+              [
+                -11.25,
+                -19.4856
+              ],
+              [
+                -8.6104,
+                -20.7873
+              ],
+              [
+                -5.8234,
+                -21.7333
+              ],
+              [
+                -2.9368,
+                -22.3075
+              ],
+              [
+                -0.0,
+                -22.5
+              ],
+              [
+                2.9368,
+                -22.3075
+              ],
+              [
+                5.8234,
+                -21.7333
+              ],
+              [
+                8.6104,
+                -20.7873
+              ],
+              [
+                11.25,
+                -19.4856
+              ],
+              [
+                13.6971,
+                -17.8505
+              ],
+              [
+                15.9099,
+                -15.9099
+              ],
+              [
+                17.8505,
+                -13.6971
+              ],
+              [
+                19.4856,
+                -11.25
+              ],
+              [
+                20.7873,
+                -8.6104
+              ],
+              [
+                21.7333,
+                -5.8234
+              ],
+              [
+                22.3075,
+                -2.9368
+              ]
+            ]
+          ]
+        },
+        "material_side": "positive_normal"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "inner_race_contact",
+        "boss"
+      ],
+      "evidence_refs": [
+        "ev_drw"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "relieved_underside",
+      "family": "planar",
+      "polarity": "contact",
+      "geometry": {
+        "plane": {
+          "origin": [
+            0,
+            0,
+            0.5
+          ],
+          "normal": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        "boundary_uv_mm": {
+          "outer": [
+            [
+              90.0,
+              0.0
+            ],
+            [
+              89.23,
+              11.7474
+            ],
+            [
+              86.9333,
+              23.2937
+            ],
+            [
+              83.1492,
+              34.4415
+            ],
+            [
+              77.9423,
+              45.0
+            ],
+            [
+              71.4018,
+              54.7885
+            ],
+            [
+              63.6396,
+              63.6396
+            ],
+            [
+              54.7885,
+              71.4018
+            ],
+            [
+              45.0,
+              77.9423
+            ],
+            [
+              34.4415,
+              83.1492
+            ],
+            [
+              23.2937,
+              86.9333
+            ],
+            [
+              11.7474,
+              89.23
+            ],
+            [
+              0.0,
+              90.0
+            ],
+            [
+              -11.7474,
+              89.23
+            ],
+            [
+              -23.2937,
+              86.9333
+            ],
+            [
+              -34.4415,
+              83.1492
+            ],
+            [
+              -45.0,
+              77.9423
+            ],
+            [
+              -54.7885,
+              71.4018
+            ],
+            [
+              -63.6396,
+              63.6396
+            ],
+            [
+              -71.4018,
+              54.7885
+            ],
+            [
+              -77.9423,
+              45.0
+            ],
+            [
+              -83.1492,
+              34.4415
+            ],
+            [
+              -86.9333,
+              23.2937
+            ],
+            [
+              -89.23,
+              11.7474
+            ],
+            [
+              -90.0,
+              0.0
+            ],
+            [
+              -89.23,
+              -11.7474
+            ],
+            [
+              -86.9333,
+              -23.2937
+            ],
+            [
+              -83.1492,
+              -34.4415
+            ],
+            [
+              -77.9423,
+              -45.0
+            ],
+            [
+              -71.4018,
+              -54.7885
+            ],
+            [
+              -63.6396,
+              -63.6396
+            ],
+            [
+              -54.7885,
+              -71.4018
+            ],
+            [
+              -45.0,
+              -77.9423
+            ],
+            [
+              -34.4415,
+              -83.1492
+            ],
+            [
+              -23.2937,
+              -86.9333
+            ],
+            [
+              -11.7474,
+              -89.23
+            ],
+            [
+              -0.0,
+              -90.0
+            ],
+            [
+              11.7474,
+              -89.23
+            ],
+            [
+              23.2937,
+              -86.9333
+            ],
+            [
+              34.4415,
+              -83.1492
+            ],
+            [
+              45.0,
+              -77.9423
+            ],
+            [
+              54.7885,
+              -71.4018
+            ],
+            [
+              63.6396,
+              -63.6396
+            ],
+            [
+              71.4018,
+              -54.7885
+            ],
+            [
+              77.9423,
+              -45.0
+            ],
+            [
+              83.1492,
+              -34.4415
+            ],
+            [
+              86.9333,
+              -23.2937
+            ],
+            [
+              89.23,
+              -11.7474
+            ]
+          ],
+          "holes": [
+            [
+              [
+                38.0,
+                0.0
+              ],
+              [
+                37.6749,
+                4.96
+              ],
+              [
+                36.7052,
+                9.8351
+              ],
+              [
+                35.1074,
+                14.542
+              ],
+              [
+                32.909,
+                19.0
+              ],
+              [
+                30.1474,
+                23.1329
+              ],
+              [
+                26.8701,
+                26.8701
+              ],
+              [
+                23.1329,
+                30.1474
+              ],
+              [
+                19.0,
+                32.909
+              ],
+              [
+                14.542,
+                35.1074
+              ],
+              [
+                9.8351,
+                36.7052
+              ],
+              [
+                4.96,
+                37.6749
+              ],
+              [
+                0.0,
+                38.0
+              ],
+              [
+                -4.96,
+                37.6749
+              ],
+              [
+                -9.8351,
+                36.7052
+              ],
+              [
+                -14.542,
+                35.1074
+              ],
+              [
+                -19.0,
+                32.909
+              ],
+              [
+                -23.1329,
+                30.1474
+              ],
+              [
+                -26.8701,
+                26.8701
+              ],
+              [
+                -30.1474,
+                23.1329
+              ],
+              [
+                -32.909,
+                19.0
+              ],
+              [
+                -35.1074,
+                14.542
+              ],
+              [
+                -36.7052,
+                9.8351
+              ],
+              [
+                -37.6749,
+                4.96
+              ],
+              [
+                -38.0,
+                0.0
+              ],
+              [
+                -37.6749,
+                -4.96
+              ],
+              [
+                -36.7052,
+                -9.8351
+              ],
+              [
+                -35.1074,
+                -14.542
+              ],
+              [
+                -32.909,
+                -19.0
+              ],
+              [
+                -30.1474,
+                -23.1329
+              ],
+              [
+                -26.8701,
+                -26.8701
+              ],
+              [
+                -23.1329,
+                -30.1474
+              ],
+              [
+                -19.0,
+                -32.909
+              ],
+              [
+                -14.542,
+                -35.1074
+              ],
+              [
+                -9.8351,
+                -36.7052
+              ],
+              [
+                -4.96,
+                -37.6749
+              ],
+              [
+                -0.0,
+                -38.0
+              ],
+              [
+                4.96,
+                -37.6749
+              ],
+              [
+                9.8351,
+                -36.7052
+              ],
+              [
+                14.542,
+                -35.1074
+              ],
+              [
+                19.0,
+                -32.909
+              ],
+              [
+                23.1329,
+                -30.1474
+              ],
+              [
+                26.8701,
+                -26.8701
+              ],
+              [
+                30.1474,
+                -23.1329
+              ],
+              [
+                32.909,
+                -19.0
+              ],
+              [
+                35.1074,
+                -14.542
+              ],
+              [
+                36.7052,
+                -9.8351
+              ],
+              [
+                37.6749,
+                -4.96
+              ]
+            ]
+          ]
+        },
+        "material_side": "positive_normal"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "relief_clearance"
+      ],
+      "evidence_refs": [
+        "ev_drw"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "pass_through",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 22.5,
+          "max": 22.5,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 15.0,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "central_pass_through"
+      ],
+      "evidence_refs": [
+        "ev_drw"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "pulley_pilot",
+      "family": "cylindrical",
+      "polarity": "insert",
+      "geometry": {
+        "axis": {
+          "origin": [
+            0,
+            0,
+            12.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 24.99,
+          "max": 25.0,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 3.0,
+          "unit": "mm"
+        },
+        "material_side": "outside"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "locating_pilot",
+        "h6_pilot"
+      ],
+      "evidence_refs": [
+        "ev_drw"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "pulley_seat",
+      "family": "planar",
+      "polarity": "contact",
+      "geometry": {
+        "plane": {
+          "origin": [
+            0,
+            0,
+            12.0
+          ],
+          "normal": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        "boundary_uv_mm": {
+          "outer": [
+            [
+              57.0,
+              0.0
+            ],
+            [
+              56.5124,
+              7.44
+            ],
+            [
+              55.0578,
+              14.7527
+            ],
+            [
+              52.6611,
+              21.813
+            ],
+            [
+              49.3634,
+              28.5
+            ],
+            [
+              45.2211,
+              34.6994
+            ],
+            [
+              40.3051,
+              40.3051
+            ],
+            [
+              34.6994,
+              45.2211
+            ],
+            [
+              28.5,
+              49.3634
+            ],
+            [
+              21.813,
+              52.6611
+            ],
+            [
+              14.7527,
+              55.0578
+            ],
+            [
+              7.44,
+              56.5124
+            ],
+            [
+              0.0,
+              57.0
+            ],
+            [
+              -7.44,
+              56.5124
+            ],
+            [
+              -14.7527,
+              55.0578
+            ],
+            [
+              -21.813,
+              52.6611
+            ],
+            [
+              -28.5,
+              49.3634
+            ],
+            [
+              -34.6994,
+              45.2211
+            ],
+            [
+              -40.3051,
+              40.3051
+            ],
+            [
+              -45.2211,
+              34.6994
+            ],
+            [
+              -49.3634,
+              28.5
+            ],
+            [
+              -52.6611,
+              21.813
+            ],
+            [
+              -55.0578,
+              14.7527
+            ],
+            [
+              -56.5124,
+              7.44
+            ],
+            [
+              -57.0,
+              0.0
+            ],
+            [
+              -56.5124,
+              -7.44
+            ],
+            [
+              -55.0578,
+              -14.7527
+            ],
+            [
+              -52.6611,
+              -21.813
+            ],
+            [
+              -49.3634,
+              -28.5
+            ],
+            [
+              -45.2211,
+              -34.6994
+            ],
+            [
+              -40.3051,
+              -40.3051
+            ],
+            [
+              -34.6994,
+              -45.2211
+            ],
+            [
+              -28.5,
+              -49.3634
+            ],
+            [
+              -21.813,
+              -52.6611
+            ],
+            [
+              -14.7527,
+              -55.0578
+            ],
+            [
+              -7.44,
+              -56.5124
+            ],
+            [
+              -0.0,
+              -57.0
+            ],
+            [
+              7.44,
+              -56.5124
+            ],
+            [
+              14.7527,
+              -55.0578
+            ],
+            [
+              21.813,
+              -52.6611
+            ],
+            [
+              28.5,
+              -49.3634
+            ],
+            [
+              34.6994,
+              -45.2211
+            ],
+            [
+              40.3051,
+              -40.3051
+            ],
+            [
+              45.2211,
+              -34.6994
+            ],
+            [
+              49.3634,
+              -28.5
+            ],
+            [
+              52.6611,
+              -21.813
+            ],
+            [
+              55.0578,
+              -14.7527
+            ],
+            [
+              56.5124,
+              -7.44
+            ]
+          ],
+          "holes": [
+            [
+              [
+                25.0,
+                0.0
+              ],
+              [
+                24.7861,
+                3.2632
+              ],
+              [
+                24.1481,
+                6.4705
+              ],
+              [
+                23.097,
+                9.5671
+              ],
+              [
+                21.6506,
+                12.5
+              ],
+              [
+                19.8338,
+                15.219
+              ],
+              [
+                17.6777,
+                17.6777
+              ],
+              [
+                15.219,
+                19.8338
+              ],
+              [
+                12.5,
+                21.6506
+              ],
+              [
+                9.5671,
+                23.097
+              ],
+              [
+                6.4705,
+                24.1481
+              ],
+              [
+                3.2632,
+                24.7861
+              ],
+              [
+                0.0,
+                25.0
+              ],
+              [
+                -3.2632,
+                24.7861
+              ],
+              [
+                -6.4705,
+                24.1481
+              ],
+              [
+                -9.5671,
+                23.097
+              ],
+              [
+                -12.5,
+                21.6506
+              ],
+              [
+                -15.219,
+                19.8338
+              ],
+              [
+                -17.6777,
+                17.6777
+              ],
+              [
+                -19.8338,
+                15.219
+              ],
+              [
+                -21.6506,
+                12.5
+              ],
+              [
+                -23.097,
+                9.5671
+              ],
+              [
+                -24.1481,
+                6.4705
+              ],
+              [
+                -24.7861,
+                3.2632
+              ],
+              [
+                -25.0,
+                0.0
+              ],
+              [
+                -24.7861,
+                -3.2632
+              ],
+              [
+                -24.1481,
+                -6.4705
+              ],
+              [
+                -23.097,
+                -9.5671
+              ],
+              [
+                -21.6506,
+                -12.5
+              ],
+              [
+                -19.8338,
+                -15.219
+              ],
+              [
+                -17.6777,
+                -17.6777
+              ],
+              [
+                -15.219,
+                -19.8338
+              ],
+              [
+                -12.5,
+                -21.6506
+              ],
+              [
+                -9.5671,
+                -23.097
+              ],
+              [
+                -6.4705,
+                -24.1481
+              ],
+              [
+                -3.2632,
+                -24.7861
+              ],
+              [
+                -0.0,
+                -25.0
+              ],
+              [
+                3.2632,
+                -24.7861
+              ],
+              [
+                6.4705,
+                -24.1481
+              ],
+              [
+                9.5671,
+                -23.097
+              ],
+              [
+                12.5,
+                -21.6506
+              ],
+              [
+                15.219,
+                -19.8338
+              ],
+              [
+                17.6777,
+                -17.6777
+              ],
+              [
+                19.8338,
+                -15.219
+              ],
+              [
+                21.6506,
+                -12.5
+              ],
+              [
+                23.097,
+                -9.5671
+              ],
+              [
+                24.1481,
+                -6.4705
+              ],
+              [
+                24.7861,
+                -3.2632
+              ]
+            ]
+          ]
+        },
+        "material_side": "negative_normal"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "pulley_seat"
+      ],
+      "evidence_refs": [
+        "ev_drw"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "inner_race_hole_1",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            30.026,
+            12.437,
+            0.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 2.75,
+          "max": 2.75,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 12.0,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "clearance_hole",
+        "inner_race_bolt"
+      ],
+      "evidence_refs": [
+        "ev_drw"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "inner_race_hole_2",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            12.437,
+            30.026,
+            0.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 2.75,
+          "max": 2.75,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 12.0,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "clearance_hole",
+        "inner_race_bolt"
+      ],
+      "evidence_refs": [
+        "ev_drw"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "inner_race_hole_3",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            -12.437,
+            30.026,
+            0.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 2.75,
+          "max": 2.75,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 12.0,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "clearance_hole",
+        "inner_race_bolt"
+      ],
+      "evidence_refs": [
+        "ev_drw"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "inner_race_hole_4",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            -30.026,
+            12.437,
+            0.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 2.75,
+          "max": 2.75,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 12.0,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "clearance_hole",
+        "inner_race_bolt"
+      ],
+      "evidence_refs": [
+        "ev_drw"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "inner_race_hole_5",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            -30.026,
+            -12.437,
+            0.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 2.75,
+          "max": 2.75,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 12.0,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "clearance_hole",
+        "inner_race_bolt"
+      ],
+      "evidence_refs": [
+        "ev_drw"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "inner_race_hole_6",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            -12.437,
+            -30.026,
+            0.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 2.75,
+          "max": 2.75,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 12.0,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "clearance_hole",
+        "inner_race_bolt"
+      ],
+      "evidence_refs": [
+        "ev_drw"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "inner_race_hole_7",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            12.437,
+            -30.026,
+            0.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 2.75,
+          "max": 2.75,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 12.0,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "clearance_hole",
+        "inner_race_bolt"
+      ],
+      "evidence_refs": [
+        "ev_drw"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "inner_race_hole_8",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            30.026,
+            -12.437,
+            0.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 2.75,
+          "max": 2.75,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 12.0,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "clearance_hole",
+        "inner_race_bolt"
+      ],
+      "evidence_refs": [
+        "ev_drw"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "pulley_thread_1",
+      "family": "threaded",
+      "polarity": "internal",
+      "geometry": {
+        "axis": {
+          "origin": [
+            42.5,
+            0.0,
+            12.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 10.0,
+          "unit": "mm"
+        },
+        "thread": {
+          "standard": "ISO_metric",
+          "designation": "M5x0.8",
+          "pitch_mm": 0.8,
+          "handedness": "right",
+          "starts": 1
+        }
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "pulley_mount_thread"
+      ],
+      "evidence_refs": [
+        "ev_drw"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "pulley_thread_2",
+      "family": "threaded",
+      "polarity": "internal",
+      "geometry": {
+        "axis": {
+          "origin": [
+            0.0,
+            42.5,
+            12.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 10.0,
+          "unit": "mm"
+        },
+        "thread": {
+          "standard": "ISO_metric",
+          "designation": "M5x0.8",
+          "pitch_mm": 0.8,
+          "handedness": "right",
+          "starts": 1
+        }
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "pulley_mount_thread"
+      ],
+      "evidence_refs": [
+        "ev_drw"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "pulley_thread_3",
+      "family": "threaded",
+      "polarity": "internal",
+      "geometry": {
+        "axis": {
+          "origin": [
+            -42.5,
+            0.0,
+            12.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 10.0,
+          "unit": "mm"
+        },
+        "thread": {
+          "standard": "ISO_metric",
+          "designation": "M5x0.8",
+          "pitch_mm": 0.8,
+          "handedness": "right",
+          "starts": 1
+        }
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "pulley_mount_thread"
+      ],
+      "evidence_refs": [
+        "ev_drw"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "pulley_thread_4",
+      "family": "threaded",
+      "polarity": "internal",
+      "geometry": {
+        "axis": {
+          "origin": [
+            0.0,
+            -42.5,
+            12.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 10.0,
+          "unit": "mm"
+        },
+        "thread": {
+          "standard": "ISO_metric",
+          "designation": "M5x0.8",
+          "pitch_mm": 0.8,
+          "handedness": "right",
+          "starts": 1
+        }
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "pulley_mount_thread"
+      ],
+      "evidence_refs": [
+        "ev_drw"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "standoff_thread_1",
+      "family": "threaded",
+      "polarity": "internal",
+      "geometry": {
+        "axis": {
+          "origin": [
+            55.0,
+            55.0,
+            12.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 10.0,
+          "unit": "mm"
+        },
+        "thread": {
+          "standard": "ISO_metric",
+          "designation": "M6x1.0",
+          "pitch_mm": 1.0,
+          "handedness": "right",
+          "starts": 1
+        }
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "standoff_thread"
+      ],
+      "evidence_refs": [
+        "ev_drw",
+        "ev_revflag"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "standoff_thread_2",
+      "family": "threaded",
+      "polarity": "internal",
+      "geometry": {
+        "axis": {
+          "origin": [
+            -55.0,
+            55.0,
+            12.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 10.0,
+          "unit": "mm"
+        },
+        "thread": {
+          "standard": "ISO_metric",
+          "designation": "M6x1.0",
+          "pitch_mm": 1.0,
+          "handedness": "right",
+          "starts": 1
+        }
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "standoff_thread"
+      ],
+      "evidence_refs": [
+        "ev_drw",
+        "ev_revflag"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "standoff_thread_3",
+      "family": "threaded",
+      "polarity": "internal",
+      "geometry": {
+        "axis": {
+          "origin": [
+            -55.0,
+            -55.0,
+            12.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 10.0,
+          "unit": "mm"
+        },
+        "thread": {
+          "standard": "ISO_metric",
+          "designation": "M6x1.0",
+          "pitch_mm": 1.0,
+          "handedness": "right",
+          "starts": 1
+        }
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "standoff_thread"
+      ],
+      "evidence_refs": [
+        "ev_drw",
+        "ev_revflag"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "standoff_thread_4",
+      "family": "threaded",
+      "polarity": "internal",
+      "geometry": {
+        "axis": {
+          "origin": [
+            55.0,
+            -55.0,
+            12.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 10.0,
+          "unit": "mm"
+        },
+        "thread": {
+          "standard": "ISO_metric",
+          "designation": "M6x1.0",
+          "pitch_mm": 1.0,
+          "handedness": "right",
+          "starts": 1
+        }
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "standoff_thread"
+      ],
+      "evidence_refs": [
+        "ev_drw",
+        "ev_revflag"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    }
+  ],
+  "port_groups": [
+    {
+      "id": "inner_race_pattern",
+      "kind": "repeated_ports",
+      "members": [
+        {
+          "port": "inner_race_hole_1"
+        },
+        {
+          "port": "inner_race_hole_2"
+        },
+        {
+          "port": "inner_race_hole_3"
+        },
+        {
+          "port": "inner_race_hole_4"
+        },
+        {
+          "port": "inner_race_hole_5"
+        },
+        {
+          "port": "inner_race_hole_6"
+        },
+        {
+          "port": "inner_race_hole_7"
+        },
+        {
+          "port": "inner_race_hole_8"
+        }
+      ],
+      "frame": null,
+      "symmetry": {
+        "generators": [
+          {
+            "rotation_deg": 45
+          }
+        ]
+      },
+      "placement_domain": null,
+      "evidence_refs": [
+        "ev_drw"
+      ]
+    },
+    {
+      "id": "pulley_pattern",
+      "kind": "repeated_ports",
+      "members": [
+        {
+          "port": "pulley_thread_1"
+        },
+        {
+          "port": "pulley_thread_2"
+        },
+        {
+          "port": "pulley_thread_3"
+        },
+        {
+          "port": "pulley_thread_4"
+        }
+      ],
+      "frame": null,
+      "symmetry": {
+        "generators": [
+          {
+            "rotation_deg": 90
+          }
+        ]
+      },
+      "placement_domain": null,
+      "evidence_refs": [
+        "ev_drw"
+      ]
+    },
+    {
+      "id": "standoff_pattern",
+      "kind": "repeated_ports",
+      "members": [
+        {
+          "port": "standoff_thread_1"
+        },
+        {
+          "port": "standoff_thread_2"
+        },
+        {
+          "port": "standoff_thread_3"
+        },
+        {
+          "port": "standoff_thread_4"
+        }
+      ],
+      "frame": null,
+      "symmetry": {
+        "generators": [
+          {
+            "rotation_deg": 90
+          }
+        ]
+      },
+      "placement_domain": null,
+      "evidence_refs": [
+        "ev_drw"
+      ]
+    }
+  ],
+  "annotation_status": {
+    "overall": "complete",
+    "expected_ports": {}
+  },
+  "evidence": [
+    {
+      "id": "ev_drw",
+      "source_type": "custom_drawing",
+      "raw_value": "ROTARY_ADAPTER_RU85_S5M_REV_A (drawings/ROTARY_ADAPTER_RU85_S5M_REV_A.md)",
+      "normalized_claim": {},
+      "source_uri": "drawings/ROTARY_ADAPTER_RU85_S5M_REV_A.md",
+      "locator": "",
+      "extraction_method": "human",
+      "confidence": 1.0,
+      "notes": "CadQuery-built in part-local frame; CAD-verified: boss \u00d845..76 at Z<0.5, disc \u00d8180 above the 0.5 relief, \u00d850 pilot at Z=12..15, \u00d845 pass-through, PCD65 inner-race + PCD85 pulley + (+-55) standoff patterns."
+    },
+    {
+      "id": "ev_revflag",
+      "source_type": "derived",
+      "raw_value": "F6 standoff tap-drill depth conflict",
+      "normalized_claim": {},
+      "source_uri": "",
+      "locator": "",
+      "extraction_method": "human",
+      "confidence": 1.0,
+      "notes": "REV_B REVIEW ITEM: drawing asks tap-drill depth 13 min, but body thickness at R~77.8 (outside boss, relieved) is 12-0.5 = 11.5 mm; 13 deep would break through. Modeled at 10 mm full thread (blind, fits). Surface to the user before machining REV_A."
+    }
+  ],
+  "provenance": {
+    "authored_by": "custom REV_A drawing",
+    "verified_by": "CadQuery build + mesh section"
+  }
+}

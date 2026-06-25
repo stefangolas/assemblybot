@@ -1,0 +1,45 @@
+{
+  "schema_version": 2,
+  "part_number": "SL-TBLG_cap_screw",
+  "classification": {
+    "catalog_family": "low_head_cap_screw",
+    "broader_families": ["fastener"],
+    "aliases": ["extra_low_head_cap_screw", "belt_clamp_screw"]
+  },
+  "source": {"url": "component of SL-TBLGS3M100-50-80-20-30-25-4 (MISUMI set, 4 supplied)", "retrieved_at": "2026-06-20"},
+  "raw_spec": {"part_of_set": "SL-TBLGS3M100-50-80-20-30-25-4", "qty_in_set": 4, "type": "Extra Low Head Cap Screw (for Belt Mounting): CBSTS", "catalog_pn": "CBSTS3-10"},
+  "normalized_parameters": {"thread_designation": "M3x0.5", "head_diameter_mm": 6.0, "length_mm": 9.5},
+  "cad": {"source_uri": "cad/SL-TBLGS3M100-50-80-20-30-25-4_STEP.zip (body 3, x4)",
+          "gltf_uri": "cad/SL-TBLG_cap_screw.glb", "units": "metre"},
+  "part_frame": {
+    "units": "millimetre",
+    "drawing_to_cad": {"scale": 1.0, "rotation": "identity", "translation": [0, 0, 0]},
+    "note": "screw axis = local Y (drives down through jaw -> belt -> plate clamp pocket). MEASURED extent 6x9.5x6: Oe6 low head, ~9.5 mm long. Thread M3 inferred from head/hole sizes (jaw clearance r~1.25)."
+  },
+  "ports": [
+    {"id": "thread", "family": "threaded", "polarity": "external",
+     "geometry": {"axis": {"origin": [0, 0, 0], "direction": [0, 1, 0]},
+                  "axial_interval_mm": {"min": 0, "max": 6, "unit": "mm"},
+                  "thread": {"standard": "ISO_metric", "designation": "M3x0.5", "pitch_mm": 0.5, "handedness": "right",
+                             "major_diameter_mm": {"min": 2.87, "max": 3.0}, "minor_diameter_mm": {"min": 2.39, "max": 2.5},
+                             "evidence_status": "confirmed", "evidence_source": "drawing"}},
+     "semantic_aliases": ["machine_thread"], "annotation_status": "nominal", "evidence_refs": ["ev_scr"]},
+    {"id": "head_seat", "family": "planar", "polarity": "contact",
+     "geometry": {"plane": {"origin": [0, 6.0, 0], "normal": [0, 1, 0]},
+                  "boundary_uv_mm": {"outer": [[-3, -3], [3, -3], [3, 3], [-3, 3]], "holes": []},
+                  "material_side": "positive_normal"},
+     "semantic_aliases": ["head_underside"], "annotation_status": "nominal", "evidence_refs": ["ev_scr"]}
+  ],
+  "port_groups": [],
+  "annotation_status": {"overall": "complete", "expected_ports": {}},
+  "evidence": [
+    {"id": "ev_scr", "source_type": "cad", "raw_value": "split body 3 of SL-TBLG STEP; head Oe6, len 9.5 mm",
+     "extraction_method": "cad_measurement", "confidence": 0.7},
+    {"id": "ev_scr_dwg", "source_type": "drawing", "source_uri": "Misumi series 110311043729 spec table + cad/SL-TBLG_dwg_*.png",
+     "locator": "spec: 'Extra Low Head Cap Screw (for Belt Mounting): CBSTS, 304 Stainless Steel Equivalent, qty 4'; S3M row screw PNs CBSTS3-8 / CBSTS3-10",
+     "raw_value": "M3 (S3M belt-mounting screw); CBSTS3-10 matches measured 9.5 mm length",
+     "normalized_claim": {"target_path": "ports.thread.thread.designation", "value": "M3x0.5"},
+     "extraction_method": "drawing", "confidence": 0.92}
+  ],
+  "provenance": {"discovered_by": "STEP body enumeration", "annotated_by": "mesh bbox"}
+}

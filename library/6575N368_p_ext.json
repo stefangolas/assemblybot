@@ -1,0 +1,46 @@
+{
+  "part_number": "6575N368",
+  "class": "t_slot_extrusion",
+  "source_url": "https://www.mcmaster.com/6575N368/",
+  "retrieved_at": "2026-06-18",
+  "raw_spec": {},
+  "spec": {
+    "len": 304.8
+  },
+  "cad": {
+    "gltf_uri": "C:\\Users\\stefa\\assemblybot\\cad\\6575N368.glb"
+  },
+  "frame": {
+    "origin": [
+      0,
+      0,
+      0
+    ],
+    "handedness": "right"
+  },
+  "features": [
+    {
+      "id": "top",
+      "geometry": {
+        "type": "plane",
+        "origin": [
+          0.0,
+          12.5,
+          0.0
+        ],
+        "normal": [
+          0.0,
+          1.0,
+          0.0
+        ]
+      },
+      "role": "mounting_face",
+      "params": {}
+    }
+  ],
+  "provenance": {
+    "discovered_by": "playwright",
+    "annotated_by": "manual",
+    "confidence": 0.9
+  }
+}

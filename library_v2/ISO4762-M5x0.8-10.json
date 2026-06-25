@@ -1,0 +1,63 @@
+{
+  "schema_version": 2,
+  "part_number": "ISO4762-M5x0.8-10",
+  "classification": {
+    "catalog_family": "socket_head_cap_screw",
+    "broader_families": ["fastener", "standard_part"],
+    "aliases": ["SHCS", "M5x10_cap_screw"],
+    "generative": true
+  },
+  "source": {
+    "standard": "ISO 4762",
+    "real_exemplar_pn": "McMaster 91290A / Misumi SCB (M5x10 is a universally stocked standard length)",
+    "note": "GENERATED standard part: geometry fully determined by ISO 4762 for (M5x0.8, length 10). M5x10 is on the real manufactured size grid (every fastener supplier stocks it). Per the standard-fastener-generation rule, no spec-sheet lookup required -- the standard supplies the geometry.",
+    "retrieved_at": "2026-06-21"
+  },
+  "raw_spec": {"standard": "ISO 4762 hex socket head cap screw", "thread": "M5x0.8", "length_mm": "10",
+               "head_dia_mm": "8.5", "head_height_mm": "5.0", "socket_mm": "4"},
+  "normalized_parameters": {
+    "thread_designation": "M5x0.8", "nominal_length_mm": 10.0, "shank_diameter_mm": 5.0,
+    "head_diameter_mm": 8.5, "head_height_mm": 5.0, "qty_in_assembly": 2,
+    "role": "FALBS bracket-foot clamp screw (3.2 mm foot + into the T-slot nut; 16 mm would bottom out the 12.2 mm slot, so 10 mm)"
+  },
+  "cad": {"source_uri": null, "gltf_uri": "cad/ISO4762-M5x0.8-10.glb", "units": "metre",
+          "note": "generated primitive (head + shank cylinders) per ISO 4762"},
+  "part_frame": {
+    "units": "millimetre",
+    "drawing_to_cad": {"scale": 1.0, "rotation": "identity", "translation": [0, 0, 0]},
+    "note": "axis = local Z. head +Z (0..5, Ø8.5), threaded shank -Z (0..-10, Ø5). head underside (head_seat) at Z=0 seats on the bracket foot; the thread enters the T-slot nut below."
+  },
+  "ports": [
+    {
+      "id": "thread", "family": "threaded", "polarity": "external",
+      "geometry": {
+        "axis": {"origin": [0.0, 0.0, 0.0], "direction": [0, 0, 1]},
+        "axial_interval_mm": {"min": -10.0, "max": 0.0, "unit": "mm"},
+        "thread": {"standard": "ISO_metric", "designation": "M5x0.8", "pitch_mm": 0.8,
+                   "handedness": "right", "starts": 1, "major_diameter_mm": {"min": 4.8, "max": 5.0},
+                   "minor_diameter_mm": {"min": 4.0, "max": 4.13},
+                   "evidence_status": "confirmed", "evidence_source": "standard"}
+      },
+      "semantic_aliases": ["screw_thread"], "annotation_status": "confirmed", "evidence_refs": ["ev_std"]
+    },
+    {
+      "id": "head_seat", "family": "planar", "polarity": "contact",
+      "geometry": {
+        "plane": {"origin": [0.0, 0.0, 0.0], "normal": [0, 0, -1]},
+        "boundary_uv_mm": {"outer": [[-4.25, -4.25], [4.25, -4.25], [4.25, 4.25], [-4.25, 4.25]],
+                           "holes": [[[-2.5, -2.5], [2.5, -2.5], [2.5, 2.5], [-2.5, 2.5]]]},
+        "material_side": "positive_normal"
+      },
+      "semantic_aliases": ["head_underside", "axial_stop"], "annotation_status": "confirmed", "evidence_refs": ["ev_std"]
+    }
+  ],
+  "port_groups": [],
+  "annotation_status": {"overall": "complete", "expected_ports": {}},
+  "evidence": [
+    {"id": "ev_std", "source_type": "standard",
+     "raw_value": "ISO 4762 M5: dk=8.5, k=5.0, s=4, thread M5x0.8; length 10 on the standard size grid",
+     "normalized_claim": {"target_path": "ports.thread.geometry.thread.designation", "value": "M5x0.8", "unit": "mm"},
+     "extraction_method": "standard_lookup", "confidence": 0.98}
+  ],
+  "provenance": {"discovered_by": "generated from ISO 4762 (standard-fastener rule)", "annotated_by": "lead", "acquired": "2026-06-21"}
+}

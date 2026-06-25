@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AssemblyBot Viewer</title>
+</head>
+<body>
+  <p>Loading project...</p>
+  <script>
+    (async function() {
+      const projectId = window.PROJECT_ID || 'rung3_rotary'; // fallback
+      try {
+        const res = await fetch(`/${projectId}/project.json`);
+        if (!res.ok) throw new Error('project.json not found');
+        const pjson = await res.json();
+        const assemblyPath = pjson.canonical_assembly || `out/${projectId}_assembly.json`;
+        window.location.replace(`/_app/incr.html?src=/${projectId}/${assemblyPath}`);
+      } catch (e) {
+        console.warn('Falling back to default assembly path:', e);
+        window.location.replace(`/_app/incr.html?src=/${projectId}/out/${projectId}_assembly.json`);
+      }
+    })();
+  </script>
+</body>
+</html>

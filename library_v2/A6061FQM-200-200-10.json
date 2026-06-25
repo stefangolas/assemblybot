@@ -1,0 +1,413 @@
+{
+  "schema_version": 2,
+  "part_number": "A6061FQM-200-200-10",
+  "classification": {
+    "catalog_family": "configurable_plate",
+    "broader_families": [
+      "structural_plate"
+    ],
+    "aliases": [
+      "rotary_tabletop"
+    ]
+  },
+  "source": {
+    "url": "misumi:A6061FQM-200-200-10 (series 110302243870)",
+    "retrieved_at": "2026-06-22",
+    "brand": "MSM1"
+  },
+  "raw_spec": {},
+  "normalized_parameters": {
+    "size_mm": [
+      200,
+      200,
+      10
+    ],
+    "finish": "6 sides milled",
+    "material": "6061-T651",
+    "center_hole_mm": 45,
+    "mount_holes": "4x M6 cbore @ (+-55) MACHINED (finished part, not blank)"
+  },
+  "cad": {
+    "source_uri": "cad/A6061FQM-200-200-10_STEP.zip",
+    "gltf_uri": "cad/A6061-tabletop.glb",
+    "units": "metre"
+  },
+  "part_frame": {
+    "units": "millimetre",
+    "drawing_to_cad": {
+      "scale": 1.0,
+      "rotation": "identity",
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    "note": "flat plate, bottom Z=0 top Z=10; centered. Holes are a secondary op (blank catalog plate)."
+  },
+  "ports": [
+    {
+      "id": "bot_face",
+      "family": "planar",
+      "polarity": "contact",
+      "geometry": {
+        "plane": {
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ]
+        },
+        "boundary_uv_mm": {
+          "outer": [
+            [
+              -100.0,
+              -100.0
+            ],
+            [
+              100.0,
+              -100.0
+            ],
+            [
+              100.0,
+              100.0
+            ],
+            [
+              -100.0,
+              100.0
+            ]
+          ],
+          "holes": []
+        },
+        "material_side": "positive_normal"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "underside_seats_on_standoffs"
+      ],
+      "evidence_refs": [
+        "ev_cad"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "top_face",
+      "family": "planar",
+      "polarity": "contact",
+      "geometry": {
+        "plane": {
+          "origin": [
+            0,
+            0,
+            10.0
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ]
+        },
+        "boundary_uv_mm": {
+          "outer": [
+            [
+              -100.0,
+              -100.0
+            ],
+            [
+              100.0,
+              -100.0
+            ],
+            [
+              100.0,
+              100.0
+            ],
+            [
+              -100.0,
+              100.0
+            ]
+          ],
+          "holes": []
+        },
+        "material_side": "negative_normal"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "payload_surface"
+      ],
+      "evidence_refs": [
+        "ev_cad"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "mount_hole_1",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            55.0,
+            55.0,
+            0.0
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 3.3,
+          "max": 3.3,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 10.0,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "M6_clearance_secondary_op"
+      ],
+      "evidence_refs": [
+        "ev_secop"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "mount_hole_2",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            -55.0,
+            55.0,
+            0.0
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 3.3,
+          "max": 3.3,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 10.0,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "M6_clearance_secondary_op"
+      ],
+      "evidence_refs": [
+        "ev_secop"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "mount_hole_3",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            -55.0,
+            -55.0,
+            0.0
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 3.3,
+          "max": 3.3,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 10.0,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "M6_clearance_secondary_op"
+      ],
+      "evidence_refs": [
+        "ev_secop"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "mount_hole_4",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            55.0,
+            -55.0,
+            0.0
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 3.3,
+          "max": 3.3,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 10.0,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "M6_clearance_secondary_op"
+      ],
+      "evidence_refs": [
+        "ev_secop"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "pass_through",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 22.5,
+          "max": 22.5,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0,
+          "max": 10,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "semantic_aliases": [
+        "central_pass_through"
+      ],
+      "annotation_status": "confirmed",
+      "evidence_refs": [
+        "ev_cad"
+      ]
+    }
+  ],
+  "port_groups": [
+    {
+      "id": "mount_pattern",
+      "kind": "repeated_ports",
+      "members": [
+        {
+          "port": "mount_hole_1"
+        },
+        {
+          "port": "mount_hole_2"
+        },
+        {
+          "port": "mount_hole_3"
+        },
+        {
+          "port": "mount_hole_4"
+        }
+      ],
+      "frame": null,
+      "symmetry": {
+        "generators": [
+          {
+            "rotation_deg": 90
+          }
+        ]
+      },
+      "placement_domain": null,
+      "evidence_refs": [
+        "ev_secop"
+      ]
+    }
+  ],
+  "annotation_status": {
+    "overall": "complete",
+    "expected_ports": {}
+  },
+  "evidence": [
+    {
+      "id": "ev_cad",
+      "source_type": "cad",
+      "raw_value": "Misumi A6061FQM-200-200-10 (6-sides milled 6061 plate)",
+      "normalized_claim": {},
+      "source_uri": "cad/A6061-tabletop.glb",
+      "locator": "",
+      "extraction_method": "cad_measurement",
+      "confidence": 0.95,
+      "notes": "measured 200x200x10 exactly. Series 110302243870 found via WebSearch (Google-first). BLANK plate."
+    },
+    {
+      "id": "ev_secop",
+      "source_type": "derived",
+      "raw_value": "Oe45 center + 4x M6 cbore @ (+-55) are a SECONDARY machining op",
+      "normalized_claim": {},
+      "source_uri": "",
+      "locator": "",
+      "extraction_method": "human",
+      "confidence": 1.0,
+      "notes": "this configurable-plate series has no hole config (Finish/T/A/B/tol only); holes added as secondary op per task allowance."
+    }
+  ],
+  "provenance": {
+    "discovered_by": "Google-first WebSearch -> seriesCode -> breadcrumb grammar -> validate_pns -> fetch_cad",
+    "annotated_by": "mesh measurement"
+  }
+}

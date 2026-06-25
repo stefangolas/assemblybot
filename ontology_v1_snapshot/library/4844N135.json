@@ -1,0 +1,143 @@
+{
+  "part_number": "4844N135",
+  "class": "mounting_bracket",
+  "source_url": "https://www.mcmaster.com/4844N135/",
+  "retrieved_at": "2026-06-18",
+  "raw_spec": {
+    "For Rail Height": "25mm",
+    "Number of Mounting Fasteners Included": "4",
+    "Mounting Fastener Thread Size": "M6",
+    "Length": "3.937 in"
+  },
+  "spec": {
+    "thread": "M6",
+    "hole_dia": 6.5,
+    "num_holes": 4,
+    "hole_pitch": 25.0,
+    "plate_length": 100.0,
+    "plate_width": 25.3,
+    "plate_thickness": 4.0
+  },
+  "cad": {
+    "dwg_uri": "C:\\Users\\stefa\\assemblybot\\cad\\4844N135.dwg",
+    "step_uri": "C:\\Users\\stefa\\assemblybot\\cad\\4844N135.step",
+    "gltf_uri": "C:\\Users\\stefa\\assemblybot\\cad\\4844N135.glb",
+    "variant": "as_modeled_with_fasteners"
+  },
+  "frame": {
+    "origin": [
+      0,
+      0,
+      0
+    ],
+    "handedness": "right",
+    "datum": "centre of mounting face, +X normal, length +Z",
+    "mount_face_mesh_z": -2.0
+  },
+  "features": [
+    {
+      "id": "mount_face",
+      "geometry": {
+        "type": "plane",
+        "origin": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "normal": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      },
+      "role": "mounting_face",
+      "params": {}
+    },
+    {
+      "id": "hole_0",
+      "geometry": {
+        "type": "axis",
+        "origin": [
+          0.0,
+          0.0,
+          -37.5
+        ],
+        "direction": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      },
+      "role": "clearance_hole",
+      "params": {
+        "diameter": 6.5
+      }
+    },
+    {
+      "id": "hole_1",
+      "geometry": {
+        "type": "axis",
+        "origin": [
+          0.0,
+          0.0,
+          -12.5
+        ],
+        "direction": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      },
+      "role": "clearance_hole",
+      "params": {
+        "diameter": 6.5
+      }
+    },
+    {
+      "id": "hole_2",
+      "geometry": {
+        "type": "axis",
+        "origin": [
+          0.0,
+          0.0,
+          12.5
+        ],
+        "direction": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      },
+      "role": "clearance_hole",
+      "params": {
+        "diameter": 6.5
+      }
+    },
+    {
+      "id": "hole_3",
+      "geometry": {
+        "type": "axis",
+        "origin": [
+          0.0,
+          0.0,
+          37.5
+        ],
+        "direction": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      },
+      "role": "clearance_hole",
+      "params": {
+        "diameter": 6.5
+      }
+    }
+  ],
+  "provenance": {
+    "discovered_by": "playwright",
+    "annotated_by": "manual",
+    "confidence": 0.95,
+    "note": "hole pattern (4 holes @ 25.00 mm pitch, centred on 100 mm length) read off the 2-D DWG -- the geometry authority (Section 3)"
+  }
+}

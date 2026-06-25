@@ -1,0 +1,19 @@
+{
+  "part_number": "90263A239",
+  "class": "shoulder_screw",
+  "source_url": "https://www.mcmaster.com/90263A239/",
+  "retrieved_at": "2026-06-20",
+  "raw_spec": {},
+  "spec": {
+    "thread": "M4", "shoulder_dia_mm": 5.0, "shoulder_len_mm": 10.0, "head_dia_mm": 9.0,
+    "note": "measured along local Z: thread Z -19..-14 (Ø3.7), shoulder -14..-4 (Ø5.0, 10mm), head -4..0 (Ø9)"
+  },
+  "cad": {"gltf_uri": "C:\\Users\\stefa\\assemblybot\\cad\\90263A239.glb"},
+  "frame": {"origin": [0, 0, 0], "handedness": "right",
+    "note": "axis along local Z. shoulder is the SHAFT the idler bearing inner-race rides; thread fixes into the bracket hole."},
+  "features": [
+    {"id": "shoulder_axis", "geometry": {"type": "axis", "origin": [0.0, 0.0, -9.0], "direction": [0, 0, 1]}, "role": "shoulder", "params": {"diameter": 5.0, "length": 10.0}},
+    {"id": "thread_axis", "geometry": {"type": "axis", "origin": [0.0, 0.0, -16.5], "direction": [0, 0, 1]}, "role": "threaded_hole", "params": {"thread": "M4"}}
+  ],
+  "provenance": {"discovered_by": "playwright", "annotated_by": "mesh-section measurement", "confidence": 0.9}
+}

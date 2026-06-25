@@ -1,0 +1,30 @@
+{
+  "part_number": "SSEB20-220",
+  "class": "linear_guide_block",
+  "source_url": "https://us.misumi-ec.com/vona2/detail/110302683830/?HissuCode=SSEB20-220",
+  "retrieved_at": "2026-06-20",
+  "raw_spec": {},
+  "spec": {
+    "series": "SSEB20",
+    "mx_size": 20,
+    "block_width_mm": 40,
+    "rail_len_mm": 220,
+    "mount_pattern": "4x M4 @ B30 transverse x C25 longitudinal"
+  },
+  "cad": {
+    "gltf_uri": "C:\\Users\\stefa\\assemblybot\\cad\\SSEB20-220_block.glb"
+  },
+  "frame": {
+    "origin": [0, 0, 0],
+    "handedness": "right",
+    "note": "block-local: X=longitudinal(travel), Y=up, Z=transverse. top face Y=20, M4 tapped holes measured by mesh-section at Y=18."
+  },
+  "features": [
+    {"id": "top",   "geometry": {"type": "plane", "origin": [7.5, 20.0, 0.0], "normal": [0, 1, 0]}, "role": "mounting_face", "params": {"pattern": "4x M4 @ 25x30"}},
+    {"id": "h_a",   "geometry": {"type": "axis", "origin": [-5.0, 20.0,  15.0], "direction": [0, -1, 0]}, "role": "threaded_hole", "params": {"thread": "M4"}},
+    {"id": "h_b",   "geometry": {"type": "axis", "origin": [20.0, 20.0,  15.0], "direction": [0, -1, 0]}, "role": "threaded_hole", "params": {"thread": "M4"}},
+    {"id": "h_c",   "geometry": {"type": "axis", "origin": [-5.0, 20.0, -15.0], "direction": [0, -1, 0]}, "role": "threaded_hole", "params": {"thread": "M4"}},
+    {"id": "h_d",   "geometry": {"type": "axis", "origin": [20.0, 20.0, -15.0], "direction": [0, -1, 0]}, "role": "threaded_hole", "params": {"thread": "M4"}}
+  ],
+  "provenance": {"discovered_by": "playwright", "annotated_by": "mesh-section measurement", "confidence": 0.95}
+}

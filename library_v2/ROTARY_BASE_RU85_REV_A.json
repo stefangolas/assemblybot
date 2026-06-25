@@ -1,0 +1,1322 @@
+{
+  "schema_version": 2,
+  "part_number": "ROTARY_BASE_RU85_REV_A",
+  "classification": {
+    "catalog_family": "custom_machined",
+    "broader_families": [
+      "structural_plate"
+    ],
+    "aliases": [
+      "rotary_stage_base"
+    ]
+  },
+  "source": {
+    "url": "custom_drawing:ROTARY_BASE_RU85_REV_A",
+    "retrieved_at": "2026-06-22",
+    "revision": "A",
+    "material": "6061-T651"
+  },
+  "raw_spec": {},
+  "normalized_parameters": {
+    "size_mm": [
+      220,
+      220,
+      15
+    ],
+    "central_opening_dia_mm": 94.0,
+    "outer_ring_PCD_mm": 105.0,
+    "frame_member_centerlines_mm": 90.0
+  },
+  "cad": {
+    "source_uri": "cad/ROTARY_BASE_RU85_REV_A.step",
+    "gltf_uri": "cad/ROTARY_BASE_RU85_REV_A.glb",
+    "units": "metre"
+  },
+  "part_frame": {
+    "units": "millimetre",
+    "drawing_to_cad": {
+      "scale": 1.0,
+      "rotation": "identity",
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    "note": "origin = bearing axis at plate center; Z=0 top mounting face (Datum A); plate to Z=-15; bearing pattern clocked 22.5deg from +X."
+  },
+  "ports": [
+    {
+      "id": "outer_ring_seat",
+      "family": "planar",
+      "polarity": "contact",
+      "geometry": {
+        "plane": {
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "normal": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        "boundary_uv_mm": {
+          "outer": [
+            [
+              60.0,
+              0.0
+            ],
+            [
+              59.4867,
+              7.8316
+            ],
+            [
+              57.9555,
+              15.5291
+            ],
+            [
+              55.4328,
+              22.961
+            ],
+            [
+              51.9615,
+              30.0
+            ],
+            [
+              47.6012,
+              36.5257
+            ],
+            [
+              42.4264,
+              42.4264
+            ],
+            [
+              36.5257,
+              47.6012
+            ],
+            [
+              30.0,
+              51.9615
+            ],
+            [
+              22.961,
+              55.4328
+            ],
+            [
+              15.5291,
+              57.9555
+            ],
+            [
+              7.8316,
+              59.4867
+            ],
+            [
+              0.0,
+              60.0
+            ],
+            [
+              -7.8316,
+              59.4867
+            ],
+            [
+              -15.5291,
+              57.9555
+            ],
+            [
+              -22.961,
+              55.4328
+            ],
+            [
+              -30.0,
+              51.9615
+            ],
+            [
+              -36.5257,
+              47.6012
+            ],
+            [
+              -42.4264,
+              42.4264
+            ],
+            [
+              -47.6012,
+              36.5257
+            ],
+            [
+              -51.9615,
+              30.0
+            ],
+            [
+              -55.4328,
+              22.961
+            ],
+            [
+              -57.9555,
+              15.5291
+            ],
+            [
+              -59.4867,
+              7.8316
+            ],
+            [
+              -60.0,
+              0.0
+            ],
+            [
+              -59.4867,
+              -7.8316
+            ],
+            [
+              -57.9555,
+              -15.5291
+            ],
+            [
+              -55.4328,
+              -22.961
+            ],
+            [
+              -51.9615,
+              -30.0
+            ],
+            [
+              -47.6012,
+              -36.5257
+            ],
+            [
+              -42.4264,
+              -42.4264
+            ],
+            [
+              -36.5257,
+              -47.6012
+            ],
+            [
+              -30.0,
+              -51.9615
+            ],
+            [
+              -22.961,
+              -55.4328
+            ],
+            [
+              -15.5291,
+              -57.9555
+            ],
+            [
+              -7.8316,
+              -59.4867
+            ],
+            [
+              -0.0,
+              -60.0
+            ],
+            [
+              7.8316,
+              -59.4867
+            ],
+            [
+              15.5291,
+              -57.9555
+            ],
+            [
+              22.961,
+              -55.4328
+            ],
+            [
+              30.0,
+              -51.9615
+            ],
+            [
+              36.5257,
+              -47.6012
+            ],
+            [
+              42.4264,
+              -42.4264
+            ],
+            [
+              47.6012,
+              -36.5257
+            ],
+            [
+              51.9615,
+              -30.0
+            ],
+            [
+              55.4328,
+              -22.961
+            ],
+            [
+              57.9555,
+              -15.5291
+            ],
+            [
+              59.4867,
+              -7.8316
+            ]
+          ],
+          "holes": [
+            [
+              [
+                47.0,
+                0.0
+              ],
+              [
+                46.5979,
+                6.1347
+              ],
+              [
+                45.3985,
+                12.1645
+              ],
+              [
+                43.4223,
+                17.9861
+              ],
+              [
+                40.7032,
+                23.5
+              ],
+              [
+                37.2876,
+                28.6118
+              ],
+              [
+                33.234,
+                33.234
+              ],
+              [
+                28.6118,
+                37.2876
+              ],
+              [
+                23.5,
+                40.7032
+              ],
+              [
+                17.9861,
+                43.4223
+              ],
+              [
+                12.1645,
+                45.3985
+              ],
+              [
+                6.1347,
+                46.5979
+              ],
+              [
+                0.0,
+                47.0
+              ],
+              [
+                -6.1347,
+                46.5979
+              ],
+              [
+                -12.1645,
+                45.3985
+              ],
+              [
+                -17.9861,
+                43.4223
+              ],
+              [
+                -23.5,
+                40.7032
+              ],
+              [
+                -28.6118,
+                37.2876
+              ],
+              [
+                -33.234,
+                33.234
+              ],
+              [
+                -37.2876,
+                28.6118
+              ],
+              [
+                -40.7032,
+                23.5
+              ],
+              [
+                -43.4223,
+                17.9861
+              ],
+              [
+                -45.3985,
+                12.1645
+              ],
+              [
+                -46.5979,
+                6.1347
+              ],
+              [
+                -47.0,
+                0.0
+              ],
+              [
+                -46.5979,
+                -6.1347
+              ],
+              [
+                -45.3985,
+                -12.1645
+              ],
+              [
+                -43.4223,
+                -17.9861
+              ],
+              [
+                -40.7032,
+                -23.5
+              ],
+              [
+                -37.2876,
+                -28.6118
+              ],
+              [
+                -33.234,
+                -33.234
+              ],
+              [
+                -28.6118,
+                -37.2876
+              ],
+              [
+                -23.5,
+                -40.7032
+              ],
+              [
+                -17.9861,
+                -43.4223
+              ],
+              [
+                -12.1645,
+                -45.3985
+              ],
+              [
+                -6.1347,
+                -46.5979
+              ],
+              [
+                -0.0,
+                -47.0
+              ],
+              [
+                6.1347,
+                -46.5979
+              ],
+              [
+                12.1645,
+                -45.3985
+              ],
+              [
+                17.9861,
+                -43.4223
+              ],
+              [
+                23.5,
+                -40.7032
+              ],
+              [
+                28.6118,
+                -37.2876
+              ],
+              [
+                33.234,
+                -33.234
+              ],
+              [
+                37.2876,
+                -28.6118
+              ],
+              [
+                40.7032,
+                -23.5
+              ],
+              [
+                43.4223,
+                -17.9861
+              ],
+              [
+                45.3985,
+                -12.1645
+              ],
+              [
+                46.5979,
+                -6.1347
+              ]
+            ]
+          ]
+        },
+        "material_side": "negative_normal"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "datum_A",
+        "outer_race_seat"
+      ],
+      "evidence_refs": [
+        "ev_drw"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "pass_through",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 47.0,
+          "max": 47.0,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": -15.0,
+          "max": 0.0,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "central_opening",
+        "pass_through"
+      ],
+      "evidence_refs": [
+        "ev_drw"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "frame_seat",
+      "family": "planar",
+      "polarity": "contact",
+      "geometry": {
+        "plane": {
+          "origin": [
+            0,
+            0,
+            -15.0
+          ],
+          "normal": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        "boundary_uv_mm": {
+          "outer": [
+            [
+              -110.0,
+              -110.0
+            ],
+            [
+              110.0,
+              -110.0
+            ],
+            [
+              110.0,
+              110.0
+            ],
+            [
+              -110.0,
+              110.0
+            ]
+          ],
+          "holes": []
+        },
+        "material_side": "positive_normal"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "bottom_face"
+      ],
+      "evidence_refs": [
+        "ev_drw"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "outer_ring_thread_1",
+      "family": "threaded",
+      "polarity": "internal",
+      "geometry": {
+        "axis": {
+          "origin": [
+            48.504,
+            20.091,
+            0.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 10.0,
+          "unit": "mm"
+        },
+        "thread": {
+          "standard": "ISO_metric",
+          "designation": "M5x0.8",
+          "pitch_mm": 0.8,
+          "handedness": "right",
+          "starts": 1
+        }
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "outer_race_thread"
+      ],
+      "evidence_refs": [
+        "ev_drw"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "outer_ring_thread_2",
+      "family": "threaded",
+      "polarity": "internal",
+      "geometry": {
+        "axis": {
+          "origin": [
+            20.091,
+            48.504,
+            0.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 10.0,
+          "unit": "mm"
+        },
+        "thread": {
+          "standard": "ISO_metric",
+          "designation": "M5x0.8",
+          "pitch_mm": 0.8,
+          "handedness": "right",
+          "starts": 1
+        }
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "outer_race_thread"
+      ],
+      "evidence_refs": [
+        "ev_drw"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "outer_ring_thread_3",
+      "family": "threaded",
+      "polarity": "internal",
+      "geometry": {
+        "axis": {
+          "origin": [
+            -20.091,
+            48.504,
+            0.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 10.0,
+          "unit": "mm"
+        },
+        "thread": {
+          "standard": "ISO_metric",
+          "designation": "M5x0.8",
+          "pitch_mm": 0.8,
+          "handedness": "right",
+          "starts": 1
+        }
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "outer_race_thread"
+      ],
+      "evidence_refs": [
+        "ev_drw"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "outer_ring_thread_4",
+      "family": "threaded",
+      "polarity": "internal",
+      "geometry": {
+        "axis": {
+          "origin": [
+            -48.504,
+            20.091,
+            0.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 10.0,
+          "unit": "mm"
+        },
+        "thread": {
+          "standard": "ISO_metric",
+          "designation": "M5x0.8",
+          "pitch_mm": 0.8,
+          "handedness": "right",
+          "starts": 1
+        }
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "outer_race_thread"
+      ],
+      "evidence_refs": [
+        "ev_drw"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "outer_ring_thread_5",
+      "family": "threaded",
+      "polarity": "internal",
+      "geometry": {
+        "axis": {
+          "origin": [
+            -48.504,
+            -20.091,
+            0.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 10.0,
+          "unit": "mm"
+        },
+        "thread": {
+          "standard": "ISO_metric",
+          "designation": "M5x0.8",
+          "pitch_mm": 0.8,
+          "handedness": "right",
+          "starts": 1
+        }
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "outer_race_thread"
+      ],
+      "evidence_refs": [
+        "ev_drw"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "outer_ring_thread_6",
+      "family": "threaded",
+      "polarity": "internal",
+      "geometry": {
+        "axis": {
+          "origin": [
+            -20.091,
+            -48.504,
+            0.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 10.0,
+          "unit": "mm"
+        },
+        "thread": {
+          "standard": "ISO_metric",
+          "designation": "M5x0.8",
+          "pitch_mm": 0.8,
+          "handedness": "right",
+          "starts": 1
+        }
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "outer_race_thread"
+      ],
+      "evidence_refs": [
+        "ev_drw"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "outer_ring_thread_7",
+      "family": "threaded",
+      "polarity": "internal",
+      "geometry": {
+        "axis": {
+          "origin": [
+            20.091,
+            -48.504,
+            0.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 10.0,
+          "unit": "mm"
+        },
+        "thread": {
+          "standard": "ISO_metric",
+          "designation": "M5x0.8",
+          "pitch_mm": 0.8,
+          "handedness": "right",
+          "starts": 1
+        }
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "outer_race_thread"
+      ],
+      "evidence_refs": [
+        "ev_drw"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "outer_ring_thread_8",
+      "family": "threaded",
+      "polarity": "internal",
+      "geometry": {
+        "axis": {
+          "origin": [
+            48.504,
+            -20.091,
+            0.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 10.0,
+          "unit": "mm"
+        },
+        "thread": {
+          "standard": "ISO_metric",
+          "designation": "M5x0.8",
+          "pitch_mm": 0.8,
+          "handedness": "right",
+          "starts": 1
+        }
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "outer_race_thread"
+      ],
+      "evidence_refs": [
+        "ev_drw"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "frame_anchor_1",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            -60.0,
+            90.0,
+            0.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 3.3,
+          "max": 3.3,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": -15.0,
+          "max": 0.0,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "clearance_hole",
+        "M6_anchor"
+      ],
+      "evidence_refs": [
+        "ev_drw"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "frame_anchor_2",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            60.0,
+            90.0,
+            0.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 3.3,
+          "max": 3.3,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": -15.0,
+          "max": 0.0,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "clearance_hole",
+        "M6_anchor"
+      ],
+      "evidence_refs": [
+        "ev_drw"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "frame_anchor_3",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            -60.0,
+            -90.0,
+            0.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 3.3,
+          "max": 3.3,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": -15.0,
+          "max": 0.0,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "clearance_hole",
+        "M6_anchor"
+      ],
+      "evidence_refs": [
+        "ev_drw"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "frame_anchor_4",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            60.0,
+            -90.0,
+            0.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 3.3,
+          "max": 3.3,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": -15.0,
+          "max": 0.0,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "clearance_hole",
+        "M6_anchor"
+      ],
+      "evidence_refs": [
+        "ev_drw"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "frame_anchor_5",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            90.0,
+            -60.0,
+            0.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 3.3,
+          "max": 3.3,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": -15.0,
+          "max": 0.0,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "clearance_hole",
+        "M6_anchor"
+      ],
+      "evidence_refs": [
+        "ev_drw"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "frame_anchor_6",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            90.0,
+            60.0,
+            0.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 3.3,
+          "max": 3.3,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": -15.0,
+          "max": 0.0,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "clearance_hole",
+        "M6_anchor"
+      ],
+      "evidence_refs": [
+        "ev_drw"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "frame_anchor_7",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            -90.0,
+            -60.0,
+            0.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 3.3,
+          "max": 3.3,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": -15.0,
+          "max": 0.0,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "clearance_hole",
+        "M6_anchor"
+      ],
+      "evidence_refs": [
+        "ev_drw"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "frame_anchor_8",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            -90.0,
+            60.0,
+            0.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 3.3,
+          "max": 3.3,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": -15.0,
+          "max": 0.0,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "clearance_hole",
+        "M6_anchor"
+      ],
+      "evidence_refs": [
+        "ev_drw"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    }
+  ],
+  "port_groups": [
+    {
+      "id": "outer_ring_pattern",
+      "kind": "repeated_ports",
+      "members": [
+        {
+          "port": "outer_ring_thread_1"
+        },
+        {
+          "port": "outer_ring_thread_2"
+        },
+        {
+          "port": "outer_ring_thread_3"
+        },
+        {
+          "port": "outer_ring_thread_4"
+        },
+        {
+          "port": "outer_ring_thread_5"
+        },
+        {
+          "port": "outer_ring_thread_6"
+        },
+        {
+          "port": "outer_ring_thread_7"
+        },
+        {
+          "port": "outer_ring_thread_8"
+        }
+      ],
+      "frame": null,
+      "symmetry": {
+        "generators": [
+          {
+            "rotation_deg": 45
+          }
+        ]
+      },
+      "placement_domain": null,
+      "evidence_refs": [
+        "ev_drw"
+      ]
+    },
+    {
+      "id": "frame_anchor_pattern",
+      "kind": "repeated_ports",
+      "members": [
+        {
+          "port": "frame_anchor_1"
+        },
+        {
+          "port": "frame_anchor_2"
+        },
+        {
+          "port": "frame_anchor_3"
+        },
+        {
+          "port": "frame_anchor_4"
+        },
+        {
+          "port": "frame_anchor_5"
+        },
+        {
+          "port": "frame_anchor_6"
+        },
+        {
+          "port": "frame_anchor_7"
+        },
+        {
+          "port": "frame_anchor_8"
+        }
+      ],
+      "frame": null,
+      "symmetry": {},
+      "placement_domain": null,
+      "evidence_refs": [
+        "ev_drw"
+      ]
+    }
+  ],
+  "annotation_status": {
+    "overall": "complete",
+    "expected_ports": {}
+  },
+  "evidence": [
+    {
+      "id": "ev_drw",
+      "source_type": "custom_drawing",
+      "raw_value": "ROTARY_BASE_RU85_REV_A (drawings/ROTARY_BASE_RU85_REV_A.md)",
+      "normalized_claim": {},
+      "source_uri": "drawings/ROTARY_BASE_RU85_REV_A.md",
+      "locator": "",
+      "extraction_method": "human",
+      "confidence": 1.0,
+      "notes": "all features built parametrically in CadQuery in the part-local frame; drawing_to_cad identity; CAD-verified PCD105 outer-ring threads, PCD108.17 frame anchors, \u00d894 opening (see build_rotary_custom.py + section measure)."
+    }
+  ],
+  "provenance": {
+    "authored_by": "custom REV_A drawing",
+    "verified_by": "CadQuery build + mesh section"
+  }
+}

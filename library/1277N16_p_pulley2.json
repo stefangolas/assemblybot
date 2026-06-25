@@ -1,0 +1,74 @@
+{
+  "part_number": "1277N16",
+  "class": "timing_pulley",
+  "source_url": "https://www.mcmaster.com/1277N16/",
+  "retrieved_at": "2026-06-18",
+  "raw_spec": {},
+  "spec": {
+    "od_mm": 30.16,
+    "pitch_in": 0.2,
+    "teeth": 15,
+    "pitch_radius_mm": 12.13,
+    "belt_width_in": 0.31
+  },
+  "cad": {
+    "gltf_uri": "C:\\Users\\stefa\\assemblybot\\cad\\1277N16.glb"
+  },
+  "frame": {
+    "origin": [
+      0,
+      0,
+      0
+    ],
+    "handedness": "right"
+  },
+  "features": [
+    {
+      "id": "bore",
+      "geometry": {
+        "type": "axis",
+        "origin": [
+          25.0,
+          13.0,
+          -66.03624055597791
+        ],
+        "direction": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      },
+      "role": "shaft_bore",
+      "params": {
+        "diameter": 6.35
+      }
+    },
+    {
+      "id": "pitch",
+      "geometry": {
+        "type": "axis",
+        "origin": [
+          25.0,
+          13.0,
+          -66.03624055597791
+        ],
+        "direction": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      },
+      "role": "pitch_circle",
+      "params": {
+        "radius_mm": 12.13,
+        "teeth": 15,
+        "pitch_in": 0.2
+      }
+    }
+  ],
+  "provenance": {
+    "discovered_by": "playwright",
+    "annotated_by": "manual",
+    "confidence": 0.9
+  }
+}

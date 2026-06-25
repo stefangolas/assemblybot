@@ -1,0 +1,79 @@
+{
+  "schema_version": 2,
+  "part_number": "90263A239",
+  "classification": {
+    "catalog_family": "shoulder_screw",
+    "broader_families": ["fastener", "journal"],
+    "aliases": ["shoulder_bolt", "stripper_bolt"]
+  },
+  "source": {"url": "https://www.mcmaster.com/90263A239/", "retrieved_at": "2026-06-20"},
+  "raw_spec": {"thread": "M4", "shoulder_dia_mm": "5", "shoulder_len_mm": "10", "head_dia_mm": "9"},
+  "normalized_parameters": {
+    "thread_designation": "M4x0.7", "shoulder_diameter_mm": 5.0, "shoulder_length_mm": 10.0,
+    "head_diameter_mm": 9.0
+  },
+  "cad": {"source_uri": "cad/90263A239.step", "gltf_uri": "cad/90263A239.glb", "units": "metre"},
+  "part_frame": {
+    "units": "millimetre",
+    "drawing_to_cad": {"scale": 1.0, "rotation": "identity", "translation": [0, 0, 0]},
+    "note": "axis = local Z. measured along Z: thread -19..-14 (Ø3.7), shoulder -14..-4 (Ø5, 10 mm), head -4..0 (Ø9)."
+  },
+  "ports": [
+    {
+      "id": "shoulder",
+      "family": "cylindrical",
+      "polarity": "insert",
+      "geometry": {
+        "axis": {"origin": [0.0, 0.0, 0.0], "direction": [0, 0, 1]},
+        "radial_interval_mm": {"min": 2.5, "max": 2.5, "unit": "mm"},
+        "axial_interval_mm": {"min": -14.0, "max": -4.0, "unit": "mm"},
+        "material_side": "inside"
+      },
+      "semantic_aliases": ["shoulder_journal", "axle"],
+      "annotation_status": "confirmed",
+      "evidence_refs": ["ev_shoulder"]
+    },
+    {
+      "id": "thread",
+      "family": "threaded",
+      "polarity": "external",
+      "geometry": {
+        "axis": {"origin": [0.0, 0.0, 0.0], "direction": [0, 0, 1]},
+        "axial_interval_mm": {"min": -19.0, "max": -14.0, "unit": "mm"},
+        "thread": {"standard": "ISO_metric", "designation": "M4x0.7", "pitch_mm": 0.7,
+                   "handedness": "right", "starts": 1, "major_diameter_mm": {"min": 3.8, "max": 4.0},
+                   "evidence_status": "confirmed", "evidence_source": "catalog_field"}
+      },
+      "semantic_aliases": ["threaded_end"],
+      "annotation_status": "confirmed",
+      "evidence_refs": ["ev_thread"]
+    },
+    {
+      "id": "head_seat",
+      "family": "planar",
+      "polarity": "contact",
+      "geometry": {
+        "plane": {"origin": [0.0, 0.0, -4.0], "normal": [0, 0, 1]},
+        "boundary_uv_mm": {"outer": [[-4.5, -4.5], [4.5, -4.5], [4.5, 4.5], [-4.5, 4.5]],
+                           "holes": [[[-2.5, -2.5], [2.5, -2.5], [2.5, 2.5], [-2.5, 2.5]]]},
+        "material_side": "negative_normal"
+      },
+      "semantic_aliases": ["head_underside", "axial_stop"],
+      "annotation_status": "nominal",
+      "evidence_refs": ["ev_head"]
+    }
+  ],
+  "port_groups": [],
+  "annotation_status": {"overall": "complete", "expected_ports": {}},
+  "evidence": [
+    {"id": "ev_shoulder", "source_type": "cad", "raw_value": "Ø5 shoulder, Z -14..-4 (10 mm)",
+     "normalized_claim": {"target_path": "ports.shoulder.geometry.axial_interval_mm", "value": {"min": -14, "max": -4}, "unit": "mm"},
+     "extraction_method": "cad_measurement", "confidence": 0.9},
+    {"id": "ev_thread", "source_type": "product_page", "raw_value": "M4 thread",
+     "normalized_claim": {"target_path": "ports.thread.geometry.thread.designation", "value": "M4x0.7", "unit": "mm"},
+     "extraction_method": "dom", "confidence": 0.95},
+    {"id": "ev_head", "source_type": "product_page", "raw_value": "head Ø9",
+     "normalized_claim": {"target_path": "ports.head_seat", "value": "Ø9 underside"}, "extraction_method": "dom", "confidence": 0.8}
+  ],
+  "provenance": {"discovered_by": "playwright McMaster", "annotated_by": "mesh-section", "migrated_from_v1": "90263A239_p_screw.json"}
+}

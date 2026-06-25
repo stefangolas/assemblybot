@@ -1,0 +1,83 @@
+{
+  "schema_version": 2,
+  "part_number": "HNTT6-5",
+  "classification": {
+    "catalog_family": "t_slot_nut",
+    "broader_families": ["fastener", "captive_nut"],
+    "aliases": ["pre_assembly_insertion_nut", "drop_in_nut", "HFS6_nut"]
+  },
+  "source": {
+    "url": "https://us.misumi-ec.com/vona2/detail/110302251050/?HissuCode=HNTT6-5",
+    "retrieved_at": "2026-06-21",
+    "note": "Pre-Assembly Insertion Nut for 6 Series (HFS6) extrusions. HFS6 series groove opening = 8 mm (literal catalog drawing dimension) -- NOT the HFS8 series (which is a 10 mm slot). The series numeral != slot width in mm."
+  },
+  "raw_spec": {
+    "family": "HNTT6 pre-assembly insertion nut",
+    "thread": "M5", "for_series": "HFS6 (8 mm slot opening)",
+    "footprint_mm": "14 x 15", "height_mm": "6.3", "tap_callout_depth_mm": "7.8",
+    "material": "1010 carbon steel equiv, trivalent chromate"
+  },
+  "normalized_parameters": {
+    "thread_designation": "M5x0.8", "width_across_slot_mm": 14.0, "length_along_slot_mm": 15.0,
+    "height_mm": 6.3, "tap_depth_mm": 6.3, "for_slot_opening_mm": 8.0, "for_slot_cavity_mm": 16.0
+  },
+  "cad": {"source_uri": "cad/HNTT6-5.step", "gltf_uri": "cad/HNTT6-5.glb", "units": "metre"},
+  "part_frame": {
+    "units": "millimetre",
+    "drawing_to_cad": {"scale": 1.0, "rotation": "identity", "translation": [0, 0, 0]},
+    "note": "Local frame chosen to match the extrusion T-slot section convention so profile_containment compares apples-to-apples: u = X across the slot (width 14 -> -7..7), v = Y depth from the extrusion top face (face datum v=0, into the slot is negative), w = Z along the slot (length 15). The nut seats in the slot CAVITY just below the lips: its captured rectangle is u[-7,7] x v[-2.3,-8.6] (14 mm wide, 6.3 mm tall, top 0.1 mm below the v=-2.2 lip underside). 14 mm > the 8 mm opening => the lips capture it; 14 mm < the 16 mm cavity and 6.3 mm < the 12.2 mm cavity depth => it seats. The M5 tap runs vertically (along +Y, opening toward the slot face) so a clamp screw dropped through the rail/foot clearance hole threads down into it. CAD bbox 14.00 x 6.30 x 15.00 mm corroborates the footprint/height."
+  },
+  "ports": [
+    {
+      "id": "captured_profile",
+      "family": "swept_profile",
+      "polarity": "insert",
+      "geometry": {
+        "sweep_path": {"axis": {"origin": [0, 0, 0], "direction": [0, 0, 1]}},
+        "sweep_interval_mm": {"min": 0.0, "max": 15.0, "unit": "mm"},
+        "section_frame": {"origin": [0, 0, 0], "x_axis": [1, 0, 0], "y_axis": [0, 1, 0], "z_axis": [0, 0, 1]},
+        "section_profile_uv_mm": {"outer": [[-7, -2.3], [7, -2.3], [7, -8.6], [-7, -8.6]], "holes": []},
+        "material_side": "inside_profile"
+      },
+      "semantic_aliases": ["t_nut_capture_section"],
+      "annotation_status": "confirmed",
+      "evidence_refs": ["ev_footprint", "ev_slot_fit"]
+    },
+    {
+      "id": "tap",
+      "family": "threaded",
+      "polarity": "internal",
+      "geometry": {
+        "axis": {"origin": [0.0, -2.3, 0.0], "direction": [0, 1, 0]},
+        "axial_interval_mm": {"min": -8.6, "max": -2.3, "unit": "mm"},
+        "thread": {"standard": "ISO_metric", "designation": "M5x0.8", "pitch_mm": 0.8,
+                   "handedness": "right", "starts": 1, "minor_diameter_mm": {"min": 4.1, "max": 4.2},
+                   "evidence_status": "confirmed", "evidence_source": "catalog_field"}
+      },
+      "semantic_aliases": ["clamp_screw_receiver"],
+      "annotation_status": "confirmed",
+      "evidence_refs": ["ev_thread"]
+    }
+  ],
+  "port_groups": [],
+  "annotation_status": {"overall": "complete", "expected_ports": {}},
+  "evidence": [
+    {"id": "ev_footprint", "source_type": "manufacturer_drawing",
+     "source_uri": "candidate_evidence/rung2-tslot-nut/_plain_nut/misumi/HNTT6-5/source/drawing_original.png",
+     "locator": "HNTT6-5 detail-page dimensioned drawing, front view: footprint 14 x 15 mm, base height 6.3 mm; CAD bbox 14.00 x 6.30 x 15.00 corroborates",
+     "raw_value": "front-view footprint 14 x 15 mm, base height 6.3 mm; CAD bbox 14.00 x 6.30 x 15.00",
+     "normalized_claim": {"target_path": "normalized_parameters.width_across_slot_mm", "value": 14.0, "unit": "mm"},
+     "extraction_method": "drawing_read+cad_measurement", "confidence": 0.95},
+    {"id": "ev_slot_fit", "source_type": "manufacturer_drawing",
+     "source_uri": "candidate_evidence/rung2-tslot-nut/_plain_nut/misumi/HNTT6-5/source/catalog_series_icon_slotwidth8mm.png",
+     "locator": "HNTT6 catalog page HFS6-series groove-width icon: opening literally dimensioned 8 mm ('For HFS6 Series Aluminum Extrusions 30/50/60/100 Square'); cavity 16 / depth 12.2 from 6575N203 -> 14 wide captured by the 8 opening, fits the 16 cavity",
+     "raw_value": "HFS6 series groove opening literally dimensioned 8 mm; nut 14 wide captured by 8 opening, fits 16 cavity",
+     "normalized_claim": {"target_path": "normalized_parameters.for_slot_opening_mm", "value": 8.0, "unit": "mm"},
+     "extraction_method": "drawing_read", "confidence": 0.9},
+    {"id": "ev_thread", "source_type": "product_page",
+     "raw_value": "Thread Nominal M(mm) = M5; PN grammar HNTT6-{M} => -5 is M5",
+     "normalized_claim": {"target_path": "ports.tap.geometry.thread.designation", "value": "M5x0.8", "unit": "mm"},
+     "extraction_method": "dom", "confidence": 0.95}
+  ],
+  "provenance": {"discovered_by": "part-evidence-scout (Misumi raw-CDP)", "annotated_by": "lead: drawing + CAD bbox + cross-checked against 6575N203 slot section", "acquired": "2026-06-21"}
+}

@@ -1,0 +1,253 @@
+{
+  "schema_version": 2,
+  "part_number": "SCB6-30",
+  "classification": {
+    "catalog_family": "hex_standoff",
+    "broader_families": [
+      "spacer"
+    ],
+    "aliases": [
+      "male_female_standoff"
+    ]
+  },
+  "source": {
+    "url": "misumi:SCB6-30 (series 110300206870)",
+    "retrieved_at": "2026-06-22",
+    "brand": "MSM1"
+  },
+  "raw_spec": {},
+  "normalized_parameters": {
+    "thread": "M6",
+    "body_length_mm": 30,
+    "male_stud_mm": 6,
+    "hex_AF_mm": 10,
+    "overall_mm": 36
+  },
+  "cad": {
+    "source_uri": "cad/SCB6-30_STEP.zip",
+    "gltf_uri": "cad/SCB6-30.glb",
+    "units": "metre"
+  },
+  "part_frame": {
+    "units": "millimetre",
+    "drawing_to_cad": {
+      "scale": 1.0,
+      "rotation": "identity",
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    "note": "long axis = X (0..36); male M6 stud at X=0..6, hex body X=6..36, female M6 bore at X=36 end."
+  },
+  "ports": [
+    {
+      "id": "male_thread",
+      "family": "threaded",
+      "polarity": "external",
+      "geometry": {
+        "axis": {
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            -1.0,
+            0,
+            0
+          ]
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 6.0,
+          "unit": "mm"
+        },
+        "thread": {
+          "standard": "ISO_metric",
+          "designation": "M6x1.0",
+          "pitch_mm": 1.0,
+          "handedness": "right",
+          "starts": 1,
+          "major_diameter_mm": 6.0
+        }
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "male_stud_into_adapter"
+      ],
+      "evidence_refs": [
+        "ev_cad"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "female_thread",
+      "family": "threaded",
+      "polarity": "internal",
+      "geometry": {
+        "axis": {
+          "origin": [
+            36.0,
+            0,
+            0
+          ],
+          "direction": [
+            -1.0,
+            0,
+            0
+          ]
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 10.0,
+          "unit": "mm"
+        },
+        "thread": {
+          "standard": "ISO_metric",
+          "designation": "M6x1.0",
+          "pitch_mm": 1.0,
+          "handedness": "right",
+          "starts": 1
+        }
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "female_receives_tabletop_screw"
+      ],
+      "evidence_refs": [
+        "ev_cad"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "bot_face",
+      "family": "planar",
+      "polarity": "contact",
+      "geometry": {
+        "plane": {
+          "origin": [
+            6.0,
+            0,
+            0
+          ],
+          "normal": [
+            -1.0,
+            0,
+            0
+          ]
+        },
+        "boundary_uv_mm": {
+          "outer": [
+            [
+              -5,
+              -5
+            ],
+            [
+              5,
+              -5
+            ],
+            [
+              5,
+              5
+            ],
+            [
+              -5,
+              5
+            ]
+          ],
+          "holes": []
+        },
+        "material_side": "positive_normal"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "seats_on_adapter_top"
+      ],
+      "evidence_refs": [
+        "ev_cad"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "top_face",
+      "family": "planar",
+      "polarity": "contact",
+      "geometry": {
+        "plane": {
+          "origin": [
+            36.0,
+            0,
+            0
+          ],
+          "normal": [
+            1.0,
+            0,
+            0
+          ]
+        },
+        "boundary_uv_mm": {
+          "outer": [
+            [
+              -5,
+              -5
+            ],
+            [
+              5,
+              -5
+            ],
+            [
+              5,
+              5
+            ],
+            [
+              -5,
+              5
+            ]
+          ],
+          "holes": []
+        },
+        "material_side": "negative_normal"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "supports_tabletop"
+      ],
+      "evidence_refs": [
+        "ev_cad"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    }
+  ],
+  "port_groups": [],
+  "annotation_status": {
+    "overall": "complete",
+    "expected_ports": {}
+  },
+  "evidence": [
+    {
+      "id": "ev_cad",
+      "source_type": "cad",
+      "raw_value": "Misumi SCB6-30 measured 36x10x10 (30 body + 6 M6 stud, 10mm hex AF)",
+      "normalized_claim": {},
+      "source_uri": "cad/SCB6-30.glb",
+      "locator": "",
+      "extraction_method": "cad_measurement",
+      "confidence": 0.95,
+      "notes": "discovered Google-first (series 110300206870 standard metric M-F) -> construct -> validate_pns -> fetch -> MEASURE. MSM1."
+    }
+  ],
+  "provenance": {
+    "discovered_by": "Google-first + validate_pns + fetch + measure",
+    "annotated_by": "mesh measurement"
+  }
+}

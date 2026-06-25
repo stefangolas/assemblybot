@@ -1,0 +1,162 @@
+{
+  "schema_version": 2,
+  "part_number": "HTPA18S5M150-A-H6.35",
+  "classification": {
+    "catalog_family": "timing_pulley",
+    "broader_families": [
+      "rotary_power_transmission"
+    ],
+    "aliases": [
+      "S5M_18T_motor"
+    ]
+  },
+  "source": {
+    "url": "misumi:HTPA18S5M150-A-H6.35",
+    "retrieved_at": "2026-06-22",
+    "brand": "MSM1"
+  },
+  "raw_spec": {},
+  "normalized_parameters": {
+    "teeth": 18,
+    "pitch_mm": 5.0,
+    "belt_width_mm": 15,
+    "bore_mm": 6.35,
+    "OD_mm": 33,
+    "width_mm": 22,
+    "pitch_radius_mm": 14.324
+  },
+  "cad": {
+    "source_uri": "cad/HTPA18S5M150-A-H6.35_STEP.zip",
+    "gltf_uri": "cad/HTPA18S5M150.glb",
+    "units": "metre"
+  },
+  "part_frame": {
+    "units": "millimetre",
+    "drawing_to_cad": {
+      "scale": 1.0,
+      "rotation": "identity",
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    "note": "bore axis = local X; body X 0..22; teeth on OD. Motor (NEMA23) pulley."
+  },
+  "ports": [
+    {
+      "id": "bore",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            1.0,
+            0,
+            0
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 3.175,
+          "max": 3.175,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 22.0,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "motor_shaft_bore_6.35"
+      ],
+      "evidence_refs": [
+        "ev_cad"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "teeth",
+      "family": "periodic",
+      "polarity": "external",
+      "geometry": {
+        "subtype": "rotary",
+        "support": {
+          "axis": {
+            "origin": [
+              11.0,
+              0,
+              0
+            ],
+            "direction": [
+              1.0,
+              0,
+              0
+            ]
+          },
+          "radius_mm": 14.324,
+          "axial_interval_mm": {
+            "min": -7.5,
+            "max": 7.5,
+            "unit": "mm"
+          }
+        },
+        "periodicity": {
+          "pitch_mm": 5.0,
+          "count": 18,
+          "phase": null,
+          "active_width_mm": {
+            "min": 0.0,
+            "max": 15.0,
+            "unit": "mm"
+          }
+        },
+        "profile": {
+          "family": "S5M",
+          "parameters": {}
+        }
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "pitch_circle"
+      ],
+      "evidence_refs": [
+        "ev_cad"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    }
+  ],
+  "port_groups": [],
+  "annotation_status": {
+    "overall": "complete",
+    "expected_ports": {}
+  },
+  "evidence": [
+    {
+      "id": "ev_cad",
+      "source_type": "cad",
+      "raw_value": "measured: 18T S5M, OD33, width22, bore6.35",
+      "normalized_claim": {},
+      "source_uri": "cad/HTPA18S5M150.glb",
+      "locator": "",
+      "extraction_method": "cad_measurement",
+      "confidence": 0.95,
+      "notes": "4:1 reduction with the 72T driven pulley (72/18). NEMA23 1/4-inch (6.35mm) bore; needs a set screw to the motor shaft."
+    }
+  ],
+  "provenance": {
+    "discovered_by": "API-first validate_pns + direct fetch",
+    "annotated_by": "mesh measurement"
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "schema_version": 2,
+  "part_number": "SHTF20S3M100-5",
+  "classification": {
+    "catalog_family": "timing_idler_pulley",
+    "broader_families": ["rotary_power_transmission"],
+    "aliases": ["flanged_idler", "S3M_idler"]
+  },
+  "source": {
+    "url": "https://us.misumi-ec.com/vona2/detail/110302650660/?HissuCode=SHTF20S3M100-5&tab=drawingAndSpecifications",
+    "retrieved_at": "2026-06-21",
+    "note": "seriesCode 110302650660 (the older stored 110302683860 returns PAGE NOT FOUND)"
+  },
+  "raw_spec": {
+    "belt_type": "S3M", "teeth": "20", "belt_width_mm": "10",
+    "bore_mm": "5", "center_bearing": "yes"
+  },
+  "normalized_parameters": {
+    "teeth": 20, "pitch_mm": 3.0, "pitch_radius_mm": 9.549,
+    "bore_diameter_mm": 5.0, "drum_width_mm": 15.0, "overall_width_E_mm": 14.0,
+    "flange_od_mm": 22.0, "drum_od_mm": 18.34,
+    "bearing": {"designation": "685ZZ", "qty": 2, "od_mm": 11.0, "bore_mm": 5.0, "width_each_mm": 5.0},
+    "flange_thickness_S_mm": 2.5, "flange_opening_dia_mm": 9.8,
+    "od_mm": 22.0, "width_mm": 15.0
+  },
+  "cad": {
+    "source_uri": "cad/SHTF20S3M100-5.stp",
+    "gltf_uri": "cad/SHTF20S3M100-5.glb",
+    "units": "metre"
+  },
+  "part_frame": {
+    "units": "millimetre",
+    "drawing_to_cad": {"scale": 1.0, "rotation": "identity", "translation": [0, 0, 0]},
+    "note": "bore/spin axis = local X; mesh X 0..15 (centre 7.5). axial coords measured from x=7.5. DRAWING-TRUE (drw_01_001_3x.png 'Center Bearing' 2-bearing cross-section + spec table, 2026-06-21): this is a 685ZZ x2 ball-bearing idler. Axial chain along X: flange-near x=0..2.5 (S=2.5) | bearing-1 x=2.5..7.5 (B=5) | bearing-2 x=7.5..12.5 (B=5) | flange-far x=12.5..15 (S=2.5). So the two Ø5-bore inner races are CONTIGUOUS, x=2.5..12.5 = 10 mm. Flange disc Ø22 with a center opening Ø~9.8; the flange lip (Ø9.8 < bearing OD Ø11) axially captures the bearings in the hub. The idler BODY (drum + flanges + bearing OUTER races + shields) ROTATES; the bearing INNER races must clamp to the FIXED shoulder screw. Inner-race faces sit at x=2.5 and x=12.5, RECESSED 2.5 mm behind each flange outer face (x=0 / x=15). Retention: a precision spacer per side (ID5, OD<=~7.5 to press the inner ring and clear the rotating shield, ~3 mm thick) reaches through the Ø9.8 opening to the inner-race face and protrudes past the flange so the bracket face (near) and screw head (far) clamp the inner races, NOT the rotating flanges. Stack on the 16 mm shoulder: 3 + 10 + 3 = 16 (exact). NOTE: the raw CAD has an axial conversion glitch (auxiliary bodies collapse to one X); trust this drawing-derived layout, not CAD axial positions."
+  },
+  "ports": [
+    {
+      "id": "bore",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {"origin": [7.5, 0.0, 0.0], "direction": [1, 0, 0]},
+        "radial_interval_mm": {"min": 2.5, "max": 2.5, "unit": "mm"},
+        "axial_interval_mm": {"min": -5.0, "max": 5.0, "unit": "mm"},
+        "material_side": "outside"
+      },
+      "semantic_aliases": ["shaft_bore", "bearing_inner_race"],
+      "annotation_status": "confirmed",
+      "evidence_refs": ["ev_bore"],
+      "unknowns": ["the Ø5 race is recessed; clamping it to the axle requires a shim in each flange recess (see frame note)"]
+    },
+    {
+      "id": "race_face_near",
+      "family": "planar",
+      "polarity": "contact",
+      "geometry": {
+        "plane": {"origin": [2.5, 0.0, 0.0], "normal": [-1, 0, 0]},
+        "boundary_uv_mm": {"outer": [[-3.75, -3.75], [3.75, -3.75], [3.75, 3.75], [-3.75, 3.75]],
+                           "holes": [[[-2.5, -2.5], [2.5, -2.5], [2.5, 2.5], [-2.5, 2.5]]]},
+        "material_side": "positive_normal"
+      },
+      "semantic_aliases": ["inner_race_face"],
+      "annotation_status": "confirmed",
+      "evidence_refs": ["ev_bore", "ev_drawing"],
+      "unknowns": ["inner-race face at x=2.5, recessed 2.5 mm behind flange outer face (x=0); a spacer (ID5/OD<=7.5/~3 mm) reaches it through the Ø9.8 flange opening to transfer clamp force to the stationary inner race"]
+    },
+    {
+      "id": "race_face_far",
+      "family": "planar",
+      "polarity": "contact",
+      "geometry": {
+        "plane": {"origin": [12.5, 0.0, 0.0], "normal": [1, 0, 0]},
+        "boundary_uv_mm": {"outer": [[-3.75, -3.75], [3.75, -3.75], [3.75, 3.75], [-3.75, 3.75]],
+                           "holes": [[[-2.5, -2.5], [2.5, -2.5], [2.5, 2.5], [-2.5, 2.5]]]},
+        "material_side": "negative_normal"
+      },
+      "semantic_aliases": ["inner_race_face"],
+      "annotation_status": "confirmed",
+      "evidence_refs": ["ev_bore", "ev_drawing"],
+      "unknowns": ["inner-race face at x=12.5, recessed 2.5 mm behind flange outer face (x=15); a spacer (ID5/OD<=7.5/~3 mm) reaches it through the Ø9.8 flange opening to transfer clamp force to the stationary inner race"]
+    },
+    {
+      "id": "teeth",
+      "family": "periodic",
+      "polarity": "external",
+      "geometry": {
+        "subtype": "rotary",
+        "support": {"axis": {"origin": [7.5, 0.0, 0.0], "direction": [1, 0, 0]},
+                    "radius_mm": 9.549, "axial_interval_mm": {"min": -5.0, "max": 5.0, "unit": "mm"}},
+        "periodicity": {"pitch_mm": 3.0, "count": 20, "phase": null,
+                        "active_width_mm": {"min": 9.0, "max": 10.0, "unit": "mm"}},
+        "profile": {"family": "S3M", "parameters": {}}
+      },
+      "semantic_aliases": ["pitch_circle"],
+      "annotation_status": "confirmed",
+      "evidence_refs": ["ev_teeth"]
+    }
+  ],
+  "port_groups": [],
+  "annotation_status": {"overall": "partial", "expected_ports": {"flange_faces": "unknown"}},
+  "evidence": [
+    {"id": "ev_bore", "source_type": "cad", "raw_value": "bore Ø5 measured by mesh-section",
+     "normalized_claim": {"target_path": "ports.bore.geometry.radial_interval_mm", "value": {"min": 2.5, "max": 2.5}, "unit": "mm"},
+     "extraction_method": "cad_measurement", "confidence": 0.9},
+    {"id": "ev_teeth", "source_type": "product_page", "raw_value": "S3M 20T width 10",
+     "normalized_claim": {"target_path": "ports.teeth.geometry.periodicity.pitch_mm", "value": 3.0, "unit": "mm"},
+     "extraction_method": "dom", "confidence": 0.95},
+    {"id": "ev_drawing", "source_type": "manufacturer_drawing",
+     "raw_value": "Center Bearing 2-bearing cross-section: bottom axial chain S|B|B|S = 2.5|5|5|2.5; spec table SHTF20/S3M100 row: d=5, P.D.=19.1, O.D.=18.34, F=22, E=14, A=11, W=15, S=2.5, bearing=685ZZ x2 (D=11, B=5)",
+     "normalized_claim": {"target_path": "normalized_parameters.bearing", "value": {"designation": "685ZZ", "qty": 2, "od_mm": 11.0, "bore_mm": 5.0, "width_each_mm": 5.0}, "unit": "mm"},
+     "extraction_method": "drawing_read",
+     "source_refs": ["candidate_evidence/rung2-idler-shims/_idler_drawing/source/drawing_10302650660_drw_01_001_3x.png",
+                     "candidate_evidence/rung2-idler-shims/_idler_drawing/source/SHTF20S3M100-5_spec_normalized.txt"],
+     "confidence": 0.95}
+  ],
+  "provenance": {"discovered_by": "raw-CDP Misumi", "annotated_by": "mesh-section + page", "migrated_from_v1": "SHTF20S3M100-5_p_idler.json"}
+}

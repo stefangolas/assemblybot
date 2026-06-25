@@ -1,0 +1,254 @@
+{
+  "schema_version": 2,
+  "part_number": "TNUT-M6-8mm",
+  "classification": {
+    "catalog_family": "t_slot_nut",
+    "broader_families": [
+      "fastener"
+    ],
+    "aliases": [
+      "drop_in_nut"
+    ]
+  },
+  "source": {
+    "url": "generated:standard-fastener",
+    "retrieved_at": "2026-06-24"
+  },
+  "raw_spec": {},
+  "normalized_parameters": {
+    "thread": "M6",
+    "slot_mm": 8,
+    "base_w_mm": 14,
+    "neck_w_mm": 7.6,
+    "height_mm": 5.5,
+    "length_mm": 12
+  },
+  "cad": {
+    "source_uri": "cad/TNUT-M6-8mm.step",
+    "gltf_uri": "cad/TNUT-M6-8mm.glb",
+    "units": "metre"
+  },
+  "part_frame": {
+    "units": "millimetre",
+    "drawing_to_cad": {
+      "scale": 1.0,
+      "rotation": "identity",
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    "note": "T-nut local: slot axis = Y; T-section in X-Z; thread along Z. Drops into the extrusion slot, base under the lips."
+  },
+  "ports": [
+    {
+      "id": "thread",
+      "family": "threaded",
+      "polarity": "internal",
+      "geometry": {
+        "axis": {
+          "origin": [
+            0,
+            0,
+            5.5
+          ],
+          "direction": [
+            0,
+            0,
+            -1.0
+          ]
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 5.5,
+          "unit": "mm"
+        },
+        "thread": {
+          "standard": "ISO_metric",
+          "designation": "M6x1.0",
+          "pitch_mm": 1.0,
+          "handedness": "right",
+          "starts": 1
+        }
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "tslot_nut_thread"
+      ],
+      "evidence_refs": [
+        "ev_gen"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "profile",
+      "family": "swept_profile",
+      "polarity": "insert",
+      "geometry": {
+        "sweep_path": {
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0,
+            1,
+            0
+          ]
+        },
+        "sweep_interval_mm": {
+          "min": -6.0,
+          "max": 6.0,
+          "unit": "mm"
+        },
+        "section_frame": {
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "x_axis": [
+            1,
+            0,
+            0
+          ],
+          "y_axis": [
+            0,
+            0,
+            1
+          ],
+          "z_axis": [
+            0,
+            1,
+            0
+          ]
+        },
+        "section_profile_uv_mm": {
+          "outer": [
+            [
+              -7,
+              0
+            ],
+            [
+              7,
+              0
+            ],
+            [
+              7,
+              2.5
+            ],
+            [
+              3.8,
+              2.5
+            ],
+            [
+              3.8,
+              5.5
+            ],
+            [
+              -3.8,
+              5.5
+            ],
+            [
+              -3.8,
+              2.5
+            ],
+            [
+              -7,
+              2.5
+            ]
+          ],
+          "holes": []
+        },
+        "material_side": "inside_profile"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "T_section_captured_by_slot_lips"
+      ],
+      "evidence_refs": [
+        "ev_gen"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "lip_seat",
+      "family": "planar",
+      "polarity": "contact",
+      "geometry": {
+        "plane": {
+          "origin": [
+            0,
+            0,
+            2.5
+          ],
+          "normal": [
+            0,
+            0,
+            1.0
+          ]
+        },
+        "boundary_uv_mm": {
+          "outer": [
+            [
+              -7,
+              -6
+            ],
+            [
+              7,
+              -6
+            ],
+            [
+              7,
+              6
+            ],
+            [
+              -7,
+              6
+            ]
+          ],
+          "holes": []
+        },
+        "material_side": "negative_normal"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "bears_under_slot_lips"
+      ],
+      "evidence_refs": [
+        "ev_gen"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    }
+  ],
+  "port_groups": [],
+  "annotation_status": {
+    "overall": "complete",
+    "expected_ports": {}
+  },
+  "evidence": [
+    {
+      "id": "ev_gen",
+      "source_type": "derived",
+      "raw_value": "generated standard drop-in T-slot nut, 8mm slot, M6",
+      "normalized_claim": {},
+      "source_uri": "standard:T-slot-nut-8mm-M6",
+      "locator": "",
+      "extraction_method": "formula",
+      "confidence": 0.9,
+      "notes": "GENERATED (standard-fastener-generator class, like the ISO4762 screws): geometry 100%% determined by the 8mm slot profile (6575N203) + M6 thread. base 14 (under lips), neck 7.6 (<8 opening), H5.5. Real B-rep CAD with the actual T-profile + thread callout, NOT a box. Exact catalog PN is a deferred fetch."
+    }
+  ],
+  "provenance": {
+    "generated_by": "CadQuery standard-fastener gen",
+    "class": "standardized commodity hardware"
+  }
+}

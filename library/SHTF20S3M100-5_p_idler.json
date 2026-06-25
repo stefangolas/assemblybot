@@ -1,0 +1,29 @@
+{
+  "part_number": "SHTF20S3M100-5",
+  "class": "flanged_idler_pulley",
+  "source_url": "https://us.misumi-ec.com/vona2/detail/110302683860/?HissuCode=SHTF20S3M100-5",
+  "retrieved_at": "2026-06-20",
+  "raw_spec": {},
+  "spec": {
+    "belt_type": "S3M",
+    "teeth": 20,
+    "belt_width_mm": 10,
+    "bore_mm": 5,
+    "center_bearing": true,
+    "pitch_radius_mm": 9.549,
+    "od_mm": 22
+  },
+  "cad": {
+    "gltf_uri": "C:\\Users\\stefa\\assemblybot\\cad\\SHTF20S3M100-5.glb"
+  },
+  "frame": {
+    "origin": [0, 0, 0],
+    "handedness": "right",
+    "note": "idler-local: bore axis along X (mesh X 0..15, centred 7.5). Bore/spin axis o=(7.5,0,0) d=(1,0,0). Free-spinning by integral center bearing."
+  },
+  "features": [
+    {"id": "bore", "geometry": {"type": "axis", "origin": [7.5, 0.0, 0.0], "direction": [1, 0, 0]}, "role": "shaft_bore", "params": {"diameter": 5}},
+    {"id": "pitch", "geometry": {"type": "axis", "origin": [7.5, 0.0, 0.0], "direction": [1, 0, 0]}, "role": "pitch_circle", "params": {"radius_mm": 9.549, "teeth": 20, "pitch_mm": 3.0}}
+  ],
+  "provenance": {"discovered_by": "playwright", "annotated_by": "mesh measurement", "confidence": 0.95}
+}

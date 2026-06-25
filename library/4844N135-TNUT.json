@@ -1,0 +1,36 @@
+{
+  "part_number": "4844N135-TNUT",
+  "class": "t_slot_nut",
+  "source_url": "https://www.mcmaster.com/4844N135/",
+  "retrieved_at": "2026-06-18",
+  "raw_spec": {
+    "included_with": "4844N135",
+    "Thread Size": "M6"
+  },
+  "spec": {
+    "thread": "M6",
+    "fits_slot": 6.5,
+    "fits_rail": 25.0
+  },
+  "cad": {
+    "dwg_uri": null,
+    "step_uri": null,
+    "gltf_uri": null,
+    "variant": "none"
+  },
+  "frame": {
+    "origin": [
+      0,
+      0,
+      0
+    ],
+    "handedness": "right"
+  },
+  "features": [],
+  "provenance": {
+    "discovered_by": "manual",
+    "annotated_by": "manual",
+    "confidence": 0.8,
+    "note": "M6 T-nut included with 4844N135 (qty 4); sized for the 25mm/6.5mm slot by design -- fills bolt_joint `requires`"
+  }
+}

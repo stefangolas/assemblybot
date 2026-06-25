@@ -1,0 +1,29 @@
+{
+  "part_number": "6575N203",
+  "class": "t_slotted_extrusion",
+  "source_url": "https://www.mcmaster.com/6575N25/",
+  "retrieved_at": "2026-06-20",
+  "raw_spec": {},
+  "spec": {
+    "family_pn": "6575N25",
+    "profile": "single four-slot",
+    "section_mm": [40, 40],
+    "length_mm": 304.8,
+    "t_slot_width_mm": 8,
+    "t_slot_depth_mm": 12.2,
+    "material": "silver anodized aluminum, hollow"
+  },
+  "cad": {
+    "gltf_uri": "C:\\Users\\stefa\\assemblybot\\cad\\6575N203.glb"
+  },
+  "frame": {
+    "origin": [0, 0, 0],
+    "handedness": "right",
+    "note": "as-converted: 40x40 section centred in local X-Y, 304.8 mm length along local Z. In the rung-2 world it is placed with R_EXT (local z->world X travel) so its top face lands at world Y=0 and the SSEB20 rail seats on it."
+  },
+  "features": [
+    {"id": "top",  "geometry": {"type": "plane", "origin": [0.0, 20.0, 0.0], "normal": [0, 1, 0]}, "role": "mounting_face", "params": {"note": "rail seats here; continuous T-slot accepts a T-nut anywhere along Z (length)"}},
+    {"id": "top_slot", "geometry": {"type": "axis", "origin": [0.0, 20.0, 0.0], "direction": [0, 0, 1]}, "role": "slot", "params": {"width_mm": 8, "depth_mm": 12.2}}
+  ],
+  "provenance": {"discovered_by": "playwright (CDP Chrome)", "annotated_by": "mesh + catalog drawing", "confidence": 0.9}
+}

@@ -1,0 +1,68 @@
+{
+  "part_number": "6709K211",
+  "class": "linear_carriage",
+  "source_url": "https://www.mcmaster.com/6709K211/",
+  "retrieved_at": "2026-06-18",
+  "raw_spec": {},
+  "spec": {
+    "for_rail_mm": 8
+  },
+  "cad": {
+    "gltf_uri": "C:\\Users\\stefa\\assemblybot\\cad\\6709K211.glb"
+  },
+  "frame": {
+    "origin": [
+      0,
+      0,
+      0
+    ],
+    "handedness": "right"
+  },
+  "features": [
+    {
+      "id": "axis",
+      "geometry": {
+        "type": "axis",
+        "origin": [
+          0.0,
+          16.5,
+          0.0
+        ],
+        "direction": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "role": "shaft_bore",
+      "params": {
+        "diameter": 8
+      }
+    },
+    {
+      "id": "top",
+      "geometry": {
+        "type": "plane",
+        "origin": [
+          0.0,
+          23.95,
+          0.0
+        ],
+        "normal": [
+          0.0,
+          1.0,
+          0.0
+        ]
+      },
+      "role": "mounting_face",
+      "params": {
+        "pattern": "4x M2 @ 10x10"
+      }
+    }
+  ],
+  "provenance": {
+    "discovered_by": "playwright",
+    "annotated_by": "manual",
+    "confidence": 0.9
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "schema_version": 2,
+  "part_number": "DWSSS-D7.5-V5-L3",
+  "classification": {
+    "catalog_family": "precision_spacer",
+    "broader_families": ["fastener", "spacer_washer"],
+    "aliases": ["bearing_inner_race_spacer", "shoulder_spacer"]
+  },
+  "source": {
+    "url": "https://us.misumi-ec.com/vona2/detail/110600065570/?HissuCode=DWSSS-D7.5-V5-L3",
+    "retrieved_at": "2026-06-21",
+    "note": "Custom-ground precision spacer; MISUMI publishes NO downloadable CAD for this family ('CAD data is not available'). Geometry is fully determined by the complete spec table + dimensioned drawing (OD/ID/L), so it is modeled here as an annular primitive -- a drawing/CAD is the default, not a precondition (per the evidence-completeness rule)."
+  },
+  "raw_spec": {
+    "material": "304 Stainless Steel", "OD_mm": "7.5", "ID_mm": "5", "length_mm": "3",
+    "tolerance": "OD 7.3-7.5, ID 5.1-5.3, L +/-0.05"
+  },
+  "normalized_parameters": {
+    "outer_diameter_mm": 7.5, "inner_diameter_mm": 5.0, "length_mm": 3.0, "qty_in_assembly": 4
+  },
+  "cad": {"source_uri": null, "gltf_uri": "cad/DWSSS-D7.5-V5-L3.glb", "units": "metre",
+          "note": "no vendor CAD; GLB is a generated annular primitive (ID5/OD7.5/L3) representing the real catalog instance"},
+  "part_frame": {
+    "units": "millimetre",
+    "drawing_to_cad": {"scale": 1.0, "rotation": "identity", "translation": [0, 0, 0]},
+    "note": "axis = local Z; annulus ID5/OD7.5, length 3 (Z 0..3). 'seat' = the Z=0 face that presses the 685ZZ inner-race face (the OD 7.5 lands on the inner ring ~Ø7 and clears both the Ø9.8 flange opening and the rotating ZZ shield, which sits at a larger radius). One spacer per idler side; the 16 mm shoulder stack is spacer(3) + inner-race stack(10) + spacer(3) = 16 mm exact."
+  },
+  "ports": [
+    {
+      "id": "seat",
+      "family": "planar",
+      "polarity": "contact",
+      "geometry": {
+        "plane": {"origin": [0.0, 0.0, 0.0], "normal": [0, 0, -1]},
+        "boundary_uv_mm": {"outer": [[-3.75, -3.75], [3.75, -3.75], [3.75, 3.75], [-3.75, 3.75]],
+                           "holes": [[[-2.5, -2.5], [2.5, -2.5], [2.5, 2.5], [-2.5, 2.5]]]},
+        "material_side": "positive_normal"
+      },
+      "semantic_aliases": ["race_clamp_face"],
+      "annotation_status": "confirmed",
+      "evidence_refs": ["ev_dims"]
+    },
+    {
+      "id": "bore",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {"origin": [0.0, 0.0, 1.5], "direction": [0, 0, 1]},
+        "radial_interval_mm": {"min": 2.55, "max": 2.55, "unit": "mm"},
+        "axial_interval_mm": {"min": -1.5, "max": 1.5, "unit": "mm"},
+        "material_side": "outside"
+      },
+      "semantic_aliases": ["slip_bore"],
+      "annotation_status": "confirmed",
+      "evidence_refs": ["ev_dims"]
+    }
+  ],
+  "port_groups": [],
+  "annotation_status": {"overall": "complete", "expected_ports": {}},
+  "evidence": [
+    {"id": "ev_dims", "source_type": "product_page",
+     "raw_value": "configured spec table + dimensioned drawing: OD 7.5 (7.3-7.5), ID 5 (5.1-5.3), L 3 (+/-0.05), 304SS",
+     "normalized_claim": {"target_path": "normalized_parameters.outer_diameter_mm", "value": 7.5, "unit": "mm"},
+     "extraction_method": "spec_table+drawing_read", "confidence": 0.9,
+     "source_refs": ["candidate_evidence/rung2-idler-spacer/misumi/DWSSS-D7.5-V5-L3/"]}
+  ],
+  "provenance": {"discovered_by": "part-evidence-scout (Misumi raw-CDP)", "annotated_by": "lead: spec table (no vendor CAD; primitive geometry)", "acquired": "2026-06-21"}
+}

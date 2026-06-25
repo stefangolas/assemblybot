@@ -1,0 +1,64 @@
+{
+  "part_number": "CUSTOM-clamp",
+  "class": "belt_clamp",
+  "source_url": "fabricated",
+  "retrieved_at": "2026-06-18",
+  "raw_spec": {},
+  "spec": {
+    "note": "pinches belt to plate"
+  },
+  "cad": {
+    "gltf_uri": "C:\\Users\\stefa\\assemblybot\\cad\\CUSTOM-clamp.glb"
+  },
+  "frame": {
+    "origin": [
+      0,
+      0,
+      0
+    ],
+    "handedness": "right"
+  },
+  "features": [
+    {
+      "id": "mount",
+      "geometry": {
+        "type": "plane",
+        "origin": [
+          25.0,
+          26.065,
+          0.0
+        ],
+        "normal": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      },
+      "role": "mounting_face",
+      "params": {}
+    },
+    {
+      "id": "grip",
+      "geometry": {
+        "type": "plane",
+        "origin": [
+          25.0,
+          25.130000000000003,
+          0.0
+        ],
+        "normal": [
+          0.0,
+          1.0,
+          0.0
+        ]
+      },
+      "role": "mounting_face",
+      "params": {}
+    }
+  ],
+  "provenance": {
+    "discovered_by": "design",
+    "annotated_by": "manual",
+    "confidence": 0.9
+  }
+}
