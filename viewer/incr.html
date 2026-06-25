@@ -192,7 +192,7 @@ function toggleParts() {
     const p = place[part.ref];
     
     o.traverse(n => {
-      if(n.isMesh) {
+      if(n.isMesh && !n.isLineSegments2) {
         const edges = new THREE.EdgesGeometry(n.geometry, 15);
         const lineGeom = new LineSegmentsGeometry().fromEdgesGeometry(edges);
         const lineMat = new LineMaterial({
