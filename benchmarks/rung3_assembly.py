@@ -18,7 +18,7 @@ from ontology.templates import TEMPLATES
 from ontology import load_path as LP
 
 ROOT = Path(__file__).resolve().parent.parent
-OUT, LIB = ROOT / "out", ROOT / "library_v2"
+OUT, LIB = ROOT / "projects" / "rung3_rotary" / "out", ROOT / "library_v2"
 I = [[1,0,0],[0,1,0],[0,0,1]]; R_XZ = [[0,0,-1],[0,1,0],[1,0,0]]
 R_EXT = [[0,0,1],[0,1,0],[-1,0,0]]; R_EY = [[1,0,0],[0,0,1],[0,-1,0]]
 D = 95.10
