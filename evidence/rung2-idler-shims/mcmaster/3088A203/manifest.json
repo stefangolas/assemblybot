@@ -1,0 +1,28 @@
+{
+  "manufacturer": "McMaster-Carr",
+  "part_number": "3088A203",
+  "family": "Carbon Steel Shim (round alignment/spacing shim)",
+  "configuration": {
+    "id_mm": 5,
+    "id_tolerance_mm": "-0.3 to 0.3",
+    "od_mm": 10,
+    "od_tolerance_mm": "-0.5 to 0.5",
+    "thickness_mm": 2,
+    "thickness_tolerance_mm": "-0.21 to 0.21",
+    "material": "1008-1010 Low-Carbon Steel",
+    "min_hardness": "Rockwell B40"
+  },
+  "source_urls": [
+    "https://www.mcmaster.com/3088A203/"
+  ],
+  "retrieval_time_utc": "2026-06-21",
+  "evidence_files": {
+    "product_page_capture": "source/product_page.txt"
+  },
+  "cad_status": "not_fetched",
+  "drawing_status": "2-D PDF available on product page; not yet downloaded (deferred, see 3088A693 rationale)",
+  "candidate_status": "shortlisted",
+  "known_contradictions": [
+    "OD = 10 mm exactly equals the stated flange-opening clearance (~Ø10), not strictly less than 10 mm. Same caveat as 3088A693."
+  ]
+}

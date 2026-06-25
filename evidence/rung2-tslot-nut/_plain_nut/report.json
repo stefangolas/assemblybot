@@ -1,0 +1,84 @@
+{
+  "job_id": "rung2-tslot-nut-plain-m5",
+  "status": "CANDIDATE_FOUND",
+  "recommended_candidate": {
+    "manufacturer": "MISUMI",
+    "part_number": "HNTT6-5",
+    "configuration": {
+      "family": "HNTT6 -- Pre-Assembly Insertion Nut for 6 Series (HFS6) Aluminum Extrusions",
+      "thread_nominal_M": "M5",
+      "material": "1010 Carbon Steel Equivalent",
+      "surface_treatment": "Trivalent Chromate",
+      "insertion_style": "Drop-in (pre-assembly insertion -- nut is tilted/angled into the slot opening then rotated/seated, per the manufacturer's own application drawing; not a slide-from-the-end T-nut)",
+      "sale_unit": "Individual",
+      "days_to_ship": "Shippable Today (per live product page)"
+    },
+    "bundle_path": "candidate_evidence/rung2-tslot-nut/_plain_nut/misumi/HNTT6-5/"
+  },
+  "hard_requirements": {
+    "confirmed": [
+      "Plain M5 threaded drop-in T-slot/insertion nut, NOT a screw+nut set: manufacturer-confirmed -- HNTT6-5's own product page and catalog PDF describe only the nut (no bundled screw is listed anywhere in the spec table, type table, or bulk-package table); this directly satisfies the rejection reason for the prior 6000N786 candidate (bundled screw too short).",
+      "M5 thread: manufacturer-confirmed -- 'Thread Nominal M(mm)' configurator field on the live page lists M5 as a selectable option, and the configured/resolved exact part number is literally 'HNTT6-5' (the '-5' suffix is the M-value per MISUMI's own documented PN grammar 'HNTT6-{M}', confirmed live: page title is 'HNTT6-5 | Pre-Assembly Insertion Nuts for 6 Series Aluminum Extrusions | MISUMI' and the page explicitly states 'Part Number confirmed').",
+      "Fits an 8 mm slot opening: manufacturer-confirmed via a LITERAL DRAWING DIMENSION, not series-name inference. The HNTT6 family's own printed MISUMI catalog page (source/catalog_page.pdf, also rendered as source/catalog_series_icon_slotwidth8mm.png) carries an 'HFS6 Series' dimensional icon that literally dimensions the groove/slot opening as '8' (mm), with the page header text 'For HFS6 Series Aluminum Extrusions 30, 50, 60, 100 Square'. This is the literal drawing dimension required by the job packet's acceptance gate.",
+      "Real purchasable catalog PN: manufacturer-confirmed -- HNTT6-5 resolves to a live, fully configured MISUMI detail page (series code 110302251050) with 'Part Number confirmed' status and 'Shippable Today' availability."
+    ],
+    "contradicted": [],
+    "unresolved": [
+      "Exact unit price was not captured in this session -- the page's price block ('Unit Price' / 'Total') was present in the DOM but not populated without an explicit quantity/Add-to-Cart interaction. Not a hard requirement, but flagged so the lead can pull it live if needed for BOM costing."
+    ]
+  },
+  "evidence": {
+    "drawing": "candidate_evidence/rung2-tslot-nut/_plain_nut/misumi/HNTT6-5/source/drawing_original.png (live detail-page dimensioned drawing: footprint 14 x 15 mm, bore/tap depth 7.8 mm, base thickness steps 5.5/6.3 mm) and source/catalog_page.pdf + catalog_series_icon_slotwidth8mm.png (printed catalog page, HFS6-Series groove-width icon literally dimensioned '8')",
+    "cad": "candidate_evidence/rung2-tslot-nut/_plain_nut/misumi/HNTT6-5/cad/HNTT6-5_original.step (raw MISUMI STEP_AP203) and cad/HNTT6-5_converted.glb (cascadio-converted, metres)",
+    "specification": "candidate_evidence/rung2-tslot-nut/_plain_nut/misumi/HNTT6-5/source/product_page.txt and product_page.png (live configurator: Thread Nominal M(mm) = M3/M4/M5/M6, Material, Loosening Prevention, Surface Treatment, Sale Unit fields)",
+    "bom": "not applicable -- single catalog item, no bundled fastener/kit"
+  },
+  "cad_measurements": [
+    {
+      "type": "CAD-measured",
+      "description": "Overall nut-body bounding box (single watertight body, 386 vertices, from HNTT6-5_original.step)",
+      "value_mm": {"x": 14.00, "y": 6.30, "z": 15.00},
+      "note": "Matches the manufacturer drawing's front-view footprint (14 x 15 mm) and the drawing's wider base-thickness callout (6.3 mm)."
+    },
+    {
+      "type": "CAD-measured",
+      "description": "Central bore region vertex-radius envelope (helical/non-constant-radius surface, ~0.28-2.06 mm sampled radii)",
+      "note": "Corroborates the bore is modeled as an actual helical thread form (not a plain cylindrical clearance hole) -- CAD-measured corroboration only. The M5 THREAD IDENTITY itself is manufacturer-confirmed (spec table + PN grammar), not derived from this CAD sample; mesh resolution was too coarse to claim an exact ISO M5 major/minor diameter fit from vertices alone."
+    }
+  ],
+  "nut_thickness_for_screw_length_calc": {
+    "value_mm": 7.8,
+    "basis": "manufacturer-confirmed (drawing dimension): the drawing's side-view dimension labeled '7.8' is the full nut height from the underside of the wide base flange to the top face where the M5-tapped bore opens -- i.e. the through-depth a clamp screw must traverse inside the nut body. The base flange itself steps from 6.3 mm (wide, slot-engaging) down to 5.5 mm (narrower waist) -- both are CAD-corroborated (envelope height measured 6.30 mm) and manufacturer-confirmed (same drawing).",
+    "recommendation_for_lead": "For the ~11 mm rail stack + this nut, the lead should size the M5 clamp screw to thread at least ~6-7.8 mm into this nut (per the 7.8 mm tapped-bore depth) on top of whatever clears the rail-mount-hole stack height -- i.e. screw length >= stack height (~11 mm) + a few mm of thread engagement into this 7.8 mm-deep tap, not full 7.8 mm necessarily if partial engagement is acceptable, but do not exceed 7.8 mm of thread engagement length into the nut itself."
+  },
+  "alternatives": [
+    {
+      "manufacturer": "MISUMI",
+      "part_number": "HNTT8-5",
+      "status": "REJECTED",
+      "reason": "Same-family naming trap: 'HNTT8' / 'HFS8 Series' sounds like an 8 mm slot match but its own catalog drawing dimensions the groove opening as 10 mm, not 8 mm (literal manufacturer drawing contradiction). See misumi/REJECTED_HNTT8-5/manifest.json and source/catalog_series_icon_slotwidth10mm.png.",
+      "bundle_path": "candidate_evidence/rung2-tslot-nut/_plain_nut/misumi/REJECTED_HNTT8-5/"
+    },
+    {
+      "manufacturer": "McMaster-Carr",
+      "part_number": "6000N786",
+      "status": "PRIOR-REJECTED (by lead, before this job)",
+      "reason": "Bundled M5x8mm button-head screw is too short for the ~11mm rail stack -- not a plain nut. Recorded here only for cross-reference; see candidate_evidence/rung2-tslot-nut/report.json (parent job file) for the original write-up.",
+      "bundle_path": "candidate_evidence/rung2-tslot-nut/mcmaster/6000N786/"
+    },
+    {
+      "manufacturer": "McMaster-Carr",
+      "part_number": "5537T007",
+      "status": "REJECTED (confirmed again this session)",
+      "reason": "Re-verified via data/mcmaster_fetch.read_specs: title is 'T-Slotted Framing, Drop-in Ball Nut and Button Head for 20 mm High Rail' -- 'Fastener Type: Screw and Nut Set' (not nut-only) and is a 20mm-series part (For Rail Height: Single 20mm), not the 40mm/8mm-slot series.",
+      "bundle_path": "candidate_evidence/rung2-tslot-nut/mcmaster/5537T007/"
+    }
+  ],
+  "risks": [
+    "MISUMI's family-naming convention is a documented trap for this exact role: the numeral suffix in 'N Series' / 'HFSN' extrusion family names does NOT equal the slot width in mm (HFS8 Series = 10mm slot; HFS6 Series = 8mm slot). Any future worker or the lead re-deriving this fit from the series name alone (instead of the literal catalog-drawing groove dimension) will get it backwards. This is now recorded in both manifests for future reference.",
+    "Live page price block did not populate without a quantity/cart interaction in this session -- price/lead-time beyond 'Shippable Today' was not captured numerically.",
+    "No offscreen renderer (pyglet) was available to produce an isometric PNG of the CAD body for visual inspection in this session; bounding-box/vertex measurements were used instead. The GLB itself is saved and is renderable later through the project's normal render pipeline if the lead wants a picture before final acceptance.",
+    "Drop-in vs slide-in classification rests on the manufacturer's own application illustration (nut shown tilted/inserted at an angle then rotated to seat, matching the same visual convention MISUMI uses across this whole 'Pre-Assembly Insertion Nut' family) -- this is manufacturer-evidence-based but is a illustration-style inference rather than an explicit printed word 'drop-in' on the page (MISUMI's own term is 'Pre-Assembly Insertion Nut', which the McMaster equivalent term would be 'drop-in')."
+  ],
+  "recommended_next_action": "Lead may treat HNTT6-5 as the canonical plain M5 T-slot nut for the 8mm-slot extrusion role (clamp screws for the linear-rail mount holes and the FALBS end-bracket foot). It satisfies all hard requirements with manufacturer-confirmed evidence, including the literal 8mm slot-width drawing dimension that the prior HNTT8-5 and McMaster candidates could not provide or contradicted. The lead should size the M5 clamp screw length using the 7.8mm tapped-bore depth recorded above against the ~11mm rail stack height already established in the rung2 clamp-blocker decision."
+}

@@ -1,0 +1,38 @@
+{
+  "job_id": "rung2-idler-spacer",
+  "manufacturer": "McMaster-Carr",
+  "part_number": "92871A034",
+  "family": "Stainless Steel Unthreaded Spacers, For M5 Screw Size, 8mm OD",
+  "configuration": {
+    "outer_diameter_mm": 8.0,
+    "inner_diameter_mm": 5.300,
+    "length_mm": 3.0,
+    "material": "18-8 Stainless Steel, ASTM A582"
+  },
+  "evidence_files": {
+    "spec_table": "source/spec_table_excerpt.txt",
+    "cad_step": "cad/92871A034.step",
+    "cad_glb": "cad/92871A034.glb",
+    "cad_measurements": "measurements/cad_measurements.json"
+  },
+  "cad_available": true,
+  "cad_measured_dimensions_mm": {
+    "outer_diameter": 8.00,
+    "bore_diameter": 5.30,
+    "length": 3.00
+  },
+  "cad_vs_spec_agreement": "exact match -- CAD-measured dimensions corroborate manufacturer-confirmed spec table values",
+  "price_usd_each": {
+    "qty_1_9": 2.45,
+    "qty_10_up": 2.07
+  },
+  "quantity_needed": 4,
+  "evidence_tier_summary": {
+    "ID_5.3mm": "manufacturer-confirmed (full product page spec table) + CAD-measured (radius 2.65mm peak)",
+    "OD_8mm": "manufacturer-confirmed + CAD-measured (radius 4.0mm peak)",
+    "length_3mm": "manufacturer-confirmed + CAD-measured",
+    "material_18-8SS": "manufacturer-confirmed (ASTM A582)",
+    "unthreaded_plain_bore": "manufacturer-confirmed (Mount Type: Unthreaded Hole, Shape: Round)",
+    "OD_vs_packet_ceiling": "RISK -- packet states OD<=~7.5mm ideal, reject OD>=9mm. This part's OD=8mm sits between those thresholds: it clears the hard-reject line (Ø9.8 flange opening measured from idler CAD) by ~0.9mm radius margin, but exceeds the stated 'ideal' ceiling by 0.5mm. Idler bearing CAD (SHTF20S3M100-5) shows the 685ZZ end-face annulus spanning a continuous Ø6.9-9.5mm with no internal step delineating inner-race-contact-zone from shield-adjacent-zone in the simplified catalog mesh, so whether OD=8mm clears the rotating ZZ shield cannot be manufacturer-confirmed from available evidence -- classified INFERRED/CAD-measured-on-a-different-part, not confirmed."
+  }
+}

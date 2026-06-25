@@ -1,0 +1,31 @@
+{
+  "manufacturer": "McMaster-Carr",
+  "part_number": "91437A406",
+  "family": "18-8 Stainless Steel Shim, for Shortening 5 mm Diameter Screw Shoulders",
+  "configuration": {
+    "id_mm": 5,
+    "id_tolerance_mm": "0 to 0.25",
+    "od_mm": 7.82,
+    "od_tolerance_mm": "0 to 0.25",
+    "thickness_in": 0.031,
+    "thickness_mm": 0.787,
+    "thickness_tolerance_in": "-0.003 to 0.003",
+    "for_shoulder_diameter_mm": 5,
+    "for_screw_size": "M5",
+    "material": "18-8 Stainless Steel",
+    "min_hardness": "Rockwell B70"
+  },
+  "source_urls": [
+    "https://www.mcmaster.com/91437A406/"
+  ],
+  "retrieval_time_utc": "2026-06-21",
+  "evidence_files": {
+    "product_page_capture": "source/product_page.txt"
+  },
+  "cad_status": "not_fetched",
+  "drawing_status": "2-D PDF available; not yet downloaded",
+  "candidate_status": "shortlisted",
+  "known_contradictions": [
+    "Listed as 'For Screw Size M5' / 'For Shoulder Diameter 5 mm' -- this is a generic shoulder-shortening shim sized to a 5 mm shoulder diameter, not specific to the M4-threaded screw end. Our axle (96654A131) HAS a 5 mm shoulder diameter (manufacturer-confirmed), so the ID/OD fit is correct by shoulder-diameter match; the 'M5' label refers to McMaster's screw-size taxonomy for this shim family and does not contradict use with our M4-threaded shoulder screw -- ID is the controlling fit dimension (manufacturer-confirmed 5 mm), not the thread callout."
+  ]
+}

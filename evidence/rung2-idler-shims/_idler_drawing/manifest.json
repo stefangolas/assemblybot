@@ -1,0 +1,88 @@
+{
+  "manufacturer": "MISUMI",
+  "part_number": "SHTF20S3M100-5",
+  "family": "S2M, S3M Flanged Timing Idler Pulleys - Teeth, Center Bearing",
+  "series_code": "110302650660",
+  "configuration": {
+    "type": "SHTF (304 Stainless Steel)",
+    "teeth": 20,
+    "belt_type": "S3M",
+    "belt_width_mm": 10,
+    "bore_dia_mm": 5
+  },
+  "source_urls": {
+    "detail_page_resolved": "https://us.misumi-ec.com/vona2/detail/110302650660/?HissuCode=SHTF20S3M100-5&tab=drawingAndSpecifications",
+    "detail_page_original_packet": "https://us.misumi-ec.com/vona2/detail/110302683860/?HissuCode=SHTF20S3M100-5",
+    "drawing_main_gif_url": "https://us.misumi-ec.com/linked/item/10302650660/img/drw_01_001.gif",
+    "drawing_alt_gif_url": "https://us.misumi-ec.com/linked/item/10302650660/img/alt_01_001.gif",
+    "photo_url": "https://us.misumi-ec.com/linked/material/mech/MSM1/PHOTO/10302650660.jpg",
+    "catalog_pdf_url": "https://us.misumi-ec.com/pdf/fa/2019/2019_US_1420_001.pdf (NOT retrieved this session - CDP fetch timed out)"
+  },
+  "retrieval_time_utc": "2026-06-21T19:31:49.255841Z",
+  "files": {
+    "drawing_main_gif": {
+      "path": "source/drawing_10302650660_drw_01_001.gif",
+      "sha256_16": "4408bb8098778ddd",
+      "bytes": 13743
+    },
+    "drawing_main_png": {
+      "path": "source/drawing_10302650660_drw_01_001.png",
+      "sha256_16": "a7581d74b33830e3",
+      "bytes": 16730
+    },
+    "drawing_main_3x_png": {
+      "path": "source/drawing_10302650660_drw_01_001_3x.png",
+      "sha256_16": "76d5a42e90676ba1",
+      "bytes": 218580
+    },
+    "drawing_alt_gif": {
+      "path": "source/drawing_10302650660_alt_01_001.gif",
+      "sha256_16": "6bfa4b3f6cdf9941",
+      "bytes": 17984
+    },
+    "drawing_alt_png": {
+      "path": "source/drawing_10302650660_alt_01_001.png",
+      "sha256_16": "c67699d23989e47d",
+      "bytes": 28892
+    },
+    "drawing_alt_3x_png": {
+      "path": "source/drawing_10302650660_alt_01_001_3x.png",
+      "sha256_16": "dacbe98fd20bff79",
+      "bytes": 444898
+    },
+    "photo_jpg": {
+      "path": "source/photo_10302650660.jpg",
+      "sha256_16": "42f6474862a3fc03",
+      "bytes": 31127
+    },
+    "spec_table_raw_txt": {
+      "path": "source/spec_table_raw.txt",
+      "sha256_16": "66eafbbc010628d4",
+      "bytes": 3827
+    },
+    "spec_section_text": {
+      "path": "source/spec_section_text.txt",
+      "sha256_16": "0de6cc5e74a94027",
+      "bytes": 4573
+    },
+    "configured_spec_blocks": {
+      "path": "source/configured_spec_blocks.txt",
+      "sha256_16": "1d473352e948397c",
+      "bytes": 4681
+    },
+    "spec_normalized": {
+      "path": "source/SHTF20S3M100-5_spec_normalized.txt",
+      "sha256_16": "c97c59766bbe738b",
+      "bytes": 4046
+    }
+  },
+  "drawing_status": "RETRIEVED (main + alt views, GIF + PNG + 3x-upscaled PNG)",
+  "spec_status": "RETRIEVED (cell-exact with rowspan resolution)",
+  "cad_status": "PRE-EXISTING at cad/SHTF20S3M100-5.glb (mesh conversion glitch noted in packet; not re-fetched this session)",
+  "bom_status": "n/a (single catalog part)",
+  "candidate_status": "PART ALREADY ACCEPTED - this bundle is a drawing/spec clarification only",
+  "known_contradictions": [
+    "Original packet detail URL (110302683860) returns PAGE NOT FOUND; live seriesCode is 110302650660 (resolved via PN-search redirect).",
+    "Local CAD cad/SHTF20S3M100-5.glb has a conversion glitch: both bearings and both flanges landed at the same axial X, so the TRUE axial stack CANNOT be read from CAD. Use the drawing/spec table as ground truth (this bundle)."
+  ]
+}

@@ -1,0 +1,9 @@
+{"requirement":"4x M6 male-female hex standoff, 30mm, OD<=12, for tabletop on rotary adapter",
+ "STATE":"SERIES_CONFIRMED_PN_PENDING",
+ "misumi_candidates":[
+   {"series":"110302672270","name":"Metric Male-Female Hex Standoffs (Small Diameter), PSLCG prefix","brand":"MSM1","note":"configurable Post Size B + Length L; small-dia may cap below M6 - confirm Post Size includes M6"},
+   {"series":"110302672630","name":"Stepped Male-Female Hex Standoffs, selectable thread+length","brand":"MSM1"},
+   {"pn_page":"222304049882","name":"RS PRO Steel Hex Standoff Male/Female 30mm M6xM6","brand":"RS PRO (non-MSM1, vendor-pipeline risk)","site":"misumi TH"}],
+ "blocker":"exact MSM1 M6x30 PN needs the configurator grammar; the config SPA returns empty innerText to eval (render wall). Found series via WebSearch (Google-first) + screenshot confirmed 'Metric Male-Female' family.",
+ "next":"human-assisted manual config/download (like RU85), OR screenshot-read the Post Size B + Length values + example PN then validate_pns + fetch_cad. Task forbids fabricating it.",
+ "evidence":["out/standoff_cfg.png","out/standoff_zoom.png"]}

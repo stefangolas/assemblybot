@@ -1,0 +1,77 @@
+{
+  "job_id": "rung2-s3m-belt",
+  "status": "CANDIDATE_FOUND",
+  "recommended_candidate": {
+    "manufacturer": "MISUMI",
+    "part_number": "HTUN540S3M-100",
+    "configuration": {
+      "belt_series": "S3M",
+      "pitch_mm": 3,
+      "nominal_width_mm": 10,
+      "circumference_pitch_length_mm": 540,
+      "number_of_teeth": 180,
+      "belt_type": "Closed End (endless loop)",
+      "material": "Polyurethane main body, Aramid core wire (HTUN type)"
+    },
+    "bundle_path": "candidate_evidence/rung2-s3m-belt/"
+  },
+  "hard_requirements": {
+    "confirmed": [
+      "Belt type S3M (3 mm pitch) -- manufacturer-confirmed (configured product page + family spec table)",
+      "Width 10 mm (Misumi '100' width code) -- manufacturer-confirmed; also CAD-measured (Z-extent = 10.0 mm exactly)",
+      "Closed loop / endless -- manufacturer-confirmed ('Belt Type: Closed End' on configured page; family page explicitly distinguishes Closed End vs Open End)",
+      "Real purchasable catalog PN with published pitch length (540 mm) and tooth count (180) -- manufacturer-confirmed (Configured Specifications block, price $16.72, ship date populated)",
+      "Brand = MISUMI (MSM1) -- confirmed; CAD retrieved hands-off with no 403/504 (cadFormatList returned 15 formats, cadDownload succeeded on first poll)",
+      "Pitch length within 540-580 mm target band -- 540 mm is the closest published standard length at the low end of the band; teeth=180 within the ~180-195 estimate"
+    ],
+    "contradicted": [],
+    "unresolved": [
+      "Exact required center-distance for the real idler pair (~250-290 mm) was not given as a hard number to re-derive the optimal pitch length against; 540 mm (180T) assumed acceptable per the job packet's own target band. If the lead's actual idler center-distance computation lands closer to 564 mm (188T), the alternative HTUN564S3M-100 is already confirmed available at the identical price/lead-time -- swap is a non-issue."
+    ]
+  },
+  "evidence": {
+    "drawing": "candidate_evidence/rung2-s3m-belt/source/HTUN540S3M-100_drawing.png (generic S3M tooth-profile dimension drawing -- shared family drawing, does not depict circumference)",
+    "cad": "candidate_evidence/rung2-s3m-belt/cad/HTUN540S3M-100.stp (+ .glb converted)",
+    "specification": "candidate_evidence/rung2-s3m-belt/source/HTUN540S3M-100_page.txt and family_page_full.txt (full PN-grammar + length/teeth table for the whole S3M Closed-End High-Torque family)",
+    "bom": "not applicable -- single discrete catalog item, no BOM structure"
+  },
+  "cad_measurements": [
+    {
+      "feature": "belt width (Z-extent)",
+      "value_mm": 10.0,
+      "basis": "CAD-measured",
+      "agrees_with_manufacturer_spec": true
+    },
+    {
+      "feature": "tooth pitch / profile (pitch 3mm, H 1.94mm, h 1.14mm, PLD 0.381mm)",
+      "value_mm": "see measurements/cad_features.json",
+      "basis": "manufacturer-confirmed (spec table) -- NOT visible in CAD; CAD body is a simplified non-toothed placeholder strip",
+      "agrees_with_manufacturer_spec": "not applicable -- CAD does not model this feature"
+    },
+    {
+      "feature": "circumference / pitch length (540 mm)",
+      "basis": "manufacturer-confirmed (configured product page) -- explicitly NOT CAD-derivable; the CAD bounding box (X-extent ~263 mm) does not correspond to circumference and must not be used to infer it"
+    }
+  ],
+  "alternatives": [
+    {
+      "manufacturer": "MISUMI",
+      "part_number": "HTUN564S3M-100",
+      "configuration": {"circumference_pitch_length_mm": 564, "number_of_teeth": 188, "nominal_width_mm": 10, "belt_type": "Closed End"},
+      "price_usd": 16.72,
+      "evidence_depth": "spec/configured page only (resolved cleanly); CAD not pulled -- reserve CAD-pull for this only if the lead's exact center-distance calc prefers 564 mm over 540 mm",
+      "note": "Identical price and lead time to the primary candidate. A second scout's tab (independently, outside this job) had already navigated to this exact PN, corroborating it as a known-good resolvable candidate."
+    },
+    {
+      "manufacturer": "MISUMI",
+      "part_number": "HTBN540S3M-100 (rubber variant, not directly resolved in this session)",
+      "note": "Same family, Rubber/Chloroprene + fiberglass-core type instead of Polyurethane/Aramid. Listed in the family table as available at 540 S3M / width 100. Not pulled -- polyurethane (HTUN) was prioritized since the job packet implies a light passive idler loop where back-side tensioning (HTUN's one limitation) is not a driving concern."
+    }
+  ],
+  "risks": [
+    "Misumi's CAD for this belt family is a non-representative simplified placeholder body (rounded-end extruded strip, no teeth, no loop topology, non-watertight, ~4399 mm^3). Do NOT use it for tooth-mesh engagement geometry against the SHTF20S3M100-5 idlers or the SL-TBLG clamp jaw -- those mating checks must rely on the spec-table tooth dimensions (pitch 3, H 1.94, h 1.14, PLD 0.381) common to the whole S3M series, already used elsewhere in the project for the clamp-jaw confirmation.",
+    "If final belt-loop geometry generation (the one allowed generated element per CLAUDE.md) needs an actual length to route, 540 mm pitch length / 180 teeth is the authoritative manufacturer number to use -- not anything read off this CAD mesh.",
+    "Polyurethane (HTUN) belts 'cannot be used with tension from back side' per the family caution note -- if the rung2 design tensions or backs the idler against the belt's outer (non-toothed) face under load, the rubber HTBN540S3M-100 variant (also confirmed available at the same length/width) would be the safer pick. Flagging for lead decision; not investigated further here."
+  ],
+  "recommended_next_action": "Lead to confirm 540 mm / 180-tooth pitch length is compatible with the actual computed idler center-distance (HTUN564S3M-100 / 188T is a ready fallback at identical price/lead-time if not). If belt back-tensioning is part of the load path, consider swapping to HTBN540S3M-100 (rubber) instead of HTUN. Once selected, the lead performs canonical ontology authoring -- this bundle only supplies evidence, no ports/attachments have been created."
+}

@@ -1,0 +1,531 @@
+Skip to content
+Start typing, then use the up and down arrows to select an option from the list
+Quote/Order
+Stefan Golas
+Cart
+0
+All Products
+Services
+Supplier Central
+Blog
+Catalog
+Careers
+MISUMI Home
+Fasteners
+Spacers
+Metal Spacers
+Straight Spacers - Precision, Configurable Length and Inner Diameter
+MISUMI
+Lead Time Reduction
+Straight Spacers - Precision, Configurable Length and Inner Diameter
+Part Number:
+DWSSS-D7.5-V5-L3
+Clear
+Spacers are grounded together to minimize height variation.
+
+Clean processed version also available, please click Here.
+
+Attention
+Please note we are experiencing longer lead times for this product.
+Configured Specifications
+The configured specifications list is located below this button.
+Shape
+Straight
+Bore Style
+Straight
+Outer Diameter D(mm)
+7.5
+Inner Diameter(mm)
+5
+Thickness/Length(mm)
+3
+Material
+[Stainless Steel] 304 Stainless Steel
+Surface Finish
+No
+Outer Diameter Tolerance
+0~-0.2
+Inner Diameter Tolerance
++0.3~+0.1
+Thickness/Length Tolerance
+±0.05
+Quantity
+Sold by Single Unit
+Dimensions Configurable Method
+Dimension Configurable
+Hardness(HRC)
+Not Hardened
+Accuracy
+Precision Grade
+RoHS
+10
+-
+-
+CatalogPage
+CADDownload
+Unit Price	$10.03 (USD)
+Total	$20.06 (USD)
+Ship Date	Thu. Jun 25, 2026
+
+Please note that if this product is ordered after 5:00 PM EST, the order will not be processed until the following day.
+
+Qty.
+Add to Cart
+Quantity ?	Price (USD)	Ship Date
+2-9	$10.03	Jun 25, 2026
+10-29	$9.08	Jun 25, 2026
+30-49	$7.22	Jun 25, 2026
+50-800	$5.83	Jun 25, 2026
+801-6711	$5.83	TBD
+6712-	$4.95	TBD
+
+NOTE : Ship Dates above are subject to change depending upon availability.
+
+Completed
+Clear All
+Outer Diameter D(mm)
+7.5
+Inner Diameter(mm)
+[3-5.5/0.5 mm]
+Thickness/Length(mm)
+[2-40/0.1 mm]
+Material
+Stainless Steel
+304 Stainless Steel
+Surface Finish
+No
+Hardness(HRC)
+Not Hardened
+type
+DWSSS
+CAD
+2D
+3D
+Days to Ship
+All
+5 Day(s) or Less
+Drawing/Specifications
+CAD Preview
+Part Numbers
+Catalog
+Drawing/Specifications
+・Materials
+
+Type	[ M ]Material	[ S ]Surface Treatment	[ H ]Hardness
+DWSSB	1045 Carbon Steel	Black Oxide	-
+DWSSM	Electroless Nickel Plating
+DWSSS	304 Stainless Steel	-
+DWSSKB	O1 Tool Steel	Black Oxide	55HRC~
+DWSSKM	Electroless Nickel Plating
+
+
+Specifications
+Part Number	-	D	-	V	-	L
+DWSSS
+	-
+	D35.5
+	-
+	V12.5
+	-
+	L58.4
+
+Part Number	D 0.5mm Increment	V 0.5mm Increment
+(V3 or More)	L	Simultaneous Grinding Maximum Quantity
+Machining Conditions	0.1mm Increment
+DWSSB
+DWSSM
+DWSSS
+DWSSKB
+DWSSKM	4.0~10.0	0
+2
+2.6
+3.0~8.0	L≤40>D-V≥2
+40.1≤L≤50>D-V≥4	1.0~5.0	100 pcs
+5.1~10.0
+10.1~25.0
+25.1~40.0
+40.1~50.0
+10.5~15.5	0
+2
+2.6
+3.0~13.5	L≤40>D-V≥2
+40.1≤L≤80>D-V≥4
+80.1≤L≤100>D-V≥6	1.0~5.0
+5.1~10.0
+10.1~25.0
+25.1~40.0
+40.1~55.0
+55.1~70.0
+70.1~85.0
+85.1~100.0
+16.0~20.0	0
+2
+2.6
+3.0~18.0	L≤40>D-V≥2
+40.1≤L≤80>D-V≥4
+80.1≤L≤100>D-V≥6	1.0~20.0	50 pcs
+20.1~30.0
+30.1~40.0
+40.1~50.0
+50.1~60.0
+60.1~70.0
+70.1~80.0
+80.1~90.0
+90.1~100.0
+20.5~30.0	0
+2
+2.6
+3.0~28.0	L≤50>D-V≥2
+50.1≤L≤100>D-V≥6	1.0~20.0
+20.1~30.0
+30.1~40.0
+40.1~50.0
+50.1~60.0
+60.1~70.0
+70.1~80.0
+80.1~90.0
+90.1~100.0
+30.5~39.5	0
+2
+2.6
+3.0~37.5	L≤50>D-V≥2
+50.1≤L≤100>D-V≥6	1.0~20.0	20 pcs
+20.1~30.0
+30.1~40.0
+40.1~50.0
+50.1~60.0
+60.1~70.0
+70.1~80.0
+80.1~90.0
+90.1~100.0
+40.0~50.0	0
+2
+2.6
+3.0~48.0	L≤50>D-V≥2
+50.1≤L≤100>D-V≥6	1.0~20.0
+20.1~30.0
+30.1~40.0
+40.1~50.0
+50.1~60.0
+60.1~70.0
+70.1~80.0
+80.1~90.0
+90.1~100.0
+[ ! ]Common Machining Conditions: (1) L≤Vx8; (2) DWSSS (304 Stainless Steel)>L≥2 [ ! ]Order more than one spacer. [ ! ]No specification available for sizes without declaration of value.
+CAD Preview
+Part Numbers
+Catalog
+Customers Who Viewed This Item Also Viewed
+
+Roller Chain Sprockets - B-Type, 25B Series
+
+MISUMI
+
+Days to Ship4 Days~
+
+Clamping Shaft Collars - One Piece, 2 Standard/Tapped Holes, Standard/Compact, Aluminum/Steel/Stainless Steel
+
+MISUMI
+
+Days to ShipIn Stock, Ships in 1 Day~
+
+Drive Shafts - Straight
+
+MISUMI
+
+Days to Ship7 Days~
+
+Spacers for Headed Punches - Height Adjustment
+
+MISUMI
+
+Days to Ship5 Days~
+
+S8M Timing Belt Pulley - High Torque
+
+MISUMI
+
+Days to Ship5 Days~
+
+Flat Spacers - Selectable Tolerance, Configurable Dimensions, Steel or Stainless Steel
+
+MISUMI
+
+Days to Ship5 Days~
+
+Flanged Linear Ball Bearing - Single
+
+MISUMI
+
+Days to ShipIn Stock, Ships in 1 Day~
+
+Linear Shaft - Straight, Precision
+
+MISUMI
+
+Days to ShipIn Stock, Ships in 1 Day~
+
+Straight Spacers - Configurable Length and Outer Diameter
+
+MISUMI
+
+Days to Ship5 Days~
+
+Roller Chain Sprockets - B-Type, 35B Series
+
+MISUMI
+
+Days to Ship4 Days~
+
+Shaft Supports - Flanged Mount, Slit
+
+MISUMI
+
+Days to ShipIn Stock, Ships in 1 Day~
+
+Ball Splines - Both Ends Tapped
+
+MISUMI
+
+Days to Ship7 Days~
+
+Roller Chain Sprockets - B-Type, 25B Series
+
+MISUMI
+
+Days to Ship4 Days~
+
+Clamping Shaft Collars - One Piece, 2 Standard/Tapped Holes, Standard/Compact, Aluminum/Steel/Stainless Steel
+
+MISUMI
+
+Days to ShipIn Stock, Ships in 1 Day~
+
+Drive Shafts - Straight
+
+MISUMI
+
+Days to Ship7 Days~
+
+Spacers for Headed Punches - Height Adjustment
+
+MISUMI
+
+Days to Ship5 Days~
+
+S8M Timing Belt Pulley - High Torque
+
+MISUMI
+
+Days to Ship5 Days~
+
+Flat Spacers - Selectable Tolerance, Configurable Dimensions, Steel or Stainless Steel
+
+MISUMI
+
+Days to Ship5 Days~
+
+Flanged Linear Ball Bearing - Single
+
+MISUMI
+
+Days to ShipIn Stock, Ships in 1 Day~
+
+Linear Shaft - Straight, Precision
+
+MISUMI
+
+Days to ShipIn Stock, Ships in 1 Day~
+
+Straight Spacers - Configurable Length and Outer Diameter
+
+MISUMI
+
+Days to Ship5 Days~
+
+Roller Chain Sprockets - B-Type, 35B Series
+
+MISUMI
+
+Days to Ship4 Days~
+
+Shaft Supports - Flanged Mount, Slit
+
+MISUMI
+
+Days to ShipIn Stock, Ships in 1 Day~
+
+Ball Splines - Both Ends Tapped
+
+MISUMI
+
+Days to Ship7 Days~
+
+Roller Chain Sprockets - B-Type, 25B Series
+
+MISUMI
+
+Days to Ship4 Days~
+
+Clamping Shaft Collars - One Piece, 2 Standard/Tapped Holes, Standard/Compact, Aluminum/Steel/Stainless Steel
+
+MISUMI
+
+Days to ShipIn Stock, Ships in 1 Day~
+
+Drive Shafts - Straight
+
+MISUMI
+
+Days to Ship7 Days~
+
+Spacers for Headed Punches - Height Adjustment
+
+MISUMI
+
+Days to Ship5 Days~
+
+S8M Timing Belt Pulley - High Torque
+
+MISUMI
+
+Days to Ship5 Days~
+
+Products Often Purchased Together
+
+Deep Groove Ball Bearing - Open
+
+MISUMI
+
+Days to Ship: In Stock, Ships in 1 Day~
+
+Hex Socket Cap Screw - M4 - M10, Coarse, Configurable Length, Partially Threaded
+
+MISUMI
+
+Days to Ship: 5 Days~
+
+MISUMI Unit Examples for this Product
+View Other Cases
+
+Pressure Labeling Fixture
+
+Rotate and Transfer Mechanism
+
+Plastic Case Press-fit Fixture
+
+Panel Rotation Mechanism
+
+Width Change Mechanism
+
+Adjustment Mechanism
+
+Depth Gauge
+
+Intermittent Rotation Mechanism
+
+Lifting and Carrying Mechanism
+
+Fixture with Fine XY Position Adjustment
+
+Rollers to Connect Between Conveyors
+
+Air Flow Process
+
+Pick and Place Mechanism with Ball Spline
+
+Workpiece Rotate and Transfer Mechanism
+
+Cutting Unit
+
+Large Automated Door
+
+Pressure Labeling Fixture
+
+Rotate and Transfer Mechanism
+
+Plastic Case Press-fit Fixture
+
+Panel Rotation Mechanism
+
+Width Change Mechanism
+
+Adjustment Mechanism
+
+Depth Gauge
+
+Intermittent Rotation Mechanism
+
+Lifting and Carrying Mechanism
+
+Fixture with Fine XY Position Adjustment
+
+Rollers to Connect Between Conveyors
+
+Air Flow Process
+
+Pick and Place Mechanism with Ball Spline
+
+Workpiece Rotate and Transfer Mechanism
+
+Cutting Unit
+
+Large Automated Door
+
+Pressure Labeling Fixture
+
+Rotate and Transfer Mechanism
+
+Plastic Case Press-fit Fixture
+
+Panel Rotation Mechanism
+
+Width Change Mechanism
+
+Technical Support
+
+Automation Components Group
+
+Inquire about product specifications and technology
+
+Technical Inquiry
+
+9:00 am – 6:00 pm (Mon – Fri), 9:00 am – 3:00 pm (Sat)
+
+Your comments help us improve our website.
+
+Give Feedback
+Company Information
+Career Opportunities
+Terms and Conditions
+Customer Privacy Policy
+Code of Conduct
+RoHS Info
+Environmental Chemicals Management
+MISUMI Group Inc
+Catalog Request
+Tax Exemption
+Order History
+Quote History
+CAD Download History
+News
+Events
+Locations
+Industries Served
+Accessibility Statement
+Online Resources
+Help Center
+Supplier Central
+Mech Lab Blog
+Sitemap
+Contact UsMon-Fri 8 a.m. - 9 p.m. ET, Sat 8 a.m. - 5 p.m. ET
+
+800-681-7475
+
+1475 E Woodfield Rd, Ste. 1300 Schaumburg, IL 60173
+
+Country/Region/Language
+
+Copyright © MISUMI Corporation All Rights Reserved.
+
+DWSSS-D7.5-V5-L3 | Straight Spacers - Precision, Configurable Length and Inner Diameter | MISUMI | MISUMI

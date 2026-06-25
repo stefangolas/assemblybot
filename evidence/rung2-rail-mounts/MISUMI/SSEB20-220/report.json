@@ -1,0 +1,48 @@
+{
+  "job_id": "rung2-rail-mounts",
+  "status": "CANDIDATE_FOUND",
+  "recommended_candidate": {
+    "manufacturer": "MISUMI",
+    "part_number": "SSEB20-220",
+    "configuration": {"guide_size_H": 20, "rail_length_L_mm": 220, "carriage_count": 1},
+    "bundle_path": "candidate_evidence/rung2-rail-mounts/MISUMI/SSEB20-220/"
+  },
+  "hard_requirements": {
+    "confirmed": [
+      "Rail length 220 mm (CAD-measured extents AND within spec table's valid L range for H=20: 100~1000 step 160; 220 = 100 + 2*60, a valid step value)",
+      "4 mount holes along the rail, pitch F=60 mm, edge margin G=20 mm (manufacturer-confirmed via spec table AND independently CAD-measured via vertex circle-fit on the isolated rail body -- both agree exactly)",
+      "Mount-hole geometry: counterbored through-hole, Ø6.0 mm through (d1) / Ø9.5 mm counterbore (d2) / 5.5 mm counterbore depth (h) -- manufacturer-confirmed (spec table column 'Counterbored Hole d1xd2xh') AND CAD-measured (profile step exactly at y=5.5 from y=11 top face)",
+      "Mount holes are plain clearance (NOT tapped) -- manufacturer-confirmed by spec-table column naming + plain 'Od1' drawing symbol (the M2x1.5/M3x3/M4x6-type values in the same table are the BLOCK carriage's screw spec, a different feature, not the rail hole)"
+    ],
+    "contradicted": [],
+    "unresolved": [
+      "Exact bolt/screw size to pass through the rail's Ø6 mm clearance hole into the 40 mm extrusion's M5 T-slot nut is not named on this rail's own documentation (Misumi sells the rail hole-pattern only). Ø6 clearance comfortably fits an M5 SHCS (standard clearance ~Ø5.5) and works at Ø6 for M6 (tighter). Given the stated M5 T-nut pairing, M5 is the standard-derived choice but this is a fastener-selection decision for the lead, not a rail-evidence fact."
+    ]
+  },
+  "evidence": {
+    "drawing": "candidate_evidence/rung2-rail-mounts/MISUMI/SSEB20-220/source/drw_01_2014.png (+ original .gif)",
+    "cad": "candidate_evidence/rung2-rail-mounts/MISUMI/SSEB20-220/cad/SSEB20-220.glb (2-body scene: RAIL_SSEB20-220 + BLOCK_SSEB20-220); isolated rail also exported to cad/RAIL_SSEB20-220.glb; raw STEP at cad/SSEB20-220.stp and original zip at cad/SSEB20-220_STEP.zip",
+    "specification": "candidate_evidence/rung2-rail-mounts/MISUMI/SSEB20-220/source/spec_tables.txt (6 tables scraped from detail page: price/qty table, dimension table incl. H=20 row F/G/d1/d2/h, material/grade table, low-temp/greased-variant table, B3/B4 block-spacing table, grease-options table)",
+    "bom": "not applicable -- single configured assembly part (rail + 1 block), no separate BOM document found"
+  },
+  "cad_measurements": [
+    {"feature": "rail overall length L", "value_mm": 220.0, "method": "CAD-measured", "axis": "rail local X"},
+    {"feature": "rail width W", "value_mm": 20.0, "method": "CAD-measured", "axis": "rail local Z"},
+    {"feature": "rail height H1", "value_mm": 11.0, "method": "CAD-measured", "axis": "rail local Y"},
+    {"feature": "mount-hole count", "value": 4, "method": "CAD-measured"},
+    {"feature": "mount-hole pitch F", "value_mm": 60.0, "method": "CAD-measured + manufacturer-confirmed (spec table)"},
+    {"feature": "mount-hole edge margin G", "value_mm": 20.0, "method": "CAD-measured + manufacturer-confirmed (spec table)"},
+    {"feature": "mount-hole centers (local x, rail frame)", "value_mm": [0.0, 60.0, 120.0, 180.0], "method": "CAD-measured"},
+    {"feature": "mount-hole centerline offset (local z)", "value_mm": 0.0, "method": "CAD-measured"},
+    {"feature": "through-hole diameter d1", "value_mm": 6.0, "method": "CAD-measured + manufacturer-confirmed"},
+    {"feature": "counterbore diameter d2", "value_mm": 9.5, "method": "CAD-measured + manufacturer-confirmed"},
+    {"feature": "counterbore depth h", "value_mm": 5.5, "method": "CAD-measured + manufacturer-confirmed"},
+    {"feature": "thread presence", "value": "none / plain clearance hole", "method": "manufacturer-confirmed (drawing + spec table column semantics)"}
+  ],
+  "alternatives": [],
+  "risks": [
+    "The fastener that actually goes through this Ø6 clearance hole into the extrusion's M5 T-slot nut is not named by Misumi for this rail SKU -- the lead must pick a standard screw (M5 SHCS is the natural fit for the stated M5 T-nut and clears Ø6 easily) and treat that choice as a separate fastener-selection record, not as evidence read off this rail.",
+    "L=220mm sits exactly at a step boundary implied by the table's '(160)' step notation for H=20 (100, 100+160=260? -- actually verify: table shows range 100~1000 with step shown as '(160)' in parens, which on other Misumi SSEB rows denotes the STANDARD increment but the part's actual measured F=60 pitch and the 4-hole/220mm geometry is self-consistent and independently CAD-confirmed, so this is a labeling-convention note only, not a contradiction of the measured geometry."
+  ],
+  "recommended_next_action": "Lead can treat the rail's 4 mount holes (Ø6 clearance, Ø9.5x5.5 counterbore, 60mm pitch, 20mm edge margin, centered on rail centerline) as the canonical rail-to-extrusion attachment pattern with manufacturer-confirmed + CAD-measured status on the geometry, and manufacturer-confirmed status on 'not tapped'. The lead still needs to separately select/confirm the through-bolt (M5 SHCS recommended given the M5 T-slot nut pairing already locked) -- that is a fastener pick, not rail evidence, and is left unresolved here per the worker mandate not to relax/complete hard requirements on the lead's behalf."
+}

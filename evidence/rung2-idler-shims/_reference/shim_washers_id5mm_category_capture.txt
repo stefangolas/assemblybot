@@ -1,0 +1,72 @@
+SOURCE: https://www.mcmaster.com/products/shim-washers/system-of-measurement~metric/id~5-mm/
+RETRIEVED: warm CDP tab, headless innerText capture (virtualized category grid happened to be
+populated for this metric ID=5mm facet combination at capture time).
+NOTE: this category page text is RAW capture, included for traceability of how candidate PNs were
+surfaced. The authoritative dimensional facts for each candidate PN are on that PN's own product
+page (saved per-PN in mcmaster/<PN>/source/product_page.txt) — treat THIS file as a discovery index,
+not a dimensional source of truth.
+
+--- Round (alignment/spacing) Shims, 5 mm ID x 10 mm OD ---
+
+18-8 Stainless Steel, 5 mm ID x 10 mm OD:
+  Thk 0.1mm  -> 98089A205
+  Thk 0.2mm  -> 98089A246
+  Thk 0.3mm  -> 98089A286
+  Thk 0.5mm  -> 98089A331
+  Thk 1mm    -> 98089A375
+  Thk 1.5mm  -> 98089A105
+  Thk 2mm    -> 98089A434
+
+316 Stainless Steel, 5 mm ID x 10 mm OD:
+  Thk 0.1mm  -> 90214A155
+  Thk 0.2mm  -> 90214A156
+  Thk 0.5mm  -> 90214A157
+  Thk 1mm    -> 90214A158
+
+Carbon Steel, 5 mm ID x 10 mm OD:
+  Thk 0.1mm  -> 3088A002
+  Thk 0.2mm  -> 3088A022
+  Thk 0.3mm  -> 3088A042
+  Thk 0.5mm  -> 3088A062
+  Thk 1mm    -> 3088A082
+  Thk 1.5mm  -> 3088A693   *** candidate ***
+  Thk 2mm    -> 3088A203   *** candidate ***
+
+Stress-Resistant Spring Steel, 5 mm ID x 10 mm OD:
+  Thk 0.1mm  -> 98055A095
+  Thk 0.2mm  -> 98055A096
+  Thk 0.3mm  -> 98055A097
+  Thk 0.5mm  -> 98055A098
+  Thk 1mm    -> 98055A099
+  Thk 2mm    -> 98055A144
+
+--- Shims for Shortening Screw Shoulders, ID 5mm, OD 7.82mm, "For 5 mm Diameter Shoulder" / M5 ---
+(NOTE: McMaster lists these as "For Screw Size M5" / "For Shoulder Diameter 5mm" -- generic fit by
+shoulder/ID dimension, not an M4-thread-specific requirement; our screw 96654A131 has 5mm shoulder
+dia which matches the ID/shoulder-dia spec regardless of its M4 thread.)
+
+18-8 Stainless Steel:
+  Thk 0.005" (0.127mm) -> 91437A404
+  Thk 0.01"  (0.254mm) -> 91437A405
+  Thk 0.031" (0.787mm) -> 91437A406  *** candidate ***
+
+316 Stainless Steel:
+  Thk 0.005" (0.127mm) -> 96945A304
+  Thk 0.01"  (0.254mm) -> 96945A305
+  Thk 0.031" (0.787mm) -> 96945A306  *** candidate ***
+
+Stress-Resistant Spring Steel:
+  Thk 0.005" (0.127mm) -> 92927A522
+  Thk 0.01"  (0.254mm) -> 92927A526
+
+--- Sealing Washers (Hard Fiber, DIN 7603), not pursued (sealing not load-bearing application) ---
+  M5, ID5 OD8  Thk0.8mm -> 90449A110
+  M5, ID5 OD10 Thk0.8mm -> 90449A120
+
+--- Round Unthreaded Spacers / Off-White Nylon, checked per warm-start lead ---
+94639A130: "Off-White Nylon Unthreaded Spacer, 3/8" OD, 1/2" Long" — OD=9.525mm (3/8"), length=12.7mm
+  (1/2"). Length far exceeds the ~3.5mm shim target and bore/screw-size not confirmed on this listing
+  without selecting "Screw Size" option. REJECTED for this role: wrong length, single-piece nylon
+  spacer is not a "shim" and 12.7mm is not stackable to the needed ~3.5mm increment.
+92314A130, 91145A130 (warm-start leads): page returned bare "McMaster-Carr" title (shell/unresolved)
+  on repeated reads with extended wait -- could not validate as real PNs in this session. NOT used.

@@ -1,0 +1,25 @@
+{
+  "note": "NOT a candidate — this is the target FRAME EXTRUSION (already in the assembly), captured here only as cross-reference evidence to confirm the slot geometry the nut must fit (T-Slot Width 8mm, T-Slot Depth 12.2mm, Rail Height/Width 40mm), per its own manufacturer spec table.",
+  "manufacturer": "McMaster-Carr",
+  "part_number": "6575N203",
+  "family": "T-Slotted Framing Rail",
+  "configuration": {
+    "rail_profile": "Single",
+    "single_rail_profile_style": "Four Slot",
+    "rail_height_mm": 40,
+    "rail_width_mm": 40,
+    "rail_construction": "Hollow",
+    "t_slot_width_mm": 8,
+    "t_slot_depth_mm": 12.2,
+    "material": "6560 Aluminum",
+    "temper": "T6",
+    "finish": "Anodized"
+  },
+  "source_urls": {
+    "product_page": "https://www.mcmaster.com/6575N203/"
+  },
+  "files": {
+    "source/product_page.png": "full-page screenshot (raw)",
+    "source/product_page.txt": "document.title + innerText capture (raw)"
+  }
+}

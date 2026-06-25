@@ -1,0 +1,35 @@
+{
+  "job_id": "rung2-tslot-nut",
+  "manufacturer": "McMaster-Carr",
+  "part_number": "5537T007",
+  "family": "T-Slotted Framing",
+  "configuration": {
+    "fastener_type": "Screw and Nut Set",
+    "nut_style": "Spring-Loaded Ball",
+    "fastener_head_style": "Button",
+    "for_rail_height_single": "20 mm",
+    "for_rail_height_double_quad": "40 mm",
+    "mounting_hole_location": "Offset",
+    "fastener_thread_size": "M5",
+    "fastener_thread_length_mm": 8,
+    "fastener_installation_type": "Drop In",
+    "screw_material": "Zinc-Plated Steel",
+    "nut_material": "Zinc-Plated Steel",
+    "nut_thickness_in": 0.165,
+    "sold_as": "pack of 4",
+    "price_usd_per_pack": 5.88
+  },
+  "source_urls": {
+    "product_page": "https://www.mcmaster.com/5537T007/"
+  },
+  "files": {
+    "source/product_page.png": "full-page screenshot (raw)",
+    "source/product_page.txt": "document.title + innerText capture (raw)"
+  },
+  "cad_status": "not retrieved (rejected before CAD stage — see contradiction)",
+  "drawing_status": "not retrieved",
+  "candidate_status": "REJECTED — base rail series mismatch",
+  "known_contradictions": [
+    "Part is specified 'For Rail Height: Single 20mm, Double and Quad 40mm'. This is a 20-mm-series profile (its 40mm reading is the DOUBLE/QUAD stacked height of two 20mm modules, not a 40x40mm single-module rail). The target extrusion 6575N203 is a single 40x40mm four-slot rail with an 8mm-wide slot. 20mm-series T-slot extrusions standardly use a 6mm slot, not 8mm. This nut was the weaker of the two warm-start candidates and is contradicted on slot-series grounds, not confirmed compatible with 6575N203."
+  ]
+}

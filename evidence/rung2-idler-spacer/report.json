@@ -1,0 +1,67 @@
+{
+  "job_id": "rung2-idler-spacer",
+  "status": "CANDIDATE_FOUND",
+  "recommended_candidate": {
+    "manufacturer": "MISUMI",
+    "part_number": "DWSSS-D7.5-V5-L3",
+    "configuration": {
+      "outer_diameter_mm": 7.5,
+      "inner_diameter_mm": 5,
+      "length_mm": 3,
+      "material": "304 Stainless Steel",
+      "tolerances": {
+        "OD": "0 / -0.2mm (actual 7.3-7.5mm)",
+        "ID": "+0.1 / +0.3mm (actual 5.1-5.3mm)",
+        "length": "+/-0.05mm (actual 2.95-3.05mm)"
+      }
+    },
+    "bundle_path": "candidate_evidence/rung2-idler-spacer/misumi/DWSSS-D7.5-V5-L3/"
+  },
+  "hard_requirements": {
+    "confirmed": [
+      "ID = 5mm slip fit over Ø5 shoulder -- manufacturer-confirmed, actual range 5.1-5.3mm, inside the packet's 5.0-5.3mm acceptable window",
+      "Thickness ~3.0mm target -- manufacturer-confirmed exact at 3mm nominal, +/-0.05mm tolerance, dead center of the 2.5-3.5mm acceptable range",
+      "Unthreaded, plain bore -- manufacturer-confirmed via dimensioned drawing (plain annulus cross-section, 4-C chamfer only, no thread symbol)",
+      "Material stainless steel preferred -- manufacturer-confirmed 304 Stainless Steel, matching the idler pulley's own 304SS body material",
+      "OD <= ~7.5mm ideal -- manufacturer-confirmed at exactly 7.5mm nominal (7.3-7.5mm actual), at the ideal ceiling, well clear of the Ø9.8mm flange-opening hard-reject threshold (margin ~1.15-1.25mm radius) per the lead's independent idler CAD re-measurement in candidate_evidence/rung2-idler-shims/LEAD_determination.md",
+      "Real purchasable catalog PN with dimensioned drawing AND spec table -- both retrieved, see evidence paths below",
+      "Single-piece (not a stack) -- confirmed, sold as individual unit, 'Quantity: Sold by Single Unit'"
+    ],
+    "contradicted": [],
+    "unresolved": [
+      "No CAD geometry obtainable for this exact MISUMI candidate -- the MISUMI CAD-download dialog returns 'CAD data is not available for this product' for every offered format (DXF/DWG/STEP/etc.), apparently because this is a custom-ground-to-order precision family rather than a parametric-CAD stock family. Geometric confirmation rests on the 2D dimensioned drawing + configured spec table only, not on independently-measured mesh geometry. This is a SCOPE limitation, not a dimensional contradiction -- every dimension shown on the drawing matches the spec table exactly.",
+      "Whether the OD=7.5mm spacer face actually lands ONLY on the 685ZZ inner-race contact zone (vs. grazing the shield) cannot be manufacturer-confirmed for either candidate, because the bearing manufacturer does not publish the 685ZZ inner-ring shoulder/face diameter, and the idler's own catalog CAD models the bearing end-face as a single continuous Ø6.9-9.5mm annulus with no internal step (see CAD-measured note in alternates below). OD=7.5mm is the better of the two candidates on this axis (closer to the ~Ø7 race estimate, 0.5mm less OD than the McMaster alternate) but is still not a manufacturer-confirmed clearance."
+    ]
+  },
+  "evidence": {
+    "drawing": "candidate_evidence/rung2-idler-spacer/misumi/DWSSS-D7.5-V5-L3/source/drawing_drw_01.gif",
+    "cad": "NOT AVAILABLE for this candidate -- see candidate_evidence/rung2-idler-spacer/misumi/DWSSS-D7.5-V5-L3/source/cad_availability_note.txt",
+    "specification": "candidate_evidence/rung2-idler-spacer/misumi/DWSSS-D7.5-V5-L3/source/configured_spec_page.txt",
+    "bom": "N/A (single discrete catalog part, not an assembly)"
+  },
+  "cad_measurements": [],
+  "alternatives": [
+    {
+      "manufacturer": "McMaster-Carr",
+      "part_number": "92871A034",
+      "configuration": {
+        "outer_diameter_mm": 8.0,
+        "inner_diameter_mm": 5.300,
+        "length_mm": 3.0,
+        "material": "18-8 Stainless Steel, ASTM A582"
+      },
+      "bundle_path": "candidate_evidence/rung2-idler-spacer/mcmaster/92871A034/",
+      "why_not_primary": "OD=8.0mm is 0.5mm larger than the MISUMI DWSSS-D7.5-V5-L3 candidate and exceeds the packet's stated 'OD<=~7.5mm ideal' ceiling by a full 0.5mm (vs the MISUMI candidate landing exactly AT the ceiling). It still clears the hard-reject Ø9.8mm flange-opening threshold with ~0.9mm radius margin, so it is NOT contradicted, just a worse fit on the ideal/risk axis.",
+      "why_worth_keeping": "Has fully obtainable, independently CAD-measured geometry (STEP downloaded, converted to GLB, measured via trimesh: OD=8.00mm, bore=5.30mm, length=3.00mm -- exact match to spec table) and is a faster-shipping, lower-cost, always-in-stock standard catalog part ($2.45/ea at 1-9 qty vs $10.03/ea for the MISUMI part), making it a strong fallback if MISUMI's custom-grind lead time or its CAD-unavailability becomes a blocker for the lead's downstream ontology/CAD-mapping work.",
+      "evidence_tier": "manufacturer-confirmed (spec table) + CAD-measured (independently verified, matches spec exactly)"
+    }
+  ],
+  "risks": [
+    "PRIMARY RISK (affects both candidates): the packet's OD ceiling guidance ('OD<=~7.5mm ideal, reject OD>=9mm') is itself derived from an estimate of where the 685ZZ bearing's rotating shield begins, and that boundary is not manufacturer-published and not resolvable from the idler's own simplified catalog CAD (continuous Ø6.9-9.5mm annulus, no internal step). Recommend the lead treat 7.5mm as a safer choice than 8mm precisely because it is the documented ceiling, but be aware NEITHER candidate has a manufacturer-confirmed clearance guarantee against the bearing shield -- this is the single open item that would most change the recommendation if resolved (e.g. by a bearing manufacturer drawing for 685ZZ, or by direct caliper measurement of a physical sample).",
+    "MISUMI candidate has NO downloadable CAD -- if the lead's downstream workflow requires CAD geometry for every part placed in the assembly (per CLAUDE.md's CAD-establishes-geometry rule), this candidate cannot supply that and the McMaster alternate (or a physical-sample caliper check) would be needed to satisfy that workflow step, even though MISUMI's drawing+spec evidence is dimensionally sufficient on its own.",
+    "MISUMI custom-ground family carries a page-level 'longer lead times' notice; exact lead time beyond the quoted ~4 days was not independently verified against this notice -- treat as a soft schedule risk, not a dimensional one.",
+    "Need quantity is 4 (2 per idler x 2 idlers); MISUMI price breaks at qty>=10 ($9.08/ea) are not reached at qty=4, so total cost is 4 x $10.03 = $40.12 for the MISUMI option vs 4 x $2.45 = $9.80 for the McMaster option -- a real but non-blocking cost delta the lead may want to weigh against the 0.5mm OD margin improvement.",
+    "Neither candidate was found as a documented Misumi PN with a published legend diagram resolving the idler's own S=2.5/A=11/W=15 dimension letters (see _idler_drawing/source/SHTF20S3M100-5_spec_normalized.txt from the prior shim-evidence bundle) -- the 16mm shoulder vs ~9mm race-stack-width budget math (3mm + 9-10mm race stack + 3mm = 15-16mm) was taken from the job packet and the prior LEAD_determination.md, not independently re-derived in this task; if that budget changes, the 3mm thickness target should be re-checked against the new number."
+  ],
+  "recommended_next_action": "Lead should review both bundles. PRIMARY recommendation: MISUMI DWSSS-D7.5-V5-L3 (304SS, ID5/OD7.5/L3mm, qty 4, ~$40 total, manufacturer-confirmed drawing+spec, but NO CAD obtainable). FALLBACK if CAD geometry is a hard requirement for this role: McMaster 92871A034 (18-8SS, ID5.3/OD8/L3mm, qty 4, ~$10 total, manufacturer-confirmed AND independently CAD-measured, but 0.5mm larger OD than ideal). Both are single-piece solutions -- no shim-stack fallback is needed since a true 3mm-thick, ID5mm, OD<=8mm single-piece spacer exists in both catalogs, superseding the prior rung2-idler-shims bundle's stacked-shim recommendation (91437A406/96945A306 at 0.787mm each, needing 4-5 stacked per side) which should likely be retired in favor of either single-piece part found here. If feasible, lead should also consider ordering one physical sample of the idler+bearing assembly to caliper-measure the true 685ZZ inner-race shoulder diameter, which would resolve the one open risk common to all candidates in this and the prior bundle."
+}

@@ -1,0 +1,6 @@
+{"pn":"RU85UUC0","downloaded_pn":"RU85CC0","source":"THK CADENAS (manual download; Misumi THK-passthrough 504'd)",
+ "STATE":"ACQUIRED",
+ "cad":{"zip":"~/Downloads/THK_RU85CC0CADNO.zip","step":"cad/_ru85_extract/RU85CC0______CAD_NO.stp","glb":"cad/RU85UUC0.glb","units":"metre"},
+ "measured_mm":{"OD":120.0,"width":15.0,"bore":55,"inner_pattern":"8xM5 @ PCD65","outer_pattern":"8xOe5.5 @ PCD105"},
+ "spec_match":{"OD120":"PASS","width15":"PASS","inner_8xM5_PCD65":"PASS","outer_8xOe5.5_PCD105":"PASS"},
+ "note":"RU85CC0 = seal variant of RU85UUC0; mounting interface identical (task allows validated different PN). Page-confirmed d55/D120/B15. v2 def reconciled to CAD (X-native frame)."}

@@ -1,0 +1,81 @@
+{
+  "job_id": "rung2-s3m-belt",
+  "manufacturer": "MISUMI",
+  "brand_code": "MSM1",
+  "family": "S3M Timing Belt - High Torque (Closed End)",
+  "family_series_code": "110302652940",
+  "family_detail_url": "https://us.misumi-ec.com/vona2/detail/110302652940/?tab=drawingAndSpecifications&Page=1",
+  "recommended_candidate": {
+    "part_number": "HTUN540S3M-100",
+    "configuration": {
+      "type_prefix": "HTUN (Polyurethane main body, Aramid core wire)",
+      "belt_series": "S3M (pitch 3 mm)",
+      "circumference_length_mm": 540,
+      "number_of_teeth": 180,
+      "nominal_width_code": "100",
+      "nominal_width_mm": 10,
+      "belt_type": "Closed End (endless/looped)",
+      "tooth_surface": "Standard (Single Sided)",
+      "tooth_profile": "Round Tooth Profile Super Torque"
+    },
+    "detail_url": "https://us.misumi-ec.com/vona2/detail/110302652940/?HissuCode=HTUN540S3M-100&PNSearch=HTUN540S3M-100&searchFlow=results2type&KWSearch=HTUN540S3M-100&seriesCode=110302652940&tab=drawingAndSpecifications&Page=1",
+    "price_usd_qty1": 16.72,
+    "price_breaks": [
+      {"qty": "1", "price": 16.72},
+      {"qty": "2-4", "price": 15.90},
+      {"qty": "5-19", "price": 15.05},
+      {"qty": "20+", "price": 14.23}
+    ],
+    "ship_date_observed": "Sat. Jun 27, 2026 (as of retrieval 2026-06-21)"
+  },
+  "alternative_candidate": {
+    "part_number": "HTUN564S3M-100",
+    "configuration": {
+      "circumference_length_mm": 564,
+      "number_of_teeth": 188,
+      "nominal_width_mm": 10,
+      "belt_type": "Closed End"
+    },
+    "detail_url": "https://us.misumi-ec.com/vona2/detail/110302652940/?HissuCode=HTUN564S3M-100&PNSearch=HTUN564S3M-100&searchFlow=results2type&KWSearch=HTUN564S3M-100&seriesCode=110302652940&tab=drawingAndSpecifications&Page=1",
+    "price_usd_qty1": 16.72,
+    "note": "Same price/lead-time as primary; resolved cleanly but evidence depth (CAD) NOT pulled per breadth-first rule -- spec page only."
+  },
+  "pn_grammar": {
+    "pattern": "{TYPE}{circumference_length_mm}S3M-{width_code}",
+    "type_codes": {"HTBN": "Rubber (Chloroprene back/tooth rubber, fiberglass core wire, nylon tooth fabric)",
+                    "HTUN": "Polyurethane (Aramid fiber core wire); cannot be tensioned from back side"},
+    "width_codes": {"60": "6 mm", "100": "10 mm", "150": "15 mm"},
+    "circumference_length_mm_field": "must equal one of the catalog's discrete published lengths (see spec table); equals number_of_teeth * 3 mm pitch",
+    "evidence_basis": "manufacturer-confirmed -- read directly off the resolved/configured product detail page (Configured Specifications block), not inferred"
+  },
+  "source_files": {
+    "family_spec_page_text": "source/family_page_full.txt",
+    "primary_configured_page_text": "source/HTUN540S3M-100_page.txt",
+    "alternative_configured_page_text": "source/HTUN564S3M-100_page.txt",
+    "drawing_original_gif": "source/HTUN540S3M-100_drawing.gif",
+    "drawing_converted_png": "source/HTUN540S3M-100_drawing.png"
+  },
+  "cad_files": {
+    "step_zip": "cad/HTUN540S3M-100_STEP.zip",
+    "step_extracted": "cad/HTUN540S3M-100.stp",
+    "glb_converted": "cad/HTUN540S3M-100.glb",
+    "format_used": "STEP_AP203",
+    "fetch_method": "in-page fetch via cadFormatList -> cadDownload -> GET zip (hands-off, MSM1 brand)"
+  },
+  "render": "renders/HTUN540S3M-100_iso.png",
+  "file_hashes_sha256_16": {
+    "cad/HTUN540S3M-100_STEP.zip": "905a9b3f27e16bb6",
+    "cad/HTUN540S3M-100.stp": "ada50d244435b416",
+    "cad/HTUN540S3M-100.glb": "dc53085be599e396",
+    "source/HTUN540S3M-100_drawing.gif": "08607707d900b417"
+  },
+  "retrieval_time_utc": "2026-06-21",
+  "cad_status": "RETRIEVED_AND_MEASURED",
+  "drawing_status": "RETRIEVED (generic family tooth-profile drawing; does not depict the loop/circumference -- that is a configured BOM parameter, not a drawn dimension)",
+  "candidate_status": "RECOMMENDED",
+  "known_contradictions": [],
+  "known_caveats": [
+    "CAD body is a SIMPLIFIED placeholder: a rounded-end extruded strip (~256 mm visible span x 10 mm x 10 mm cross-section, 1032 verts, non-watertight, ~4399 mm^3). It does NOT model teeth or the closed-loop shape. CAD is therefore only useful for width/thickness bounding-box checks, NOT for tooth-mesh geometry or true loop-path geometry. Tooth geometry (pitch 3, Ra 1.95, Lr 1.95, H 1.94, h 1.14, PLD 0.381, unit mass 15.0 g/m for PU @10mm) is manufacturer-confirmed from the family spec table, not from CAD.",
+    "The visible CAD X-extent (~256 mm) does not equal the 540 mm circumference; the model is not a true unrolled or looped representation of the belt -- do not attempt to derive circumference from this mesh."
+  ]
+}

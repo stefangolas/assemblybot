@@ -1,0 +1,38 @@
+{
+  "job_id": "rung2-idler-spacer",
+  "manufacturer": "MISUMI",
+  "part_number": "DWSSS-D7.5-V5-L3",
+  "family": "Straight Spacers - Precision, Configurable Length and Inner Diameter (DWSS series)",
+  "series_code": "110302283340",
+  "configuration": {
+    "type_code": "DWSSS",
+    "material_code": "304 Stainless Steel (no surface treatment)",
+    "outer_diameter_D_mm": 7.5,
+    "inner_diameter_V_mm": 5,
+    "length_L_mm": 3
+  },
+  "pn_grammar_source": "manufacturer-confirmed: configured spec page resolved this exact PN string to a live, orderable part with matching dimensions (Outer Diameter D=7.5mm, Inner Diameter=5mm, Thickness/Length=3mm, Material=304 Stainless Steel) and a real price/lead-time quote",
+  "evidence_files": {
+    "configured_spec_page": "source/configured_spec_page.txt",
+    "drawing": "source/drawing_drw_01.gif",
+    "cad_availability_note": "source/cad_availability_note.txt"
+  },
+  "cad_available": false,
+  "cad_reason_unavailable": "MISUMI CAD-download dialog returns 'CAD data is not available for this product' for all offered formats -- custom-ground precision spacer family does not generate parametric CAD",
+  "price_usd_each": {
+    "qty_2_9": 10.03,
+    "qty_10_29": 9.08,
+    "qty_30_49": 7.22,
+    "qty_50_800": 5.83
+  },
+  "lead_time": "Ships ~4 days (quoted Thu Jun 25, 2026 against a Jun 21, 2026 order date); page also carries an 'Attention: longer lead times for this product' notice -- treat lead time as a soft risk",
+  "quantity_needed": 4,
+  "evidence_tier_summary": {
+    "ID_5mm": "manufacturer-confirmed (configured spec table, tolerance +0.1/+0.3mm => actual 5.1-5.3mm)",
+    "OD_7.5mm": "manufacturer-confirmed (configured spec table, tolerance 0/-0.2mm => actual 7.3-7.5mm)",
+    "length_3mm": "manufacturer-confirmed (configured spec table, tolerance +/-0.05mm => actual 2.95-3.05mm)",
+    "material_304SS": "manufacturer-confirmed (configured spec table)",
+    "unthreaded_plain_bore": "manufacturer-confirmed (dimensioned drawing shows plain annulus cross-section, no thread symbol, 4-C chamfer only)",
+    "geometry_independent_of_drawing": "UNRESOLVED -- no CAD obtainable, so no independently-measured 3D geometry exists for this candidate beyond the 2D drawing + spec table"
+  }
+}

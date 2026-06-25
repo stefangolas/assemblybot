@@ -1,0 +1,88 @@
+--- TABLE 0 ---
+Quantity ?	Price (USD)	Ship Date
+1-3	$149.91	Jun 29, 2026
+4-6	$142.40	Jun 29, 2026
+7-10	$134.91	Jun 29, 2026
+11-100	$127.41	Jun 29, 2026
+101-200	$127.41	Jun 29, 2026
+201-500	$127.41	Jun 30, 2026
+501-511	$127.41	TBD
+512-	$89.19	TBD
+
+--- TABLE 1 ---
+Part Number	L
+	Block Dimension	Guide Rail Dimension
+Type	MX	H	W	L1	B	C	Sxℓ	L2	K	Cb	W1	W2	H1	Ca	Counterbored Hole	F	G
+
+d1xd2xh
+SSEB
+SSE2B
+SSEBL
+SSE2BL	SSEBV
+SSE2BV
+SSEBLV
+SSE2BLV	SSEBZ
+SSE2BZ
+SSEBLZ
+SSE2BLZ	-	6	25~145
+(70)	12	17.4	8	-	M2x1.5	9.7	4.5	0.3	5	3.5	4	0.3	2.4x3.5x1	15	5
+8	40~310
+(70)	17	23.6	12	8	M2x2.5	13.6	6.5	0.3	7	5	4.7	0.3	2.4x4.2x2.3	15	5
+Blank: None
+-MX: Provided	10	35~635
+(75)	20	30	15	10	M3x3	19	7.8	0.3	9	5.5	5.5	0.3	3.5x6x3.5	20	7.5
+13	45~970
+(95)	27	33.9	20	15	M3x3.5	19.9	10	0.5	12	7.5	7.5	0.5	3.5x6x4.5	25	10
+16	70~990
+(110)	32	42.4	25	20	M3x4	27.4	12	0.5	15	8.5	9.5	0.5	3.5x6x4.5	40	15
+20	100~1000
+(160)	40	50	30	25	M4x6	34.6	15	0.5	20	10	11	0.5	6x9.5x5.5	60	20
+
+--- TABLE 2 ---
+ Material
+ Hardness	Type	MX
+(Lubrication Unit)	L Dimension	Number of Blocks
+Light Preload	Slight Clearance
+High Grade	Precision Grade	Standard Grade
+Stainless Steel
+56HRC min.	SSEB	SSEBV	SSEBZ	Blank: None
+-MX: Provided	Selectable	1
+SSE2B	SSE2BV	SSE2BZ	2
+SSEBL	SSEBLV	SSEBLZ	Configurable	1
+SSE2BL	SSE2BLV	SSE2BLZ	2
+
+--- TABLE 3 ---
+Part Number	-	L	 
+SSEB10
+RSEB10
+SSEB10L
+SSEB10G
+	-
+-
+-	275
+75
+75
+75	
+(Low Temperature Black Chrome Plating)
+(L Type Greased)
+(G Type Greased)
+ 
+
+--- TABLE 4 ---
+H	B3
+(3-block)	B4
+(4-block)
+6	85	-
+8	85	115
+10	115	155
+13	145	170
+16	190	230
+20	220	280
+
+--- TABLE 5 ---
+Grease Options	Product Name	Characteristics
+Standard for Miniature Types	Multemp Grease PS2  (Kyodo Yushi)	General purpose.  Lithium soap based grease.
+Standard for Medium/Heavy Types	Alvania Grease S2 by (Showa Shell Sekiyu)	General purpose.  Lithium soap based grease.
+L Type	ET-100K (Kyodo Yushi)	Excels in heat resistance, oxidation stability, adhesion and adhesive power. In addition, splash / leakage is minor.
+G Type	LG2 (NSK)	Clean room grease, specific to usage in linear guides, ball screws, etc.
+Y Type	AFF (THK)	Excels in stable rolling resistance, low particle generation and anti-fretting. 

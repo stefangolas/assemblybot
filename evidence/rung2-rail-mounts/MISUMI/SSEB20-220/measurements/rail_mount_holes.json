@@ -1,0 +1,42 @@
+{
+  "part_number": "SSEB20-220",
+  "body": "RAIL_SSEB20-220 (isolated body from clean re-pull, force='scene', 2 bodies: RAIL + BLOCK)",
+  "rail_overall_extents_mm": {
+    "length_L": 220.0,
+    "width_W": 20.0,
+    "height_H1": 11.0,
+    "cad_measured": true,
+    "spec_table_L_range_for_H20": "100~1000 step (160) -- 220 is a valid configured length"
+  },
+  "mount_hole_pattern": {
+    "count": 4,
+    "pitch_F_mm": 60.0,
+    "end_margin_G_mm": 20.0,
+    "centers_x_mm": [0.0, 60.0, 120.0, 180.0],
+    "centerline_z_mm": 0.0,
+    "x_origin_note": "x=0 and x=180 are each G=20mm from the rail ends (rail spans x=-20..200 in the CAD local frame); 3 gaps of F=60mm between 4 holes; 20+180+20=220=L. Consistent.",
+    "hole_geometry": {
+      "through_hole_diameter_d1_mm": 6.0,
+      "counterbore_diameter_d2_mm": 9.5,
+      "counterbore_depth_h_mm": 5.5,
+      "extraction_method_diameter_pitch": "CAD-measured (vertex circle-fit on isolated RAIL body) AND manufacturer-confirmed (spec table 'Counterbored Hole d1xd2xh' column = 6x9.5x5.5 for H=20 row; F=60, G=20 in same row)",
+      "hole_type": "plain counterbored through-hole, NOT threaded",
+      "thread_status": "manufacturer-confirmed NOT tapped -- spec table lists rail hole only as 'Counterbored Hole d1xd2xh', with no M-thread callout; the M2x1.5/M3x3/M4x6 etc. values in the same table are the BLOCK carriage's S x l mounting-screw spec, a different column/feature, not the rail hole. Drawing callout is plain 'Od1' (no M-thread symbol). Per [[misumi-hole-type-codes]] this is consistent with Misumi linear-guide rails generally taking a clearance bolt from the top, secured into the T-slot nut below -- but the FASTENER SIZE for an Ø6mm clearance hole is inferred-standard (typically M5 or M6 socket-head cap screw with Ø6 clearance fits both); not manufacturer-named on this rail's own drawing/table."
+    },
+    "cad_profile_through_thickness": {
+      "top_face_y_mm": 11.0,
+      "step_y_mm": 5.5,
+      "bottom_face_y_mm": 0.0,
+      "radius_at_top_mm": 4.75,
+      "radius_at_step_top_side_mm": 4.78,
+      "radius_at_step_bottom_side_mm": 2.97,
+      "radius_at_bottom_mm": 3.0,
+      "interpretation": "CAD step exactly reproduces table values: top radius 4.75 = Ø9.5/2 (counterbore); step occurs at y=5.5 = h (counterbore depth, measured from top face y=11 down to y=5.5); below the step radius drops to 3.0 = Ø6/2 (through-hole) down to the bottom face y=0."
+    }
+  },
+  "cross_check_with_drawing": {
+    "drawing_file": "source/drw_01_2014.png",
+    "drawing_shows": "H6-type rail cross-section with Od1/Od2/h counterbore profile, pitch F and edge margin G dimension call-outs, consistent with the measured/tabulated values."
+  },
+  "extraction_method_summary": "pitch/count/diameters/depth: manufacturer-confirmed (spec table) AND CAD-measured (independent vertex circle-fit) -- both agree exactly. Thread absence: manufacturer-confirmed (table column name + drawing plain-hole symbol). Fastener size/thread for the bolt that goes THROUGH this clearance hole into the extrusion T-nut: NOT specified by this rail's own documentation -- standard-derived/inferred only (must be resolved against the chosen T-slot nut, e.g. M5 or M6, by the lead)."
+}

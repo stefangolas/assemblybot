@@ -1,0 +1,64 @@
+# SHTF20S3M100-5 — manufacturer-confirmed spec (MISUMI)
+# Source: live detail page https://us.misumi-ec.com/vona2/detail/110302650660/?HissuCode=SHTF20S3M100-5&tab=drawingAndSpecifications
+# Family: "S2M, S3M Flanged Timing Idler Pulleys - Teeth, Center Bearing" (seriesCode 110302650660)
+# All figures below are MANUFACTURER-CONFIRMED from the spec table on the detail page.
+# Cell-exact extraction via rawcdp (including rowspan inheritance between the S3M060 and S3M100
+# belt-width rows). See spec_table_raw.txt for the verbatim table.
+
+## Configured part identity
+- Type code: SHTF  -> 304 Stainless Steel (Main Body + Flange + Bearing all Stainless)
+- Idler class: Idlers with Teeth
+- Belt Type: S3M, Belt Width: 10 mm
+- Number of Teeth (T): 20
+- Shaft Bore Dia. d: 5 mm
+- Material Certificate: Unavailable; RoHS: -; Surface Treatment: Not Provided
+
+## Dimension-letter values (manufacturer-confirmed)
+# Authoritative header column order (from the table's <th> cells with rowspan):
+#   Part Number{Type, Teeth, Belt} | d | P.D. | O.D. | F | E | A | W | S | Bearing{No., D, B}
+#
+# For the 20-tooth row, columns d / P.D. / O.D. / F / E and bearing-D / bearing-B are SHARED
+# (rowspan=2) across the S3M060 and S3M100 belt-width variants. The S3M100 row overrides
+# A / W / S / bearing-No. only.
+
+### Values for SHTF20S3M100-5 (20-tooth, S3M100, Ø5 bore):
+- d   (Shaft Bore Dia.)        = 5 mm       [shared via rowspan]
+- P.D.(Pitch Diameter)         = 19.1 mm    [shared]
+- O.D.(Outside Diameter,       = 18.34 mm   [shared]  <- tooth-tip / drum OD (NOT the flange OD)
+       pulley body OD)
+- F   (Flange Diameter)        = 22 mm      [shared]  <- THIS is the Ø22 the lead expected
+- E   (Total Pulley Width,     = 14 mm      [shared]  <- overall axial length, flange-face to flange-face
+       overall axial length)
+- A                             = 11 mm      [S3M100-specific]
+- W                             = 15 mm      [S3M100-specific]
+- S                             = 2.5 mm     [S3M100-specific]
+- Bearing No.                  = 685ZZ x2   [S3M100-specific]  <- TWO bearings (2-piece stack)
+- Bearing D (bearing OD)       = 11 mm      [shared]
+- Bearing B (bearing width,    = 5 mm       [shared]  <- width of EACH bearing
+              per-bearing)
+
+## Built-in bearing: 685ZZ x 2
+- Bearing part number: 685ZZ (miniature deep-groove ball bearing, shielded both sides, ZZ)
+- Quantity in this pulley: 2 (TWO) -- confirmed by the "x2" suffix in the spec table.
+- Standard 685ZZ dims (industry standard; consistent with the table's D=11, B=5):
+    bore Ø5, OD Ø11, width 5 mm.
+- Combined axial width of the two-bearing stack = 2 x 5 = 10 mm (face-to-face, no spacer
+  implied by the table; the drawing alt view shows the actual layout).
+
+## NOTE on A / W / S letter meaning  (UNRESOLVED -> lead must read the drawing GIFs)
+# The spec table gives numeric values A=11, W=15, S=2.5 but the page does NOT publish a
+# letter-to-feature DIAGRAM legend in text form. The dimension-letter diagram lives only on the
+# catalog PDF (2019_US_1420_001.pdf), which could NOT be retrieved this session (CDP fetch
+# timed out on the large PDF). The drawing GIFs themselves
+# (source/drawing_10302650660_drw_01_001.gif + alt_01_001.gif) carry the letter callouts but a
+# machine reader could not extract them reliably this pass.
+# Working INFERENCE (standard MISUMI flanged-pulley convention + this family's geometry):
+#   - E (14) = total axial width, outer flange face to outer flange face
+#   - W (15) = toothed-drum / belt-groove width
+#   - A (11) = bearing-seat / inner-hub axial span
+#   - S (2.5)= flange thickness
+#   Note W(15) > E(14): the drum is slightly wider than the flange-face-to-flange span -- the
+#   flanges are swaged/rolled over a narrower gauge so the drum belts face protrudes. Lead must
+#   confirm against the drawing before locking any ontology dimension from A/W/S.
+# What IS unambiguous and manufacturer-confirmed: bore Ø5, drum OD 18.34, flange OD 22,
+# total width 14, two 685ZZ bearings (each Ø11 OD x 5 wide).

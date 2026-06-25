@@ -1,0 +1,65 @@
+{
+  "job_id": "rung2-tslot-nut",
+  "status": "CANDIDATE_FOUND",
+  "recommended_candidate": {
+    "manufacturer": "McMaster-Carr",
+    "part_number": "6000N786",
+    "configuration": {
+      "title": "T-Slotted Framing Fasteners, Self-Align Ball Nut and M5 Screw, 1.5 in and 40mm Rail",
+      "nut_style": "Self-Aligning Spring-Loaded Ball",
+      "installation_type": "Drop In",
+      "fastener_thread_size": "M5",
+      "fastener_thread_length_mm": 8,
+      "for_rail_height_single": "1 1/2 in, 40 mm",
+      "material": "304 Stainless Steel (screw and nut)",
+      "sold_as": "pack of 4, $8.18"
+    },
+    "bundle_path": "candidate_evidence/rung2-tslot-nut/mcmaster/6000N786/"
+  },
+  "hard_requirements": {
+    "confirmed": [
+      "internal_thread = M5 (manufacturer-confirmed: spec field 'Fastener Thread Size: M5', 'Fastener Thread Length: 8mm' on 6000N786's own product page)",
+      "drop-in / spring-loaded preferred style (manufacturer-confirmed: 'Nut Style: Self-Aligning Spring-Loaded Ball', 'Fastener Installation Type: Drop In')",
+      "fits 6575N203 40x40mm four-slot extrusion family (manufacturer-confirmed via rail-height/series match: 6000N786 spec states 'For Rail Height: Single 1 1/2in, 40mm'; 6575N203's own spec independently confirms 'Rail Height: 40mm, Rail Width: 40mm, T-Slot Width: 8mm, T-Slot Depth: 12.2mm' — both parts are McMaster's matched 40mm single-rail T-slot series)"
+    ],
+    "contradicted": [],
+    "unresolved": [
+      "8 mm slot width is NOT printed as a numeric field directly on 6000N786's own spec table (no 'T-Slot Width' field on the fastener page). The fit claim rests on the rail-height/series cross-reference described above, which is standard-derived from McMaster's own paired-series convention, not a literal '8 mm slot' sentence on the nut's page itself. Treat the slot-width match as manufacturer-confirmed-by-series-pairing, one level short of a literal same-page numeric statement. No separate dimensioned 2-D drawing/PDF link could be resolved as a clickable element in this session to provide an even stronger same-document statement (see risks)."
+    ]
+  },
+  "evidence": {
+    "drawing": "NOT RETRIEVED — no resolvable 2-D PDF/DWG anchor found on 6000N786's live page in this session (the '2-D PDF' label appearing in page innerText did not correspond to a clickable anchor/button element found via DOM query)",
+    "cad": "candidate_evidence/rung2-tslot-nut/mcmaster/6000N786/cad/6000N786_original.step (raw) and .glb (converted)",
+    "specification": "candidate_evidence/rung2-tslot-nut/mcmaster/6000N786/source/product_page.txt and .png",
+    "bom": "not applicable (single catalog item)"
+  },
+  "cad_measurements": [
+    {
+      "type": "CAD-measured",
+      "description": "Overall combined screw+nut assembly bounding box",
+      "value_mm": {"x": 13.51, "y": 12.10, "z": 22.00}
+    },
+    {
+      "type": "CAD-measured",
+      "description": "Nut-body cross-section half-width at narrowest sectioned point (y~0, near slot-insertion profile)",
+      "value_mm": 4.8,
+      "caveat": "Plausibility check only — consistent with, but does not independently prove, an 8mm-slot fit. CAD export is a faceted multi-fragment mesh (90 disjoint pieces); could not isolate a clean single nut-body solid."
+    }
+  ],
+  "alternatives": [
+    {
+      "manufacturer": "McMaster-Carr",
+      "part_number": "5537T007",
+      "status": "REJECTED",
+      "reason": "For Rail Height: Single 20mm / Double-Quad 40mm — this is a 20mm-series profile (the '40mm' is the stacked double/quad height, not a single 40x40mm rail). 20mm-series T-slot extrusions standardly use a 6mm slot, not the 8mm slot on 6575N203. Contradicts the hard slot-fit requirement on series grounds.",
+      "bundle_path": "candidate_evidence/rung2-tslot-nut/mcmaster/5537T007/"
+    }
+  ],
+  "risks": [
+    "No direct dimensioned 2-D drawing was retrieved for 6000N786 in this session; evidence is the manufacturer spec table + cross-referenced extrusion spec, not a single combined drawing. If the lead wants a literal same-document '8mm slot' statement, a follow-up retrieval attempt (different DOM probing, or screenshotting the in-page PDF viewer if it renders as a canvas/iframe rather than an anchor) would close this gap.",
+    "McMaster's STEP export for this part is a combined screw+nut assembly with a faceted, non-solid-separated mesh — CAD geometry could not be cleanly split into an isolated nut body for an independent dimensional check beyond bounding-box/cross-section reads.",
+    "This part ships as a screw+nut SET (not nut-only). If the bracket-foot design needs the M5 screw length/head style to differ from this set's included button-head M5 hex screw, the nut still satisfies the slot/thread requirement but the included screw might be discarded in favor of a separately sourced screw — flag for lead's screw-length decision once bracket-foot stack height is known.",
+    "Category facet pages (e.g. t-slotted-framing-nuts with T-Slot-Width=8mm filter) render blank/virtualized headless in this session (per known McMaster scraping limitation) — could not pull a full nut-only product list to confirm 6000N786 is McMaster's single best/only 8mm-slot+M5+drop-in+spring-ball option; it is the strongest of the two warm-start candidates investigated, not exhaustively compared against every nut-only SKU in that category."
+  ],
+  "recommended_next_action": "Lead may treat 6000N786 as the canonical T-slot nut for the idler-bracket-foot/frame-extrusion joint (M5 thread, drop-in spring-loaded ball nut, McMaster's own 40mm single-rail series pairing with 6575N203). If a literal same-document '8mm slot' statement is required before promotion, a follow-up scout pass should attempt the in-page 2-D PDF/DWG viewer specifically (it may render in a canvas/iframe that needs a different capture approach than anchor-href scraping)."
+}

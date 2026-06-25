@@ -1,0 +1,22 @@
+Source: McMaster-Carr "Stainless Steel Unthreaded Spacers" category page
+URL pattern: https://www.mcmaster.com/products/unthreaded-spacers/.../screw-size~m5/od~8-mm/
+Captured via category facet grid (8 mm OD / M5 Screw Size / Stainless Steel filter).
+
+Row (Length=3mm):
+Lg.(mm)=3  For Screw Size=M5  ID(mm)=5.300  Specs Met=ASTM A582  PN=92871A034
+Price: $2.45 (1-9 qty), $2.07 (10-up)
+
+Family context (same OD=8mm/M5 column, full length run for reference):
+2mm=92871A031  3mm=92871A034  4mm=92871A037  5mm=92871A040  6mm=92871A042
+7mm=92871A318  8mm=92871A045  9mm=92871A319  10mm=92871A047 ...
+
+Material: 18-8 Stainless Steel, ASTM A582
+Tolerances (from full product-page read, mf.read_specs('92871A034')):
+  OD: 8mm, tolerance -0.13 to +0.13mm
+  ID: 5.300mm, tolerance 0 to +0.3mm (actual range 5.300-5.600mm)
+  Length: 3mm, tolerance -0.13 to +0.13mm
+  Hardness: Rockwell B60
+  Tensile Strength: 80,000 psi
+  Shape: Round, Mount Type: Unthreaded Hole
+
+Evidence tier: MANUFACTURER-CONFIRMED (full McMaster product-page spec table).

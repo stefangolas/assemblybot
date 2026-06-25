@@ -1,0 +1,10 @@
+{
+  "manufacturer": "MISUMI",
+  "part_number": "HNTT8-5",
+  "family": "HNTT8 (Pre-Assembly Insertion Nut for 8 Series Aluminum Extrusions)",
+  "series_code": "110302256040",
+  "status": "REJECTED",
+  "rejection_reason": "Manufacturer-confirmed contradiction of the hard slot-width requirement. The HNTT8 family's own MISUMI catalog page (source/catalog_page.pdf, page 1) carries an 'HFS8 Series' dimensional icon whose groove-opening is literally dimensioned '10' (mm) -- not 8 mm. The numeral in the MISUMI family name ('8 Series' / 'HFS8') does NOT equal the slot width in mm; it is a MISUMI internal series-class number. This nut is sized for a 10 mm slot extrusion, contradicting the target 8 mm slot requirement (McMaster 6575N203).",
+  "evidence": "source/catalog_series_icon_slotwidth10mm.png is the literal manufacturer drawing dimension proving the contradiction.",
+  "note_for_lead": "Do not confuse the MISUMI '8 Series' / HFS8 naming with an 8mm slot. The correct MISUMI family for an 8mm slot is '6 Series' / HFS6 (HNTT6), confirmed by the same catalog-icon evidence pattern -- see ../HNTT6-5/manifest.json."
+}

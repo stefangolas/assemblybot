@@ -1,0 +1,5 @@
+{"pn":"HTPA72S5M150-A-H50-KFC85-K5.5","STATE":"AVAILABLE","brand":"MSM1","fmt":"STEP_AP203",
+ "cad":{"step_zip":"cad/HTPA72S5M150-A-H50-KFC85-K5.5_STEP.zip","glb":"cad/HTPA72S5M150.glb","units":"metre"},
+ "measured_mm":{"overall_width":22.0,"OD":119.0,"bore_dia":50.0,"bolt_PCD":85.0,"bolt_dia":5.5,"bolt_count":4},
+ "spec_match":{"bore_50H7":"PASS(50.0)","4xOe5.5_PCD85":"PASS(R42.5, Oe5.5)","72T_S5M":"PASS(OD119 ~ PD114.6)","width15":"belt face 15 within 22 overall"},
+ "verifies":["#7 pulley 4-hole pattern","Oe50 pilot fit"]}

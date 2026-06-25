@@ -1,0 +1,23 @@
+{
+  "manufacturer": "MISUMI",
+  "part_number": "HNTT6-5",
+  "family": "HNTT6 (Pre-Assembly Insertion Nut for 6 Series Aluminum Extrusions)",
+  "series_code": "110302251050",
+  "configuration": {
+    "thread_nominal_M": "M5",
+    "material": "1010 Carbon Steel Equivalent",
+    "surface_treatment": "Trivalent Chromate",
+    "loosening_prevention": "None",
+    "sale_unit": "Individual"
+  },
+  "source_urls": [
+    "https://us.misumi-ec.com/vona2/detail/110302251050/?HissuCode=HNTT6-5&PNSearch=HNTT6-5&seriesCode=110302251050&tab=drawingAndSpecifications&Page=1",
+    "https://us.misumi-ec.com/pdf/fa/2019/2019_US_2756_001.pdf",
+    "https://us.misumi-ec.com/linked/item/10302251050/img/drw_01.gif"
+  ],
+  "retrieval_time_utc": "2026-06-21T22:38:00Z",
+  "cad_status": "FETCHED (STEP_AP203, hands-off in-page cadFormatList/cadDownload flow, single attempt, no retries needed)",
+  "drawing_status": "RETRIEVED (both the live detail-page drawing GIF and the printed catalog PDF page; literal slot-width dimension confirmed on the catalog PDF's HFS6-Series icon)",
+  "candidate_status": "RECOMMENDED",
+  "known_contradictions": "NONE for this exact PN. NOTE: the visually similar HNTT8 family (\"8 Series\") was investigated first and REJECTED -- its own catalog drawing dimensions the HFS8-Series groove at 10 mm, not 8 mm (see ../_REJECTED_HNTT8 evidence in the parent _plain_nut/ dir). HNTT6 (\"6 Series\" / HFS6) is the MISUMI family whose catalog drawing literally dimensions the groove at 8 mm -- counter-intuitively the numeral in MISUMI's series name does not equal the slot width in mm."
+}

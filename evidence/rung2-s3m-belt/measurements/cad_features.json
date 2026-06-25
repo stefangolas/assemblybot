@@ -1,0 +1,36 @@
+{
+  "part_number": "HTUN540S3M-100",
+  "source_mesh": "cad/HTUN540S3M-100.glb",
+  "units": "mm (converted from metres glTF boundary)",
+  "mesh_stats": {
+    "vertex_count": 1032,
+    "face_count": 944,
+    "watertight": false,
+    "volume_mm3": 4398.5
+  },
+  "bounding_box_mm": {
+    "x_min": -7.104, "x_max": 256.102,
+    "y_min": -7.104, "y_max": 7.104,
+    "z_min": -5.0, "z_max": 5.0
+  },
+  "measured_dimensions": {
+    "z_extent_mm": 10.0,
+    "z_extent_interpretation": "CAD-measured; matches the manufacturer-confirmed configured belt width (10 mm, width code '100')",
+    "x_extent_mm": 263.2,
+    "x_extent_interpretation": "CAD-measured only; does NOT correspond to the 540 mm circumference or any half-loop length expected from the configuration. The body is a simplified rounded-end strip, not a true belt-loop model.",
+    "y_extent_mm": 14.2,
+    "y_extent_interpretation": "CAD-measured; exceeds the nominal 10 mm width, consistent with a generic placeholder cross-section rather than a true tooth profile (which per the spec table has H=1.94mm tooth height on a ~? mm back thickness)."
+  },
+  "tooth_geometry_from_spec_table_NOT_cad": {
+    "pitch_mm": 3,
+    "Ra_mm": 1.95,
+    "Lr_mm": 1.95,
+    "H_mm": 1.94,
+    "h_mm": 1.14,
+    "i_mm": 0.8,
+    "PLD_mm": 0.381,
+    "unit_mass_g_per_m_at_10mm_width_polyurethane": 15.0,
+    "evidence_basis": "manufacturer-confirmed (family spec table, S3M Type dimension row) -- CAD does not model these features"
+  },
+  "conclusion": "CAD usable only for a coarse width/thickness sanity check (10 mm width confirms). Pitch length, tooth count, and tooth profile must be taken from the manufacturer spec table / configured product page, NOT from this CAD body."
+}

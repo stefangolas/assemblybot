@@ -1,0 +1,15 @@
+{
+  "source_file": "cad/92871A034.step (converted to glb via cascadio for measurement)",
+  "method": "trimesh load force='scene', walk nodes_geometry, transform vertices to world coords, compute bbox extents and radial distance from inferred bore axis",
+  "units": "mm",
+  "bodies": 1,
+  "bbox_extent_mm": [8.000, 8.000, 3.000],
+  "inferred_geometry": {
+    "outer_diameter_mm": 8.00,
+    "bore_diameter_mm": 5.30,
+    "length_mm": 3.00
+  },
+  "radial_histogram_peaks_mm": [2.65, 2.78, 3.84, 3.98],
+  "interpretation": "Two outer-edge radii (3.84, 3.98) consistent with an OD=8mm chamfered edge; two inner-bore radii (2.65, 2.78) consistent with ID=5.3mm chamfered edge. Matches manufacturer spec table exactly (OD 8mm, ID 5.300mm, Length 3mm).",
+  "evidence_tier": "CAD-measured -- corroborates but does not replace manufacturer-confirmed spec table values from the McMaster product page."
+}

@@ -1,0 +1,109 @@
+{
+  "job_id": "rung2-idler-shims--idler-drawing-clarification",
+  "status": "EVIDENCE_FOUND",
+  "part": {
+    "manufacturer": "MISUMI",
+    "part_number": "SHTF20S3M100-5",
+    "family": "S2M, S3M Flanged Timing Idler Pulleys - Teeth, Center Bearing",
+    "series_code": "110302650660",
+    "live_detail_url": "https://us.misumi-ec.com/vona2/detail/110302650660/?HissuCode=SHTF20S3M100-5&tab=drawingAndSpecifications"
+  },
+  "purpose": "Resolve the idler's true axial stack (total width, bearing count, bearing inner-race width, retention) so the lead can compute required external shim thickness for clamping the inner race on a McMaster 96654A131 shoulder screw (Ø5 shoulder x 16 mm).",
+  "questions": {
+    "1_total_pulley_width": {
+      "value_mm": 14,
+      "dimension_letter": "E",
+      "evidence": "spec_table_raw.txt: S3M 20-tooth row, E column = 14 (rowspan-2 shared by S3M060 and S3M100)",
+      "status": "manufacturer-confirmed",
+      "source_locator": "spec table column 'E' on detail page; corroborated by drawing_10302650660_drw_01_001.gif",
+      "note": "E is the overall axial length, outer-flange-face to outer-flange-face = 14 mm. IMPORTANT: this is LESS than the prior scout's CAD-derived estimate of 15 mm (the CAD conversion glitch biased the estimate). Lead's stack math must use 14 mm."
+    },
+    "2_bore_diameter": {
+      "value_mm": 5,
+      "dimension_letter": "d",
+      "evidence": "spec_table_raw.txt + configured-spec block ('Shaft Bore Dia. d(mm) = 5'); CAD bore-radius cluster = Ø5.0",
+      "status": "manufacturer-confirmed",
+      "source_locator": "detail page configured-spec + spec table 'Shaft Dia. d' column; CAD corroboration at cad/SHTF20S3M100-5.glb"
+    },
+    "3_built_in_bearing_count_and_dims": {
+      "count": 2,
+      "bearing_part_number": "685ZZ",
+      "quantity_suffix": "x2 (TWO bearings, 2-piece stack)",
+      "inner_race_id_mm": 5,
+      "bearing_od_mm": 11,
+      "dimension_letter_od": "D",
+      "per_bearing_width_mm": 5,
+      "dimension_letter_width": "B",
+      "two_bearing_combined_width_mm_no_spacer": 10,
+      "spacer_between_bearings": "unresolved - the spec table does not list a spacer; the alt drawing view (drawing_10302650660_alt_01_001.gif) shows the 2-bearing layout but a machine reader could not confirm spacer presence this pass",
+      "evidence": "spec_table_raw.txt row 'S3M100 | ... | 685ZZx2 | 11 | 5' under header 'Bearing Dimensions {No. | D | B}'",
+      "status": "manufacturer-confirmed (count, PN, OD, per-bearing width)",
+      "source_locator": "spec table 'Bearing Dimensions' sub-columns on detail page; CAD corroboration: two Bearing_SHTF20S3M100-5 bodies each OD11/ID5/width5",
+      "note": "CRITICAL CORRECTION to packet assumptions: the S3M100 20-tooth variant uses TWO bearings (685ZZx2), not one. The 'center bearing' in the family NAME refers to the bearing being centered in the hub (vs a flange/block type), NOT that there is only one bearing. The single-bearing variant is the S3M060 (narrower belt) sibling which lists 685ZZx1."
+    },
+    "4_bearing_retention": {
+      "mechanism": "snap ring / retaining ring (circlip) in a groove between the two bearings, retaining them axially inside the hub bore",
+      "evidence": "CAD body 'Retaining Ring C In-1_SHTF20S3M100-5' present (OD ~13.75 mm measured); the spec table does not separately call out the retention method in text; the drawing alt view shows the cross-section",
+      "status": "manufacturer-confirmed (retaining-ring body exists and is named in the CAD); inferred (axial position = between the bearings, from CAD ring OD ~13.75 fitting a standard 685-series internal-groove)",
+      "source_locator": "cad/SHTF20S3M100-5.glb body 'Retaining Ring C In-1'; drawing_10302650660_alt_01_001.gif",
+      "note": "Standard for shielded 685ZZ in a press-fit hub: outer races retained by hub press fit + an internal snap ring separating/locating the two bearings. The ring RETAINS THE BEARINGS INSIDE THE HUB - it does NOT retain the pulley on the shaft. Pulley-on-shaft axial retention must be provided EXTERNALLY by the lead (shoulder screw head + shims/washers clamping the inner races)."
+    },
+    "5_flange_geometry": {
+      "flange_od_mm": 22,
+      "dimension_letter_flange_od": "F",
+      "flange_thickness_mm": 2.5,
+      "dimension_letter_flange_thickness": "S",
+      "axial_position": "one flange at each axial end of the drum; total width between outer flange faces = E = 14 mm",
+      "evidence": "spec_table_raw.txt: F=22 (shared rowspan-2), S=2.5 (S3M100-specific); CAD flange bodies each OD 22.0, axial span 1.354 mm (CAD under-models sheet-metal flange thickness - use S=2.5 from spec)",
+      "status": "manufacturer-confirmed (F=22 flange OD; S=2.5 flange thickness is inferred-letter-to-feature, see note)",
+      "source_locator": "spec table 'F' and 'S' columns; CAD flange bodies OD22",
+      "note": "F=22 (flange OD) is manufacturer-confirmed and matches the lead's expected Ø22. S=2.5 is the spec value but the letter->feature mapping (S=flange thickness) is INFERRED from convention, not from a retrieved dimension-letter diagram (the catalog PDF legend could not be fetched this session). Lead should confirm S against the drawing GIF before promoting."
+    },
+    "6_inner_race_clampability": {
+      "inner_race_is_rotation_journal": true,
+      "inner_race_id_mm": 5,
+      "inner_race_protrudes_flush_with_outer_face": "unresolved - not explicitly stated in the spec table; the drawing alt view would show it but a machine reader could not confirm this pass",
+      "clamping_surface": "the Ø5 bore IS the bearing inner race (685ZZ bore = Ø5); a shoulder screw Ø5 is a running fit through both inner races",
+      "evidence": "bearing is 685ZZ (standard deep-groove, inner race ID = bore = Ø5); CAD bearing bodies show ID Ø5 continuous with the hub bore",
+      "status": "manufacturer-confirmed (inner race ID = Ø5 = bore); inferred (inner race is the journal and is meant to be clamped, not free-spinning, for a fixed-idler application)",
+      "source_locator": "bearing PN 685ZZ in spec table; standard 685ZZ inner-race geometry",
+      "note": "For a TIMING-BELT IDLER (not a drive pulley), the load path is: belt -> toothed drum -> hub -> bearing OUTER race (press-fit in hub) -> balls -> bearing INNER race -> shoulder screw shaft. The inner race MUST be clamped axially to the shoulder screw (or it spins on the shoulder and frets). The two inner races (Ø5) form the clamp surface stack."
+    }
+  },
+  "shim_math_for_lead": {
+    "shoulder_screw": "McMaster 96654A131, shoulder Ø5 x 16 mm",
+    "pulley_total_width_E_mm": 14,
+    "inner_race_stack_available_mm": "10 mm (two 685ZZ bearings, 5 mm each, if face-to-face) -- BUT the inner races are recessed inside the hub and may not span the full 14 mm; the actual clamp surface is the inner-race faces that a shim/washer bears on",
+    "prior_scout_estimate_of_race_width": "~9 mm (CAD-derived, glitch-biased)",
+    "shoulder_minus_width_mm": "16 - 14 = 2 mm of shoulder protruding beyond the pulley before the head clamps -- if the full 14 mm is clampable",
+    "key_open_question_for_lead": "The spec table gives total width E=14 and bearing width B=5 each, but does NOT directly state the axial position of the inner-race faces relative to the outer flange faces. The lead needs to know: how much of the 14 mm total width is OCCUPIED BY (or RECESSED BEHIND) the inner races, to compute the external shim stack that bears on the inner race rather than the rotating flange. This requires reading the drawing alt cross-section (drawing_10302650660_alt_01_001.gif) which a machine reader could not parse reliably this pass.",
+    "recommendation": "Use total width E=14 (manufacturer-confirmed) as the primary figure. Treat inner-race axial position as UNRESOLVED until the lead visually reads the alt drawing, OR re-measures a CORRECTLY-converted CAD (the existing glb is glitched)."
+  },
+  "evidence": {
+    "drawing": "candidate_evidence/rung2-idler-shims/_idler_drawing/source/drawing_10302650660_drw_01_001.gif (+.png, +_3x.png) [main dimensioned view]; drawing_10302650660_alt_01_001.gif (+.png, +_3x.png) [alternate cross-section showing 1-bearing and 2-bearing layouts]",
+    "specification": "candidate_evidence/rung2-idler-shims/_idler_drawing/source/spec_table_raw.txt [verbatim cell-exact table with rowspan]; SHTF20S3M100-5_spec_normalized.txt [interpreted, rowspan-resolved]; configured_spec_blocks.txt [the configured-part spec block from the page]",
+    "photo": "candidate_evidence/rung2-idler-shims/_idler_drawing/source/photo_10302650660.jpg",
+    "cad": "pre-existing cad/SHTF20S3M100-5.glb (corroborates flange OD 22, bearing OD 11 / ID 5 / width 5, drum OD 18.34; axial stack UNRELIABLE due to conversion glitch - do not use CAD for axial positions)",
+    "bom": "n/a (single catalog part)",
+    "catalog_pdf_legend": "NOT retrieved - https://us.misumi-ec.com/pdf/fa/2019/2019_US_1420_001.pdf timed out via CDP fetch (large file). The dimension-letter diagram on this PDF is the authoritative legend for A/W/S. Flagged as a follow-up if the lead needs the letter->feature mapping locked."
+  },
+  "cad_measurements": [
+    {"feature": "drum OD (tooth tip)", "value_mm": 18.34, "source": "cad/SHTF20S3M100-5.glb Idler body max radius", "corroborates_spec_O.D.": true},
+    {"feature": "flange OD", "value_mm": 22.0, "source": "cad/SHTF20S3M100-5.glb Flange body max radius (both flanges)", "corroborates_spec_F": true},
+    {"feature": "bearing OD", "value_mm": 11.0, "source": "cad/SHTF20S3M100-5.glb Bearing body max radius (both)", "corroborates_spec_D": true},
+    {"feature": "bearing inner race ID", "value_mm": 5.0, "source": "cad/SHTF20S3M100-5.glb Bearing body min radius", "corroborates_spec_d": true},
+    {"feature": "per-bearing axial width", "value_mm": 5.0, "source": "cad/SHTF20S3M100-5.glb Bearing body X-span (NOTE: X positions are glitched; this width happens to be correct because each bearing body is self-contained)", "corroborates_spec_B": true},
+    {"feature": "retaining ring OD", "value_mm": 13.75, "source": "cad/SHTF20S3M100-5.glb Retaining Ring body max radius", "corroborates": "consistent with 685-series internal snap-ring groove (~Ø13.7)"},
+    {"feature": "bore Ø (drum)", "value_mm": 5.0, "source": "cad/SHTF20S3M100-5.glb Idler body inner-radius cluster", "corroborates_spec_d": true},
+    {"feature": "AXIAL STACK (total width, flange/flange/bearing/bearing X positions)", "value": "UNRELIABLE - conversion glitch placed all auxiliary bodies at the same axial X", "source": "cad/SHTF20S3M100-5.glb", "corroborates": "DO NOT USE - use spec E=14 mm instead"}
+  ],
+  "alternatives": [],
+  "risks": [
+    "CRITICAL: the existing cad/SHTF20S3M100-5.glb has an axial conversion glitch - both flanges and both bearings landed at the same axial X. The TRUE axial stack CANNOT be read from CAD. The prior scout's CAD-derived estimates (race ~9 mm, recess ~3 mm/side) are therefore NOT reliable; use the manufacturer figures E=14 mm total, B=5 mm per bearing, 2 bearings.",
+    "The S3M100 20-tooth variant uses TWO bearings (685ZZx2), not one. Any retention math assuming a single bearing is wrong. The combined inner-race clamp width is at most 2x5 = 10 mm if the inner races are contiguous, but their actual axial separation inside the 14 mm hub is NOT given by the spec table and must be read from the drawing.",
+    "Dimension letters A (11), W (15), S (2.5) are given numerically but the letter->feature DIAGRAM legend lives only on catalog PDF 2019_US_1420_001.pdf which could not be fetched this session. The mapping A=bearing-seat span / W=drum width / S=flange thickness is INFERRED from convention, not manufacturer-confirmed-by-diagram. Note W(15) > E(14) is geometrically unusual (drum wider than flange-face span) and should be confirmed.",
+    "The drawing GIFs were retrieved but a machine vision reader (VLM) could not reliably parse the dimension-letter callouts this pass - the lead should visually inspect drawing_10302650660_alt_01_001_3x.png to confirm inner-race axial position before finalizing the shim stack.",
+    "Original packet detail URL (seriesCode 110302683860) returns PAGE NOT FOUND; live seriesCode is 110302650660 (resolved via PN-search redirect). Update any stored references."
+  ],
+  "recommended_next_action": "Lead should: (1) read drawing_10302650660_alt_01_001_3x.png to confirm the axial layout of the two 685ZZ inner races inside the 14 mm hub and whether they protrude flush with the flange faces (this resolves the shim-stack bearing surface); (2) use E=14 mm (manufacturer-confirmed) as total pulley width and 2x685ZZ (each B=5) as the bearing stack; (3) recompute the external shim thickness for the 96654A131 shoulder screw as 16 mm - (axial inner-race clamp span), where the inner-race clamp span is read from the drawing; (4) if the drawing does not resolve the inner-race position, re-fetch a CLEAN CAD conversion (the current glb is axial-glitched) before locking the ontology; (5) optionally retrieve catalog PDF 2019_US_1420_001.pdf to lock the A/W/S letter->feature diagram legend."
+}

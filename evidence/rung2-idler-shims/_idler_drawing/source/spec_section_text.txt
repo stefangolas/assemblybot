@@ -1,0 +1,156 @@
+FC, RFC, and LFC, are not reflected in the CAD data.
+Configured Specifications
+The configured specifications list is located below this button.
+Type
+Idlers with Teeth
+Belt Type
+S3M
+Belt Width (mm)
+10
+Number of Teeth(T)
+20
+Material
+304 Stainless Steel
+Surface Treatment
+Not Provided
+Timing Pulleys/Idlers
+Idlers
+Shaft Bore Dia. d(mm)
+5
+Material Certificate
+Unavailable
+RoHS
+-
+CatalogPage
+CADDownload
+Unit Price	$37.68 (USD)
+Total	$37.68 (USD)
+Ship Date	Sat. Jun 27, 2026
+
+Please note that if this product is ordered after 5:00 PM EST, the order will not be processed until the following day.
+
+Qty.
+Add to Cart
+Configure Alterations
+Quantity ?	Price (USD)	Ship Date
+1-9	$37.68	Jun 27, 2026
+10-14	$33.97	Jun 27, 2026
+15-30	$32.11	Jun 27, 2026
+31-50	$32.10	Jul 6, 2026
+51-100	$32.10	Jul 11, 2026
+101-	$32.10	TBD
+
+NOTE : Ship Dates above are subject to change depending upon availability.
+
+Completed
+Clear All
+Belt Type
+S3M
+Belt Width (mm)
+10
+Number of Teeth(T)
+20
+Material
+304 Stainless Steel
+Surface Treatment
+Not Provided
+Shaft Bore Dia. d(mm)
+5
+type
+SHTF##S3M
+CAD
+2D
+3D
+Days to Ship
+All
+5 Day(s) or Less
+Specify Alterations
+12.[NFC] Flange not swaged when shipped
+NFC
+13.[LFC] Flange swaged only on the opposite side of the hub when shipped
+LFC
+13.[RFC] Flange swaged only on the opposite side of the hub when shipped
+RFC
+14.[FC] Flange Cut(mm)
+[19.5-20/0.5 mm]
+Drawing/Specifications
+CAD Preview
+Part Numbers
+Catalog
+Drawing/Specifications
+[ ! ]Bearings are press-fitted.
+* Bearing Accuracy: JIS B1514 Class 0 (before press-fitting)
+・Materials
+Type	[ M ] Material	[ S ] Surface Treatment
+Main Body	Flange	Bearing
+AHTF	2000 Series Aluminum Alloy	Aluminum Alloy	Steel	Clear Anodize
+KHTF	Hard Anodize
+NHTF	Electroless Nickel Plating
+SHTF	304 Stainless Steel	Stainless	-
+Specifications
+Part Number
+ 
+Type	 	Number of Teeth	 	Applicable Belt
+AHTF	 	40	 	S2M060
+■S2M (Center Bearing)
+Part Number	Shaft Dia. d	P.D.	O.D.	F	E	A	W	S	Bearing Dimensions
+Type	Number of Teeth	Applicable Belt	No.	D	B
+AHTF
+KHTF
+NHTF
+SHTF	40	S2M040	5	25.46	24.96	30	20	5	9	2.5	695ZZ×1	13	4
+S2M060	6	7	11	3	696ZZ×1	15	5
+S2M100	11	15	5
+48	S2M040	6	30.56	30.05	35	25	5	9	2	696ZZ×1	15	5
+S2M060	7	11	3
+50	S2M040	6	31.83	31.32	35	25	5	9	2	696ZZ×1	15	5
+S2M060	7	11	3
+S2M060	8	7	11	2.5	698ZZ×1	19	6
+60	S2M100	8	38.2	37.69	44	32	11	15	3.5	628ZZ×1	24	8
+S2M040	10	5	9	1.5	6900ZZ×1	22	6
+S2M060	7	11	2.5
+S2M100	11	15	3.5	6000ZZ×1	26	8
+■S3M (Center Bearing)
+Part Number	Shaft Dia. d	P.D.	O.D.	F	E	A	W	S	Bearing Dimensions	Compliance with Standard
+Type	Number of Teeth	Applicable Belt	No.	D	B	AHTF	NHTF	SHTF
+AHTF
+KHTF
+NHTF
+SHTF	20	S3M060	5	19.1	18.34	22	14	7	11	3	685ZZ×1	11	5	●	●	-
+S3M100	11	15	2.5	685ZZ×2	●	●	-
+24	S3M060	5	22.92	22.16	25	16	7	11	3.5	695ZZ×1	13	4	●	●	●
+S3M100	11	15	3.5	695ZZ×2	●	●	●
+25	S3M060	5	23.87	23.11	28	18	7	11	3.5	695ZZ×1	13	4	●	●	-
+26	S3M060	6	24.83	24.07	7	11	3	696ZZ×1	15	5	●	●	-
+28	S3M060	6	26.74	25.98	30	20	7	11	3	696ZZ×1	15	5	●	●	-
+30	S3M060	6	28.65	27.89	32	23	7	11	3	696ZZ×1	15	5	●	●	●
+S3M100	11	15	4.5	626ZZ×1	19	6	●	●	●
+32	S3M060	8	30.56	29.8	35	25	7	11	2.5	698ZZ×1	19	6	●	●	●
+S3M100	11	15	4.5	●	●	●
+S3M150	10	17	21	4.5	6900ZZ×2	22	6	●	●	-
+34	S3M060	8	32.47	31.71	40	28	7	11	2.5	698ZZ×1	19	6	●	●	-
+S3M100	11	15	4	608ZZ×1	22	7	●	●	-
+36	S3M060	8	34.38	33.62	40	28	7	11	2.5	698ZZ×1	19	6	●	●	-
+S3M100	11	15	4	608ZZ×1	22	7	●	●	-
+40	S3M060	8	38.2	37.44	44	32	7	11	2.5	698ZZ×1	19	6	●	●	-
+S3M100	11	15	3.5	628ZZ×1	24	8	●	●	-
+S3M060	10	7	11	2.5	6900ZZ×1	22	6	●	●	-
+S3M100	11	15	3.5	6000ZZ×1	26	8	●	●	-
+S3M150	17	21	4.5	6900ZZ×2	22	6	●	●	-
+S3M060	12	7	11	2.5	6901ZZ×1	24	6	●	●	-
+S3M150	17	21	4.5	6901ZZ×2	24	6	●	●	-
+44	S3M060	8	42.02	41.25	48	36	7	11	2.5	698ZZ×1	19	6	●	●	-
+S3M100	11	15	3.5	628ZZ×1	24	8	●	●	-
+S3M060	10	7	11	2.5	6900ZZ×1	22	6	●	●	-
+S3M100	11	15	3.5	6000ZZ×1	26	8	●	●	-
+S3M150	17	21	4.5	6900ZZ×2	22	6	●	●	-
+S3M060	12	7	11	2.5	6901ZZ×1	24	6	●	●	-
+S3M100	11	15	3.5	6001ZZ×1	28	8	●	●	-
+S3M150	17	21	4.5	6901ZZ×2	24	6	●	●	-
+48	S3M060	10	45.84	45.07	50	38	7	11	2.5	6900ZZ×1	22	6	●	●	-
+S3M100	11	15	3.5	6000ZZ×1	26	8	●	●	-
+S3M150	17	21	4.5	6900ZZ×2	22	6	●	●	-
+50	S3M060	10	47.75	46.98	52	40	7	11	2.5	6900ZZ×1	22	6	●	●	-
+S3M100	11	15	3.5	6000ZZ×1	26	8	●	●	-
+S3M150	17	21	4.5	6900ZZ×2	22	6	●	●	-
+S3M060	12	7	11

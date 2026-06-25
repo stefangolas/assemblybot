@@ -1,0 +1,31 @@
+{
+  "manufacturer": "McMaster-Carr",
+  "part_number": "96945A306",
+  "family": "316 Stainless Steel Shim, for Shortening 5 mm Diameter Screw Shoulders",
+  "configuration": {
+    "id_mm": 5,
+    "id_tolerance_mm": "0 to 0.25",
+    "od_mm": 7.82,
+    "od_tolerance_mm": "0 to 0.25",
+    "thickness_in": 0.031,
+    "thickness_mm": 0.787,
+    "thickness_tolerance_in": "-0.003 to 0.003",
+    "for_shoulder_diameter_mm": 5,
+    "for_screw_size": "M5",
+    "material": "316 Stainless Steel",
+    "min_hardness": "Rockwell B70"
+  },
+  "source_urls": [
+    "https://www.mcmaster.com/96945A306/"
+  ],
+  "retrieval_time_utc": "2026-06-21",
+  "evidence_files": {
+    "product_page_capture": "source/product_page.txt"
+  },
+  "cad_status": "not_fetched",
+  "drawing_status": "2-D PDF available; not yet downloaded",
+  "candidate_status": "shortlisted",
+  "known_contradictions": [
+    "Same 'M5' labeling caveat as 91437A406 -- not a thread-size contradiction, see that manifest for rationale."
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "job_id": "rung2-idler-shims",
+  "status": "MULTIPLE_CANDIDATES",
+  "recommended_candidate": {
+    "manufacturer": "McMaster-Carr",
+    "part_number": "91437A406 (18-8 stainless) or 96945A306 (316 stainless)",
+    "configuration": {
+      "id_mm": 5,
+      "od_mm": 7.82,
+      "thickness_in": 0.031,
+      "thickness_mm": 0.787,
+      "stack_per_side": "4-5 shims to approximate ~3.5 mm per side"
+    },
+    "bundle_path": "candidate_evidence/rung2-idler-shims/mcmaster/91437A406/ (and /96945A306/)"
+  },
+  "hard_requirements": {
+    "confirmed": [
+      "ID = 5 mm -- manufacturer-confirmed on all 4 shortlisted PNs (3088A693, 3088A203, 91437A406, 96945A306)",
+      "Axle shoulder diameter = 5 mm, shoulder length = 16 mm -- manufacturer-confirmed on 96654A131 product page",
+      "OD < 10 mm -- manufacturer-confirmed satisfied by 91437A406 / 96945A306 (OD = 7.82 mm)"
+    ],
+    "contradicted": [
+      "OD < 10 mm -- CONTRADICTED by the round-shim family (3088A693 / 3088A203): OD = 10 mm exactly, not strictly less than 10 mm against the packet's ~Ø10 flange-opening estimate"
+    ],
+    "unresolved": [
+      "~3.5 mm thickness per side as a single or low-count stack -- no shortlisted PN hits ~3.5mm in 1-2 pieces while also satisfying OD<10mm. See stack_math_notes.md for the full trade-off.",
+      "Idler race width (~9 mm) and flange opening (~Ø10) are PACKET ESTIMATES, not independently re-verified by this job (out of scope -- belongs to the idler's own evidence bundle/CAD). The exact required shim thickness depends on these unverified figures.",
+      "92314A130 and 91145A130 (warm-start leads) could not be validated -- product pages returned bare 'McMaster-Carr' shell titles on repeated reads with extended wait. Likely invalid/retired PNs or a transient render issue; not used as evidence."
+    ]
+  },
+  "evidence": {
+    "drawing": "Not yet downloaded for any candidate (2-D PDF links present on all 4 product pages; deferred since manufacturer spec-table text already confirms ID/OD/thickness to the precision needed for this stack-math decision)",
+    "cad": "Not fetched for any candidate this pass (STEP available on all 4 product pages via standard McMaster CAD widget)",
+    "specification": "candidate_evidence/rung2-idler-shims/mcmaster/<PN>/source/product_page.txt for each of 3088A693, 3088A203, 91437A406, 96945A306; reference copy of axle spec at candidate_evidence/rung2-idler-shims/_reference/96654A131_shoulder_screw_specs.txt",
+    "bom": "n/a (single-item catalog parts, no BOM)"
+  },
+  "cad_measurements": [],
+  "alternatives": [
+    {
+      "manufacturer": "McMaster-Carr",
+      "part_number": "3088A693 + 3088A203 (one of each, per side)",
+      "configuration": "ID 5mm, OD 10mm, 1.5mm + 2mm = 3.5mm per side combo",
+      "note": "Cleanly hits the ~3.5mm/side thickness target in only 2 pieces per side, but OD=10mm is flush with (not clearing) the estimated Ø10 flange opening -- risk of fouling the flange rather than bearing only on the inner race. Manufacturer-confirmed dimensions, drawing/CAD not yet pulled."
+    },
+    {
+      "manufacturer": "McMaster-Carr",
+      "part_number": "94639A130",
+      "configuration": "Off-White Nylon Unthreaded Spacer, OD 3/8\" (9.525mm), length 1/2\" (12.7mm)",
+      "note": "REJECTED -- warm-start lead. OD is under 10mm but length (12.7mm) is over 3x the target thickness and not stackable to a 3.5mm increment; bore/screw-size not confirmed without further configurator interaction. Not pursued further."
+    }
+  ],
+  "risks": [
+    "Neither shortlisted family satisfies both 'OD strictly < 10mm' and '~3.5mm in 1-2 pieces' simultaneously -- see stack_math_notes.md. The lead must decide whether to: (a) accept OD=10mm flush-fit round shims and verify the idler's actual flange ID has enough margin, or (b) accept a 4-5-deep thin-shim stack per side with OD=7.82mm and verify stack stability, or (c) search further for a single-piece OD<10mm/ID5mm/~3.5mm spacer outside the 'shim' and 'round unthreaded spacer' categories already checked.",
+    "The 'For Screw Size M5' label on the shoulder-shortening shim family (91437A406/96945A306) refers to McMaster's shoulder-diameter-based taxonomy, not a thread-size requirement -- does not contradict use with our M4-threaded 96654A131 screw, since the controlling fit dimension is the 5mm shoulder/ID, which is manufacturer-confirmed on both parts. Flagging explicitly so the lead doesn't reject on a superficial label mismatch.",
+    "Idler race width (~9mm) and flange opening (~Ø10) are inherited packet estimates, not measured by this job. If those numbers are off, the entire 7mm-total / 3.5mm-per-side stack target shifts.",
+    "Drawing PDFs and CAD STEP files were not downloaded for any of the 4 shortlisted PNs in this pass -- product-page spec tables are treated as manufacturer-confirmed for ID/OD/thickness (McMaster's structured spec fields, not an inferred CAD measurement), but the dimensioned 2-D drawing was not independently pulled. Recommend pulling the drawing for whichever candidate the lead selects before promoting to canonical ontology."
+  ],
+  "recommended_next_action": "Lead should resolve the idler's actual race width and flange-opening ID (via the idler's own evidence bundle / CAD) to firm up the 3.5mm-per-side target, then choose between: (a) 3088A693+3088A203 combo (OD=10mm, simple 2-piece/side, flush-fit risk) or (b) 91437A406/96945A306 stack of 4-5/side (OD=7.82mm, safely clears Ø10, but a deeper less-stable stack). Pull the 2-D drawing and CAD STEP for whichever is chosen before writing canonical ontology."
+}

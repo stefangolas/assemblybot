@@ -1,0 +1,24 @@
+CAD AVAILABILITY CHECK -- DWSSS-D7.5-V5-L3 (MISUMI Straight Spacers - Precision,
+Configurable Length and Inner Diameter)
+
+Attempted via in-page "CADDownload" button on the configured-PN detail page
+(https://us.misumi-ec.com/vona2/detail/110302283340/?HissuCode=DWSSS-D7.5-V5-L3...).
+
+Dialog opened with full file-format selector (DXF, DWG, SOLIDWORKS, CATIA V5,
+Inventor, NX, SolidEdge, STEP AP203/AP214, Parasolid x_b/x_t, ACIS, IGES,
+ProE/Creo, PDF 3D). Selecting STEP(AP214) and clicking Generate returned:
+
+  "CAD data is not available for this product."
+
+This was confirmed twice (format selector change did not alter the result).
+This appears to be a structural limitation of this custom-ground spacer family
+(spacers in this series are noted on the product page as "grounded together to
+minimize height variation" -- i.e. made-to-order via simultaneous grinding,
+not pulled from a parametric CAD generator the way MISUMI's bracket/extrusion
+families are).
+
+CONCLUSION: No CAD geometry is obtainable for this candidate through the
+standard MISUMI CAD-download flow. Geometric evidence for this candidate rests
+on the dimensioned 2D drawing (drawing_drw_01.gif) and the configured
+specification table (configured_spec_page.txt) only -- both manufacturer-
+confirmed, but neither is independently-measured CAD geometry.

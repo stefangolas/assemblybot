@@ -1,0 +1,40 @@
+{
+  "job_id": "rung2-rail-mounts",
+  "manufacturer": "MISUMI",
+  "brand_code": "MSM1",
+  "part_number": "SSEB20-220",
+  "family": "SSEB (Linear Guide Assembly - Miniature, Standard Carriage, H6 Type)",
+  "series_code": "110302586530",
+  "configuration": {
+    "guide_size_H": 20,
+    "rail_length_L_mm": 220,
+    "carriage_count": 1
+  },
+  "source_urls": {
+    "detail_page": "https://us.misumi-ec.com/vona2/detail/110302586530/?HissuCode=SSEB20-220&seriesCode=110302586530",
+    "drawing_gif": "https://us.misumi-ec.com/linked/item/10302586530/img/drw_01_2014.gif",
+    "cad_zip": "https://rd-jp-caddata.misumi-ec.com/prod/CadSupplyGC/MSM1/2080028/QjIwLTIyMA/STEP_AP203/SSEB20-220_STEP.zip"
+  },
+  "retrieval_time_utc": "2026-06-21",
+  "cad_status": "retrieved, converted, measured",
+  "drawing_status": "retrieved, converted to PNG, read",
+  "candidate_status": "manufacturer-confirmed rail mount-hole pattern (drawing + spec table + CAD measurement all agree)",
+  "known_contradictions": "none found",
+  "files": {
+    "source": [
+      "source/drw_01_2014.gif",
+      "source/drw_01_2014.png",
+      "source/spec_tables.txt"
+    ],
+    "cad": [
+      "cad/SSEB20-220_STEP.zip",
+      "cad/SSEB20-220.stp",
+      "cad/SSEB20-220.glb",
+      "cad/RAIL_SSEB20-220.glb"
+    ],
+    "measurements": [
+      "measurements/rail_mount_holes.json",
+      "measurements/notes.md"
+    ]
+  }
+}

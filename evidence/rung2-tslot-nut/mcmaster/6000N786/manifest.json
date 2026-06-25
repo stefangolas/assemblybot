@@ -1,0 +1,42 @@
+{
+  "job_id": "rung2-tslot-nut",
+  "manufacturer": "McMaster-Carr",
+  "part_number": "6000N786",
+  "family": "T-Slotted Framing Fasteners",
+  "configuration": {
+    "fastener_type": "Screw and Nut Set",
+    "nut_style": "Self-Aligning Spring-Loaded Ball",
+    "fastener_head_style": "Button",
+    "for_rail_height_single": "1 1/2 in, 40 mm",
+    "for_rail_height_double_quad": "3 in, 80 mm",
+    "for_rail_height_triple": "4 1/2 in, 120 mm",
+    "mounting_hole_location": "Offset",
+    "fastener_thread_size": "M5",
+    "fastener_thread_length_mm": 8,
+    "fastener_drive_style": "Hex",
+    "fastener_installation_type": "Drop In",
+    "screw_material": "304 Stainless Steel",
+    "nut_material": "304 Stainless Steel",
+    "nut_thickness_in": 0.283,
+    "sold_as": "pack of 4",
+    "price_usd_per_pack": 8.18
+  },
+  "source_urls": {
+    "product_page": "https://www.mcmaster.com/6000N786/"
+  },
+  "retrieval_time_utc": "2026-06-21 (session capture, exact timestamp not separately logged)",
+  "files": {
+    "source/product_page.png": "full-page screenshot of the live product page (raw)",
+    "source/product_page.txt": "document.title + innerText capture of the live product page (raw)",
+    "cad/6000N786_original.step": "raw downloaded STEP (3-D STEP no-threads variant requested; McMaster served combined screw+nut assembly) — never modify",
+    "cad/6000N786.glb": "derived conversion via cascadio.step_to_glb, metres",
+    "measurements/notes.md": "derived bounding-box / cross-section measurements off the GLB"
+  },
+  "cad_status": "retrieved, converted, bounding-box measured; not split into clean per-part solids (McMaster export is a faceted multi-fragment mesh, 90 disjoint pieces on naive connected-component split)",
+  "drawing_status": "no separate 2-D PDF/DWG anchor found on this product page (no visible 'For Rail Height' dimensioned drawing link was resolvable as a clickable/anchor element in this session) — compatibility evidence is the manufacturer SPEC TABLE on the product page, not a separate dimensioned drawing file",
+  "candidate_status": "recommended primary candidate",
+  "known_contradictions": [],
+  "known_gaps": [
+    "Product page's own spec table does not print a numeric 'T-Slot Width' field; rail-height compatibility (1.5in/40mm) is cross-referenced against the extrusion's own spec (6575N203: T-Slot Width 8mm) rather than stated directly on 6000N786's page as '8 mm slot'."
+  ]
+}
