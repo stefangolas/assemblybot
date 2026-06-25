@@ -127,10 +127,17 @@ function frameCamera(dir) {
 }
 
 function updateColors() {
-  for(const pd of partsData) {
+  const numParts = partsData.length;
+  for(let i = 0; i < numParts; i++) {
+    const pd = partsData[i];
     const isNew = pd.part.ref === NEW;
     
-    let baseColor = 0x98b8c8; // light blue pastel
+    const t = numParts > 1 ? i / (numParts - 1) : 0;
+    const cStart = new THREE.Color(0x98b8c8); // light blue pastel
+    const cEnd = new THREE.Color(0x5a8a9a);   // darker blue
+    cStart.lerp(cEnd, t);
+    
+    let baseColor = cStart.getHex();
     const ident = ((pd.part.group||'') + ' ' + (pd.part.ref||'') + ' ' + (pd.part.url||'')).toLowerCase();
     if (ident.includes('fastener') || ident.includes('screw') || ident.includes('washer') || ident.includes('nut') || ident.includes('bolt') || ident.includes('shcs') || /m\d/.test(ident)) {
       baseColor = 0x222222; // black
