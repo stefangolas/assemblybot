@@ -26,6 +26,9 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
+import { LineMaterial } from 'three/addons/lines/LineMaterial.js';
+import { LineSegmentsGeometry } from 'three/addons/lines/LineSegmentsGeometry.js';
+import { LineSegments2 } from 'three/addons/lines/LineSegments2.js';
 import GUI from 'lil-gui';
 
 const Q = new URLSearchParams(location.search);
@@ -191,7 +194,15 @@ function toggleParts() {
     o.traverse(n => {
       if(n.isMesh) {
         const edges = new THREE.EdgesGeometry(n.geometry, 15);
-        const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0x333333, opacity: 0.5, transparent: true }));
+        const lineGeom = new LineSegmentsGeometry().fromEdgesGeometry(edges);
+        const lineMat = new LineMaterial({
+            color: 0x111111,
+            linewidth: 3, // thick edges
+            resolution: new THREE.Vector2(innerWidth, innerHeight),
+            transparent: true,
+            opacity: 0.6
+        });
+        const line = new LineSegments2(lineGeom, lineMat);
         n.add(line);
       }
     });
@@ -271,6 +282,10 @@ function toggleParts() {
     camera.updateProjectionMatrix();
     renderer.setSize(innerWidth, innerHeight);
     labelRenderer.setSize(innerWidth, innerHeight);
+    const res = new THREE.Vector2(innerWidth, innerHeight);
+    scene.traverse(obj => {
+       if (obj.isLineSegments2) obj.material.resolution.copy(res);
+    });
   });
 })();
 </script>
