@@ -361,6 +361,35 @@ def bounded_area_overlap(a: EngagementPort, b: EngagementPort,
                            f"flush contact patch {area:.0f} mm2 (gap {gap:.2f} mm)")
 
 
+def head_seat(screw_part, screw_port, screw_place,
+              bearing_part, bearing_face, bearing_place) -> PredicateResult:
+    """The screw cap's underside must seat FLUSH on the clamped face.
+
+    Same flush test as bounded_area_overlap, but between the screw's `head_seat` port (the
+    cap underside) and the bearing face. This pins the screw's AXIAL position: a wrong-length
+    or mis-placed screw puts its head plane off the surface -- buried inside the hole, or
+    floating above it -- so the seating gap blows up and this FAILs. Combined with
+    thread_engagement (head seats AND thread must reach the tap), a wrong-length screw
+    cannot satisfy both. Resolved off the screw PART so callers only bind the screw + the
+    bearing face."""
+    try:
+        head = screw_part.port("head_seat")
+    except Exception:
+        return PredicateResult("head_seat", "UNKNOWN", "required_closure", {},
+                               "screw part has no head_seat port (cap underside not modeled)")
+    r = bounded_area_overlap(head, bearing_face, screw_place, bearing_place)
+    gap = r.measurements.get("seating_gap_mm")
+    # for a screw cap the seating gap IS the defect: a head left proud or buried is a hard
+    # failure (wrong length / mis-placed), not the "might close later" UNKNOWN that general
+    # face seating allows.
+    if isinstance(gap, (int, float)) and gap > 0.5 and r.verdict != "FAIL":
+        return PredicateResult("head_seat", "FAIL", "hard_geometry", r.measurements,
+                               f"cap NOT seated -- {gap:.2f} mm off the clamped face "
+                               f"(wrong screw length or mis-placed)")
+    return PredicateResult("head_seat", r.verdict, r.severity, r.measurements,
+                           "cap underside vs clamped face: " + r.detail)
+
+
 # ---- race-segregation: annular_clearance (rung-3 NEW) -------------------------
 
 def _annulus_radii(port: EngagementPort):

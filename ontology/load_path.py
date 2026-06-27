@@ -112,10 +112,11 @@ class BodyHold:
     ref: str
     state: int
     path: list = field(default_factory=list)    # list[Edge] frm-body -> ground
+    accounted: bool = True                       # False = placed but in NO structural instance
 
     @property
     def name(self) -> str:
-        return _NAME[self.state]
+        return "UNACCOUNTED" if not self.accounted else _NAME[self.state]
 
 
 @dataclass
@@ -126,7 +127,12 @@ class LoadPathReport:
 
     @property
     def all_confirmed(self) -> bool:
-        return all(b.state == CONFIRMED for r, b in self.bodies.items() if r not in self.ground)
+        return all(b.state == CONFIRMED and b.accounted
+                   for r, b in self.bodies.items() if r not in self.ground)
+
+    @property
+    def unaccounted(self) -> list:
+        return sorted(r for r, b in self.bodies.items() if not b.accounted)
 
     def text(self) -> str:
         lines = [f"LOAD PATH (ground: {sorted(self.ground)}) -> "
@@ -134,6 +140,9 @@ class LoadPathReport:
         for ref, b in sorted(self.bodies.items()):
             if ref in self.ground:
                 lines.append(f"   {ref:10s} GROUND")
+                continue
+            if not b.accounted:
+                lines.append(f"   {ref:10s} UNACCOUNTED -- placed but in NO structural instance")
                 continue
             chain = " -> ".join([e.to for e in b.path]) if b.path else "(no path)"
             lines.append(f"   {ref:10s} {b.name:16s} via {ref} -> {chain}")
@@ -189,10 +198,19 @@ def _closure_state(instance, library, all_instances=(), placements=None) -> tupl
     return min(states), "; ".join(notes)
 
 
-def evaluate(instances, library, placements, ground: list, mode: str = "validation") -> LoadPathReport:
+def evaluate(instances, library, placements, ground: list, mode: str = "validation",
+             placed=None, non_structural=None) -> LoadPathReport:
     """Build the carried-by graph from all instances' load_paths, grade each edge by
     (its via-checks geometry) AND (its instance closure), then for every body take the
-    BEST path to ground (max over paths of the min edge state)."""
+    BEST path to ground (max over paths of the min edge state).
+
+    `placed`: the full set of parts that exist in the assembly (e.g. every render/
+    placement ref). EVERY placed part must end up GROUND, HELD, or explicitly listed in
+    `non_structural` (a coupling/flexible element with no load-bearing role) -- otherwise
+    it is reported UNACCOUNTED and fails the gate. Without this, a part that is placed but
+    in NO structural instance is silently invisible to the load-path graph (the motor-on-
+    a-belt bug). `non_structural` records the intentional exceptions so they are explicit,
+    never silent."""
     edges: list[Edge] = []
     for inst in instances:
         rep = inst.evaluate(library, placements)
@@ -251,4 +269,13 @@ def evaluate(instances, library, placements, ground: list, mode: str = "validati
         else:
             st, path = best_to_ground(b)
             out.bodies[b] = BodyHold(b, st, path)
+
+    # ACCOUNTING: every placed part must be GROUND, HELD, or a declared coupling.
+    # Anything placed but absent from the structural graph is UNACCOUNTED -> fails.
+    if placed is not None:
+        exempt = set(ground) | set(non_structural or ())
+        for ref in placed:
+            if ref in out.bodies or ref in exempt:
+                continue
+            out.bodies[ref] = BodyHold(ref, UNHELD, [], accounted=False)
     return out

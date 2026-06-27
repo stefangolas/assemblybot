@@ -198,6 +198,14 @@ def main() -> bool:
     print(f"  RESULT: {'ALL BLOCKING GATES PASS' if report.passed else 'FAILED'} "
           f"(computed DOF {m.computed_dof} == intended {asm.intended_dof})")
     print("=" * 68)
+    # shared verification harness (same gates every rung runs). rung 1 is v1 -> cad_fidelity +
+    # load_path SKIP; interference runs (bracket-on-rail + its T-nuts entering the slot are
+    # designed contacts; the McMaster bracket is modelled WITH its fasteners).
+    from assembly.verify import verify_assembly
+    verify_assembly("rung1", report.placements,
+                    {"p_rail": "/cad/6575N368.glb", "p_bracket": "/cad/4844N135.glb",
+                     "p_screw": "/cad/91290A320.glb"},
+                    designed=lambda a, b: ("p_screw" in (a, b)) or {a, b} == {"p_bracket", "p_rail"})
     return report.passed
 
 

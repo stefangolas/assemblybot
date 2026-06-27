@@ -30,6 +30,7 @@ ROOT = Path(__file__).resolve().parent.parent
 OUT, CAD, LIBV2 = ROOT / "out", ROOT / "cad", ROOT / "library_v2"
 
 R_I = [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
+R_FLIPY = [[-1, 0, 0], [0, 1, 0], [0, 0, -1]]   # 180deg about Y: screw thread -> +Z, head -> -Z
 # extrusion 6575N203: 304.8 mm length along local Z, 40x40 in local X-Y -> length to world X
 R_EXT = [[0, 0, 1], [0, 1, 0], [-1, 0, 0]]
 
@@ -42,7 +43,14 @@ IDLER_X = (-45.0, 225.0)             # C = 270 mm -> real 600 mm belt; avoids br
 IDLER_Y = 40.0                        # bracket axle-hole height -> belt lower run at 40-PR=30.45
 RAIL_CENTER_X = 90.0
 EXT_PLACE = {"R": R_EXT, "t_mm": [-62.4, -20.0, 0.0]}   # Centered at 90.0 -> spans -62.4 to 242.4
-SCR_TZ = -0.5                         # 96654A131: shoulder local -7.5..+8.5 -> world -8..+8 (16 mm). Idler inner-race stack centres to world -5..+5 (10 mm); bracket face ~Z=-8, head seat ~Z=+8 -> exactly 3 mm each side for the retention spacers.
+BRK_Z = 11.0                          # bracket moved +Z so its 3.2 mm riser plate (-> Z 11..14.2)
+                                      # sits OUTBOARD of the idler (+Z flange at Z=8.5), not at its
+                                      # mid-span. Foot bolt stays within the extrusion slot (Z<20).
+SCR_TZ = -3.0                         # flipped 28 mm screw origin: thread engages the moved plate
+                                      # (~Z 11..15), shoulder spans Z 11..-17 across the idler,
+                                      # head retains it at Z~-17..-21 (idler's free -Z side).
+IDLER_ALONG = 2.8                     # slide the idler bore along the shoulder so its band sits on
+                                      # the belt plane (world Z=0); tuned against the interference gate.
 
 
 def load(stem):
@@ -56,7 +64,10 @@ def build():
         "p_plt": load("FPT-Adapter-Plate"),
         "p_idl1": load("SHTF20S3M100-5"), "p_idl2": load("SHTF20S3M100-5"),
         "p_brk1": load("FALBS-H40-bracket"), "p_brk2": load("FALBS-H40-bracket"),
-        "p_scr1": load("96654A131"), "p_scr2": load("96654A131"),
+        # 28 mm shoulder (was 16 mm 96654A131): long enough to put the bracket plate OUTBOARD
+        # of the 21.8 mm idler and cantilever back to it, so the plate no longer straddles the
+        # spinning idler (the 7.7 mm interference). Bracket moves +Z to BRK_Z; screw flipped.
+        "p_scr1": load("SHOULDER-D5-L28-M4"), "p_scr2": load("SHOULDER-D5-L28-M4"),
         "p_jaw": load("TBCR-Clamp-Jaw"),
     }
     # fixed (frame) placements; the moving group is SOLVED below
@@ -67,10 +78,12 @@ def build():
         # its left end. Drawing-verified: the grip is the plate's low-X toothed end; at
         # block_X=102.5 the grip sits at world X=30, between the idlers (-30..210).
         "p_blk": {"R": R_I, "t_mm": [102.5, 0, 0]},
-        "p_brk1": {"R": R_I, "t_mm": [IDLER_X[0], 0.0, 0.0]},
-        "p_brk2": {"R": R_I, "t_mm": [IDLER_X[1], 0.0, 0.0]},
-        "p_scr1": {"R": R_I, "t_mm": [IDLER_X[0], IDLER_Y, 0.0 - SCR_TZ]},
-        "p_scr2": {"R": R_I, "t_mm": [IDLER_X[1], IDLER_Y, 0.0 - SCR_TZ]},
+        "p_brk1": {"R": R_I, "t_mm": [IDLER_X[0], 0.0, BRK_Z]},
+        "p_brk2": {"R": R_I, "t_mm": [IDLER_X[1], 0.0, BRK_Z]},
+        # screw FLIPPED 180deg about Y: thread (local -Z) -> world +Z into the moved plate;
+        # shoulder cantilevers -Z back across the idler; head retains it on the idler's -Z side.
+        "p_scr1": {"R": R_FLIPY, "t_mm": [IDLER_X[0], IDLER_Y, SCR_TZ]},
+        "p_scr2": {"R": R_FLIPY, "t_mm": [IDLER_X[1], IDLER_Y, SCR_TZ]},
     }
 
     # --- SOLVE: plate fastened onto the block top -----------------------
@@ -90,7 +103,7 @@ def build():
         # are SEPARATE attachments graded in the gate, not implied by this fit.
         rev = TEMPLATES["revolute_fit_on_journal"].bind(
             {"rotor": f"{iref}.bore", "journal": f"{sref}.shoulder"})
-        idl_res.append(PS.solve_pose(rev, iref, lib, placements, along_mm=-SCR_TZ))
+        idl_res.append(PS.solve_pose(rev, iref, lib, placements, along_mm=IDLER_ALONG))
         idl_checks.append((iref, rev.evaluate(lib, placements)))
 
     # --- belt: closed S3M loop over the two idler pitch circles (X-Y plane) ------
@@ -132,8 +145,8 @@ RENDER = [
     ("p_jaw",  "/cad/CUSTOM-clamp.glb", 0xc0563f),
     ("p_brk1", "/cad/FALBS-SP-T3.2-A80-B30-L30-H40-M4-NA5.glb", 0x6f9fcf),
     ("p_brk2", "/cad/FALBS-SP-T3.2-A80-B30-L30-H40-M4-NA5.glb", 0x6f9fcf),
-    ("p_scr1", "/cad/96654A131.glb",        0xb8b0c8),
-    ("p_scr2", "/cad/96654A131.glb",        0xb8b0c8),
+    ("p_scr1", "/cad/SHOULDER-D5-L28-M4.glb",        0xb8b0c8),
+    ("p_scr2", "/cad/SHOULDER-D5-L28-M4.glb",        0xb8b0c8),
     ("p_idl1", "/cad/SHTF20S3M100-5.glb",   0xd9b24b),
     ("p_idl2", "/cad/SHTF20S3M100-5.glb",   0xd9b24b),
     ("p_belt", "/cad/belt_s3m.glb",         0x3b4654),
@@ -194,6 +207,19 @@ def main():
             print("    " + str(r))
     print(" belt:", belt.detail)
     print("wrote out/rung2_v2_placements.json")
+
+    # shared verification harness (same gates every rung runs). rung 2 has v2 defs -> cad_fidelity
+    # + interference run; load_path SKIPs here (the moving group is pose-solved per-template, not
+    # assembled into one instance list -- the dedicated _rung2_v2_gate.py covers it).
+    from assembly.verify import verify_assembly
+    _urls2 = {r: u for r, u, c in RENDER + extra_render}
+    def _designed2(a, b):
+        if any(x.startswith(("p_scr", "p_spacer", "p_belt")) for x in (a, b)):
+            return True                              # fasteners / spacers / belt seat into their parts
+        return {a, b} in [{"p_blk", "p_plt"}, {"p_blk", "p_rail"}, {"p_rail", "p_ext"},
+                          {"p_brk1", "p_ext"}, {"p_brk2", "p_ext"}, {"p_idl1", "p_scr1"},
+                          {"p_idl2", "p_scr2"}, {"p_plt", "p_jaw"}]
+    verify_assembly("rung2", placements, _urls2, lib=lib, designed=_designed2)
 
     # auto-render: looking at the assembly IS the verification (constitution Hard Rule
     # 1/1b), so the build always produces the picture, not just the numbers.

@@ -46,6 +46,7 @@ _PREDICATES = {
     "coaxial_pattern_correspondence": ("group", PM.coaxial_pattern_correspondence),
     "clearance_pass_through": ("pair_pp", PM.clearance_pass_through),
     "thread_engagement": ("pair_cyl", PM.thread_engagement),
+    "head_seat": ("group", PM.head_seat),
 }
 
 # enforce relations the pose solver understands (compiled in mate_solver; named here)
@@ -76,10 +77,12 @@ class Participant:
     polarity: str | None = None
     role: str = ""
     is_fastener: bool = False            # must be a real modeled retaining part
+    optional: bool = False              # may be left unbound (e.g. a bearing face we add later)
 
     def to_json(self) -> dict:
         return {"family": self.family, "polarity": self.polarity,
-                "role": self.role, "is_fastener": self.is_fastener}
+                "role": self.role, "is_fastener": self.is_fastener,
+                "optional": self.optional}
 
 
 @dataclass
@@ -193,6 +196,8 @@ class AttachmentTemplate:
         free world-axis endpoints)."""
         for name, part in self.participants.items():
             if name not in bindings:
+                if getattr(part, "optional", False):
+                    continue                       # optional slot may be left unbound
                 raise ValueError(f"template {self.id}: participant {name!r} unbound")
             addr = bindings[name]
             if addr == "GROUND":
@@ -250,6 +255,12 @@ class AttachmentInstance:
         out = []
         for chk in self.template.checks:
             kind, fn = _PREDICATES[chk.predicate]
+            # skip a check that references an OPTIONAL participant left unbound (e.g. a
+            # head_seat with no bearing face bound yet) -- it isn't applicable, not a failure.
+            if any(s in self.template.participants
+                   and getattr(self.template.participants[s], "optional", False)
+                   and s not in self.bindings for s in (chk.a, chk.b)):
+                continue
             try:
                 pa, oa, pla = self._resolve(chk.a, library, placements)
                 pb, ob, plb = self._resolve(chk.b, library, placements)
@@ -331,6 +342,29 @@ _reg(AttachmentTemplate(
 ))
 
 _reg(AttachmentTemplate(
+    id="fixed_hub_on_journal",
+    participants={
+        # A pulley/pinion bore clamped onto a motor shaft, turning WITH it (not a revolute).
+        "hub": Participant("cylindrical", "receiver", role="hub/pinion bore"),
+        "journal": Participant("cylindrical", "insert", role="motor shaft / journal"),
+        # Closure is a real radial set screw bearing on the shaft flat -- NOT integral.
+        # Hard Rule 6: a set-screw closure needs a real modeled set-screw PART; until that
+        # part + its radial thread port are bound, the hub reads PROVISIONAL/UNHELD.
+        "set_screw": Participant("threaded", "external", role="radial set screw onto shaft", is_fastener=True),
+    },
+    enforce=[Relation("coaxial", "hub.axis", "journal.axis")],
+    checks=[Check("radial_fit", "journal", "hub"),
+            Check("axial_overlap", "journal", "hub")],
+    closure=[ClosureRequirement("fastener", "set_screw",
+                                detail="radial set screw clamps the bore onto the shaft flat")],
+    load_paths=[
+        LoadPathEdge("hub", "journal", ["radial_fit", "axial_overlap"]),
+        LoadPathEdge("set_screw", "hub", []),
+    ],
+    result=JointSpec("fixed"),
+))
+
+_reg(AttachmentTemplate(
     id="inner_race_axial_retention",
     participants={
         "rotor": Participant("cylindrical", "receiver", role="bearing INNER race (recessed)"),
@@ -385,12 +419,19 @@ _reg(AttachmentTemplate(
     participants={
         "screw": Participant("threaded", "external", role="fastener", is_fastener=True),
         "receiver": Participant("threaded", "internal", role="tapped hole"),
+        # the clamped face the cap underside seats on -- bind it to enforce head seating.
+        "bearing": Participant("planar", "contact", role="clamped face under the cap",
+                               optional=True),
     },
     enforce=[Relation("coaxial", "screw.axis", "receiver.axis")],
     checks=[Check("thread_match", "screw", "receiver"),
-            Check("thread_engagement", "screw", "receiver")],   # reach + min engagement at the placed poses
+            Check("thread_engagement", "screw", "receiver"),
+            Check("head_seat", "screw", "bearing")],   # runs only when `bearing` is bound   # reach + min engagement at the placed poses
     closure=[ClosureRequirement("fastener", "screw", detail="the screw IS the closure")],
-    load_paths=[LoadPathEdge("screw", "receiver", ["thread_match", "thread_engagement"])],
+    # head_seat is part of the load path: a cap not seated on the clamped face is not
+    # truly fastening (skipped -> provisional until a bearing face is bound; FAIL -> UNHELD).
+    load_paths=[LoadPathEdge("screw", "receiver",
+                             ["thread_match", "thread_engagement", "head_seat"])],
     result=JointSpec("fixed"),
 ))
 
@@ -518,6 +559,29 @@ _reg(AttachmentTemplate(
     closure=[ClosureRequirement("fastener", "screws",
                                 detail="M5 screws through the pulley holes into the carrier (separate instances)")],
     load_paths=[LoadPathEdge("hub", "pilot", ["radial_fit", "bounded_area_overlap", "pattern_correspondence"])],
+    result=JointSpec("fixed"),
+))
+
+_reg(AttachmentTemplate(
+    id="pilot_located_through_bolted_hub",
+    # A pilot-located hub/pulley clamped by through-bolts across a finite stack.
+    # The bore pilot and seated face are flush, but the clearance-hole group and
+    # tapped receiver group live on different axial planes, so compare the
+    # pattern projected along the bolt axis.
+    participants={
+        "hub": Participant("cylindrical", "receiver", role="pulley bore"),
+        "pilot": Participant("cylindrical", "insert", role="locating pilot on the carrier"),
+        "hub_seat": Participant("planar", "contact", role="pulley seating face"),
+        "seat": Participant("planar", "contact", role="carrier seat face the pulley lands on"),
+    },
+    enforce=[Relation("coaxial", "hub.axis", "pilot.axis")],
+    checks=[Check("radial_fit", "pilot", "hub"),
+            Check("bounded_area_overlap", "hub_seat", "seat"),
+            Check("coaxial_pattern_correspondence", "hub_group", "seat_group")],
+    closure=[ClosureRequirement("fastener", "screws",
+                                detail="M5 screws through the pulley holes into the carrier")],
+    load_paths=[LoadPathEdge("hub", "pilot",
+                             ["radial_fit", "bounded_area_overlap", "coaxial_pattern_correspondence"])],
     result=JointSpec("fixed"),
 ))
 

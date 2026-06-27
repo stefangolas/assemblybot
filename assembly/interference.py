@@ -13,7 +13,9 @@ seating faces; the dimensional clearance is the compatibility gate's job.
 """
 from __future__ import annotations
 
-from dataclasses import dataclass
+import math
+from dataclasses import dataclass, field
+from pathlib import Path
 
 import numpy as np
 import trimesh
@@ -167,3 +169,119 @@ def check_face_mount(rail_gltf: str, plate_l: float, plate_w: float, plate_t: fl
     else:
         detail = "plate clears rail (no contact)"
     return InterferenceResult(clean=not interfering, detail=detail, pairs=list(names))
+
+
+# =============================================================================
+# General whole-assembly interference gate (static + swept). Used by the main
+# verification set alongside load_path and cad_fidelity. The per-assembly
+# knowledge -- which contacts are BY DESIGN (a screw in its hole, a seated face)
+# and which refs ROTATE (for the swept-collision check that a static pose hides,
+# Hard Rule 1) -- is supplied by the caller as predicates, so this stays generic.
+# =============================================================================
+
+def load_placed(asm: dict, root) -> dict:
+    """Build {ref: placed Trimesh in world mm} from a canonical assembly JSON
+    (`_render` list of {ref,url} + per-ref {R, t_mm}; glTF is metres)."""
+    root = Path(root)
+    meshes = {}
+    for e in asm.get("_render", []):
+        ref, url = e["ref"], e["url"]
+        p = (root / url.lstrip("/")).resolve()
+        if not p.exists():
+            continue
+        g = list(trimesh.load(p, force="scene").geometry.values())
+        if not g:
+            continue
+        m = trimesh.util.concatenate(g)
+        m.apply_scale(1000.0)                       # metres -> mm
+        pl = asm[ref]
+        M = np.eye(4)
+        M[:3, :3] = np.asarray(pl["R"], float)
+        M[:3, 3] = np.asarray(pl["t_mm"], float)
+        m.apply_transform(M)
+        meshes[ref] = m
+    return meshes
+
+
+def _pair_depths(meshes: dict, names_a, names_b=None) -> dict:
+    """Max FCL penetration depth per colliding pair. names_b None -> all pairs within
+    names_a; else cross set A vs B."""
+    cm = trimesh.collision.CollisionManager()
+    for n in names_a:
+        cm.add_object(n, meshes[n])
+    if names_b is None:
+        _, _, data = cm.in_collision_internal(return_names=True, return_data=True)
+    else:
+        cm2 = trimesh.collision.CollisionManager()
+        for n in names_b:
+            cm2.add_object(n, meshes[n])
+        _, _, data = cm.in_collision_other(cm2, return_names=True, return_data=True)
+    depth = {}
+    for c in data:
+        nm = getattr(c, "names", None)
+        if not nm:
+            continue
+        key = tuple(sorted(nm))
+        depth[key] = max(depth.get(key, 0.0), abs(getattr(c, "depth", 0.0) or 0.0))
+    return depth
+
+
+@dataclass
+class InterferenceReport:
+    passed: bool
+    static_flags: list = field(default_factory=list)   # [((a,b), depth_mm)] unexpected static overlaps
+    swept_flags: dict = field(default_factory=dict)     # {(a,b): max_depth_mm} swept-only collisions
+    n_contacts: int = 0
+
+
+def interference_gate(meshes: dict, *, designed=None, rotating=None, tol_mm=0.15,
+                      flag_mm=0.30, swept_steps=24, axis=(0, 0, 1), center=(0, 0, 0),
+                      verbose=True) -> InterferenceReport:
+    """Whole-assembly overlap gate.
+
+      designed(a, b) -> bool : True when the pair is MEANT to touch (screw-in-hole,
+                               seated face); such overlaps never fail. Default: any
+                               pair is unexpected (strict).
+      rotating(ref)  -> bool : marks the moving group; if given, the rotating set is
+                               swept about `axis` through `center` over `swept_steps`
+                               and collided against the fixed set (catches a collision
+                               that the assembled pose hides). Default: no sweep.
+
+    Fails if any UNEXPECTED static overlap exceeds flag_mm, or any swept collision occurs.
+    """
+    designed = designed or (lambda a, b: False)
+
+    depth = _pair_depths(meshes, list(meshes))
+    contacts = [(k, d) for k, d in depth.items() if d > tol_mm]
+    static_flags = [(k, d) for k, d in contacts if not designed(*k) and d > flag_mm]
+    static_flags.sort(key=lambda kv: -kv[1])
+
+    swept = {}
+    if rotating is not None:
+        rot = [r for r in meshes if rotating(r)]
+        fixed = [r for r in meshes if not rotating(r)]
+        if rot and fixed:
+            base = {r: meshes[r].copy() for r in rot}
+            for i in range(swept_steps):
+                ang = 2 * math.pi * i / swept_steps
+                Rz = trimesh.transformations.rotation_matrix(ang, axis, center)
+                step = dict(meshes)
+                for r in rot:
+                    m = base[r].copy()
+                    m.apply_transform(Rz)
+                    step[r] = m
+                for key, d in _pair_depths(step, rot, fixed).items():
+                    if d > tol_mm and not designed(*key):
+                        swept[key] = max(swept.get(key, 0.0), d)
+
+    passed = not static_flags and not swept
+    rep = InterferenceReport(passed, static_flags, swept, len(contacts))
+    if verbose:
+        for (a, b), d in static_flags:
+            print(f"  interference  STATIC {a} <-> {b}: {d:.2f} mm (not a designed contact)")
+        for (a, b), d in sorted(swept.items(), key=lambda kv: -kv[1]):
+            print(f"  interference  SWEPT  {a} <-> {b}: up to {d:.2f} mm mid-rotation")
+        tag = "PASS" if passed else "FAIL"
+        print(f"  interference GATE: {tag} ({rep.n_contacts} contacts, "
+              f"{len(static_flags)} static + {len(swept)} swept unexpected)")
+    return rep

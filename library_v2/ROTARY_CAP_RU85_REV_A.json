@@ -952,15 +952,23 @@
         },
         "axial_interval_mm": {
           "min": 0,
-          "max": 10,
+          "max": 5.0,
           "unit": "mm"
         },
         "material_side": "inside"
       },
-      "access": {},
+      "access": {
+        "insertion_directions": [
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      },
       "symmetry": {},
       "semantic_aliases": [
-        "cap_bolt_clearance_counterbored"
+        "cap_bolt_clearance"
       ],
       "evidence_refs": [
         "ev"
@@ -992,15 +1000,23 @@
         },
         "axial_interval_mm": {
           "min": 0,
-          "max": 10,
+          "max": 5.0,
           "unit": "mm"
         },
         "material_side": "inside"
       },
-      "access": {},
+      "access": {
+        "insertion_directions": [
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      },
       "symmetry": {},
       "semantic_aliases": [
-        "cap_bolt_clearance_counterbored"
+        "cap_bolt_clearance"
       ],
       "evidence_refs": [
         "ev"
@@ -1032,15 +1048,23 @@
         },
         "axial_interval_mm": {
           "min": 0,
-          "max": 10,
+          "max": 5.0,
           "unit": "mm"
         },
         "material_side": "inside"
       },
-      "access": {},
+      "access": {
+        "insertion_directions": [
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      },
       "symmetry": {},
       "semantic_aliases": [
-        "cap_bolt_clearance_counterbored"
+        "cap_bolt_clearance"
       ],
       "evidence_refs": [
         "ev"
@@ -1072,15 +1096,215 @@
         },
         "axial_interval_mm": {
           "min": 0,
-          "max": 10,
+          "max": 5.0,
           "unit": "mm"
         },
         "material_side": "inside"
       },
-      "access": {},
+      "access": {
+        "insertion_directions": [
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      },
       "symmetry": {},
       "semantic_aliases": [
-        "cap_bolt_clearance_counterbored"
+        "cap_bolt_clearance"
+      ],
+      "evidence_refs": [
+        "ev"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "cbore_1",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            42.5,
+            0.0,
+            0
+          ],
+          "direction": [
+            0,
+            0,
+            1.0
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 4.5,
+          "max": 4.5,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 5.0,
+          "max": 10.0,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {
+        "insertion_directions": [
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "symmetry": {},
+      "semantic_aliases": [
+        "cap_bolt_head_counterbore"
+      ],
+      "evidence_refs": [
+        "ev"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "cbore_2",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            0.0,
+            42.5,
+            0
+          ],
+          "direction": [
+            0,
+            0,
+            1.0
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 4.5,
+          "max": 4.5,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 5.0,
+          "max": 10.0,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {
+        "insertion_directions": [
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "symmetry": {},
+      "semantic_aliases": [
+        "cap_bolt_head_counterbore"
+      ],
+      "evidence_refs": [
+        "ev"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "cbore_3",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            -42.5,
+            0.0,
+            0
+          ],
+          "direction": [
+            0,
+            0,
+            1.0
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 4.5,
+          "max": 4.5,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 5.0,
+          "max": 10.0,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {
+        "insertion_directions": [
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "symmetry": {},
+      "semantic_aliases": [
+        "cap_bolt_head_counterbore"
+      ],
+      "evidence_refs": [
+        "ev"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "cbore_4",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            0.0,
+            -42.5,
+            0
+          ],
+          "direction": [
+            0,
+            0,
+            1.0
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 4.5,
+          "max": 4.5,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 5.0,
+          "max": 10.0,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {
+        "insertion_directions": [
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "symmetry": {},
+      "semantic_aliases": [
+        "cap_bolt_head_counterbore"
       ],
       "evidence_refs": [
         "ev"

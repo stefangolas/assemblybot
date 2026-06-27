@@ -1,0 +1,344 @@
+{
+  "schema_version": 2,
+  "part_number": "iCL42-06",
+  "classification": {
+    "catalog_family": "stepper_motor",
+    "broader_families": [
+      "actuator"
+    ]
+  },
+  "source": {
+    "url": "stepperonline:iCL42-06",
+    "retrieved_at": "2026-06-25",
+    "brand": "StepperOnline"
+  },
+  "raw_spec": {},
+  "normalized_parameters": {
+    "frame_size_nema": 17,
+    "shaft_diameter_mm": 5.0,
+    "pilot_diameter_mm": 22.0,
+    "mount_pattern_span_mm": 31.0,
+    "mount_thread": "M3"
+  },
+  "cad": {
+    "gltf_uri": "cad/iCL42-06.glb",
+    "units": "metre"
+  },
+  "part_frame": {
+    "units": "millimetre",
+    "drawing_to_cad": {
+      "scale": 1.0,
+      "rotation": "identity",
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "ports": [
+    {
+      "id": "shaft",
+      "family": "cylindrical",
+      "polarity": "insert",
+      "geometry": {
+        "axis": {
+          "origin": [
+            0.0,
+            0.0,
+            42.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 2.5,
+          "max": 2.5,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 24.0,
+          "unit": "mm"
+        },
+        "material_side": "outside"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "motor_shaft"
+      ],
+      "evidence_refs": [],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "pilot",
+      "family": "cylindrical",
+      "polarity": "insert",
+      "geometry": {
+        "axis": {
+          "origin": [
+            0.0,
+            0.0,
+            40.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 11.0,
+          "max": 11.0,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 2.0,
+          "unit": "mm"
+        },
+        "material_side": "outside"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "locating_pilot"
+      ],
+      "evidence_refs": [],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "front_face",
+      "family": "planar",
+      "polarity": "contact",
+      "geometry": {
+        "plane": {
+          "origin": [
+            0.0,
+            0.0,
+            40.0
+          ],
+          "normal": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        "boundary_uv_mm": {
+          "outer": [
+            [
+              -21.0,
+              -21.0
+            ],
+            [
+              21.0,
+              -21.0
+            ],
+            [
+              21.0,
+              21.0
+            ],
+            [
+              -21.0,
+              21.0
+            ]
+          ],
+          "holes": []
+        },
+        "material_side": "negative_normal"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "mounting_face"
+      ],
+      "evidence_refs": [],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "mount_thread_1",
+      "family": "threaded",
+      "polarity": "internal",
+      "geometry": {
+        "axis": {
+          "origin": [
+            -15.5,
+            -15.5,
+            40.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 4.5,
+          "unit": "mm"
+        },
+        "thread": {
+          "standard": "ISO_metric",
+          "designation": "M3x0.5",
+          "pitch_mm": 0.5,
+          "handedness": "right",
+          "starts": 1
+        }
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [],
+      "evidence_refs": [],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "mount_thread_2",
+      "family": "threaded",
+      "polarity": "internal",
+      "geometry": {
+        "axis": {
+          "origin": [
+            -15.5,
+            15.5,
+            40.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 4.5,
+          "unit": "mm"
+        },
+        "thread": {
+          "standard": "ISO_metric",
+          "designation": "M3x0.5",
+          "pitch_mm": 0.5,
+          "handedness": "right",
+          "starts": 1
+        }
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [],
+      "evidence_refs": [],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "mount_thread_3",
+      "family": "threaded",
+      "polarity": "internal",
+      "geometry": {
+        "axis": {
+          "origin": [
+            15.5,
+            -15.5,
+            40.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 4.5,
+          "unit": "mm"
+        },
+        "thread": {
+          "standard": "ISO_metric",
+          "designation": "M3x0.5",
+          "pitch_mm": 0.5,
+          "handedness": "right",
+          "starts": 1
+        }
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [],
+      "evidence_refs": [],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "mount_thread_4",
+      "family": "threaded",
+      "polarity": "internal",
+      "geometry": {
+        "axis": {
+          "origin": [
+            15.5,
+            15.5,
+            40.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 4.5,
+          "unit": "mm"
+        },
+        "thread": {
+          "standard": "ISO_metric",
+          "designation": "M3x0.5",
+          "pitch_mm": 0.5,
+          "handedness": "right",
+          "starts": 1
+        }
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [],
+      "evidence_refs": [],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    }
+  ],
+  "port_groups": [
+    {
+      "id": "mount_pattern",
+      "kind": "repeated_ports",
+      "members": [
+        {
+          "port": "mount_thread_1"
+        },
+        {
+          "port": "mount_thread_2"
+        },
+        {
+          "port": "mount_thread_3"
+        },
+        {
+          "port": "mount_thread_4"
+        }
+      ],
+      "frame": null,
+      "symmetry": {},
+      "placement_domain": null,
+      "evidence_refs": []
+    }
+  ],
+  "annotation_status": {
+    "overall": "partial",
+    "expected_ports": {}
+  },
+  "evidence": [],
+  "provenance": {}
+}

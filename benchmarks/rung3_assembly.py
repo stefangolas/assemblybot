@@ -16,12 +16,16 @@ from pathlib import Path
 from ontology.schema_v2 import PartDefinition
 from ontology.templates import TEMPLATES
 from ontology import load_path as LP
+from assembly.verify import verify_assembly
+from assembly.verify_canonical import embed_verification
+import benchmarks.rung3_interference as I3
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT, LIB = ROOT / "projects" / "rung3_rotary" / "out", ROOT / "library_v2"
 I = [[1,0,0],[0,1,0],[0,0,1]]; R_XZ = [[0,0,-1],[0,1,0],[1,0,0]]
 R_EXT = [[0,0,1],[0,1,0],[-1,0,0]]; R_EY = [[1,0,0],[0,0,1],[0,-1,0]]
-D = 95.10
+D = 148.74   # 4:1 belt center distance, stepped OUT from 95.1 so the NEMA23 body clears the
+             # x=110 machine footprint (10.5 mm margin). Belt regenerated to 107T S5M to suit.
 def load(s): return PartDefinition.from_json(json.loads((LIB/f"{s}.json").read_text()))
 def pcd(r,n,start): return [(round(r*math.cos(math.radians(start+360/n*k)),2),
                             round(r*math.sin(math.radians(start+360/n*k)),2)) for k in range(n)]
@@ -29,17 +33,22 @@ SC5="/cad/ISO4762-M5x0.8-16.glb"; SC35="/cad/ISO4762-M5x0.8-35.glb"; M6="/cad/IS
 
 # ref -> (R, t_mm, url, color, explode_dz)
 P = {
- "p_frX1":(R_EXT,[0,90,-35],"/cad/6575N203.glb",0x5f6a72,-130),
- "p_frX2":(R_EXT,[0,-90,-35],"/cad/6575N203.glb",0x5f6a72,-130),
- "p_frY1":(R_EY,[90,0,-35],"/cad/6575N203.glb",0x5f6a72,-130),
- "p_frY2":(R_EY,[-90,0,-35],"/cad/6575N203.glb",0x5f6a72,-130),
+ # butt-jointed frame, 6575N203 profile CUT to length (build_frame.py): X-rails run full and
+ # EXTENDED in +X (x[-110,180], centered x=35) so the motor bay reaches the outboard NEMA23;
+ # Y-rails seat BETWEEN them (y+-70) at x=+-90. Members BUTT (touch) -- no corner interpenetration;
+ # rails stay on the +-90 lines so all 8 base anchors land on steel.
+ "p_frX1":(R_EXT,[35,90,-35],"/cad/frame_railX_290.glb",0x5f6a72,-130),
+ "p_frX2":(R_EXT,[35,-90,-35],"/cad/frame_railX_290.glb",0x5f6a72,-130),
+ "p_frY1":(R_EY,[90,0,-35],"/cad/frame_railY_140.glb",0x5f6a72,-130),
+ "p_frY2":(R_EY,[-90,0,-35],"/cad/frame_railY_140.glb",0x5f6a72,-130),
+ "p_mmount":(I,[0,0,0],"/cad/MOTOR_MOUNT_RU85_REV_A.glb",0x6f7a82,-150),         # bridge: X-rails -> NEMA23 face at z27
  "p_base":(I,[0,0,0],"/cad/ROTARY_BASE_RU85_REV_A.glb",0x8a9097,-70),
  "p_brg":(R_XZ,[0,0,0],"/cad/RU85UUC0.glb",0xb5a642,-25),
  "p_adp":(I,[0,0,15],"/cad/ROTARY_ADAPTER_RU85_S5M_REV_A.glb",0xc0563f,30),   # lower adapter
  "p_72":(R_XZ,[0,0,27],"/cad/HTPA72S5M150.glb",0x4a7fb0,100),                 # pulley on the pilot
  "p_belt":(I,[0,0,0],"/cad/belt_s5m.glb",0x2b2f36,100),
  "p_18":(R_XZ,[D,0,27],"/cad/HTPA18S5M150.glb",0x4ab07f,100),
- "p_motor":(I,[D,0,27],"/cad/NEMA23-MOTOR.glb",0x9b59b6,-90),
+ "p_motor":(I,[D,0,0.4],"/cad/NEMA23-MOTOR.glb",0x9b59b6,-90),   # face on the bridge underside (z23), shaft up to the 18T
  "p_cap":(I,[0,0,49],"/cad/ROTARY_CAP_RU85_REV_A.glb",0xcf8a7a,165),          # bolt-on cap on the pulley top
  "p_top":(I,[0,0,59],"/cad/A6061-tabletop.glb",0xd9c16a,240),                 # tabletop on the cap
 }
@@ -55,7 +64,8 @@ for k,(x,y) in enumerate(ANC): P[f"tn{k}"]=(I,[float(x),float(y),-20.5],TN,0xcc8
 def main():
     lib={r:load(s) for r,s in {"p_base":"ROTARY_BASE_RU85_REV_A","p_brg":"RU85UUC0",
         "p_adp":"ROTARY_ADAPTER_RU85_S5M_REV_A","p_72":"HTPA72S5M150-A-H50-KFC85-K5.5",
-        "p_cap":"ROTARY_CAP_RU85_REV_A","p_top":"A6061FQM-200-200-10"}.items()}
+        "p_cap":"ROTARY_CAP_RU85_REV_A","p_top":"A6061FQM-200-200-10",
+        "p_mmount":"MOTOR_MOUNT_RU85_REV_A"}.items()}   # bracket in lib so cad_fidelity covers it
     pl={r:{"R":P[r][0],"t_mm":P[r][1]} for r in lib}
     inst=[
       TEMPLATES["bearing_ring_mount"].bind({"plate":"p_adp.inner_race_boss","ring":"p_brg.inner_ring_adapter_face",
@@ -80,15 +90,45 @@ def main():
     rep=LP.evaluate(inst, lib, pl, ground=["p_base","p_brg"], mode="discovery")
     state={r:("UNHELD" if b.state==LP.UNHELD else "HELD") for r,b in rep.bodies.items()}
     asm={"_axis":[0,0,1]}; rend=[]
+    
+    def get_name(ref, url):
+        if ref in lib:
+            p = lib[ref]
+            fam = p.classification.get("catalog_family", "").replace("_", " ")
+            if "screw" in fam:
+                d = p.normalized_parameters.get("thread_designation", "")
+                l = p.normalized_parameters.get("nominal_length_mm", "")
+                return f"{d.split('x')[0]}x{l} {fam}"
+            if "custom_machined" in fam:
+                return p.classification.get("aliases", [p.part_number])[0].replace("_", " ")
+            if "pulley" in fam:
+                return f"timing pulley ({p.part_number})"
+            if "bearing" in fam:
+                return f"cross roller bearing ({p.part_number})"
+            return p.part_number
+        b = Path(url).stem
+        if "ISO4762" in b:
+            pts = b.split("-")
+            return f"{pts[1].split('x')[0]}x{pts[2]} socket head cap screw" if len(pts)>2 else b
+        if "TNUT" in b: return "M6 T-slot nut"
+        if "6575N203" in b: return "40x40 extrusion"
+        if "NEMA23" in b: return "NEMA23 stepper motor"
+        if "belt" in b: return "S5M timing belt"
+        return b
+
     for ref,(R,t,url,col,ez) in P.items():
         asm[ref]={"R":R,"t_mm":[float(v) for v in t]}
-        rend.append({"ref":ref,"url":url,"color":col,"explode":ez,"state":state.get(ref,"HELD")})
+        rend.append({"ref":ref,"url":url,"color":col,"explode":ez,"state":state.get(ref,"HELD"),"name":get_name(ref, url)})
     asm["_render"]=rend
+    embed_verification(asm, lib=lib, instances=inst, ground=["p_base", "p_brg"], placements=pl)
     (OUT/"rung3_assembly.json").write_text(json.dumps(asm, indent=2))
-    held=[r for r,b in rep.bodies.items() if r not in rep.ground and b.state==LP.UNHELD]
     print(f"wrote out/rung3_assembly.json -- {len(rend)} parts incl. "
           f"{sum(1 for e in rend if 'ISO4762' in e['url'] or 'TNUT' in e['url'])} fasteners")
-    print(f"gate: {'ALL HELD' if not held else 'UNHELD: '+str(held)}")
+    # The MAIN verification set -- load_path + cad_fidelity + interference -- via the shared
+    # harness every rung uses (assembly/verify.py), so the gates stay identical across rungs.
+    verify_assembly("rung3", {r: asm[r] for r in P}, {r: P[r][2] for r in P},
+                    lib=lib, instances=inst, ground=["p_base", "p_brg"],
+                    designed=I3.designed, rotating=I3.rotating)
     for r,b in sorted(rep.bodies.items()):
         if r not in rep.ground: print(f"   {r}: {b.name}")
 

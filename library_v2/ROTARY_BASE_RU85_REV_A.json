@@ -912,8 +912,8 @@
           "unit": "mm"
         },
         "axial_interval_mm": {
-          "min": -15.0,
-          "max": 0.0,
+          "min": 0.0,
+          "max": 15.0,
           "unit": "mm"
         },
         "material_side": "inside"
@@ -953,8 +953,8 @@
           "unit": "mm"
         },
         "axial_interval_mm": {
-          "min": -15.0,
-          "max": 0.0,
+          "min": 0.0,
+          "max": 15.0,
           "unit": "mm"
         },
         "material_side": "inside"
@@ -994,8 +994,8 @@
           "unit": "mm"
         },
         "axial_interval_mm": {
-          "min": -15.0,
-          "max": 0.0,
+          "min": 0.0,
+          "max": 15.0,
           "unit": "mm"
         },
         "material_side": "inside"
@@ -1035,8 +1035,8 @@
           "unit": "mm"
         },
         "axial_interval_mm": {
-          "min": -15.0,
-          "max": 0.0,
+          "min": 0.0,
+          "max": 15.0,
           "unit": "mm"
         },
         "material_side": "inside"
@@ -1076,8 +1076,8 @@
           "unit": "mm"
         },
         "axial_interval_mm": {
-          "min": -15.0,
-          "max": 0.0,
+          "min": 0.0,
+          "max": 15.0,
           "unit": "mm"
         },
         "material_side": "inside"
@@ -1117,8 +1117,8 @@
           "unit": "mm"
         },
         "axial_interval_mm": {
-          "min": -15.0,
-          "max": 0.0,
+          "min": 0.0,
+          "max": 15.0,
           "unit": "mm"
         },
         "material_side": "inside"
@@ -1158,8 +1158,8 @@
           "unit": "mm"
         },
         "axial_interval_mm": {
-          "min": -15.0,
-          "max": 0.0,
+          "min": 0.0,
+          "max": 15.0,
           "unit": "mm"
         },
         "material_side": "inside"
@@ -1199,8 +1199,8 @@
           "unit": "mm"
         },
         "axial_interval_mm": {
-          "min": -15.0,
-          "max": 0.0,
+          "min": 0.0,
+          "max": 15.0,
           "unit": "mm"
         },
         "material_side": "inside"

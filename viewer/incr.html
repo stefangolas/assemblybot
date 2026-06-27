@@ -12,8 +12,46 @@ html,body{margin:0;height:100%;background:#e9e1cf;overflow:hidden;font-family:sa
   pointer-events: none;
   white-space: nowrap;
 }
+#parts-overlay {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-family: monospace;
+  font-size: 13px;
+  color: #333;
+  pointer-events: none;
+  line-height: 1.4;
+  z-index: 100;
+}
+#selection-overlay {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-family: monospace;
+  font-size: 13px;
+  color: #333;
+  pointer-events: none;
+  line-height: 1.5;
+  text-align: right;
+  z-index: 100;
+}
+#selection-overlay .sel-head {
+  font-weight: bold;
+  color: #b03a64;
+  margin-bottom: 3px;
+}
+#selection-overlay .sel-line {
+  background: rgba(255,209,220,0.55);
+  border: 1px solid rgba(176,58,100,0.35);
+  border-radius: 3px;
+  padding: 1px 5px;
+  margin: 2px 0 2px auto;
+  display: inline-block;
+}
 </style>
 </head><body>
+<div id="parts-overlay"></div>
+<div id="selection-overlay"></div>
 <script type="importmap">
 { "imports": {
   "three": "/_app/vendor/three.module.js",
@@ -39,6 +77,8 @@ const INITIAL_EXPLODE = parseFloat(Q.get('explode')||'0');
 const HIDE = new Set((Q.get('hide')||'').split(',').filter(x=>x));
 const ONLY = new Set((Q.get('only')||'').split(',').filter(x=>x));
 const COLOR_MODE = Q.get('color')||'';
+const INITIAL_DOF = Q.get('dof')||'';   // "J1:45,J2:-60" -> initial joint values (deg/mm)
+const SELECT = new Set((Q.get('select')||'').split(',').filter(x=>x));  // pre-selected refs
 
 const renderer = new THREE.WebGLRenderer({antialias:true, alpha:true});
 renderer.setSize(innerWidth, innerHeight); 
@@ -66,18 +106,64 @@ const hemi = new THREE.HemisphereLight(0xffffff, 0xd0cbbd, 0.6);
 scene.add(hemi);
 
 const loader = new GLTFLoader();
-const load = u => new Promise((res,rej)=>loader.load(u, g=>res(g.scene), undefined, rej));
+const cache = {};
+const load = async u => {
+  if (cache[u]) {
+    const clone = cache[u].clone();
+    clone.traverse(n => {
+      if (n.isMesh && n.material) {
+        if (Array.isArray(n.material)) {
+          n.material = n.material.map(m => m.clone());
+        } else {
+          n.material = n.material.clone();
+        }
+      }
+    });
+    return clone;
+  }
+  const g = await new Promise((res,rej)=>loader.load(u, res, undefined, rej));
+  const model = g.scene;
+  model.traverse(n => {
+    if(n.isMesh && !n.isLineSegments2) {
+      const edges = new THREE.EdgesGeometry(n.geometry, 15);
+      const lineGeom = new LineSegmentsGeometry().fromEdgesGeometry(edges);
+      const lineMat = new LineMaterial({
+          color: 0x111111,
+          linewidth: 1,
+          resolution: new THREE.Vector2(innerWidth, innerHeight),
+          transparent: true,
+          opacity: 0.6
+      });
+      const line = new LineSegments2(lineGeom, lineMat);
+      n.add(line);
+    }
+  });
+  cache[u] = model;
+  const clone = model.clone();
+  clone.traverse(n => {
+    if (n.isMesh && n.material) {
+      if (Array.isArray(n.material)) {
+        n.material = n.material.map(m => m.clone());
+      } else {
+        n.material = n.material.clone();
+      }
+    }
+  });
+  return clone;
+};
 
 const state = {
   explode: INITIAL_EXPLODE,
   showLabels: true,
   gateColor: COLOR_MODE === 'gate',
   view: INITIAL_DIR,
-  parts: {}
+  parts: {},
+  dofs: {}
 };
 
 const partsData = [];
 let assemblyAxis = [0,0,1];
+let dofDefs = [];                 // [{id,type,axis,center,moving,range}], from place._dofs
 let boundingCenter = new THREE.Vector3();
 let boundingRadius = 0.05;
 
@@ -105,12 +191,64 @@ function mat(p,off){
   ); 
 }
 
+// One DOF's world-frame generator matrix at its current value: a revolute rotates
+// about (axis through center); a slider translates along axis. center is mm -> m.
+function dofGenerator(dof) {
+  const v = state.dofs[dof.id] || 0;
+  const a = new THREE.Vector3(...dof.axis).normalize();
+  if (dof.type === 'slider') {
+    const d = a.clone().multiplyScalar(v * 0.001);
+    return new THREE.Matrix4().makeTranslation(d.x, d.y, d.z);
+  }
+  const c = new THREE.Vector3(...dof.center).multiplyScalar(0.001);
+  const q = new THREE.Quaternion().setFromAxisAngle(a, v * Math.PI / 180);
+  return new THREE.Matrix4().makeTranslation(c.x, c.y, c.z)
+    .multiply(new THREE.Matrix4().makeRotationFromQuaternion(q))
+    .multiply(new THREE.Matrix4().makeTranslation(-c.x, -c.y, -c.z));
+}
+
+// Pre-multiply the generators of every DOF that moves this part, proximal-first
+// (largest moving-set leftmost). Moving sets nest for a serial chain, so this
+// composes articulated joints correctly without a scene-graph hierarchy.
+function kinematicMatrix(pd) {
+  const W = new THREE.Matrix4();
+  for (const di of (pd.dofIdx || [])) W.multiply(dofGenerator(dofDefs[di]));
+  return W;
+}
+
+function computeExplodeOrdering() {
+  const axis = new THREE.Vector3(...assemblyAxis).normalize();
+  const projected = partsData
+    .filter(pd => pd.p && pd.obj)
+    .map(pd => {
+      const box = new THREE.Box3().setFromObject(pd.obj);
+      const center = box.getCenter(new THREE.Vector3());
+      pd.axisProjectionMm = center.dot(axis) * 1000;
+      return pd;
+    })
+    .sort((a, b) => (a.axisProjectionMm - b.axisProjectionMm) || ((a.renderIndex || 0) - (b.renderIndex || 0)));
+
+  if (!projected.length) return;
+  const minP = projected[0].axisProjectionMm;
+  const maxP = projected[projected.length - 1].axisProjectionMm;
+  const centerP = (minP + maxP) * 0.5;
+  const gain = 1.35;
+  let previous = -Infinity;
+  for (const pd of projected) {
+    let v = (pd.axisProjectionMm - centerP) * gain;
+    if (v <= previous) v = previous + 0.5;
+    pd.orderedExplodeMm = v;
+    previous = v;
+  }
+}
+
 function updateExplode() {
   for(const pd of partsData) {
     if(pd.p) {
-      const off = state.explode ? assemblyAxis.map(a=>a*(pd.part.explode||0)*state.explode) : [0,0,0];
+      const explodeMm = pd.orderedExplodeMm ?? (pd.part.explode || 0);
+      const off = state.explode ? assemblyAxis.map(a=>a*explodeMm*state.explode) : [0,0,0];
       pd.obj.matrixAutoUpdate = false;
-      pd.obj.matrix.copy(mat(pd.p, off));
+      pd.obj.matrix.copy(kinematicMatrix(pd).multiply(mat(pd.p, off)));
     }
     if (pd.labelObj) {
       pd.labelObj.visible = state.showLabels && state.parts[pd.part.ref];
@@ -128,26 +266,39 @@ function frameCamera(dir) {
   controls.target.copy(boundingCenter);
   controls.update();
 }
+window.frameCamera = frameCamera;
 
 function updateColors() {
-  const numParts = partsData.length;
-  for(let i = 0; i < numParts; i++) {
+  const uniqueStructuralURLs = [];
+  partsData.forEach(pd => {
+    const ident = ((pd.part.group||'') + ' ' + (pd.part.ref||'') + ' ' + (pd.part.url||'')).toLowerCase();
+    const isFastener = ident.includes('fastener') || ident.includes('screw') || ident.includes('washer') || ident.includes('nut') || ident.includes('bolt') || ident.includes('shcs') || /m\d/.test(ident);
+    if (!isFastener && !uniqueStructuralURLs.includes(pd.part.url)) {
+      uniqueStructuralURLs.push(pd.part.url);
+    }
+  });
+
+  for(let i = 0; i < partsData.length; i++) {
     const pd = partsData[i];
     const isNew = pd.part.ref === NEW;
     
-    const t = numParts > 1 ? i / (numParts - 1) : 0;
-    const cStart = new THREE.Color(0x98b8c8); // light blue pastel
-    const cEnd = new THREE.Color(0x5a8a9a);   // darker blue
-    cStart.lerp(cEnd, t);
-    
-    let baseColor = cStart.getHex();
+    let baseColor;
     const ident = ((pd.part.group||'') + ' ' + (pd.part.ref||'') + ' ' + (pd.part.url||'')).toLowerCase();
-    if (ident.includes('fastener') || ident.includes('screw') || ident.includes('washer') || ident.includes('nut') || ident.includes('bolt') || ident.includes('shcs') || /m\d/.test(ident)) {
+    const isFastener = ident.includes('fastener') || ident.includes('screw') || ident.includes('washer') || ident.includes('nut') || ident.includes('bolt') || ident.includes('shcs') || /m\d/.test(ident);
+
+    if (isFastener) {
       baseColor = 0x222222; // black
+    } else {
+      const idx = uniqueStructuralURLs.indexOf(pd.part.url);
+      const t = uniqueStructuralURLs.length > 1 ? idx / (uniqueStructuralURLs.length - 1) : 0;
+      // Darker shading lower in the stack (array start = bottom = dark blue, array end = top = light blue)
+      const c = new THREE.Color(0x406a80).lerp(new THREE.Color(0xb8d8e8), t);
+      baseColor = c.getHex();
     }
     
     if(isNew) baseColor = 0xffcf3f;
     if(state.gateColor && pd.part.state === 'UNHELD') baseColor = 0xd83030;
+    if(pd.selected) baseColor = 0xffd1dc; // pastel pink selection
     const opacity = NEW ? (isNew ? 1.0 : 0.32) : 1.0;
     
     pd.obj.traverse(n => {
@@ -164,6 +315,7 @@ function updateColors() {
           n.material.transparent = opacity < 1;
           n.material.opacity = opacity;
         }
+        n.material.wireframe = pd.wire;
       }
     });
   }
@@ -174,15 +326,50 @@ function toggleParts() {
     pd.obj.visible = state.parts[pd.part.ref];
     if(pd.labelObj) pd.labelObj.visible = state.showLabels && state.parts[pd.part.ref];
   }
+  updatePartsOverlay();
+  updateSelectionOverlay();
+}
+
+function updatePartsOverlay() {
+  const counts = {};
+  for(const pd of partsData) {
+    if(state.parts[pd.part.ref]) {
+      const name = pd.part.name || pd.part.url.split('/').pop().replace('.glb', '');
+      counts[name] = (counts[name] || 0) + 1;
+    }
+  }
+  const lines = Object.entries(counts).sort().map(([name, count]) => {
+    return `<div class="part-line">${count}x ${name}</div>`;
+  });
+  document.getElementById('parts-overlay').innerHTML = lines.join('');
+}
+
+function partName(pd) {
+  return pd.part.name || pd.part.url.split('/').pop().replace('.glb', '');
+}
+
+function updateSelectionOverlay() {
+  const sel = partsData.filter(pd => pd.selected && state.parts[pd.part.ref]);
+  const el = document.getElementById('selection-overlay');
+  if (!sel.length) { el.innerHTML = ''; return; }
+  const lines = sel.map(pd => `<div class="sel-line">${partName(pd)}</div>`);
+  el.innerHTML = `<div class="sel-head">Selected</div>` + lines.join('');
 }
 
 (async ()=>{
   const place = await (await fetch(SRC)).json();
   assemblyAxis = place._axis || [0,0,1];
-  const group = new THREE.Group(); 
+  dofDefs = place._dofs || [];
+  const initDof = {};
+  for (const kv of INITIAL_DOF.split(',').filter(x=>x)) {
+    const [k, v] = kv.split(':'); initDof[k] = parseFloat(v);
+  }
+  for (const d of dofDefs) state.dofs[d.id] = initDof[d.id] || 0;
+  const movingSets = dofDefs.map(d => new Set(d.moving || []));
+  const group = new THREE.Group();
   scene.add(group);
   
-  const loadPromises = place._render.map(async part => {
+  const loadPromises = place._render.map(async (part, renderIndex) => {
     if(HIDE.has(part.ref)) return;
     if(ONLY.size && !ONLY.has(part.ref)) return;
     
@@ -191,24 +378,10 @@ function toggleParts() {
     const o = await load(part.url);
     const p = place[part.ref];
     
-    o.traverse(n => {
-      if(n.isMesh && !n.isLineSegments2) {
-        const edges = new THREE.EdgesGeometry(n.geometry, 15);
-        const lineGeom = new LineSegmentsGeometry().fromEdgesGeometry(edges);
-        const lineMat = new LineMaterial({
-            color: 0x111111,
-            linewidth: 2, // medium edges
-            resolution: new THREE.Vector2(innerWidth, innerHeight),
-            transparent: true,
-            opacity: 0.6
-        });
-        const line = new LineSegments2(lineGeom, lineMat);
-        n.add(line);
-      }
-    });
-    
-    const pd = { part, p, obj: o, labelObj: null };
-    
+    const pd = { part, p, obj: o, labelObj: null, wire: false, selected: SELECT.has(part.ref), renderIndex };
+    o.userData.partRef = part.ref;
+    o.userData.pd = pd;
+
     if(p) {
       o.matrixAutoUpdate = false;
       o.matrix.copy(mat(p, [0,0,0]));
@@ -235,14 +408,74 @@ function toggleParts() {
   const loadedParts = await Promise.all(loadPromises);
   for (const pd of loadedParts) {
     if (pd) {
+      // which DOFs move this part, proximal-first (largest moving set leftmost)
+      pd.dofIdx = dofDefs
+        .map((d, i) => i)
+        .filter(i => movingSets[i].has(pd.part.ref))
+        .sort((a, b) => movingSets[b].size - movingSets[a].size);
       partsData.push(pd);
       group.add(pd.obj);
     }
   }
   
+  computeExplodeOrdering();
   updateColors();
   updateExplode();
-  
+
+  // Right-click a part to toggle wireframe on just that part.
+  const raycaster = new THREE.Raycaster();
+  function toggleWireframe(pd) {
+    pd.wire = !pd.wire;
+    pd.obj.traverse(n => {
+      if (n.isMesh && !n.isLineSegments2 && n.material) {
+        (Array.isArray(n.material) ? n.material : [n.material]).forEach(m => m.wireframe = pd.wire);
+      }
+    });
+  }
+  // Resolve the visible part under a pointer event -> its pd, or null.
+  function pickPart(e) {
+    const rect = renderer.domElement.getBoundingClientRect();
+    const mouse = new THREE.Vector2(
+      ((e.clientX - rect.left) / rect.width) * 2 - 1,
+      -((e.clientY - rect.top) / rect.height) * 2 + 1);
+    raycaster.setFromCamera(mouse, camera);
+    for (const h of raycaster.intersectObjects(group.children, true)) {
+      if (!h.object.isMesh || h.object.isLineSegments2) continue;
+      let o = h.object;
+      while (o && o.userData.pd === undefined) o = o.parent;
+      if (o && o.visible) return o.userData.pd;
+    }
+    return null;
+  }
+
+  // Right-click a part to toggle wireframe on just that part.
+  renderer.domElement.addEventListener('contextmenu', (e) => {
+    e.preventDefault();
+    const pd = pickPart(e);
+    if (pd) toggleWireframe(pd);
+  });
+
+  // Left-click a part to select it (pastel pink + name in the bottom-right panel).
+  // Distinguish a click from an orbit-drag by pointer travel.
+  let downXY = null;
+  renderer.domElement.addEventListener('pointerdown', (e) => {
+    if (e.button === 0) downXY = { x: e.clientX, y: e.clientY };
+  });
+  renderer.domElement.addEventListener('pointerup', (e) => {
+    if (e.button !== 0 || !downXY) return;
+    const moved = Math.hypot(e.clientX - downXY.x, e.clientY - downXY.y);
+    downXY = null;
+    if (moved > 5) return;                 // it was a drag/orbit, not a click
+    const pd = pickPart(e);
+    const wasSelected = pd && pd.selected;
+    // single-selection: clear everything, then select the clicked part (unless it
+    // was already the selected one -> toggle off). Clicking empty space deselects.
+    partsData.forEach(p => p.selected = false);
+    if (pd && !wasSelected) pd.selected = true;
+    updateColors();
+    updateSelectionOverlay();
+  });
+
   const box = new THREE.Box3().setFromObject(group);
   boundingCenter = box.getCenter(new THREE.Vector3());
   boundingRadius = box.getSize(new THREE.Vector3()).length()/2 || 0.05;
@@ -256,18 +489,30 @@ function toggleParts() {
   
   const viewModes = ['iso', 'x', 'y', 'z'];
   gui.add(state, 'view', viewModes).name('View').onChange(frameCamera);
+
+  // Joints: one slider per recognized kinematic DOF (revolute = deg, slider = mm).
+  if (dofDefs.length) {
+    const jf = gui.addFolder('Joints');
+    for (const d of dofDefs) {
+      const isSlider = d.type === 'slider';
+      const rng = d.range || (isSlider ? [-50, 50] : [-180, 180]);
+      jf.add(state.dofs, d.id, rng[0], rng[1])
+        .name(`${d.id}${isSlider ? ' (mm)' : ' (deg)'}`)
+        .onChange(updateExplode);
+    }
+  }
+
   gui.add({ reset: () => {
     state.explode = 0; state.view = 'iso'; state.showLabels = true;
     for(let k in state.parts) state.parts[k] = true;
+    for(let k in state.dofs) state.dofs[k] = 0;
+    partsData.forEach(pd => pd.selected = false);
     gui.controllersRecursive().forEach(c => c.updateDisplay());
-    updateExplode(); frameCamera('iso'); toggleParts();
+    updateColors(); updateExplode(); frameCamera('iso'); toggleParts();
   }}, 'reset').name('Reset');
-  
-  const folder = gui.addFolder('Parts');
-  for(let ref in state.parts) {
-    folder.add(state.parts, ref).name(ref).onChange(toggleParts);
-  }
-  folder.close();
+
+  updatePartsOverlay();
+  updateSelectionOverlay();
 
   renderer.setAnimationLoop(() => {
     controls.update();

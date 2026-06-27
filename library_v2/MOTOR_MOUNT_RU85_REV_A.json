@@ -1,0 +1,435 @@
+{
+  "schema_version": 2,
+  "part_number": "MOTOR_MOUNT_RU85_REV_A",
+  "classification": {
+    "catalog_family": "custom_machined",
+    "broader_families": [
+      "bracket"
+    ],
+    "aliases": [
+      "motor_bridge"
+    ]
+  },
+  "source": {
+    "url": "custom_drawing:MOTOR_MOUNT_RU85_REV_A",
+    "retrieved_at": "2026-06-25",
+    "revision": "A",
+    "material": "6061-T6"
+  },
+  "raw_spec": {},
+  "normalized_parameters": {
+    "span_mm": 180,
+    "plate_z_mm": 27,
+    "motor": "NEMA23",
+    "center_distance_mm": 148.74
+  },
+  "cad": {
+    "source_uri": "cad/MOTOR_MOUNT_RU85_REV_A.step",
+    "gltf_uri": "cad/MOTOR_MOUNT_RU85_REV_A.glb",
+    "units": "metre"
+  },
+  "part_frame": {
+    "units": "millimetre",
+    "drawing_to_cad": {
+      "scale": 1.0,
+      "rotation": "identity",
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    "note": "modeled in WORLD frame (placed at identity); bridges the extended X-rails to the NEMA23 face at the belt plane z27"
+  },
+  "ports": [
+    {
+      "id": "shaft_bore",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            148.74,
+            0,
+            23
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 11.0,
+          "max": 11.0,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0,
+          "max": 4,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {
+        "insertion_directions": [
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "symmetry": {},
+      "semantic_aliases": [
+        "pulley_hub_clearance"
+      ],
+      "evidence_refs": [
+        "ev"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "nema_1",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            172.31,
+            23.57,
+            23
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 2.75,
+          "max": 2.75,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0,
+          "max": 4,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {
+        "insertion_directions": [
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "symmetry": {},
+      "semantic_aliases": [
+        "nema23_bolt_clearance"
+      ],
+      "evidence_refs": [
+        "ev"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "nema_2",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            125.17000000000002,
+            23.57,
+            23
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 2.75,
+          "max": 2.75,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0,
+          "max": 4,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {
+        "insertion_directions": [
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "symmetry": {},
+      "semantic_aliases": [
+        "nema23_bolt_clearance"
+      ],
+      "evidence_refs": [
+        "ev"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "nema_3",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            125.17000000000002,
+            -23.57,
+            23
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 2.75,
+          "max": 2.75,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0,
+          "max": 4,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {
+        "insertion_directions": [
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "symmetry": {},
+      "semantic_aliases": [
+        "nema23_bolt_clearance"
+      ],
+      "evidence_refs": [
+        "ev"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "nema_4",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            172.31,
+            -23.57,
+            23
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 2.75,
+          "max": 2.75,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0,
+          "max": 4,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {
+        "insertion_directions": [
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "symmetry": {},
+      "semantic_aliases": [
+        "nema23_bolt_clearance"
+      ],
+      "evidence_refs": [
+        "ev"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "leg_hole_1",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            148.74,
+            90.0,
+            -3
+          ],
+          "direction": [
+            0,
+            0,
+            -1
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 3.3,
+          "max": 3.3,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0,
+          "max": 12,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {
+        "insertion_directions": [
+          [
+            0,
+            0,
+            -1
+          ]
+        ]
+      },
+      "symmetry": {},
+      "semantic_aliases": [
+        "rail_mount_clearance"
+      ],
+      "evidence_refs": [
+        "ev"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "leg_hole_2",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            148.74,
+            -90.0,
+            -3
+          ],
+          "direction": [
+            0,
+            0,
+            -1
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 3.3,
+          "max": 3.3,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0,
+          "max": 12,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {
+        "insertion_directions": [
+          [
+            0,
+            0,
+            -1
+          ]
+        ]
+      },
+      "symmetry": {},
+      "semantic_aliases": [
+        "rail_mount_clearance"
+      ],
+      "evidence_refs": [
+        "ev"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    }
+  ],
+  "port_groups": [
+    {
+      "id": "nema_pattern",
+      "kind": "repeated_ports",
+      "members": [
+        {
+          "port": "nema_1"
+        },
+        {
+          "port": "nema_2"
+        },
+        {
+          "port": "nema_3"
+        },
+        {
+          "port": "nema_4"
+        }
+      ],
+      "frame": null,
+      "symmetry": {
+        "generators": [
+          {
+            "rotation_deg": 90
+          }
+        ]
+      },
+      "placement_domain": null,
+      "evidence_refs": [
+        "ev"
+      ]
+    }
+  ],
+  "annotation_status": {
+    "overall": "complete",
+    "expected_ports": {}
+  },
+  "evidence": [
+    {
+      "id": "ev",
+      "source_type": "custom_drawing",
+      "raw_value": "NEMA23 motor bridge bracket",
+      "normalized_claim": {},
+      "source_uri": "cad/MOTOR_MOUNT_RU85_REV_A.glb",
+      "locator": "",
+      "extraction_method": "cad_measurement",
+      "confidence": 0.9,
+      "notes": "4th custom part: carries the outboard NEMA23 at the 4:1 center distance D=148.74, body clear of the rotating envelope + frame."
+    }
+  ],
+  "provenance": {
+    "authored_by": "custom REV_A",
+    "reason": "mount the motor outboard so it clears the rotating output and frame (interference fix)"
+  }
+}

@@ -1,0 +1,253 @@
+{
+  "schema_version": 2,
+  "part_number": "SHOULDER-D5-L28-M4",
+  "classification": {
+    "catalog_family": "shoulder_screw",
+    "broader_families": [
+      "fastener",
+      "journal"
+    ],
+    "aliases": [
+      "shoulder_bolt",
+      "precision_shoulder_screw"
+    ]
+  },
+  "source": {
+    "url": "standard:shoulder_screw",
+    "retrieved_at": "2026-06-25",
+    "note": "standard-generated Oe5 shoulder x28 M4 (longer sibling of 96654A131 so the bracket clears the 21.8mm idler)"
+  },
+  "raw_spec": {
+    "title": "18-8 Stainless Steel Thread-Locking Precision Shoulder Screw",
+    "thread": "M4",
+    "shoulder_dia_mm": "5",
+    "shoulder_len_mm": "16",
+    "head_dia_mm": "9"
+  },
+  "normalized_parameters": {
+    "thread_designation": "M4x0.7",
+    "shoulder_diameter_mm": 5.0,
+    "shoulder_length_mm": 16.0,
+    "head_diameter_mm": 9.0
+  },
+  "cad": {
+    "source_uri": "cad/SHOULDER-D5-L28-M4.step",
+    "gltf_uri": "cad/SHOULDER-D5-L28-M4.glb",
+    "units": "metre"
+  },
+  "part_frame": {
+    "units": "millimetre",
+    "drawing_to_cad": {
+      "scale": 1.0,
+      "rotation": "identity",
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    "note": "axis = local Z. MEASURED (mesh-section, radius bands): thread -12.5..-7.5 (\u00c3\u02dc~4), shoulder -7.5..+8.5 (\u00c3\u02dc5, 16 mm), head +8.5..+12.5 (\u00c3\u02dc9, 4 mm). Replaces 90263A239 (10 mm shoulder, too short for the 15 mm idler hub)."
+  },
+  "ports": [
+    {
+      "id": "shoulder",
+      "family": "cylindrical",
+      "polarity": "insert",
+      "geometry": {
+        "axis": {
+          "origin": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 2.5,
+          "max": 2.5,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": -14.0,
+          "max": 14.0,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "semantic_aliases": [
+        "shoulder_journal",
+        "axle"
+      ],
+      "annotation_status": "confirmed",
+      "evidence_refs": [
+        "ev_shoulder"
+      ]
+    },
+    {
+      "id": "thread",
+      "family": "threaded",
+      "polarity": "external",
+      "geometry": {
+        "axis": {
+          "origin": [
+            0,
+            0,
+            -14.0
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ]
+        },
+        "axial_interval_mm": {
+          "min": -18.5,
+          "max": -14.0,
+          "unit": "mm"
+        },
+        "thread": {
+          "standard": "ISO_metric",
+          "designation": "M4x0.7",
+          "pitch_mm": 0.7,
+          "handedness": "right",
+          "starts": 1,
+          "major_diameter_mm": {
+            "min": 3.8,
+            "max": 4.0
+          },
+          "evidence_status": "confirmed",
+          "evidence_source": "catalog_field"
+        }
+      },
+      "semantic_aliases": [
+        "threaded_end"
+      ],
+      "annotation_status": "confirmed",
+      "evidence_refs": [
+        "ev_thread"
+      ]
+    },
+    {
+      "id": "head_seat",
+      "family": "planar",
+      "polarity": "contact",
+      "geometry": {
+        "plane": {
+          "origin": [
+            0,
+            0,
+            14.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ]
+        },
+        "boundary_uv_mm": {
+          "outer": [
+            [
+              -4.5,
+              -4.5
+            ],
+            [
+              4.5,
+              -4.5
+            ],
+            [
+              4.5,
+              4.5
+            ],
+            [
+              -4.5,
+              4.5
+            ]
+          ],
+          "holes": [
+            [
+              [
+                -2.5,
+                -2.5
+              ],
+              [
+                2.5,
+                -2.5
+              ],
+              [
+                2.5,
+                2.5
+              ],
+              [
+                -2.5,
+                2.5
+              ]
+            ]
+          ]
+        },
+        "material_side": "positive_normal"
+      },
+      "semantic_aliases": [
+        "head_underside",
+        "axial_stop"
+      ],
+      "annotation_status": "nominal",
+      "evidence_refs": [
+        "ev_head"
+      ]
+    }
+  ],
+  "port_groups": [],
+  "annotation_status": {
+    "overall": "complete",
+    "expected_ports": {}
+  },
+  "evidence": [
+    {
+      "id": "ev_shoulder",
+      "source_type": "cad",
+      "raw_value": "\u00c3\u02dc5 shoulder, Z -7.5..+8.5 (16 mm) by radius-band mesh section",
+      "normalized_claim": {
+        "target_path": "ports.shoulder.geometry.axial_interval_mm",
+        "value": {
+          "min": -7.5,
+          "max": 8.5
+        },
+        "unit": "mm"
+      },
+      "extraction_method": "cad_measurement",
+      "confidence": 0.9
+    },
+    {
+      "id": "ev_thread",
+      "source_type": "product_page",
+      "raw_value": "M4 thread, 18-8 SS, thread-locking",
+      "normalized_claim": {
+        "target_path": "ports.thread.geometry.thread.designation",
+        "value": "M4x0.7",
+        "unit": "mm"
+      },
+      "extraction_method": "dom",
+      "confidence": 0.95
+    },
+    {
+      "id": "ev_head",
+      "source_type": "product_page",
+      "raw_value": "head \u00c3\u02dc9 (mesh r=4.5)",
+      "normalized_claim": {
+        "target_path": "ports.head_seat",
+        "value": "\u00c3\u02dc9 underside at Z=+8.5"
+      },
+      "extraction_method": "cad_measurement",
+      "confidence": 0.85
+    }
+  ],
+  "provenance": {
+    "discovered_by": "McMaster warm-tab trusted-click",
+    "annotated_by": "mesh-section radius bands",
+    "acquired": "2026-06-20"
+  }
+}

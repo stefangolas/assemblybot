@@ -15,10 +15,14 @@ def shoot(src="projects/rung3_rotary/out/rung3_assembly.json", prefix="out/shot"
     """Render `src` placements from each angle to `{prefix}_{ang}.png`."""
     if isinstance(angles, str):
         angles = angles.split(",")
-    src_url = "/" + str(Path(src)).replace("\\", "/").replace("projects/", "")
+    try:
+        rel_src = Path(src).relative_to(ROOT)
+    except ValueError:
+        rel_src = Path(src)
+    src_url = "/" + str(rel_src).replace("\\", "/").replace("projects/", "")
     out_files = []
     
-    PORT = 8000
+    PORT = 8765
     httpd = server.serve(port=PORT, block=False)
     
     try:
@@ -28,11 +32,19 @@ def shoot(src="projects/rung3_rotary/out/rung3_assembly.json", prefix="out/shot"
             pg = b.new_page(viewport={"width": 1000, "height": 800})
             pg.on("console", lambda msg: print(f"CONSOLE [{msg.type}]: {msg.text}"))
             pg.on("pageerror", lambda err: print(f"PAGEERROR: {err}"))
+            pg.on("requestfailed", lambda req: print(f"REQUEST FAILED: {req.url}"))
+            pg.on("response", lambda res: print(f"RESPONSE: {res.url} -> {res.status}") if res.status >= 400 else None)
+            first = True
             for ang in angles:
-                url = f"http://127.0.0.1:{PORT}/_app/incr.html?src={src_url}&dir={ang}&new={new}{extra}"
-                pg.goto(url)
-                pg.wait_for_function("window.__ready===true", timeout=20000)
-                pg.wait_for_timeout(800)
+                if first:
+                    url = f"http://127.0.0.1:{PORT}/_app/incr.html?src={src_url}&dir={ang}&new={new}{extra}"
+                    pg.goto(url)
+                    pg.wait_for_function("window.__ready===true", timeout=20000)
+                    pg.wait_for_timeout(800)
+                    first = False
+                else:
+                    pg.evaluate(f"window.frameCamera('{ang}')")
+                    pg.wait_for_timeout(100)
                 out = f"{prefix}_{ang}.png"
                 pg.screenshot(path=out)
                 out_files.append(out)

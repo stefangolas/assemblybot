@@ -201,7 +201,7 @@ def validate(assembly, library: dict, couplings: int = 0, belt_fit=None) -> Vali
             plate_t=brk.spec["plate_thickness"],
         )
         rep.gates.append(GateResult("interference", res.clean, True,
-                                    f"FCL real-mesh (solved pose): {res.detail}"))
+                                    f"FCL zone collision: {res.detail}"))
     elif any(m.interface == "belt_drive" for m in assembly.mates):
         # Rung 2: analytic clearance for the rotating/looped assembly. Full
         # multi-body FCL is deferred; the meaningful static checks are that the
@@ -226,6 +226,35 @@ def validate(assembly, library: dict, couplings: int = 0, belt_fit=None) -> Vali
             "interference", clean, False,
             "no glTF meshes in BOM -- mesh collision SKIPPED; "
             "relied on analytic coaxial clearance (non-blocking)"))
+
+    # ---- gate: cad_fidelity -------------------------------------------------
+    # Check that parts claiming to have holes actually have them in their 3D mesh
+    try:
+        from ontology.cad_sync import verify_mesh_holes
+        import os
+        repo_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        
+        fidelity_issues = []
+        for p in assembly.parts:
+            if p.ref in library:
+                part_def = library[p.ref]
+                phantom_ports = verify_mesh_holes(part_def, repo_root)
+                if phantom_ports:
+                    msg = f"{p.ref} ({part_def.part_number}): missing features in CAD mesh: {', '.join(phantom_ports)}"
+                    # Custom parts block; catalog parts warn but pass
+                    is_custom = part_def.classification.get("catalog_family") == "custom_machined"
+                    fidelity_issues.append((msg, is_custom))
+                    
+        # If any custom part fails, the gate blocks.
+        has_blocking = any(custom for msg, custom in fidelity_issues)
+        if fidelity_issues:
+            detail = "; ".join(msg for msg, _ in fidelity_issues)
+            rep.gates.append(GateResult("cad_fidelity", not has_blocking, True, detail))
+        else:
+            rep.gates.append(GateResult("cad_fidelity", True, True, "all modeled features exist in CAD"))
+    except Exception as e:
+        rep.gates.append(GateResult("cad_fidelity", False, True, f"cad_fidelity check errored: {e}"))
+
 
     # ---- gate: mobility -----------------------------------------------------
     # each mate connects two bodies -> (a_body, b_body, joint). A belt_drive

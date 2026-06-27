@@ -1,0 +1,161 @@
+{
+  "schema_version": 2,
+  "part_number": "ISO4762-M6x1.0-30",
+  "classification": {
+    "catalog_family": "socket_head_cap_screw",
+    "broader_families": [
+      "fastener",
+      "standard_part"
+    ],
+    "generative": true
+  },
+  "source": {
+    "standard": "ISO 4762",
+    "retrieved_at": "2026-06-25"
+  },
+  "raw_spec": {},
+  "normalized_parameters": {
+    "thread_designation": "M6x1.0",
+    "nominal_length_mm": 30.0,
+    "shank_diameter_mm": 6.0,
+    "head_diameter_mm": 10.0,
+    "head_height_mm": 6.0
+  },
+  "cad": {
+    "gltf_uri": "cad/ISO4762-M6x1.0-30.glb",
+    "units": "metre"
+  },
+  "part_frame": {
+    "units": "millimetre",
+    "drawing_to_cad": {
+      "scale": 1.0,
+      "rotation": "identity",
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "ports": [
+    {
+      "id": "thread",
+      "family": "threaded",
+      "polarity": "external",
+      "geometry": {
+        "axis": {
+          "origin": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        "axial_interval_mm": {
+          "min": -30.0,
+          "max": 0.0,
+          "unit": "mm"
+        },
+        "thread": {
+          "standard": "ISO_metric",
+          "designation": "M6x1.0",
+          "pitch_mm": 1.0,
+          "handedness": "right",
+          "starts": 1,
+          "major_diameter_mm": {
+            "min": 5.8,
+            "max": 6.0
+          }
+        }
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "screw_thread"
+      ],
+      "evidence_refs": [],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "head_seat",
+      "family": "planar",
+      "polarity": "contact",
+      "geometry": {
+        "plane": {
+          "origin": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        "boundary_uv_mm": {
+          "outer": [
+            [
+              -5.0,
+              -5.0
+            ],
+            [
+              5.0,
+              -5.0
+            ],
+            [
+              5.0,
+              5.0
+            ],
+            [
+              -5.0,
+              5.0
+            ]
+          ],
+          "holes": [
+            [
+              [
+                -3.0,
+                -3.0
+              ],
+              [
+                3.0,
+                -3.0
+              ],
+              [
+                3.0,
+                3.0
+              ],
+              [
+                -3.0,
+                3.0
+              ]
+            ]
+          ]
+        },
+        "material_side": "positive_normal"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "head_underside",
+        "axial_stop"
+      ],
+      "evidence_refs": [],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    }
+  ],
+  "port_groups": [],
+  "annotation_status": {
+    "overall": "partial",
+    "expected_ports": {}
+  },
+  "evidence": [],
+  "provenance": {}
+}

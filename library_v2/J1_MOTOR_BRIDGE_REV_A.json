@@ -1,0 +1,485 @@
+{
+  "schema_version": 2,
+  "part_number": "J1_MOTOR_BRIDGE_REV_A",
+  "classification": {
+    "catalog_family": "custom_motor_bridge",
+    "broader_families": [
+      "structural_bracket"
+    ]
+  },
+  "source": {
+    "url": "custom_drawing:J1_MOTOR_BRIDGE_REV_A",
+    "retrieved_at": "2026-06-26",
+    "brand": "AssemblyBot"
+  },
+  "raw_spec": {},
+  "normalized_parameters": {
+    "material": "6061-T6",
+    "motor_frame": "NEMA23",
+    "base_attachment": "4x_M6"
+  },
+  "cad": {
+    "gltf_uri": "cad/J1_MOTOR_BRIDGE_REV_A.glb",
+    "units": "metre"
+  },
+  "part_frame": {
+    "units": "millimetre",
+    "drawing_to_cad": {
+      "scale": 1.0,
+      "rotation": "identity",
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "ports": [
+    {
+      "id": "motor_face",
+      "family": "planar",
+      "polarity": "contact",
+      "geometry": {
+        "plane": {
+          "origin": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        "boundary_uv_mm": {
+          "outer": [
+            [
+              -36.0,
+              -36.0
+            ],
+            [
+              36.0,
+              -36.0
+            ],
+            [
+              36.0,
+              36.0
+            ],
+            [
+              -36.0,
+              36.0
+            ]
+          ],
+          "holes": []
+        },
+        "material_side": "positive_normal"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "nema23_front_plate"
+      ],
+      "evidence_refs": [],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "base_seat",
+      "family": "planar",
+      "polarity": "contact",
+      "geometry": {
+        "plane": {
+          "origin": [
+            0.0,
+            0.0,
+            26.1
+          ],
+          "normal": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        "boundary_uv_mm": {
+          "outer": [
+            [
+              -170.0,
+              -72.0
+            ],
+            [
+              45.0,
+              -72.0
+            ],
+            [
+              45.0,
+              72.0
+            ],
+            [
+              -170.0,
+              72.0
+            ]
+          ],
+          "holes": []
+        },
+        "material_side": "negative_normal"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "base_underface_seat"
+      ],
+      "evidence_refs": [],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "motor_thread_1",
+      "family": "threaded",
+      "polarity": "internal",
+      "geometry": {
+        "axis": {
+          "origin": [
+            -23.57,
+            -23.57,
+            0.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 6.0,
+          "unit": "mm"
+        },
+        "thread": {
+          "standard": "ISO_metric",
+          "designation": "M5x0.8",
+          "pitch_mm": 0.8,
+          "handedness": "right",
+          "starts": 1
+        }
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [],
+      "evidence_refs": [],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "motor_thread_2",
+      "family": "threaded",
+      "polarity": "internal",
+      "geometry": {
+        "axis": {
+          "origin": [
+            -23.57,
+            23.57,
+            0.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 6.0,
+          "unit": "mm"
+        },
+        "thread": {
+          "standard": "ISO_metric",
+          "designation": "M5x0.8",
+          "pitch_mm": 0.8,
+          "handedness": "right",
+          "starts": 1
+        }
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [],
+      "evidence_refs": [],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "motor_thread_3",
+      "family": "threaded",
+      "polarity": "internal",
+      "geometry": {
+        "axis": {
+          "origin": [
+            23.57,
+            -23.57,
+            0.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 6.0,
+          "unit": "mm"
+        },
+        "thread": {
+          "standard": "ISO_metric",
+          "designation": "M5x0.8",
+          "pitch_mm": 0.8,
+          "handedness": "right",
+          "starts": 1
+        }
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [],
+      "evidence_refs": [],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "motor_thread_4",
+      "family": "threaded",
+      "polarity": "internal",
+      "geometry": {
+        "axis": {
+          "origin": [
+            23.57,
+            23.57,
+            0.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 6.0,
+          "unit": "mm"
+        },
+        "thread": {
+          "standard": "ISO_metric",
+          "designation": "M5x0.8",
+          "pitch_mm": 0.8,
+          "handedness": "right",
+          "starts": 1
+        }
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [],
+      "evidence_refs": [],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "base_thread_1",
+      "family": "threaded",
+      "polarity": "internal",
+      "geometry": {
+        "axis": {
+          "origin": [
+            -155.314,
+            -60.0,
+            26.1
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 6.0,
+          "unit": "mm"
+        },
+        "thread": {
+          "standard": "ISO_metric",
+          "designation": "M6x1.0",
+          "pitch_mm": 1.0,
+          "handedness": "right",
+          "starts": 1
+        }
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [],
+      "evidence_refs": [],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "base_thread_2",
+      "family": "threaded",
+      "polarity": "internal",
+      "geometry": {
+        "axis": {
+          "origin": [
+            -155.314,
+            60.0,
+            26.1
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 6.0,
+          "unit": "mm"
+        },
+        "thread": {
+          "standard": "ISO_metric",
+          "designation": "M6x1.0",
+          "pitch_mm": 1.0,
+          "handedness": "right",
+          "starts": 1
+        }
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [],
+      "evidence_refs": [],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "base_thread_3",
+      "family": "threaded",
+      "polarity": "internal",
+      "geometry": {
+        "axis": {
+          "origin": [
+            -35.314,
+            -60.0,
+            26.1
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 6.0,
+          "unit": "mm"
+        },
+        "thread": {
+          "standard": "ISO_metric",
+          "designation": "M6x1.0",
+          "pitch_mm": 1.0,
+          "handedness": "right",
+          "starts": 1
+        }
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [],
+      "evidence_refs": [],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "base_thread_4",
+      "family": "threaded",
+      "polarity": "internal",
+      "geometry": {
+        "axis": {
+          "origin": [
+            -35.314,
+            60.0,
+            26.1
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        "axial_interval_mm": {
+          "min": 0.0,
+          "max": 6.0,
+          "unit": "mm"
+        },
+        "thread": {
+          "standard": "ISO_metric",
+          "designation": "M6x1.0",
+          "pitch_mm": 1.0,
+          "handedness": "right",
+          "starts": 1
+        }
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [],
+      "evidence_refs": [],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    }
+  ],
+  "port_groups": [
+    {
+      "id": "motor_mount_pattern",
+      "kind": "repeated_ports",
+      "members": [
+        {
+          "port": "motor_thread_1"
+        },
+        {
+          "port": "motor_thread_2"
+        },
+        {
+          "port": "motor_thread_3"
+        },
+        {
+          "port": "motor_thread_4"
+        }
+      ],
+      "frame": null,
+      "symmetry": {},
+      "placement_domain": null,
+      "evidence_refs": []
+    },
+    {
+      "id": "base_mount_pattern",
+      "kind": "repeated_ports",
+      "members": [
+        {
+          "port": "base_thread_1"
+        },
+        {
+          "port": "base_thread_2"
+        },
+        {
+          "port": "base_thread_3"
+        },
+        {
+          "port": "base_thread_4"
+        }
+      ],
+      "frame": null,
+      "symmetry": {},
+      "placement_domain": null,
+      "evidence_refs": []
+    }
+  ],
+  "annotation_status": {
+    "overall": "partial",
+    "expected_ports": {}
+  },
+  "evidence": [],
+  "provenance": {}
+}

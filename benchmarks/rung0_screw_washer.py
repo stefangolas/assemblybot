@@ -207,6 +207,13 @@ def main() -> bool:
     print(f"  RESULT: {'ALL BLOCKING GATES PASS' if report.passed else 'FAILED'} "
           f"(computed DOF {m.computed_dof} == intended {asm.intended_dof})")
     print("=" * 66)
+    # shared verification harness (same gates every rung runs). rung 0 is v1 -> no v2 ports
+    # and no v2 attachment instances, so cad_fidelity + load_path SKIP; interference runs
+    # (the screw + washer are a designed seated pair).
+    from assembly.verify import verify_assembly
+    verify_assembly("rung0", report.placements,
+                    {"p_screw": "/cad/91290A232.glb", "p_washer": "/cad/93475A240.glb"},
+                    designed=lambda a, b: True)
     return report.passed
 
 
