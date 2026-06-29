@@ -15,7 +15,8 @@
     "teeth": 72,
     "pitch_mm": 5,
     "belt_width_mm": 25,
-    "mount": "70 mm carrier pilot"
+    "mount": "70 mm carrier pilot",
+    "mount_fastener_count": 6
   },
   "cad": {
     "gltf_uri": "projects/two_stage_rotary_table/out/assets/pulley_72t_5mgt_25_output_carrier_visual.glb",

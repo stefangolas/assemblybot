@@ -187,6 +187,7 @@ def verify_canonical(path, *, verbose=True):
                 fastener_primitive_issues.append(
                     f"{inst.template.id}.{slot}: fastener closure has no primitive check involving the fastener"
                 )
+    fastener_pattern_issues = _fastener_pattern_count_issues(instances, lib)
 
     if verbose:
         print(f"VERIFY {name}  ({len(lib)} structural parts, {len(instances)} attachments, "
@@ -197,6 +198,8 @@ def verify_canonical(path, *, verbose=True):
             print(f"  structural_visibility: HIDDEN structural refs {hidden_structural_refs}")
         if fastener_primitive_issues:
             print(f"  fastener_primitives: UNDER-SPECIFIED fastener closures {fastener_primitive_issues}")
+        if fastener_pattern_issues:
+            print(f"  fastener_patterns: UNDER-INSTANTIATED fastener patterns {fastener_pattern_issues}")
 
     passed, status = verify_assembly(name, placements, urls, lib=lib, instances=instances, ground=ground,
                                      designed=designed, rotating=rotating, axis=axis,
@@ -205,9 +208,68 @@ def verify_canonical(path, *, verbose=True):
     status["render_accounting"] = "FAIL" if unverified_render_refs else "PASS"
     status["structural_visibility"] = "FAIL" if hidden_structural_refs else "PASS"
     status["fastener_primitives"] = "FAIL" if fastener_primitive_issues else "PASS"
+    status["fastener_patterns"] = "FAIL" if fastener_pattern_issues else "PASS"
     return (
         passed
         and not unverified_render_refs
         and not hidden_structural_refs
         and not fastener_primitive_issues
+        and not fastener_pattern_issues
     ), status
+
+
+def _fastener_pattern_count_issues(instances, lib) -> list[str]:
+    """Require declared multi-fastener mounts to instantiate the full pattern.
+
+    Part definitions can declare `normalized_parameters.mount_fastener_count`.
+    Any attachment with a bound fastener closure that connects to such a part must
+    appear as a sibling set with at least that many distinct fastener instances.
+    This prevents one placeholder screw from satisfying a multi-hole mount.
+    """
+    buckets: dict[tuple, dict] = {}
+
+    def ref_of(addr: str) -> str:
+        return addr.replace(":", ".", 1).split(".", 1)[0]
+
+    for inst in instances:
+        for closure in inst.template.closure:
+            if closure.kind != "fastener" or closure.mechanism not in inst.bindings:
+                continue
+            fastener_slot = closure.mechanism
+            participant = inst.template.participants.get(fastener_slot)
+            if not participant or not participant.is_fastener:
+                continue
+
+            non_fastener_bindings = tuple(sorted(
+                (slot, addr)
+                for slot, addr in inst.bindings.items()
+                if not getattr(inst.template.participants.get(slot), "is_fastener", False)
+            ))
+            expected = 1
+            counted_refs = []
+            for _, addr in non_fastener_bindings:
+                ref = ref_of(addr)
+                counted_refs.append(ref)
+                pdef = lib.get(ref)
+                if not pdef:
+                    continue
+                try:
+                    expected = max(expected, int(pdef.normalized_parameters.get("mount_fastener_count", 1)))
+                except Exception:
+                    pass
+            if expected <= 1:
+                continue
+            key = (inst.template.id, non_fastener_bindings, fastener_slot)
+            bucket = buckets.setdefault(key, {"expected": expected, "fasteners": set(), "refs": sorted(set(counted_refs))})
+            bucket["expected"] = max(bucket["expected"], expected)
+            bucket["fasteners"].add(ref_of(inst.bindings[fastener_slot]))
+
+    issues = []
+    for (template_id, _, _), data in buckets.items():
+        present = len(data["fasteners"])
+        expected = data["expected"]
+        if present < expected:
+            issues.append(
+                f"{template_id} on {data['refs']}: {present}/{expected} fasteners instantiated"
+            )
+    return sorted(issues)

@@ -444,7 +444,7 @@ def make_context_parts(urls: dict[str, str]) -> dict[str, PartDefinition]:
     output_pulley72 = basic_part("AB_RT_OUTPUT_PULLEY_72T_5MGT_25", "timing_pulley", urls["pulley72_output"], [
         cyl_receiver_port("bore", 35.05, 25),
         face_port("mount_face", -12.5, -1, circle_poly(60), [circle_poly(35.05)]),
-    ], {"teeth": 72, "pitch_mm": 5, "belt_width_mm": 25, "mount": "70 mm carrier pilot"}, ["72T output pulley"])
+    ], {"teeth": 72, "pitch_mm": 5, "belt_width_mm": 25, "mount": "70 mm carrier pilot", "mount_fastener_count": 6}, ["72T output pulley"])
 
     counter_pulley72 = basic_part("AB_RT_COUNTER_PULLEY_72T_5MGT_25_15MM", "timing_pulley", urls["pulley72_counter"], [
         cyl_receiver_port("bore", 7.55, 25),
@@ -471,7 +471,7 @@ def make_context_parts(urls: dict[str, str]) -> dict[str, PartDefinition]:
     bearing6202 = basic_part("AB_RT_6202_BEARING_HOLDER_SIM", "flanged_bearing_holder", urls["bearing6202"], [
         cyl_receiver_port("bearing_bore", 7.55, 11),
         face_port("mount_face", -5.5, -1, circle_poly(17.5), [circle_poly(7.55)]),
-    ], {"bearing": "6202-2RS", "bore_mm": 15, "od_mm": 35, "width_mm": 11}, ["6202 bearing holder simplified"])
+    ], {"bearing": "6202-2RS", "bore_mm": 15, "od_mm": 35, "width_mm": 11, "mount_fastener_count": 4}, ["6202 bearing holder simplified"])
 
     carriage_plate = basic_part("AB_RT_COUNTER_CARRIAGE_PLATE", "custom_machined", urls["carriage_plate"], [
         face_port("top_face", 6, 1, rect_poly(120, 120)),

@@ -33,6 +33,7 @@ interference: PASS
 render_accounting: PASS
 structural_visibility: PASS
 fastener_primitives: PASS
+fastener_patterns: PASS
 ```
 
 ## Application Refactor WIP
@@ -46,6 +47,7 @@ fastener_primitives: PASS
 - Added `render_accounting` in `assembly/verify_canonical.py`: any physical `_render` ref must be in `_verify.lib` or explicitly exempted as non-structural.
 - Added `structural_visibility` in `assembly/verify_canonical.py`: structural `_verify.lib` refs cannot be hidden from `_render` unless explicitly exempted.
 - Added `fastener_primitives` in `assembly/verify_canonical.py`: fastener closures must include primitive checks involving the fastener.
+- Added `fastener_patterns` in `assembly/verify_canonical.py`: declared multi-fastener mounts must instantiate the full sibling fastener set instead of one placeholder screw.
 - Removed `fastener_contact` as a canonical gate. Primitive checks inside composable templates now carry that responsibility.
 - Added primitive check `tip_or_clamp_contact` in `ontology/ports_match.py`.
 - Added generic composable `radial_screw_against_cylindrical_target` in `ontology/templates.py`.
@@ -53,6 +55,7 @@ fastener_primitives: PASS
 - Added `ontology/engagements.py` as an adapter-first engagement composition layer.
 - Converted `journal_supported_by_bearing` to derive from `RACEWAY`.
 - Added golden tests for the derived RACEWAY template and intended-open DOF guardrails.
+- Added regression tests proving a single placeholder fastener cannot satisfy a declared four-fastener mount.
 
 ### Engagement Architecture Direction
 
@@ -107,6 +110,9 @@ The project currently includes:
 - Removed the stale hidden/placeholder fastener placements that put column screws near the output-axis hub/spindle region.
 - Added real rendered fastener instances at the four standoff axes.
 - Added a short M8 screw model for visual face-clamp locations that should not project into pulley or belt planes.
+- Added short M5 pulley-carrier cap screws and M5 radial set screws so axial bolt patterns and radial pulley clamps are represented by different generated hardware.
+- Replaced the single output-pulley placeholder screw with six cap screws on the pulley-carrier bolt circle.
+- Replaced the single 6202 holder placeholder screw with four visible holder fasteners for each holder.
 - Added central/bearing clearance to the carriage plate visual geometry.
 - Lowered and synchronized pulley/belt planes through shared constants.
 - Reworked the simplified servo visual so the belt plane is not occupied by a solid motor block.

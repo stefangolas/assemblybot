@@ -15,7 +15,8 @@
     "bearing": "6202-2RS",
     "bore_mm": 15,
     "od_mm": 35,
-    "width_mm": 11
+    "width_mm": 11,
+    "mount_fastener_count": 4
   },
   "cad": {
     "gltf_uri": "projects/two_stage_rotary_table/out/assets/bearing_6202_visual.glb",
