@@ -1,0 +1,163 @@
+{
+  "schema_version": 2,
+  "part_number": "AB_RT_M5X12_SHCS",
+  "classification": {
+    "catalog_family": "socket_head_cap_screw",
+    "aliases": [
+      "M5x12 socket head screw"
+    ]
+  },
+  "source": {
+    "standard": "ISO 4762"
+  },
+  "raw_spec": {},
+  "normalized_parameters": {
+    "thread_designation": "M5x0.8",
+    "nominal_length_mm": 12
+  },
+  "cad": {
+    "gltf_uri": "projects/two_stage_rotary_table/out/assets/generated_iso4762_m5x12_visual.glb",
+    "units": "metre"
+  },
+  "part_frame": {
+    "units": "millimetre",
+    "drawing_to_cad": {}
+  },
+  "ports": [
+    {
+      "id": "thread",
+      "family": "threaded",
+      "polarity": "external",
+      "geometry": {
+        "axis": {
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ]
+        },
+        "axial_interval_mm": {
+          "min": -12.0,
+          "max": 0,
+          "unit": "mm"
+        },
+        "thread": {
+          "standard": "ISO_metric",
+          "designation": "M5x0.8",
+          "pitch_mm": 0.8,
+          "handedness": "right",
+          "starts": 1,
+          "major_diameter_mm": {
+            "min": 4.8,
+            "max": 5.0
+          }
+        }
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "screw_thread"
+      ],
+      "evidence_refs": [
+        "ev_geometry"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "head_seat",
+      "family": "planar",
+      "polarity": "contact",
+      "geometry": {
+        "plane": {
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ]
+        },
+        "boundary_uv_mm": {
+          "outer": [
+            [
+              -4.25,
+              -4.25
+            ],
+            [
+              4.25,
+              -4.25
+            ],
+            [
+              4.25,
+              4.25
+            ],
+            [
+              -4.25,
+              4.25
+            ]
+          ],
+          "holes": []
+        },
+        "material_side": "negative_normal"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "mounting_face"
+      ],
+      "evidence_refs": [
+        "ev_geometry"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    }
+  ],
+  "port_groups": [],
+  "annotation_status": {
+    "overall": "confirmed"
+  },
+  "evidence": [
+    {
+      "id": "ev_geometry",
+      "source_type": "custom_drawing",
+      "raw_value": "released rotary-table geometry",
+      "normalized_claim": {
+        "target_path": "ports",
+        "value": "dimensioned custom CAD",
+        "unit": "mm"
+      },
+      "source_uri": "projects/two_stage_rotary_table/requirements.md",
+      "locator": "custom-part requirements",
+      "extraction_method": "cadquery",
+      "confidence": 0.0,
+      "notes": ""
+    },
+    {
+      "id": "ev_threaded_holes",
+      "source_type": "custom_drawing",
+      "raw_value": "released metric threaded hole callouts",
+      "normalized_claim": {
+        "target_path": "threaded ports",
+        "value": "M5/M6 tapped holes",
+        "unit": "mm"
+      },
+      "source_uri": "projects/two_stage_rotary_table/requirements.md",
+      "locator": "bearing/tabletop screw patterns",
+      "extraction_method": "cadquery",
+      "confidence": 0.0,
+      "notes": ""
+    }
+  ],
+  "provenance": {
+    "generated_by": "tools.build_two_stage_rotary_table"
+  }
+}

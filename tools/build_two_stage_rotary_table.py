@@ -88,6 +88,10 @@ def socket_screw_mesh(thread_radius: float, length: float, head_radius: float, h
     return scene
 
 
+def set_screw_mesh(thread_radius: float, length: float) -> trimesh.Trimesh:
+    return cyl_mesh(thread_radius, length, 32)
+
+
 def annular_cylinder(outer_radius: float, inner_radius: float, height: float, sections: int = 128) -> trimesh.Trimesh:
     verts: list[list[float]] = []
     faces: list[list[int]] = []
@@ -409,6 +413,27 @@ def make_context_parts(urls: dict[str, str]) -> dict[str, PartDefinition]:
         provenance={"generated_by": "tools.build_two_stage_rotary_table"})
     save_part(m8_short)
 
+    m5_short = PartDefinition("AB_RT_M5X12_SHCS", {"catalog_family": "socket_head_cap_screw", "aliases": ["M5x12 socket head screw"]},
+        {"standard": "ISO 4762"}, {}, {"thread_designation": "M5x0.8", "nominal_length_mm": 12},
+        {"gltf_uri": cad_uri(urls["m5_short_screw"]), "units": "metre"},
+        ports=[
+            external_thread_port("thread", "M5x0.8", 0.8, 5.0, 12.0),
+            face_port("head_seat", 0, -1, rect_poly(8.5, 8.5)),
+        ],
+        annotation_status={"overall": "confirmed"}, evidence=evidence(),
+        provenance={"generated_by": "tools.build_two_stage_rotary_table"})
+    save_part(m5_short)
+
+    m5_set = PartDefinition("AB_RT_M5X18_SETSCREW", {"catalog_family": "set_screw", "aliases": ["M5x18 radial set screw"]},
+        {"standard": "ISO metric"}, {}, {"thread_designation": "M5x0.8", "nominal_length_mm": 18},
+        {"gltf_uri": cad_uri(urls["m5_set_screw"]), "units": "metre"},
+        ports=[
+            external_thread_port("thread", "M5x0.8", 0.8, 5.0, 18.0),
+        ],
+        annotation_status={"overall": "confirmed"}, evidence=evidence(),
+        provenance={"generated_by": "tools.build_two_stage_rotary_table"})
+    save_part(m5_set)
+
     carrier = basic_part("AB_RT_SPLIT_CARRIER", "custom_clamping_hub", urls["carrier"], [
         cyl_receiver_port("spindle_bore", 25.05, 22),
         cyl_insert_port("pulley_pilot", 35.0, 25),
@@ -562,6 +587,8 @@ def make_visual_urls(core_urls: dict[str, str]) -> dict[str, str]:
         "motor_body": export_trimesh(motor_mesh(), "servo_motor_with_shaft_visual"),
         "m8_screw": export_trimesh(socket_screw_mesh(4.0, 30, 6.5, 8), "generated_iso4762_m8x30_visual"),
         "m8_short_screw": export_trimesh(socket_screw_mesh(4.0, 8, 6.5, 8), "generated_iso4762_m8x8_visual"),
+        "m5_short_screw": export_trimesh(socket_screw_mesh(2.5, 12, 4.25, 5), "generated_iso4762_m5x12_visual"),
+        "m5_set_screw": export_trimesh(set_screw_mesh(2.5, 18), "generated_m5x18_set_screw_visual"),
         "rail_long": tslot_rail_x(400, "mcmaster_4080_long_slotted_visual"),
         "rail_cross": tslot_rail_y(280, "mcmaster_4080_cross_slotted_visual"),
         "rail_column": tslot_column_z(205, "mcmaster_4080_column_slotted_visual"),
@@ -668,11 +695,25 @@ def main() -> None:
         render.append({"ref": ref, "url": "/cad/ISO4762-M5x0.8-25.glb", "name": "M5 structural screw", "group": "fastener", "state": "HELD", "explode": 0})
         return ref
 
+    def hidden_m5_short(ref: str, pose: tuple[float, float, float], R: list[list[float]] = I) -> str:
+        lib[ref] = load_part("AB_RT_M5X12_SHCS")
+        asm[ref] = {"R": R, "t_mm": [float(pose[0]), float(pose[1]), float(pose[2])]}
+        render.append({"ref": ref, "url": urls["m5_short_screw"], "name": "M5 pulley-carrier cap screw", "group": "fastener", "state": "HELD", "explode": 0})
+        return ref
+
+    def hidden_m5_set(ref: str, pose: tuple[float, float, float], R: list[list[float]] = I) -> str:
+        lib[ref] = load_part("AB_RT_M5X18_SETSCREW")
+        asm[ref] = {"R": R, "t_mm": [float(pose[0]), float(pose[1]), float(pose[2])]}
+        render.append({"ref": ref, "url": urls["m5_set_screw"], "name": "M5 radial set screw", "group": "fastener", "state": "HELD", "explode": 0})
+        return ref
+
     hidden_m8("fast_carrier_clamp", (0, 45, LOWER_BELT_Z), Z_TO_Y)
-    hidden_m5("fast_output_pulley", (0, 43, LOWER_BELT_Z - 12.5))
-    hidden_m5("fast_counter_pulley_18", (counter[0] + 18, counter[1], LOWER_BELT_Z), Z_TO_X)
-    hidden_m5("fast_counter_pulley_72", (counter[0] + 25, counter[1], UPPER_BELT_Z), Z_TO_X)
-    hidden_m5("fast_motor_pulley", (motor[0] + 18, motor[1], UPPER_BELT_Z), Z_TO_X)
+    output_pulley_screws: list[str] = []
+    for i, (x, y) in enumerate(circle_points(43.0, 6, 0), 1):
+        output_pulley_screws.append(hidden_m5_short(f"fast_output_pulley_{i}", (x, y, LOWER_BELT_Z - 12.5), FLIP_Z))
+    hidden_m5_set("fast_counter_pulley_18", (counter[0] + 18, counter[1], LOWER_BELT_Z), Z_TO_X)
+    hidden_m5_set("fast_counter_pulley_72", (counter[0] + 25, counter[1], UPPER_BELT_Z), Z_TO_X)
+    hidden_m5_set("fast_motor_pulley", (motor[0] + 18, motor[1], UPPER_BELT_Z), Z_TO_X)
     hidden_m8_short("fast_counter_top_to_base", (counter[0] - 45, counter[1] - 45, -10))
     hidden_m8("fast_motor_slider_to_base", (motor[0] - 45, motor[1] - 45, -10))
     hidden_m8_short("fast_motor_to_slider", (motor[0] - 25, motor[1] - 25, -22))
@@ -682,10 +723,13 @@ def main() -> None:
         visible_m8(f"fast_standoff_lower_{i}", (counter[0] + dx, counter[1] + dy, -126), "M8 lower carriage-to-standoff screw", FLIP_Z)
         cx, cy = column_xy[i - 1]
         hidden_m8(f"fast_column_{i}", (cx, cy, -90.5))
+    bearing_fasteners: dict[int, list[str]] = {1: [], 2: []}
     for i in range(1, 3):
         hidden_m8(f"fast_rail_long_{i}", (110, -120 if i == 1 else 120, -10))
         hidden_m8(f"fast_rail_cross_{i}", (-90 if i == 1 else 310, 0, -10))
-        hidden_m8_short(f"fast_bearing_{i}", (counter[0] + 10, counter[1] + 10, -21.5 if i == 1 else -137.5))
+        z = -21.5 if i == 1 else -137.5
+        for j, (dx, dy) in enumerate(((-10, -10), (-10, 10), (10, -10), (10, 10)), 1):
+            bearing_fasteners[i].append(hidden_m8_short(f"fast_bearing_{i}_{j}", (counter[0] + dx, counter[1] + dy, z)))
 
     placements = {ref: asm[ref] for ref in lib}
     inst = [
@@ -705,13 +749,6 @@ def main() -> None:
             "target": "hub.spindle_journal",
             "screw": "fast_carrier_clamp.thread",
             "thread": "carrier.radial_clamp_thread",
-        }),
-        TEMPLATES["pilot_clamped_hub_to_carrier"].bind({
-            "hub": "output_pulley_72t.bore",
-            "pilot": "carrier.pulley_pilot",
-            "hub_seat": "output_pulley_72t.mount_face",
-            "seat": "carrier.pulley_seat",
-            "clamp_fastener": "fast_output_pulley.thread",
         }),
         TEMPLATES["radial_screw_against_cylindrical_target"].bind({
             "body_bore": "counter_pulley_18t.bore",
@@ -734,6 +771,14 @@ def main() -> None:
         TEMPLATES["journal_supported_by_bearing"].bind({"journal": "countershaft.journal", "bearing": "counter_bearing_top.bearing_bore"}),
         TEMPLATES["journal_supported_by_bearing"].bind({"journal": "countershaft.journal", "bearing": "counter_bearing_lower.bearing_bore"}),
     ])
+    for ref in output_pulley_screws:
+        inst.append(TEMPLATES["pilot_clamped_hub_to_carrier"].bind({
+            "hub": "output_pulley_72t.bore",
+            "pilot": "carrier.pulley_pilot",
+            "hub_seat": "output_pulley_72t.mount_face",
+            "seat": "carrier.pulley_seat",
+            "clamp_fastener": f"{ref}.thread",
+        }))
 
     def face_mount(mounted: str, support: str, fastener: str) -> None:
         inst.append(TEMPLATES["fastened_face_mount"].bind({
@@ -742,8 +787,10 @@ def main() -> None:
             "fastener": f"{fastener}.thread",
         }))
 
-    face_mount("counter_bearing_top.mount_face", "counter_carriage_top.bottom_face", "fast_bearing_1")
-    face_mount("counter_bearing_lower.mount_face", "counter_carriage_lower.bottom_face", "fast_bearing_2")
+    for ref in bearing_fasteners[1]:
+        face_mount("counter_bearing_top.mount_face", "counter_carriage_top.bottom_face", ref)
+    for ref in bearing_fasteners[2]:
+        face_mount("counter_bearing_lower.mount_face", "counter_carriage_lower.bottom_face", ref)
     face_mount("counter_carriage_top.top_face", "baseplate.bottom_face", "fast_counter_top_to_base")
     for i in range(1, 5):
         face_mount(f"counter_carriage_lower.top_face", f"counter_standoff_{i}.bottom_face", f"fast_standoff_lower_{i}")
