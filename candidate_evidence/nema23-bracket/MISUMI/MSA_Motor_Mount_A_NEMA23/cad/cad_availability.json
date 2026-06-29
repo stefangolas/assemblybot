@@ -1,0 +1,99 @@
+{
+  "MSAA-23": {
+    "status": 200,
+    "body": {
+      "formatlist": [
+        {
+          "format": "SW",
+          "display": "SOLIDWORKS(>=2016)",
+          "type": "3D",
+          "order": "1"
+        },
+        {
+          "format": "STEP_AP203",
+          "display": "STEP(AP203)",
+          "type": "3D",
+          "order": "2"
+        },
+        {
+          "format": "STEP_AP214",
+          "display": "STEP(AP214)",
+          "type": "3D",
+          "order": "3"
+        },
+        {
+          "format": "Parasolid_Binary_19.1",
+          "display": "Parasolid(x_b)",
+          "type": "3D",
+          "order": "4"
+        },
+        {
+          "format": "Parasolid_Text_19.1",
+          "display": "Parasolid(x_t)",
+          "type": "3D",
+          "order": "5"
+        },
+        {
+          "format": "ACIS",
+          "display": "ACIS",
+          "type": "3D",
+          "order": "6"
+        },
+        {
+          "format": "IGES",
+          "display": "IGES",
+          "type": "3D",
+          "order": "7"
+        },
+        {
+          "format": "Creo_Parametric",
+          "display": "ProE(>=20)/CREO Parametric(>=1)",
+          "type": "3D",
+          "order": "8"
+        },
+        {
+          "format": "3DPDF",
+          "display": "PDF (3D View)",
+          "type": "3D",
+          "order": "9"
+        },
+        {
+          "format": "CATIA",
+          "display": "CATIA V5",
+          "type": "3D",
+          "order": "10"
+        },
+        {
+          "format": "Inventor",
+          "display": "Inventor",
+          "type": "3D",
+          "order": "11"
+        },
+        {
+          "format": "NX",
+          "display": "NX",
+          "type": "3D",
+          "order": "12"
+        },
+        {
+          "format": "SolidEdge",
+          "display": "SolidEdge",
+          "type": "3D",
+          "order": "13"
+        },
+        {
+          "format": "DXF",
+          "display": "DXF",
+          "type": "2D",
+          "order": "14"
+        },
+        {
+          "format": "DWG",
+          "display": "DWG",
+          "type": "2D",
+          "order": "15"
+        }
+      ]
+    }
+  }
+}

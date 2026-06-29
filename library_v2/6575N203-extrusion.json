@@ -29,22 +29,16 @@
                   "material_side": "inside_profile"},
      "semantic_aliases": ["t_slot", "profile_identity", "capture_geometry"],
      "annotation_status": "confirmed", "evidence_refs": ["ev_slot"],
-     "unknowns": ["internal lip radii idealized as sharp corners; the 8 mm opening / 16 mm cavity / 12.2 mm depth are catalog-confirmed"]},
-    {"id": "mount_a", "family": "cylindrical", "polarity": "receiver",
-     "geometry": {"axis": {"origin": [0.0, 0.0, 8.0], "direction": [0, -1, 0]},
-                  "radial_interval_mm": {"min": 2.5, "max": 2.5, "unit": "mm"},
-                  "axial_interval_mm": {"min": 0, "max": 6, "unit": "mm"}, "material_side": "outside"},
-     "semantic_aliases": ["t_nut_position"], "annotation_status": "nominal", "evidence_refs": ["ev_slot"],
-     "unknowns": ["T-nut position is a continuous domain along the slot; this is one chosen station"]},
-    {"id": "mount_b", "family": "cylindrical", "polarity": "receiver",
-     "geometry": {"axis": {"origin": [0.0, 0.0, 22.0], "direction": [0, -1, 0]},
-                  "radial_interval_mm": {"min": 2.5, "max": 2.5, "unit": "mm"},
-                  "axial_interval_mm": {"min": 0, "max": 6, "unit": "mm"}, "material_side": "outside"},
-     "semantic_aliases": ["t_nut_position"], "annotation_status": "nominal", "evidence_refs": ["ev_slot"]}
+     "unknowns": ["internal lip radii idealized as sharp corners; the 8 mm opening / 16 mm cavity / 12.2 mm depth are catalog-confirmed"]}
   ],
   "port_groups": [
-    {"id": "mount_stations", "kind": "repeated_ports", "members": [{"port": "mount_a"}, {"port": "mount_b"}],
-     "placement_domain": {"axis": "Z", "interval_mm": {"min": 0, "max": 304.8}}, "evidence_refs": ["ev_slot"]}
+    {"id": "tslot_top_continuous_mount_domain", "kind": "continuous_domain", "members": [{"port": "tslot_top"}],
+     "placement_domain": {"axis": "Z",
+                          "coordinate": "slot_centerline_position",
+                          "interval_mm": {"min": 7.5, "max": 297.3},
+                          "edge_clearance_policy": "center coordinate must remain at least half the inserted nut length from each rail end",
+                          "reference_insert": {"part_number": "HNTT6-5", "length_along_slot_mm": 15.0}},
+     "evidence_refs": ["ev_slot"]}
   ],
   "annotation_status": {"overall": "partial", "expected_ports": {"other_three_slots": "unmodeled"}},
   "evidence": [

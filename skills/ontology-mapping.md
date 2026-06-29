@@ -39,6 +39,12 @@ correspondence — never zip hole lists).
 
 ## Code is the executable schema (source of truth)
 
+T-slot extrusion rule: do not create fake evenly spaced nut stations. Each usable slot is a `swept_profile`
+receiver plus a `continuous_domain` port group along the extrusion axis. Bound the placement interval so the
+nut or bracket center coordinate remains at least half of the inserted footprint from each rail end, or the
+manufacturer-specified end clearance if larger. Discrete attachment ports are only valid when the drawing shows
+actual discrete holes.
+
 - `ontology/ports.py` — the 6 `EngagementPort` families + `PortGroup`, strict per-family validation.
 - `ontology/schema_v2.py` — immutable `PartDefinition` (rejects a baked frame/placement), `PartInstance`
   (the only place a pose lives), field-level `EvidenceRecord`.

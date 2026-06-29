@@ -90,6 +90,16 @@ def verify_canonical(path, *, verbose=True):
                     for ref in urls if ref in asm and isinstance(asm[ref], dict)}
     placements = {**render_place, **struct_place}   # struct poses authoritative for shared refs
 
+    # Hard accounting rule: a physical render entry is part of the assembly contract.
+    # It must be promoted into the structural verification library, or be explicitly
+    # declared non-structural (for example a generated flexible belt). "Context" meshes
+    # are not allowed to bypass load-path accounting.
+    render_refs = set(urls)
+    exempt_refs = set(non_structural)
+    unverified_render_refs = sorted(render_refs - set(lib) - exempt_refs)
+    non_rendered_structural = set(v.get("non_rendered_structural", []))
+    hidden_structural_refs = sorted(set(lib) - render_refs - non_rendered_structural)
+
     # designed(a,b): intentional shared volume = parts bolted into the SAME RIGID BODY
     # (a screw seated in its tapped hole, a seated face, a pulley on its hub all overlap
     # by design), or directly joined by a pose-enforcing relation, or two render-halves
@@ -164,10 +174,40 @@ def verify_canonical(path, *, verbose=True):
     rotating = (lambda ref: ref in moving) if moving else None
     axis = asm.get("_axis", (0, 0, 1))
 
+    fastener_primitive_issues: list[str] = []
+    for inst in instances:
+        for closure in inst.template.closure:
+            if closure.kind != "fastener":
+                continue
+            slot = closure.mechanism
+            if slot not in inst.template.participants:
+                continue
+            has_primitive_check = any(chk.a == slot or chk.b == slot for chk in inst.template.checks)
+            if not has_primitive_check:
+                fastener_primitive_issues.append(
+                    f"{inst.template.id}.{slot}: fastener closure has no primitive check involving the fastener"
+                )
+
     if verbose:
         print(f"VERIFY {name}  ({len(lib)} structural parts, {len(instances)} attachments, "
               f"{len(urls)} meshes)")
-    return verify_assembly(name, placements, urls, lib=lib, instances=instances, ground=ground,
-                           designed=designed, rotating=rotating, axis=axis,
-                           non_structural=non_structural, structural_refs=set(lib),
-                           verbose=verbose)
+        if unverified_render_refs:
+            print(f"  render_accounting: UNVERIFIED physical render refs {unverified_render_refs}")
+        if hidden_structural_refs:
+            print(f"  structural_visibility: HIDDEN structural refs {hidden_structural_refs}")
+        if fastener_primitive_issues:
+            print(f"  fastener_primitives: UNDER-SPECIFIED fastener closures {fastener_primitive_issues}")
+
+    passed, status = verify_assembly(name, placements, urls, lib=lib, instances=instances, ground=ground,
+                                     designed=designed, rotating=rotating, axis=axis,
+                                     non_structural=non_structural, structural_refs=None,
+                                     verbose=verbose)
+    status["render_accounting"] = "FAIL" if unverified_render_refs else "PASS"
+    status["structural_visibility"] = "FAIL" if hidden_structural_refs else "PASS"
+    status["fastener_primitives"] = "FAIL" if fastener_primitive_issues else "PASS"
+    return (
+        passed
+        and not unverified_render_refs
+        and not hidden_structural_refs
+        and not fastener_primitive_issues
+    ), status

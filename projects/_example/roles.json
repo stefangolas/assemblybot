@@ -1,0 +1,33 @@
+{
+  "roles": [
+    {
+      "id": "example_catalog_role",
+      "name": "Example catalog-backed part",
+      "source": "catalog",
+      "status": "accepted",
+      "part_number": "REPLACE_ME",
+      "evidence": [
+        "evidence/<vendor>/<part>/manifest.json"
+      ]
+    },
+    {
+      "id": "example_custom_role",
+      "name": "Example licensed custom rigid part",
+      "source": "custom_machined",
+      "status": "accepted",
+      "custom_license": {
+        "licensed_custom": true,
+        "vendors_searched": [
+          "MISUMI",
+          "McMaster"
+        ],
+        "candidates_rejected": [
+          "Record concrete candidates and rejection reasons here."
+        ],
+        "configurable_options_rejected": [
+          "Record configurable catalog options considered here."
+        ]
+      }
+    }
+  ]
+}

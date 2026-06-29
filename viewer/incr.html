@@ -73,6 +73,7 @@ const Q = new URLSearchParams(location.search);
 const SRC = Q.get('src');
 const INITIAL_DIR = Q.get('dir')||'iso';
 const NEW = Q.get('new')||'';
+const NEW_SET = new Set(NEW.split(',').filter(x=>x));
 const INITIAL_EXPLODE = parseFloat(Q.get('explode')||'0');
 const HIDE = new Set((Q.get('hide')||'').split(',').filter(x=>x));
 const ONLY = new Set((Q.get('only')||'').split(',').filter(x=>x));
@@ -280,13 +281,15 @@ function updateColors() {
 
   for(let i = 0; i < partsData.length; i++) {
     const pd = partsData[i];
-    const isNew = pd.part.ref === NEW;
+    const isNew = NEW_SET.has(pd.part.ref);
     
     let baseColor;
     const ident = ((pd.part.group||'') + ' ' + (pd.part.ref||'') + ' ' + (pd.part.url||'')).toLowerCase();
     const isFastener = ident.includes('fastener') || ident.includes('screw') || ident.includes('washer') || ident.includes('nut') || ident.includes('bolt') || ident.includes('shcs') || /m\d/.test(ident);
 
-    if (isFastener) {
+    if (typeof pd.part.color === 'number') {
+      baseColor = pd.part.color;
+    } else if (isFastener) {
       baseColor = 0x222222; // black
     } else {
       const idx = uniqueStructuralURLs.indexOf(pd.part.url);
@@ -299,14 +302,13 @@ function updateColors() {
     if(isNew) baseColor = 0xffcf3f;
     if(state.gateColor && pd.part.state === 'UNHELD') baseColor = 0xd83030;
     if(pd.selected) baseColor = 0xffd1dc; // pastel pink selection
-    const opacity = NEW ? (isNew ? 1.0 : 0.32) : 1.0;
+    const opacity = NEW_SET.size ? (isNew ? 1.0 : 0.32) : 1.0;
     
     pd.obj.traverse(n => {
       if(n.isMesh && !n.isLineSegments2) {
-        if (!n.material.isMeshToonMaterial) {
-          n.material = new THREE.MeshToonMaterial({
+        if (!n.material.isMeshBasicMaterial) {
+          n.material = new THREE.MeshBasicMaterial({
             color: baseColor,
-            gradientMap: gradientMap,
             transparent: opacity < 1,
             opacity: opacity
           });

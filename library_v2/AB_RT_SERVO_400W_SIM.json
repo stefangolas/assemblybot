@@ -1,0 +1,158 @@
+{
+  "schema_version": 2,
+  "part_number": "AB_RT_SERVO_400W_SIM",
+  "classification": {
+    "catalog_family": "servo_motor",
+    "aliases": [
+      "400 W servo visual model"
+    ]
+  },
+  "source": {
+    "url": "generated_verified:two_stage_rotary_table/AB_RT_SERVO_400W_SIM"
+  },
+  "raw_spec": {},
+  "normalized_parameters": {
+    "power_w": 400,
+    "shaft_diameter_mm": 14
+  },
+  "cad": {
+    "gltf_uri": "projects/two_stage_rotary_table/out/assets/servo_motor_with_shaft_visual.glb",
+    "units": "metre"
+  },
+  "part_frame": {
+    "units": "millimetre",
+    "drawing_to_cad": {}
+  },
+  "ports": [
+    {
+      "id": "shaft",
+      "family": "cylindrical",
+      "polarity": "insert",
+      "geometry": {
+        "axis": {
+          "origin": [
+            0,
+            0,
+            -47.5
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 0,
+          "max": 7.0,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0,
+          "max": 95,
+          "unit": "mm"
+        },
+        "material_side": "outside"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "shaft_journal"
+      ],
+      "evidence_refs": [
+        "ev_geometry"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "flange_face",
+      "family": "planar",
+      "polarity": "contact",
+      "geometry": {
+        "plane": {
+          "origin": [
+            0,
+            0,
+            8
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ]
+        },
+        "boundary_uv_mm": {
+          "outer": [
+            [
+              -35.0,
+              -35.0
+            ],
+            [
+              35.0,
+              -35.0
+            ],
+            [
+              35.0,
+              35.0
+            ],
+            [
+              -35.0,
+              35.0
+            ]
+          ],
+          "holes": []
+        },
+        "material_side": "positive_normal"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "mounting_face"
+      ],
+      "evidence_refs": [
+        "ev_geometry"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    }
+  ],
+  "port_groups": [],
+  "annotation_status": {
+    "overall": "confirmed"
+  },
+  "evidence": [
+    {
+      "id": "ev_geometry",
+      "source_type": "custom_drawing",
+      "raw_value": "released rotary-table geometry",
+      "normalized_claim": {
+        "target_path": "ports",
+        "value": "dimensioned custom CAD",
+        "unit": "mm"
+      },
+      "source_uri": "projects/two_stage_rotary_table/requirements.md",
+      "locator": "custom-part requirements",
+      "extraction_method": "cadquery",
+      "confidence": 0.0,
+      "notes": ""
+    },
+    {
+      "id": "ev_threaded_holes",
+      "source_type": "custom_drawing",
+      "raw_value": "released metric threaded hole callouts",
+      "normalized_claim": {
+        "target_path": "threaded ports",
+        "value": "M5/M6 tapped holes",
+        "unit": "mm"
+      },
+      "source_uri": "projects/two_stage_rotary_table/requirements.md",
+      "locator": "bearing/tabletop screw patterns",
+      "extraction_method": "cadquery",
+      "confidence": 0.0,
+      "notes": ""
+    }
+  ],
+  "provenance": {
+    "generated_by": "tools.build_two_stage_rotary_table"
+  }
+}

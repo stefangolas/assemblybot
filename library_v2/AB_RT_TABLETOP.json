@@ -1,0 +1,831 @@
+{
+  "schema_version": 2,
+  "part_number": "AB_RT_TABLETOP",
+  "classification": {
+    "catalog_family": "custom_machined",
+    "aliases": [
+      "200x200 MIC-6 tabletop"
+    ]
+  },
+  "source": {
+    "url": "custom_drawing:two_stage_rotary_table/tabletop"
+  },
+  "raw_spec": {},
+  "normalized_parameters": {
+    "dimensions_mm": [
+      200,
+      200,
+      15
+    ]
+  },
+  "cad": {
+    "gltf_uri": "projects/two_stage_rotary_table/out/assets/validated_tabletop_200.glb",
+    "units": "metre"
+  },
+  "part_frame": {
+    "units": "millimetre",
+    "drawing_to_cad": {}
+  },
+  "ports": [
+    {
+      "id": "bottom_face",
+      "family": "planar",
+      "polarity": "contact",
+      "geometry": {
+        "plane": {
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ]
+        },
+        "boundary_uv_mm": {
+          "outer": [
+            [
+              -100.0,
+              -100.0
+            ],
+            [
+              100.0,
+              -100.0
+            ],
+            [
+              100.0,
+              100.0
+            ],
+            [
+              -100.0,
+              100.0
+            ]
+          ],
+          "holes": [
+            [
+              [
+                21.0,
+                0.0
+              ],
+              [
+                20.82034208885002,
+                2.741050036621083
+              ],
+              [
+                20.284442352070435,
+                5.4351999471529355
+              ],
+              [
+                19.40147018273702,
+                8.036352079666885
+              ],
+              [
+                18.186533479473212,
+                10.499999999999998
+              ],
+              [
+                16.66042014611594,
+                12.783990009183134
+              ],
+              [
+                14.849242404917499,
+                14.849242404917499
+              ],
+              [
+                12.783990009183134,
+                16.66042014611594
+              ],
+              [
+                10.500000000000002,
+                18.186533479473212
+              ],
+              [
+                8.036352079666887,
+                19.40147018273702
+              ],
+              [
+                5.4351999471529355,
+                20.284442352070435
+              ],
+              [
+                2.741050036621086,
+                20.82034208885002
+              ],
+              [
+                1.2858791391047208e-15,
+                21.0
+              ],
+              [
+                -2.7410500366210835,
+                20.82034208885002
+              ],
+              [
+                -5.435199947152933,
+                20.284442352070435
+              ],
+              [
+                -8.03635207966688,
+                19.401470182737025
+              ],
+              [
+                -10.499999999999995,
+                18.186533479473212
+              ],
+              [
+                -12.783990009183134,
+                16.66042014611594
+              ],
+              [
+                -14.849242404917497,
+                14.849242404917499
+              ],
+              [
+                -16.660420146115936,
+                12.783990009183139
+              ],
+              [
+                -18.186533479473212,
+                10.499999999999998
+              ],
+              [
+                -19.40147018273702,
+                8.036352079666887
+              ],
+              [
+                -20.284442352070432,
+                5.435199947152942
+              ],
+              [
+                -20.82034208885002,
+                2.741050036621092
+              ],
+              [
+                -21.0,
+                2.5717582782094417e-15
+              ],
+              [
+                -20.82034208885002,
+                -2.741050036621087
+              ],
+              [
+                -20.284442352070435,
+                -5.435199947152936
+              ],
+              [
+                -19.401470182737025,
+                -8.036352079666884
+              ],
+              [
+                -18.186533479473216,
+                -10.499999999999995
+              ],
+              [
+                -16.66042014611594,
+                -12.783990009183134
+              ],
+              [
+                -14.849242404917506,
+                -14.84924240491749
+              ],
+              [
+                -12.783990009183139,
+                -16.660420146115932
+              ],
+              [
+                -10.500000000000009,
+                -18.18653347947321
+              ],
+              [
+                -8.03635207966688,
+                -19.401470182737025
+              ],
+              [
+                -5.435199947152933,
+                -20.284442352070435
+              ],
+              [
+                -2.7410500366210844,
+                -20.82034208885002
+              ],
+              [
+                -3.857637417314163e-15,
+                -21.0
+              ],
+              [
+                2.741050036621077,
+                -20.82034208885002
+              ],
+              [
+                5.435199947152926,
+                -20.284442352070435
+              ],
+              [
+                8.036352079666873,
+                -19.401470182737025
+              ],
+              [
+                10.500000000000002,
+                -18.186533479473212
+              ],
+              [
+                12.783990009183118,
+                -16.66042014611595
+              ],
+              [
+                14.849242404917494,
+                -14.8492424049175
+              ],
+              [
+                16.660420146115932,
+                -12.78399000918314
+              ],
+              [
+                18.186533479473205,
+                -10.500000000000009
+              ],
+              [
+                19.401470182737025,
+                -8.03635207966688
+              ],
+              [
+                20.28444235207043,
+                -5.435199947152953
+              ],
+              [
+                20.82034208885002,
+                -2.7410500366210853
+              ]
+            ]
+          ]
+        },
+        "material_side": "negative_normal"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "mounting_face"
+      ],
+      "evidence_refs": [
+        "ev_geometry"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "top_face",
+      "family": "planar",
+      "polarity": "contact",
+      "geometry": {
+        "plane": {
+          "origin": [
+            0,
+            0,
+            15
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ]
+        },
+        "boundary_uv_mm": {
+          "outer": [
+            [
+              -100.0,
+              -100.0
+            ],
+            [
+              100.0,
+              -100.0
+            ],
+            [
+              100.0,
+              100.0
+            ],
+            [
+              -100.0,
+              100.0
+            ]
+          ],
+          "holes": [
+            [
+              [
+                21.0,
+                0.0
+              ],
+              [
+                20.82034208885002,
+                2.741050036621083
+              ],
+              [
+                20.284442352070435,
+                5.4351999471529355
+              ],
+              [
+                19.40147018273702,
+                8.036352079666885
+              ],
+              [
+                18.186533479473212,
+                10.499999999999998
+              ],
+              [
+                16.66042014611594,
+                12.783990009183134
+              ],
+              [
+                14.849242404917499,
+                14.849242404917499
+              ],
+              [
+                12.783990009183134,
+                16.66042014611594
+              ],
+              [
+                10.500000000000002,
+                18.186533479473212
+              ],
+              [
+                8.036352079666887,
+                19.40147018273702
+              ],
+              [
+                5.4351999471529355,
+                20.284442352070435
+              ],
+              [
+                2.741050036621086,
+                20.82034208885002
+              ],
+              [
+                1.2858791391047208e-15,
+                21.0
+              ],
+              [
+                -2.7410500366210835,
+                20.82034208885002
+              ],
+              [
+                -5.435199947152933,
+                20.284442352070435
+              ],
+              [
+                -8.03635207966688,
+                19.401470182737025
+              ],
+              [
+                -10.499999999999995,
+                18.186533479473212
+              ],
+              [
+                -12.783990009183134,
+                16.66042014611594
+              ],
+              [
+                -14.849242404917497,
+                14.849242404917499
+              ],
+              [
+                -16.660420146115936,
+                12.783990009183139
+              ],
+              [
+                -18.186533479473212,
+                10.499999999999998
+              ],
+              [
+                -19.40147018273702,
+                8.036352079666887
+              ],
+              [
+                -20.284442352070432,
+                5.435199947152942
+              ],
+              [
+                -20.82034208885002,
+                2.741050036621092
+              ],
+              [
+                -21.0,
+                2.5717582782094417e-15
+              ],
+              [
+                -20.82034208885002,
+                -2.741050036621087
+              ],
+              [
+                -20.284442352070435,
+                -5.435199947152936
+              ],
+              [
+                -19.401470182737025,
+                -8.036352079666884
+              ],
+              [
+                -18.186533479473216,
+                -10.499999999999995
+              ],
+              [
+                -16.66042014611594,
+                -12.783990009183134
+              ],
+              [
+                -14.849242404917506,
+                -14.84924240491749
+              ],
+              [
+                -12.783990009183139,
+                -16.660420146115932
+              ],
+              [
+                -10.500000000000009,
+                -18.18653347947321
+              ],
+              [
+                -8.03635207966688,
+                -19.401470182737025
+              ],
+              [
+                -5.435199947152933,
+                -20.284442352070435
+              ],
+              [
+                -2.7410500366210844,
+                -20.82034208885002
+              ],
+              [
+                -3.857637417314163e-15,
+                -21.0
+              ],
+              [
+                2.741050036621077,
+                -20.82034208885002
+              ],
+              [
+                5.435199947152926,
+                -20.284442352070435
+              ],
+              [
+                8.036352079666873,
+                -19.401470182737025
+              ],
+              [
+                10.500000000000002,
+                -18.186533479473212
+              ],
+              [
+                12.783990009183118,
+                -16.66042014611595
+              ],
+              [
+                14.849242404917494,
+                -14.8492424049175
+              ],
+              [
+                16.660420146115932,
+                -12.78399000918314
+              ],
+              [
+                18.186533479473205,
+                -10.500000000000009
+              ],
+              [
+                19.401470182737025,
+                -8.03635207966688
+              ],
+              [
+                20.28444235207043,
+                -5.435199947152953
+              ],
+              [
+                20.82034208885002,
+                -2.7410500366210853
+              ]
+            ]
+          ]
+        },
+        "material_side": "positive_normal"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "mounting_face"
+      ],
+      "evidence_refs": [
+        "ev_geometry"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "mount_clearance_1",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            45.0,
+            0.0,
+            0
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 3.3,
+          "max": 3.3,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0,
+          "max": 15,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "clearance_hole"
+      ],
+      "evidence_refs": [
+        "ev_geometry"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "mount_clearance_2",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            22.500000000000004,
+            38.97114317029974,
+            0
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 3.3,
+          "max": 3.3,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0,
+          "max": 15,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "clearance_hole"
+      ],
+      "evidence_refs": [
+        "ev_geometry"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "mount_clearance_3",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            -22.49999999999999,
+            38.97114317029974,
+            0
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 3.3,
+          "max": 3.3,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0,
+          "max": 15,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "clearance_hole"
+      ],
+      "evidence_refs": [
+        "ev_geometry"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "mount_clearance_4",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            -45.0,
+            5.5109105961630896e-15,
+            0
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 3.3,
+          "max": 3.3,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0,
+          "max": 15,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "clearance_hole"
+      ],
+      "evidence_refs": [
+        "ev_geometry"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "mount_clearance_5",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            -22.50000000000002,
+            -38.97114317029973,
+            0
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 3.3,
+          "max": 3.3,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0,
+          "max": 15,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "clearance_hole"
+      ],
+      "evidence_refs": [
+        "ev_geometry"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "mount_clearance_6",
+      "family": "cylindrical",
+      "polarity": "receiver",
+      "geometry": {
+        "axis": {
+          "origin": [
+            22.500000000000004,
+            -38.97114317029974,
+            0
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ]
+        },
+        "radial_interval_mm": {
+          "min": 3.3,
+          "max": 3.3,
+          "unit": "mm"
+        },
+        "axial_interval_mm": {
+          "min": 0,
+          "max": 15,
+          "unit": "mm"
+        },
+        "material_side": "inside"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "clearance_hole"
+      ],
+      "evidence_refs": [
+        "ev_geometry"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    }
+  ],
+  "port_groups": [
+    {
+      "id": "mount_pattern",
+      "kind": "repeated_ports",
+      "members": [
+        {
+          "port": "mount_clearance_1"
+        },
+        {
+          "port": "mount_clearance_2"
+        },
+        {
+          "port": "mount_clearance_3"
+        },
+        {
+          "port": "mount_clearance_4"
+        },
+        {
+          "port": "mount_clearance_5"
+        },
+        {
+          "port": "mount_clearance_6"
+        }
+      ],
+      "frame": null,
+      "symmetry": {},
+      "placement_domain": null,
+      "evidence_refs": []
+    }
+  ],
+  "annotation_status": {
+    "overall": "confirmed"
+  },
+  "evidence": [
+    {
+      "id": "ev_geometry",
+      "source_type": "custom_drawing",
+      "raw_value": "released rotary-table geometry",
+      "normalized_claim": {
+        "target_path": "ports",
+        "value": "dimensioned custom CAD",
+        "unit": "mm"
+      },
+      "source_uri": "projects/two_stage_rotary_table/requirements.md",
+      "locator": "custom-part requirements",
+      "extraction_method": "cadquery",
+      "confidence": 0.0,
+      "notes": ""
+    },
+    {
+      "id": "ev_threaded_holes",
+      "source_type": "custom_drawing",
+      "raw_value": "released metric threaded hole callouts",
+      "normalized_claim": {
+        "target_path": "threaded ports",
+        "value": "M5/M6 tapped holes",
+        "unit": "mm"
+      },
+      "source_uri": "projects/two_stage_rotary_table/requirements.md",
+      "locator": "bearing/tabletop screw patterns",
+      "extraction_method": "cadquery",
+      "confidence": 0.0,
+      "notes": ""
+    }
+  ],
+  "provenance": {
+    "generated_by": "tools.build_two_stage_rotary_table"
+  }
+}

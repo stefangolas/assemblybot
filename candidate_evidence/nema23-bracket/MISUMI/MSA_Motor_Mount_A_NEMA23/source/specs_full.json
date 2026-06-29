@@ -1,0 +1,259 @@
+{
+  "raw_text_len": 1374,
+  "raw_text": "Skip to content\nStart typing, then use the up and down arrows to select an option from the list\nQuote/Order\nAccount\nCart\n0\nAll Products\nServices\nSupplier Central\nBlog\nCatalog\nCareers\nMISUMI Home\nWeb Limited Product\nMSA Motor Mount A NEMA 23\nMISUMI\nMSA Motor Mount A NEMA 23\nCatalogPage\nPrice\t---\nQty.\nAdd to Cart\nPart Number:\nPlease configure to get your Part Number\n\n0  Part Numbers\n\nClear All\nPart Numbers\nPart Numbers\nItems displayed:\t\n30\n60\n90\nPart Number\nMinimum Order Quantity\nDays to Ship\nSort\nTechnical Support\n\nInquire about product specifications and technology\n\nTechnical Inquiry\n\n9:00 am – 6:00 pm (Mon – Fri), 9:00 am – 3:00 pm (Sat)\n\n0/0 downloads completed\n\nNo CAD available\n\nYour comments help us improve our website.\n\nGive Feedback\nCompany Information\nCareer Opportunities\nTerms and Conditions\nCustomer Privacy Policy\nCode of Conduct\nRoHS Info\nEnvironmental Chemicals Management\nMISUMI Group Inc\nCatalog Request\nTax Exemption\nOrder History\nQuote History\nCAD Download History\nNews\nEvents\nLocations\nIndustries Served\nAccessibility Statement\nOnline Resources\nHelp Center\nSupplier Central\nMech Lab Blog\nSitemap\nContact UsMon-Fri 8 a.m. - 9 p.m. ET, Sat 8 a.m. - 5 p.m. ET\n\n800-681-7475\n\n1475 E Woodfield Rd, Ste. 1300 Schaumburg, IL 60173\n\nCountry/Region/Language\n\nCopyright © MISUMI Corporation All Rights Reserved.\n\nMSA Motor Mount A NEMA 23 | MISUMI | MISUMI",
+  "table_rows": [
+    [
+      "Part Number"
+    ],
+    [
+      "Minimum Order Quantity"
+    ],
+    [
+      "Days to Ship\nSort"
+    ]
+  ],
+  "next_data": "{\"props\":{\"pageProps\":{}},\"page\":\"/vona2/detail/[seriesCode]\",\"query\":{\"seriesCode\":\"110302630360\"},\"buildId\":\"7943fcc-h9BZPUuxoA48vEqfHSlkR\",\"assetPrefix\":\"/vona2/pc/system\",\"runtimeConfig\":{\"config\":{\"cdn\":{\"domain\":{\"cloudinary\":{\"global\":\"content.misumi-ec.com\",\"china\":\"content.misumi.com.cn\"},\"images\":\"images.misumi-ec.com\"}},\"subsidiaryCode\":\"USA\",\"locales\":[\"en\"],\"defaultCurrencyCode\":\"USD\",\"cookie\":{\"domain\":\".misumi-ec.com\"},\"path\":{\"web\":{\"userRegistrationGuide\":\"/contents/guide/category/member/register_flow.html\",\"wos\":\"/wos\",\"wosStaticContents\":\"/contents/us\"}},\"form\":{\"length\":{\"max\":{\"loginId\":128,\"password\":128,\"keyword\":200,\"quantity\":5}}},\"pagination\":{\"detail\":{\"size\":60,\"sizeList\":[30,60,90]},\"series\":{\"size\":45,\"sizeList\":[30,45,60]},\"techView\":{\"size\":10,\"sizeList\":[10,20,50,100]},\"featureList\":{\"size\":100}},\"tax\":{\"ratePercentage\":10,\"rateMultiple\":1.1},\"format\":{\"date\":\"YYYY/MM/DD\",\"displayDate\":\"ddd. MMM D, YYYY\",\"displayDateShort\":\"MMM D, YYYY\",\"dateTime\":\"YYYY/MM/DD HH:mm:ss\",\"monthYear\":\"MM/YYYY\",\"apiDate\":\"YYYY-MM-DD\",\"localStorageDateTime\":\"YYYY/MM/DD HH:mm\",\"number\":{\"decimalSeparator\":\",\",\"decimalPoint\":\".\"}},\"timezone\":\"America/Chicago\",\"defaultLocale\":\"en\",\"env\":\"prd\",\"applicationId\":{\"msm\":\"72c49146-6b86-4155-a63c-499b00972294\",\"botALB\":\"\",\"userALB\":\"\"},\"enableDebugTools\":false,\"cms\":{\"contentUrl\":\"https://us.misumi-ec.com/web\",\"cmsServerUrls\":[\"https://misumicms.misumiusa.com/\"],\"rewriteWeb\":false},\"api\":{\"msm\":{\"origin\":\"https://us.misumi-ec.com\"},\"ect\":{\"origin\":\"https://api.us.misumi-ec.com\"},\"my\":{\"origin\":\"https://mpg-api.us.misumi-ec.com\"},\"auth\":{\"origin\":\"https://us.mauth.misumi-ec.com\"},\"sinus\":{\"origin\":\"https://mex.misumi-ec.com\"},\"hawksearch\":{\"apiBase\":\"https://misumi.searchapi-na.hawksearch.com\",\"trackingApiBase\":\"https://misumi.tracking-na.hawksearch.com\",\"recsApiBase\":\"https://misumi.recs-na.hawksearch.com/api/recommendation/v2/\",\"clientGuid\":\"3b3072938646498d80b35d7b557571ea\",\"index\":null},\"dnb\":{\"origin\":\"https://plus.dnb.com\",\"allow\":[\"https://us.misumi-ec.com\"]},\"cadenas\":{\"origin\":\"https://us.misumi-ec.com\"},\"cimsource\":{\"origin\":\"https://us.misumi-ec.com\"},\"microservice\":{\"origin\":\"https://api-us.misumi-ec.com\"},\"rapidDesign\":{\"origin\":\"https://rd-jp-cadapi.misumi-ec.com\"},\"ecatalogSSR\":{\"user\":{\"origin\":\"\"},\"bot\":{\"origin\":\"\"}}},\"web\":{\"ec\":{\"origin\":\"https://us.misumi-ec.com\"},\"digitalCatalog\":{\"origin\":\"https://us.c.misumi-ec.com\"},\"web3DViewer\":{\"origin\":\"https://rd-jp-preview.misumi-ec.com\"}},\"datadogRUM\":{\"applicationId\":\"d8af5480-b111-45cf-ba49-773eb1843152\",\"clientToken\":\"pub4519b209f2afa6a366565b381f6c6ab0\",\"site\":\"datadoghq.com\",\"service\":\"catalog-web\",\"env\":\"prd-us\",\"defaultPrivacyLevel\":\"mask-user-input\",\"sessionReplaySampleRate\":100,\"telemetrySampleRate\":0,\"trackLongTasks\":true,\"trackResources\":true,\"trackUserInteractions\":true,\"allowedTracingUrls\":[\"https://api-us.misumi-ec.com\"]},\"metaTags\":{\"formatDetection\":{\"mobile\":\"telephone=no, email=no, address=no\"}},\"s3Json\":{\"origin\":\"\"},\"clarity\":{\"dev\":false},\"google\":{\"tagManagerId\":\"GTM-T8FRHB\"},\"qualtrics\":{\"containerId\":\"ZN_3C0F8yaZX7bDLQG\"},\"data\":{\"contactInfo\":{\"mech\":{\"categoryCode\":\"mech\",\"categoryName\":\"Automation Components\",\"contactName\":\"Automation Components Help Window\",\"tel\":\"\",\"fax\":\"\",\"businessHours\":\"Business hours 9:00-18:00 (excluding Sundays, holidays, and New Year's holidays)\"},\"mech_screw\":{\"categoryCode\":\"mech_screw\",\"categoryName\":\"Fasteners\",\"contactName\":\"Fasteners Help Window\",\"tel\":\"\",\"fax\":\"\",\"businessHours\":\"Business hours 9:00-18:00 (excluding Sundays, holidays, and New Year's holidays)\"},\"el_wire\":{\"categoryCode\":\"el_wire\",\"categoryName\":\"Wiring Components\",\"contactName\":\"Wiring Components Help Window\",\"tel\":\"\",\"fax\":\"\",\"businessHours\":\"Business hours 9:00-18:00 (excluding Sundays, holidays, and New Year's holidays)\"},\"fs_machining\":{\"categoryCode\":\"fs_machining\",\"categoryName\":\"Cutting Tools\",\"contactName\":\"Cutting Tools Help Window\",\"tel\":\"\",\"fax\":\"\",\"businessHours\":\"Business hours 9:00-18:00 (excluding Sundays, holidays, and New Year's holidays)\"},\"fs_processing\":{\"categoryCode\":\"fs_processing\",\"categoryName\":\"Tools & Accessories\",\"contactName\":\"Tools & Accessories Help Window\",\"tel\":\"\",\"fax\":\"\",\"businessHours\":\"Business hours 9:00-18:00 (excluding Sundays, holidays, and New Year's holidays)\"},\"fs_logistics\":{\"categoryCode\":\"fs_logistics\",\"categoryName\":\"Material Handling & Storage\",\"contactName\":\"Material Handling & Storage Help Window\",\"tel\":\"\",\"fax\":\"\",\"businessHours\":\"Business hours 9:00-18:00 (excluding Sundays, holidays, and New Year's holidays)\"},\"fs_health\":{\"categoryCode\":\"fs_health\",\"categoryName\":\"Safety & General Supplies\",\"contactName\":\"Safety & General Supplies Help Window\",\"tel\":\"\",\"fax\":\"\",\"businessHours\":\"Business hours 9:00-18:00 (excluding Sundays, holidays, and New Year's holidays)\"},\"fs_lab\":{\"categoryCode\":\"fs_lab\",\"categoryName\":\"Lab & Cleanroom Supplies\",\"contactName\":\"Lab & Cleanroom Supplies Help Window\",\"tel\":\"\",\"fax\":\"\",\"businessHours\":\"Business hours 9:00-18:00 (excluding Sundays, holidays, and New Year's holidays)\"},\"press\":{\"categoryCode\":\"press\",\"categoryName\":\"Press Die Components\",\"contactName\":\"Press Die Components Help Window\",\"tel\":\"0120-343-601\",\"fax\":\"\",\"businessHours\":\"Business hours 9:00-18:00 (excluding Sundays, holidays, and New Year's holidays)\"},\"mold\":{\"categoryCode\":\"mold\",\"categoryName\":\"Plastic Mold Components\",\"contactName\":\"Plastic Mold Components Help Window\",\"tel\":\"0120-343-602\",\"fax\":\"\",\"businessHours\":\"Business hours 9:00-18:00 (excluding Sundays, holidays, and New Year's holidays)\"},\"injection\":{\"categoryCode\":\"injection\",\"categoryName\":\"Injection Molding Components\",\"contactName\":\"Injection Molding Components Help Window\",\"tel\":\"0120-343-615\",\"fax\":\"\",\"businessHours\":\"Business hours 9:00-18:00 (excluding Sundays, holidays, and New Year's holidays)\"}},\"menuGroupInfo\":{\"mech\":[],\"mech_screw\":[],\"mech_material\":[],\"el_wire\":[],\"el_control\":[],\"press\":[],\"mold\":[]}},\"code\":{\"errorCode\":{\"orderSuspendedErrorCode\":\"CE7062\",\"dJitPartialErrorList\":[\"0552\",\"0523\",\"0874\",\"0877\",\"0549\",\"0572\",\"0806\",\"CE8025\",\"CE8027\",\"CE8126\",\"CE8127\",\"CE7054\"],\"priceCheckLeadTimeErrorList\":[\"0484\",\"0537\",\"0552\",\"0572\",\"0797\",\"0806\",\"0874\",\"0875\",\"0877\",\"CE7026\",\"CE7045\",\"CE8005\",\"CE8025\",\"CE8027\",\"CE8098\",\"CE8126\",\"CE8127\",\"CE8150\"],\"priceCheckBigOrderErrorList\":[\"0523\",\"0995\",\"CE8182\"],\"priceCheckEachErrorList\":[\"CE7020\",\"CE7021\",\"CE7026\",\"CE8121\"],\"priceCheckConvertErrorList\":{\"codeList\":[\"NMP002\",\"NMP003\",\"NMP004\",\"NMP006\"],\"message\":\"We can't provide the service for the product you specified\"},\"contactConvertErrorList\":{\"keywordList\":[\"問い合わせ\",\"問合わせ\",\"問い合せ\",\"問合せ\",\"contact\",\"ミスミ\",\"misumi\",\"MISUMI\",\"カスタマー・サービス・センター\"],\"errorCodeList\":[\"XXXXXX\"],\"message\":\"Checkout not allowed.\"}},\"industryCode\":{\"foodSpecializedCode\":\"602\"}},\"chat\":{\"drift\":{\"id\":\"gi4tpbminz8r\"}}}},\"isFallback\":false,\"isExperimentalCompile\":false,\"appGip\":true,\"scriptLoader\":[]}",
+  "dimension_snippets": [
+    {
+      "tag": "TITLE",
+      "text": "MSA Motor Mount A NEMA 23 | MISUMI | MISUMI",
+      "parent": "HEAD"
+    },
+    {
+      "tag": "LI",
+      "text": "Cart0",
+      "parent": "UL"
+    },
+    {
+      "tag": "A",
+      "text": "Cart0",
+      "parent": "LI"
+    },
+    {
+      "tag": "SPAN",
+      "text": "0",
+      "parent": "SPAN"
+    },
+    {
+      "tag": "NAV",
+      "text": "MISUMI HomeWeb Limited ProductMSA Motor Mount A NEMA 23",
+      "parent": "DIV"
+    },
+    {
+      "tag": "LI",
+      "text": "MSA Motor Mount A NEMA 23",
+      "parent": "UL"
+    },
+    {
+      "tag": "SPAN",
+      "text": "MSA Motor Mount A NEMA 23",
+      "parent": "LI"
+    },
+    {
+      "tag": "DIV",
+      "text": "MISUMIMSA Motor Mount A NEMA 23",
+      "parent": "DIV"
+    },
+    {
+      "tag": "DIV",
+      "text": "MISUMIMSA Motor Mount A NEMA 23",
+      "parent": "DIV"
+    },
+    {
+      "tag": "H1",
+      "text": "MSA Motor Mount A NEMA 23",
+      "parent": "DIV"
+    },
+    {
+      "tag": "DIV",
+      "text": "MSA Motor Mount A NEMA 23",
+      "parent": "H1"
+    },
+    {
+      "tag": "DIV",
+      "text": "0  Part NumbersClear All",
+      "parent": "DIV"
+    },
+    {
+      "tag": "DIV",
+      "text": "0  Part NumbersClear All",
+      "parent": "DIV"
+    },
+    {
+      "tag": "DIV",
+      "text": "0  Part NumbersClear All",
+      "parent": "DIV"
+    },
+    {
+      "tag": "DIV",
+      "text": "0  Part NumbersClear All",
+      "parent": "DIV"
+    },
+    {
+      "tag": "DIV",
+      "text": "0  Part NumbersClear All",
+      "parent": "DIV"
+    },
+    {
+      "tag": "DIV",
+      "text": "0  Part Numbers",
+      "parent": "DIV"
+    },
+    {
+      "tag": "P",
+      "text": "0",
+      "parent": "DIV"
+    },
+    {
+      "tag": "SPAN",
+      "text": "0",
+      "parent": "P"
+    },
+    {
+      "tag": "DIV",
+      "text": "Items displayed:306090",
+      "parent": "DIV"
+    },
+    {
+      "tag": "DIV",
+      "text": "306090",
+      "parent": "DIV"
+    },
+    {
+      "tag": "SELECT",
+      "text": "30",
+      "parent": "DIV"
+    },
+    {
+      "tag": "OPTION",
+      "text": "30",
+      "parent": "SELECT"
+    },
+    {
+      "tag": "OPTION",
+      "text": "60",
+      "parent": "SELECT"
+    },
+    {
+      "tag": "OPTION",
+      "text": "90",
+      "parent": "SELECT"
+    },
+    {
+      "tag": "P",
+      "text": "9:00 am – 6:00 pm (Mon – Fri), 9:00 am – 3:00 pm (Sat)",
+      "parent": "DD"
+    },
+    {
+      "tag": "DIV",
+      "text": "0/0 downloads completedNo CAD available",
+      "parent": "DIV"
+    },
+    {
+      "tag": "DIV",
+      "text": "0/0 downloads completedNo CAD available",
+      "parent": "DIV"
+    },
+    {
+      "tag": "DIV",
+      "text": "0/0 downloads completed",
+      "parent": "DIV"
+    },
+    {
+      "tag": "DIV",
+      "text": "0/0 downloads completed",
+      "parent": "DIV"
+    },
+    {
+      "tag": "P",
+      "text": "0/0 downloads completed",
+      "parent": "DIV"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Mon-Fri 8 a.m. - 9 p.m. ET, Sat 8 a.m. - 5 p.m. ET",
+      "parent": "DIV"
+    },
+    {
+      "tag": "DIV",
+      "text": "800-681-7475",
+      "parent": "DIV"
+    },
+    {
+      "tag": "SPAN",
+      "text": "800-681-7475",
+      "parent": "P"
+    },
+    {
+      "tag": "P",
+      "text": "1475 E Woodfield Rd, Ste. 1300 Schaumburg, IL 60173",
+      "parent": "DIV"
+    },
+    {
+      "tag": "NEXT-ROUTE-ANNOUNCER",
+      "text": "MSA Motor Mount A NEMA 23 | MISUMI | MISUMI",
+      "parent": "BODY"
+    },
+    {
+      "tag": "P",
+      "text": "MSA Motor Mount A NEMA 23 | MISUMI | MISUMI",
+      "parent": "NEXT-ROUTE-ANNOUNCER"
+    },
+    {
+      "tag": "SCRIPT",
+      "text": "dnbvid.getData(\"paapi3922\",\"json\",\"T\",{},function(a){});",
+      "parent": "BODY"
+    }
+  ],
+  "images": [
+    {
+      "src": "https://us.misumi-ec.com/vona2/pc/system/_next/static/media/MISUMI_315.c43b1450.png",
+      "alt": "MISUMI | Your Time, Our Priority"
+    },
+    {
+      "src": "https://us.misumi-ec.com/vona2/pc/system/_next/static/media/catalog-page.89e8d8ae.svg",
+      "alt": "View PDF"
+    },
+    {
+      "src": "https://us.misumi-ec.com/vona2/pc/system/_next/static/media/heart.c42e8caf.svg",
+      "alt": ""
+    },
+    {
+      "src": "https://us.misumi-ec.com/vona2/pc/system/_next/static/media/heart-hover-state.b443076e.svg",
+      "alt": ""
+    },
+    {
+      "src": "https://us.misumi-ec.com/vona2/pc/system/_next/static/media/audioeye_trusted.cf548e52.svg",
+      "alt": "Accessibility Statement"
+    },
+    {
+      "src": "https://us.misumi-ec.com/vona2/pc/system/_next/static/media/iso9001.af2cf514.png",
+      "alt": "Certificate ISO-9001"
+    },
+    {
+      "src": "https://us.misumi-ec.com/vona2/pc/system/_next/static/media/icon_linkedin36.3db623b3.png",
+      "alt": "LinkedIn page"
+    },
+    {
+      "src": "https://us.misumi-ec.com/vona2/pc/system/_next/static/media/icon_facebook36.b47da180.png",
+      "alt": "Facebook page"
+    },
+    {
+      "src": "https://us.misumi-ec.com/vona2/pc/system/_next/static/media/icon_x36.8de12984.png",
+      "alt": "Twitter page"
+    },
+    {
+      "src": "https://us.misumi-ec.com/vona2/pc/system/_next/static/media/icon_youtube45.9161c933.png",
+      "alt": "Youtube page"
+    },
+    {
+      "src": "https://us.misumi-ec.com/vona2/pc/system/_next/static/media/icon_instagram36.14d6b2fb.png",
+      "alt": "Instagram page"
+    },
+    {
+      "src": "https://bat.bing.com/action/0?ti=5255975&Ver=2&mid=9263ded8-74d9-42b7-9e2d-712faa035f91&bo=1&sid=b4d6f8b0710a11f19ecf71ed05ac99ae&vid=617382506c0311f1a567793f8241d15b&vids=0&msclkid=N&uach=pv%3D19.0.0&pi=918639831&lg=en-US&sw=1536&sh=864&sc=32&tl=MSA%20Motor%20Mount%20A%20NEMA%2023%20%7C%20MISUMI%20%7C%20MISUMI&kw=MISUMI,MSA%20Motor%20Mount%20A%20NEMA%2023,Web%20Limited%20Product,MISUMI,%20Automation%20components,%20Configurable%20components,%20factory%20automation,%20assembly%20automation,%20mechanical,%20MISUMI%20catalog,%20e-catalog,%20Web%20Ordering%20System,%20Online%20Ordering&p=https%3A%2F%2Fus.misumi-ec.com%2Fvona2%2Fdetail%2F110302630360%2F%3FseriesCode%3D110302630360%26tab%3DcodeList%26Page%3D1&r=&lt=1391&evt=pageLoad&sv=2&cdb=AQAQ&rn=39980",
+      "alt": ""
+    }
+  ],
+  "spec_image_urls": []
+}

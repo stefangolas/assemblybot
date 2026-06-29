@@ -134,6 +134,76 @@ def axial_overlap(insert: EngagementPort, receiver: EngagementPort,
                            f"engaged length {ov:.1f} mm covers the receiver")
 
 
+def _segment_to_line_distance(p0, p1, lo, ld) -> tuple[float, np.ndarray]:
+    """Minimum distance between finite segment p0-p1 and an infinite line lo+u*ld."""
+    p0 = np.asarray(p0, float)
+    p1 = np.asarray(p1, float)
+    lo = np.asarray(lo, float)
+    ld = np.asarray(ld, float)
+    ld = ld / np.linalg.norm(ld)
+    sd = p1 - p0
+    a = float(np.dot(sd, sd))
+    b = float(np.dot(sd, ld))
+    c = 1.0
+    w0 = p0 - lo
+    d = float(np.dot(sd, w0))
+    e = float(np.dot(ld, w0))
+    denom = a * c - b * b
+    if abs(denom) < 1e-9:
+        s = 0.0
+    else:
+        s = np.clip((b * e - c * d) / denom, 0.0, 1.0)
+    point = p0 + s * sd
+    off = point - lo
+    closest_on_line = lo + np.dot(off, ld) * ld
+    return float(np.linalg.norm(point - closest_on_line)), point
+
+
+def tip_or_clamp_contact(screw: EngagementPort, target: EngagementPort,
+                         place_s: dict, place_t: dict) -> PredicateResult:
+    """A radial/set/clamp screw must actually reach the target body it claims to clamp.
+
+    This is intentionally generic: it does not know about pulleys, collars, or carriers.
+    It checks that the screw's finite threaded span crosses close enough to a cylindrical
+    target's bounded axial region and is not merely a decorative fastener nearby.
+    """
+    if screw.family != "threaded" or screw.polarity != "external":
+        return PredicateResult("tip_or_clamp_contact", "UNKNOWN", "hard_geometry",
+                               detail="screw side must be an external threaded port")
+    if target.family != "cylindrical":
+        return PredicateResult("tip_or_clamp_contact", "UNKNOWN", "hard_geometry",
+                               detail="target side must be cylindrical")
+    os, ds = world_axis(screw, place_s)
+    ot, dt = world_axis(target, place_t)
+    ds = ds / np.linalg.norm(ds)
+    dt = dt / np.linalg.norm(dt)
+    iv = screw.axial_interval()
+    p0, p1 = os + iv.min * ds, os + iv.max * ds
+    dist, contact_pt = _segment_to_line_distance(p0, p1, ot, dt)
+    target_r = target.radial_interval().max
+    target_span = world_axial_interval(target, place_t, dt, ot)
+    along = float(np.dot(contact_pt - ot, dt))
+    angle_from_perp = float(np.degrees(np.arcsin(np.clip(abs(np.dot(ds, dt)), -1, 1))))
+    m = {
+        "segment_to_target_axis_mm": round(dist, 3),
+        "target_radius_mm": target_r,
+        "contact_axis_coordinate_mm": round(along, 3),
+        "target_span_mm": [round(target_span.min, 3), round(target_span.max, 3)],
+        "angle_from_perpendicular_deg": round(angle_from_perp, 2),
+    }
+    if angle_from_perp > 25.0:
+        return PredicateResult("tip_or_clamp_contact", "FAIL", "hard_geometry", m,
+                               f"screw is not radial to target axis ({angle_from_perp:.1f} deg from perpendicular)")
+    if along < target_span.min - 0.6 or along > target_span.max + 0.6:
+        return PredicateResult("tip_or_clamp_contact", "FAIL", "hard_geometry", m,
+                               "screw reaches outside the target's bounded axial span")
+    if dist > target_r + 0.6:
+        return PredicateResult("tip_or_clamp_contact", "FAIL", "hard_geometry", m,
+                               f"screw misses target cylinder by {dist - target_r:.2f} mm")
+    return PredicateResult("tip_or_clamp_contact", "PASS", "hard_geometry", m,
+                           "screw span reaches cylindrical target region")
+
+
 # ---- threaded: thread_match (Section 5) ---------------------------------------
 
 def thread_match(a: EngagementPort, b: EngagementPort) -> PredicateResult:

@@ -16,6 +16,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
 
 
 def discover() -> list[Path]:
@@ -36,6 +37,8 @@ def discover() -> list[Path]:
 
 def main(argv=None):
     from assembly.verify_canonical import verify_canonical
+    from assembly.catalog_provenance import check_project as check_catalog_provenance
+    from tools.render_sanity import check_project as check_render_sanity
     argv = list(argv if argv is not None else sys.argv[1:])
     targets = [Path(a) for a in argv] if argv else discover()
     if not targets:
@@ -46,12 +49,49 @@ def main(argv=None):
     for path in targets:
         path = Path(path).resolve()
         print("=" * 78)
+        project_dir = path.parent.parent if path.parent.name == "out" else path.parent
+        meta_path = project_dir / "project.json"
+        meta = {}
+        if meta_path.exists():
+            try:
+                meta = json.loads(meta_path.read_text())
+            except Exception:
+                meta = {}
+
         passed, status = verify_canonical(path, verbose=True)
+        gates = dict(status)
+
+        prov = check_catalog_provenance(project_dir)
+        gates["catalog_provenance"] = "PASS" if prov.passed else "FAIL"
+        if not prov.passed:
+            passed = False
+            print(f"  catalog_provenance: FAIL {prov.summary()}")
+            for issue in prov.issues:
+                if issue.severity == "FAIL":
+                    print(f"    {issue.role}: {issue.message}")
+        else:
+            print(f"  catalog_provenance: PASS {prov.summary()}")
+
+        render = check_render_sanity(project_dir)
+        gates["render_sanity"] = "PASS" if render["passed"] else "FAIL"
+        if not render["passed"]:
+            passed = False
+            print(f"  render_sanity: FAIL ({render['image_count']} image(s))")
+        else:
+            print(f"  render_sanity: PASS ({render['image_count']} image(s))")
+
+        if meta.get("status") in {"prototype_unverified", "prototype", "failed", "blocked"}:
+            passed = False
+            gates["project_status"] = "FAIL"
+            print(f"  project_status: FAIL ({meta.get('status')})")
+        else:
+            gates["project_status"] = "PASS"
+
         try:
             label = path.relative_to(ROOT)
         except ValueError:
             label = path
-        results.append((label, passed, status))
+        results.append((label, passed, gates))
 
     print("=" * 78)
     print("VERIFY-ALL SUMMARY")

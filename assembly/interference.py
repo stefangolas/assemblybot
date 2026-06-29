@@ -188,6 +188,12 @@ def load_placed(asm: dict, root) -> dict:
         ref, url = e["ref"], e["url"]
         p = (root / url.lstrip("/")).resolve()
         if not p.exists():
+            parts = Path(url.lstrip("/")).parts
+            if len(parts) >= 2:
+                project_p = (root / "projects" / Path(*parts)).resolve()
+                if project_p.exists():
+                    p = project_p
+        if not p.exists():
             continue
         g = list(trimesh.load(p, force="scene").geometry.values())
         if not g:

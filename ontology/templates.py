@@ -47,6 +47,7 @@ _PREDICATES = {
     "clearance_pass_through": ("pair_pp", PM.clearance_pass_through),
     "thread_engagement": ("pair_cyl", PM.thread_engagement),
     "head_seat": ("group", PM.head_seat),
+    "tip_or_clamp_contact": ("pair_cyl", PM.tip_or_clamp_contact),
 }
 
 # enforce relations the pose solver understands (compiled in mate_solver; named here)
@@ -365,6 +366,70 @@ _reg(AttachmentTemplate(
 ))
 
 _reg(AttachmentTemplate(
+    id="radial_screw_against_cylindrical_target",
+    participants={
+        "body_bore": Participant("cylindrical", "receiver", role="body bore around cylindrical target"),
+        "target": Participant("cylindrical", "insert", role="shaft/journal/cylindrical clamped target"),
+        "screw": Participant("threaded", "external", role="radial clamp or set screw", is_fastener=True),
+        "thread": Participant("threaded", "internal", role="radial threaded hole in the clamping body"),
+    },
+    enforce=[Relation("coaxial", "body_bore.axis", "target.axis"),
+             Relation("coaxial", "screw.axis", "thread.axis")],
+    checks=[Check("radial_fit", "target", "body_bore"),
+            Check("axial_overlap", "target", "body_bore"),
+            Check("thread_match", "screw", "thread"),
+            Check("thread_engagement", "screw", "thread"),
+            Check("tip_or_clamp_contact", "screw", "target")],
+    closure=[ClosureRequirement("fastener", "screw",
+                                detail="radial screw threads through body and contacts target")],
+    load_paths=[LoadPathEdge("body_bore", "target",
+                             ["radial_fit", "axial_overlap", "tip_or_clamp_contact"]),
+                LoadPathEdge("screw", "body_bore", ["thread_match", "thread_engagement"])],
+    result=JointSpec("fixed"),
+))
+
+_reg(AttachmentTemplate(
+    id="clamp_keyed_hub_on_journal",
+    participants={
+        "hub": Participant("cylindrical", "receiver", role="clamp/keyed hub bore"),
+        "journal": Participant("cylindrical", "insert", role="shaft journal"),
+        "clamp_fastener": Participant("threaded", "external", role="clamp screw or keyed-hub retainer", is_fastener=True),
+    },
+    enforce=[Relation("coaxial", "hub.axis", "journal.axis")],
+    checks=[Check("radial_fit", "journal", "hub"),
+            Check("axial_overlap", "journal", "hub")],
+    closure=[ClosureRequirement("fastener", "clamp_fastener",
+                                detail="clamp/keyed hub fastener provides torque-retaining closure")],
+    load_paths=[
+        LoadPathEdge("hub", "journal", ["radial_fit", "axial_overlap"]),
+        LoadPathEdge("clamp_fastener", "hub", []),
+    ],
+    result=JointSpec("fixed"),
+))
+
+_reg(AttachmentTemplate(
+    id="pilot_clamped_hub_to_carrier",
+    participants={
+        "hub": Participant("cylindrical", "receiver", role="pulley pilot bore"),
+        "pilot": Participant("cylindrical", "insert", role="carrier locating pilot"),
+        "hub_seat": Participant("planar", "contact", role="pulley mounting face"),
+        "seat": Participant("planar", "contact", role="carrier flange face"),
+        "clamp_fastener": Participant("threaded", "external", role="pulley-to-carrier screw", is_fastener=True),
+    },
+    enforce=[Relation("coaxial", "hub.axis", "pilot.axis")],
+    checks=[Check("radial_fit", "pilot", "hub"),
+            Check("bounded_area_overlap", "hub_seat", "seat"),
+            Check("head_seat", "clamp_fastener", "hub_seat")],
+    closure=[ClosureRequirement("fastener", "clamp_fastener",
+                                detail="pulley is clamped to the carrier flange by real screws")],
+    load_paths=[
+        LoadPathEdge("hub", "pilot", ["radial_fit", "bounded_area_overlap", "head_seat"]),
+        LoadPathEdge("clamp_fastener", "hub", ["head_seat"]),
+    ],
+    result=JointSpec("fixed"),
+))
+
+_reg(AttachmentTemplate(
     id="inner_race_axial_retention",
     participants={
         "rotor": Participant("cylindrical", "receiver", role="bearing INNER race (recessed)"),
@@ -496,6 +561,41 @@ _reg(AttachmentTemplate(
     required_semantics=[SemanticClaim("belt", ["pitch", "profile", "active_width"]),
                         SemanticClaim("pulley", ["pitch", "profile", "active_width"])],
     result=JointSpec("fixed"),
+))
+
+_reg(AttachmentTemplate(
+    id="fastened_face_mount",
+    # A directly fastened face contact where the detailed bolt pattern is not the
+    # deciding datum. The fastener participant is still a real modeled fastener in
+    # the library; the load path is not inferred from coincident placement alone.
+    participants={
+        "mounted": Participant("planar", "contact", role="mounted face"),
+        "support": Participant("planar", "contact", role="supporting face"),
+        "fastener": Participant("threaded", "external", role="mounting screw", is_fastener=True),
+    },
+    enforce=[Relation("oppose_and_seat", "mounted.face", "support.face")],
+    checks=[Check("bounded_area_overlap", "mounted", "support"),
+            Check("head_seat", "fastener", "mounted")],
+    closure=[ClosureRequirement("fastener", "fastener",
+                                detail="modeled mounting fastener provides closure")],
+    load_paths=[LoadPathEdge("mounted", "support", ["bounded_area_overlap", "head_seat"]),
+                LoadPathEdge("fastener", "support", ["head_seat"])],
+    result=JointSpec("fixed"),
+))
+
+_reg(AttachmentTemplate(
+    id="journal_supported_by_bearing",
+    participants={
+        "journal": Participant("cylindrical", "insert", role="shaft journal"),
+        "bearing": Participant("cylindrical", "receiver", role="bearing inner bore"),
+    },
+    enforce=[Relation("coaxial", "journal.axis", "bearing.axis")],
+    checks=[Check("radial_fit", "journal", "bearing"),
+            Check("axial_overlap", "journal", "bearing")],
+    closure=[ClosureRequirement("integral", "raceway",
+                                detail="bearing raceway supports the shaft radially")],
+    load_paths=[LoadPathEdge("journal", "bearing", ["radial_fit", "axial_overlap"])],
+    result=JointSpec("revolute", axis_slot="journal"),
 ))
 
 _reg(AttachmentTemplate(

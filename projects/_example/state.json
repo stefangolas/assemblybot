@@ -1,0 +1,8 @@
+{
+  "stage": "intake",
+  "status": "example",
+  "goal": "Replace with the user's natural language project brief.",
+  "notes": [
+    "This file is read by tools/prompt_context.py and tools/project_status.py."
+  ]
+}

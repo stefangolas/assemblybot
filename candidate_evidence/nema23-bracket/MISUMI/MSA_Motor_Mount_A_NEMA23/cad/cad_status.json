@@ -1,0 +1,10 @@
+{
+  "STATE": "CAD_UNAVAILABLE",
+  "result": {
+    "error": "no outPutPath",
+    "status": "9",
+    "dl": {
+      "status": "9"
+    }
+  }
+}

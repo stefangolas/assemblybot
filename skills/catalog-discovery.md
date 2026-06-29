@@ -64,6 +64,10 @@ mismatches immediately. 4. Shortlist ≤3. 5. Retrieve deep evidence (drawing/CA
 6. Return the strongest candidate + alternatives. **Do not spend CAD-generation time on a candidate already
 contradicted by its drawing/spec.**
 
+For McMaster specifically, treat category/facet pages as candidate-PN indexes, not proof. Confirm every selected
+PN with the product page. Use product titles as a fast class/family rejection gate, and record likely-to-recur
+near-matches so the next pass does not re-check the same wrong part.
+
 ## Parallel topology
 
 One subagent per independent mechanical role (and per vendor / competing family when comparison matters).

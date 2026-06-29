@@ -67,7 +67,7 @@ class ProjectHandler(http.server.SimpleHTTPRequestHandler):
                 "a.project .cell{transition:background .12s ease,color .12s ease}",
                 "a.project:hover .cell{background:rgba(255,255,255,.44);color:#111}",
                 ".name{font-weight:700;text-transform:uppercase}.desc{color:#3e3b35}.path{color:var(--muted);word-break:break-all}",
-                ".status{color:var(--green);font-weight:700}",
+                ".status{color:var(--green);font-weight:700}.badge{display:inline-block;padding:2px 7px;border:1px solid var(--rule);font-weight:700;text-transform:uppercase}.badge.pass{color:var(--green)}.badge.fail,.badge.prototype{color:var(--red)}.badge.blocked{color:#7a5615}",
                 ".empty{padding:26px 20px;font-size:13px;color:var(--muted)}",
                 "@media(max-width:760px){body{padding:12px}.sheet{max-width:none;min-height:calc(100vh - 24px)}header{grid-template-columns:1fr}.stamp{border-left:0;border-top:2px solid var(--ink);min-width:0}.toolbar{align-items:flex-start;flex-direction:column}.bom-title{grid-template-columns:36px 1fr}.bom-title div:nth-child(n+3){display:none}.table{grid-template-columns:36px 1fr}.cell{border-right:0}.head:nth-child(n+3),a.project .cell:nth-child(4n),a.project .cell:nth-child(4n-1){display:none}.desc,.path{display:none}h1{font-size:25px}}",
                 "</style></head><body><main class='sheet'><header><section class='title'><div class='eyebrow'>Controlled Assembly Records</div><h1>Project Index</h1>",
@@ -77,15 +77,25 @@ class ProjectHandler(http.server.SimpleHTTPRequestHandler):
                 f"<div>{len(projects)} project{'s' if len(projects) != 1 else ''}</div></div>"
             ]
             if projects:
-                html.append("<section class='bom-title'><div>Item</div><div>Assembly Record</div><div>Gate</div><div>Action</div></section>")
+                html.append("<section class='bom-title'><div>Item</div><div>Assembly Record</div><div>Status</div><div>Canonical</div></section>")
                 html.append("<section class='table' aria-label='Project list'>")
-                html.append("<div class='cell head idx'>No.</div><div class='cell head'>Assembly</div><div class='cell head'>Description</div><div class='cell head'>Canonical</div>")
+                html.append("<div class='cell head idx'>No.</div><div class='cell head'>Assembly</div><div class='cell head'>Status</div><div class='cell head'>Canonical</div>")
             for n, p in enumerate(projects, 1):
                 pid = escape(p['id'])
                 name = escape(p.get('name', p['id']))
                 desc = escape(p.get('description', ''))
                 canonical = escape(p.get('canonical_assembly', 'project.json'))
-                html.append(f"<a class='project' href='/{pid}/'><div class='cell idx'>{n:02d}</div><div class='cell name'>{name}</div><div class='cell desc'>{desc}</div><div class='cell path'>{pid}/{canonical}</div></a>")
+                raw_status = str(p.get('status') or 'unknown')
+                if raw_status == 'published':
+                    badge_class, label = 'pass', 'PASS'
+                elif 'prototype' in raw_status:
+                    badge_class, label = 'prototype', 'PROTOTYPE'
+                elif raw_status in ('blocked', 'failed'):
+                    badge_class, label = 'fail', raw_status.upper()
+                else:
+                    badge_class, label = 'blocked', raw_status.upper()
+                status_html = f"<span class='badge {badge_class}'>{escape(label)}</span>"
+                html.append(f"<a class='project' href='/{pid}/'><div class='cell idx'>{n:02d}</div><div class='cell name'>{name}<br><span class='desc'>{desc}</span></div><div class='cell'>{status_html}</div><div class='cell path'>{pid}/{canonical}</div></a>")
             if projects:
                 html.append("</section>")
             else:

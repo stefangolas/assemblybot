@@ -29,6 +29,36 @@ def _http(path, port=9222):
     return json.load(urllib.request.urlopen(f"http://127.0.0.1:{port}/json{path}", timeout=8))
 
 
+def _browser_ws(port=9222) -> "_WS":
+    return _WS(_http("/version", port)["webSocketDebuggerUrl"])
+
+
+def close_target(target_id: str, port=9222) -> bool:
+    """Close a browser target created by this helper."""
+    bws = _browser_ws(port)
+    try:
+        result = bws.send("Target.closeTarget", targetId=target_id)
+        return bool(result.get("success", True))
+    finally:
+        bws.close()
+
+
+def list_pages(port=9222) -> list[dict]:
+    """Return active page targets in the CDP-controlled browser."""
+    return [t for t in _http("/list", port) if t.get("type") == "page"]
+
+
+def close_mcmaster_tabs(port=9222) -> int:
+    """Close all open McMaster tabs in the CDP-controlled browser."""
+    closed = 0
+    for target in list_pages(port):
+        if "mcmaster.com" not in target.get("url", ""):
+            continue
+        if close_target(target["id"], port):
+            closed += 1
+    return closed
+
+
 class _WS:
     def __init__(self, ws_url, timeout=90):
         self.ws = websocket.create_connection(ws_url, max_size=64 * 1024 * 1024,
@@ -62,8 +92,7 @@ class _WS:
 
 def open_active(pn, port=9222) -> tuple[_WS, str]:
     """Create a FRESH ACTIVE tab on the McMaster product page; return (ws, targetId)."""
-    binfo = _http("/version", port)
-    bws = _WS(binfo["webSocketDebuggerUrl"])
+    bws = _browser_ws(port)
     tid = bws.send("Target.createTarget", url=f"https://www.mcmaster.com/{pn}/")["targetId"]
     bws.send("Target.activateTarget", targetId=tid)
     bws.close()
@@ -85,61 +114,64 @@ def read_specs(pn, port=9222, wait=12) -> dict:
     """Open the page and return {title, text}. title bare 'McMaster-Carr' => invalid/shell."""
     pg, tid = open_active(pn, port)
     title, text = "", ""
-    for _ in range(wait):
-        title = pg.evaluate("document.title") or ""
-        if title and title != "McMaster-Carr":
-            text = pg.evaluate("document.body.innerText") or ""
-            break
-        time.sleep(1)
-    pg.close()
-    return {"pn": pn, "title": title, "text": text, "target": tid}
+    try:
+        for _ in range(wait):
+            title = pg.evaluate("document.title") or ""
+            if title and title != "McMaster-Carr":
+                text = pg.evaluate("document.body.innerText") or ""
+                break
+            time.sleep(1)
+        return {"pn": pn, "title": title, "text": text, "target": tid}
+    finally:
+        pg.close()
+        close_target(tid, port)
 
 
 def download_step(pn, port=9222, poll=40, prefer_no_threads=False) -> Path | None:
     """Fetch <PN>.STEP via the active-tab + trusted-click flow; move to cad/<PN>.step."""
-    binfo = _http("/version", port)
-    bws = _WS(binfo["webSocketDebuggerUrl"])
+    bws = _browser_ws(port)
     bws.send("Browser.setDownloadBehavior", behavior="allow",
              downloadPath=str(DOWNLOADS), eventsEnabled=True)
     bws.close()
     pg, tid = open_active(pn, port)
     title = ""
     link = None
-    for _ in range(poll):
-        title = pg.evaluate("document.title") or ""
-        # find an <a download> ending .STEP and its bounding rect centre
-        link = pg.evaluate(r"""
-            (() => {
-              const as=[...document.querySelectorAll('a[download]')];
-              const a=as.find(x=>/\.STEP$/i.test(x.getAttribute('href')||''));
-              if(!a) return null;
-              const r=a.getBoundingClientRect();
-              return {href:a.getAttribute('href'), x:r.x+r.width/2, y:r.y+r.height/2,
-                      vis:r.width>0&&r.height>0};
-            })()
-        """)
-        if link and link.get("vis"):
-            break
-        time.sleep(1)
-    if not link or not link.get("vis"):
-        pg.close()
+    try:
+        for _ in range(poll):
+            title = pg.evaluate("document.title") or ""
+            # find an <a download> ending .STEP and its bounding rect centre
+            link = pg.evaluate(r"""
+                (() => {
+                  const as=[...document.querySelectorAll('a[download]')];
+                  const a=as.find(x=>/\.STEP$/i.test(x.getAttribute('href')||''));
+                  if(!a) return null;
+                  const r=a.getBoundingClientRect();
+                  return {href:a.getAttribute('href'), x:r.x+r.width/2, y:r.y+r.height/2,
+                          vis:r.width>0&&r.height>0};
+                })()
+            """)
+            if link and link.get("vis"):
+                break
+            time.sleep(1)
+        if not link or not link.get("vis"):
+            return None
+        # trusted click at the link centre
+        for kind in ("mousePressed", "mouseReleased"):
+            pg.send("Input.dispatchMouseEvent", type=kind, x=link["x"], y=link["y"],
+                    button="left", clickCount=1)
+        # wait for the file to land in Downloads
+        dst = CAD / f"{pn}.step"
+        for _ in range(30):
+            cands = sorted(DOWNLOADS.glob(f"{pn}*.STEP"), key=lambda p: p.stat().st_mtime)
+            crdl = list(DOWNLOADS.glob(f"{pn}*.crdownload"))
+            if cands and not crdl:
+                shutil.move(str(cands[-1]), str(dst))
+                return dst
+            time.sleep(1)
         return None
-    # trusted click at the link centre
-    for kind in ("mousePressed", "mouseReleased"):
-        pg.send("Input.dispatchMouseEvent", type=kind, x=link["x"], y=link["y"],
-                button="left", clickCount=1)
-    # wait for the file to land in Downloads
-    dst = CAD / f"{pn}.step"
-    for _ in range(30):
-        cands = sorted(DOWNLOADS.glob(f"{pn}*.STEP"), key=lambda p: p.stat().st_mtime)
-        crdl = list(DOWNLOADS.glob(f"{pn}*.crdownload"))
-        if cands and not crdl:
-            shutil.move(str(cands[-1]), str(dst))
-            pg.close()
-            return dst
-        time.sleep(1)
-    pg.close()
-    return None
+    finally:
+        pg.close()
+        close_target(tid, port)
 
 
 if __name__ == "__main__":
@@ -150,3 +182,8 @@ if __name__ == "__main__":
         print(r["text"][:2000])
     elif len(sys.argv) > 1 and sys.argv[1] == "cad":
         print(download_step(sys.argv[2]))
+    elif len(sys.argv) > 1 and sys.argv[1] == "close-tabs":
+        print(close_mcmaster_tabs())
+    elif len(sys.argv) > 1 and sys.argv[1] == "tabs":
+        for page in list_pages():
+            print(page.get("id"), page.get("title"), page.get("url"))

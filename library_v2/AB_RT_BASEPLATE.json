@@ -1,0 +1,957 @@
+{
+  "schema_version": 2,
+  "part_number": "AB_RT_BASEPLATE",
+  "classification": {
+    "catalog_family": "custom_machined",
+    "aliases": [
+      "400x280 MIC-6 baseplate"
+    ]
+  },
+  "source": {
+    "url": "custom_drawing:two_stage_rotary_table/baseplate"
+  },
+  "raw_spec": {},
+  "normalized_parameters": {
+    "dimensions_mm": [
+      400,
+      280,
+      20
+    ]
+  },
+  "cad": {
+    "gltf_uri": "projects/two_stage_rotary_table/out/assets/validated_baseplate_400x280.glb",
+    "units": "metre"
+  },
+  "part_frame": {
+    "units": "millimetre",
+    "drawing_to_cad": {}
+  },
+  "ports": [
+    {
+      "id": "outer_ring_seat",
+      "family": "planar",
+      "polarity": "contact",
+      "geometry": {
+        "plane": {
+          "origin": [
+            0,
+            0,
+            10
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ]
+        },
+        "boundary_uv_mm": {
+          "outer": [
+            [
+              -90.0,
+              -90.0
+            ],
+            [
+              90.0,
+              -90.0
+            ],
+            [
+              90.0,
+              90.0
+            ],
+            [
+              -90.0,
+              90.0
+            ]
+          ],
+          "holes": [
+            [
+              [
+                48.0,
+                0.0
+              ],
+              [
+                47.5893533459429,
+                6.2652572265624755
+              ],
+              [
+                46.36443966187528,
+                12.423314164920995
+              ],
+              [
+                44.34621756054176,
+                18.36880475352431
+              ],
+              [
+                41.569219381653056,
+                23.999999999999996
+              ],
+              [
+                38.08096033397929,
+                29.22054859241859
+              ],
+              [
+                33.941125496954285,
+                33.941125496954285
+              ],
+              [
+                29.22054859241859,
+                38.08096033397929
+              ],
+              [
+                24.000000000000007,
+                41.569219381653056
+              ],
+              [
+                18.368804753524312,
+                44.34621756054176
+              ],
+              [
+                12.423314164920995,
+                46.36443966187528
+              ],
+              [
+                6.265257226562483,
+                47.5893533459429
+              ],
+              [
+                2.9391523179536475e-15,
+                48.0
+              ],
+              [
+                -6.265257226562477,
+                47.5893533459429
+              ],
+              [
+                -12.42331416492099,
+                46.36443966187528
+              ],
+              [
+                -18.368804753524294,
+                44.34621756054177
+              ],
+              [
+                -23.99999999999999,
+                41.569219381653056
+              ],
+              [
+                -29.22054859241859,
+                38.08096033397929
+              ],
+              [
+                -33.94112549695428,
+                33.941125496954285
+              ],
+              [
+                -38.080960333979284,
+                29.220548592418602
+              ],
+              [
+                -41.569219381653056,
+                23.999999999999996
+              ],
+              [
+                -44.34621756054176,
+                18.368804753524316
+              ],
+              [
+                -46.364439661875274,
+                12.42331416492101
+              ],
+              [
+                -47.5893533459429,
+                6.265257226562495
+              ],
+              [
+                -48.0,
+                5.878304635907295e-15
+              ],
+              [
+                -47.5893533459429,
+                -6.265257226562484
+              ],
+              [
+                -46.36443966187528,
+                -12.423314164920999
+              ],
+              [
+                -44.34621756054177,
+                -18.368804753524305
+              ],
+              [
+                -41.56921938165306,
+                -23.999999999999986
+              ],
+              [
+                -38.08096033397929,
+                -29.22054859241859
+              ],
+              [
+                -33.9411254969543,
+                -33.941125496954264
+              ],
+              [
+                -29.220548592418602,
+                -38.08096033397928
+              ],
+              [
+                -24.00000000000002,
+                -41.56921938165305
+              ],
+              [
+                -18.368804753524294,
+                -44.34621756054177
+              ],
+              [
+                -12.42331416492099,
+                -46.36443966187528
+              ],
+              [
+                -6.265257226562478,
+                -47.5893533459429
+              ],
+              [
+                -8.817456953860943e-15,
+                -48.0
+              ],
+              [
+                6.265257226562461,
+                -47.589353345942904
+              ],
+              [
+                12.423314164920974,
+                -46.36443966187528
+              ],
+              [
+                18.36880475352428,
+                -44.346217560541774
+              ],
+              [
+                24.000000000000007,
+                -41.569219381653056
+              ],
+              [
+                29.220548592418552,
+                -38.08096033397931
+              ],
+              [
+                33.94112549695427,
+                -33.941125496954285
+              ],
+              [
+                38.08096033397928,
+                -29.22054859241861
+              ],
+              [
+                41.56921938165304,
+                -24.00000000000002
+              ],
+              [
+                44.34621756054177,
+                -18.368804753524298
+              ],
+              [
+                46.36443966187527,
+                -12.423314164921035
+              ],
+              [
+                47.5893533459429,
+                -6.265257226562481
+              ]
+            ]
+          ]
+        },
+        "material_side": "positive_normal"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "mounting_face"
+      ],
+      "evidence_refs": [
+        "ev_geometry"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "bottom_face",
+      "family": "planar",
+      "polarity": "contact",
+      "geometry": {
+        "plane": {
+          "origin": [
+            0,
+            0,
+            -10
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ]
+        },
+        "boundary_uv_mm": {
+          "outer": [
+            [
+              -90,
+              -140
+            ],
+            [
+              310,
+              -140
+            ],
+            [
+              310,
+              140
+            ],
+            [
+              -90,
+              140
+            ]
+          ],
+          "holes": [
+            [
+              [
+                48.0,
+                0.0
+              ],
+              [
+                47.5893533459429,
+                6.2652572265624755
+              ],
+              [
+                46.36443966187528,
+                12.423314164920995
+              ],
+              [
+                44.34621756054176,
+                18.36880475352431
+              ],
+              [
+                41.569219381653056,
+                23.999999999999996
+              ],
+              [
+                38.08096033397929,
+                29.22054859241859
+              ],
+              [
+                33.941125496954285,
+                33.941125496954285
+              ],
+              [
+                29.22054859241859,
+                38.08096033397929
+              ],
+              [
+                24.000000000000007,
+                41.569219381653056
+              ],
+              [
+                18.368804753524312,
+                44.34621756054176
+              ],
+              [
+                12.423314164920995,
+                46.36443966187528
+              ],
+              [
+                6.265257226562483,
+                47.5893533459429
+              ],
+              [
+                2.9391523179536475e-15,
+                48.0
+              ],
+              [
+                -6.265257226562477,
+                47.5893533459429
+              ],
+              [
+                -12.42331416492099,
+                46.36443966187528
+              ],
+              [
+                -18.368804753524294,
+                44.34621756054177
+              ],
+              [
+                -23.99999999999999,
+                41.569219381653056
+              ],
+              [
+                -29.22054859241859,
+                38.08096033397929
+              ],
+              [
+                -33.94112549695428,
+                33.941125496954285
+              ],
+              [
+                -38.080960333979284,
+                29.220548592418602
+              ],
+              [
+                -41.569219381653056,
+                23.999999999999996
+              ],
+              [
+                -44.34621756054176,
+                18.368804753524316
+              ],
+              [
+                -46.364439661875274,
+                12.42331416492101
+              ],
+              [
+                -47.5893533459429,
+                6.265257226562495
+              ],
+              [
+                -48.0,
+                5.878304635907295e-15
+              ],
+              [
+                -47.5893533459429,
+                -6.265257226562484
+              ],
+              [
+                -46.36443966187528,
+                -12.423314164920999
+              ],
+              [
+                -44.34621756054177,
+                -18.368804753524305
+              ],
+              [
+                -41.56921938165306,
+                -23.999999999999986
+              ],
+              [
+                -38.08096033397929,
+                -29.22054859241859
+              ],
+              [
+                -33.9411254969543,
+                -33.941125496954264
+              ],
+              [
+                -29.220548592418602,
+                -38.08096033397928
+              ],
+              [
+                -24.00000000000002,
+                -41.56921938165305
+              ],
+              [
+                -18.368804753524294,
+                -44.34621756054177
+              ],
+              [
+                -12.42331416492099,
+                -46.36443966187528
+              ],
+              [
+                -6.265257226562478,
+                -47.5893533459429
+              ],
+              [
+                -8.817456953860943e-15,
+                -48.0
+              ],
+              [
+                6.265257226562461,
+                -47.589353345942904
+              ],
+              [
+                12.423314164920974,
+                -46.36443966187528
+              ],
+              [
+                18.36880475352428,
+                -44.346217560541774
+              ],
+              [
+                24.000000000000007,
+                -41.569219381653056
+              ],
+              [
+                29.220548592418552,
+                -38.08096033397931
+              ],
+              [
+                33.94112549695427,
+                -33.941125496954285
+              ],
+              [
+                38.08096033397928,
+                -29.22054859241861
+              ],
+              [
+                41.56921938165304,
+                -24.00000000000002
+              ],
+              [
+                44.34621756054177,
+                -18.368804753524298
+              ],
+              [
+                46.36443966187527,
+                -12.423314164921035
+              ],
+              [
+                47.5893533459429,
+                -6.265257226562481
+              ]
+            ]
+          ]
+        },
+        "material_side": "negative_normal"
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "mounting_face"
+      ],
+      "evidence_refs": [
+        "ev_geometry"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "outer_thread_1",
+      "family": "threaded",
+      "polarity": "internal",
+      "geometry": {
+        "axis": {
+          "origin": [
+            48.50367545684255,
+            20.090880199167213,
+            10
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ]
+        },
+        "axial_interval_mm": {
+          "min": -10,
+          "max": 0,
+          "unit": "mm"
+        },
+        "thread": {
+          "standard": "ISO_metric",
+          "designation": "M5x0.8",
+          "pitch_mm": 0.8,
+          "handedness": "right",
+          "starts": 1,
+          "major_diameter_mm": {
+            "min": 4.8,
+            "max": 5.0
+          }
+        }
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "threaded_hole"
+      ],
+      "evidence_refs": [
+        "ev_threaded_holes"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "outer_thread_2",
+      "family": "threaded",
+      "polarity": "internal",
+      "geometry": {
+        "axis": {
+          "origin": [
+            20.090880199167216,
+            48.50367545684255,
+            10
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ]
+        },
+        "axial_interval_mm": {
+          "min": -10,
+          "max": 0,
+          "unit": "mm"
+        },
+        "thread": {
+          "standard": "ISO_metric",
+          "designation": "M5x0.8",
+          "pitch_mm": 0.8,
+          "handedness": "right",
+          "starts": 1,
+          "major_diameter_mm": {
+            "min": 4.8,
+            "max": 5.0
+          }
+        }
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "threaded_hole"
+      ],
+      "evidence_refs": [
+        "ev_threaded_holes"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "outer_thread_3",
+      "family": "threaded",
+      "polarity": "internal",
+      "geometry": {
+        "axis": {
+          "origin": [
+            -20.09088019916721,
+            48.50367545684255,
+            10
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ]
+        },
+        "axial_interval_mm": {
+          "min": -10,
+          "max": 0,
+          "unit": "mm"
+        },
+        "thread": {
+          "standard": "ISO_metric",
+          "designation": "M5x0.8",
+          "pitch_mm": 0.8,
+          "handedness": "right",
+          "starts": 1,
+          "major_diameter_mm": {
+            "min": 4.8,
+            "max": 5.0
+          }
+        }
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "threaded_hole"
+      ],
+      "evidence_refs": [
+        "ev_threaded_holes"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "outer_thread_4",
+      "family": "threaded",
+      "polarity": "internal",
+      "geometry": {
+        "axis": {
+          "origin": [
+            -48.50367545684255,
+            20.09088019916722,
+            10
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ]
+        },
+        "axial_interval_mm": {
+          "min": -10,
+          "max": 0,
+          "unit": "mm"
+        },
+        "thread": {
+          "standard": "ISO_metric",
+          "designation": "M5x0.8",
+          "pitch_mm": 0.8,
+          "handedness": "right",
+          "starts": 1,
+          "major_diameter_mm": {
+            "min": 4.8,
+            "max": 5.0
+          }
+        }
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "threaded_hole"
+      ],
+      "evidence_refs": [
+        "ev_threaded_holes"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "outer_thread_5",
+      "family": "threaded",
+      "polarity": "internal",
+      "geometry": {
+        "axis": {
+          "origin": [
+            -48.50367545684256,
+            -20.09088019916721,
+            10
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ]
+        },
+        "axial_interval_mm": {
+          "min": -10,
+          "max": 0,
+          "unit": "mm"
+        },
+        "thread": {
+          "standard": "ISO_metric",
+          "designation": "M5x0.8",
+          "pitch_mm": 0.8,
+          "handedness": "right",
+          "starts": 1,
+          "major_diameter_mm": {
+            "min": 4.8,
+            "max": 5.0
+          }
+        }
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "threaded_hole"
+      ],
+      "evidence_refs": [
+        "ev_threaded_holes"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "outer_thread_6",
+      "family": "threaded",
+      "polarity": "internal",
+      "geometry": {
+        "axis": {
+          "origin": [
+            -20.0908801991672,
+            -48.50367545684256,
+            10
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ]
+        },
+        "axial_interval_mm": {
+          "min": -10,
+          "max": 0,
+          "unit": "mm"
+        },
+        "thread": {
+          "standard": "ISO_metric",
+          "designation": "M5x0.8",
+          "pitch_mm": 0.8,
+          "handedness": "right",
+          "starts": 1,
+          "major_diameter_mm": {
+            "min": 4.8,
+            "max": 5.0
+          }
+        }
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "threaded_hole"
+      ],
+      "evidence_refs": [
+        "ev_threaded_holes"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "outer_thread_7",
+      "family": "threaded",
+      "polarity": "internal",
+      "geometry": {
+        "axis": {
+          "origin": [
+            20.090880199167223,
+            -48.50367545684255,
+            10
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ]
+        },
+        "axial_interval_mm": {
+          "min": -10,
+          "max": 0,
+          "unit": "mm"
+        },
+        "thread": {
+          "standard": "ISO_metric",
+          "designation": "M5x0.8",
+          "pitch_mm": 0.8,
+          "handedness": "right",
+          "starts": 1,
+          "major_diameter_mm": {
+            "min": 4.8,
+            "max": 5.0
+          }
+        }
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "threaded_hole"
+      ],
+      "evidence_refs": [
+        "ev_threaded_holes"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    },
+    {
+      "id": "outer_thread_8",
+      "family": "threaded",
+      "polarity": "internal",
+      "geometry": {
+        "axis": {
+          "origin": [
+            48.50367545684256,
+            -20.090880199167202,
+            10
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ]
+        },
+        "axial_interval_mm": {
+          "min": -10,
+          "max": 0,
+          "unit": "mm"
+        },
+        "thread": {
+          "standard": "ISO_metric",
+          "designation": "M5x0.8",
+          "pitch_mm": 0.8,
+          "handedness": "right",
+          "starts": 1,
+          "major_diameter_mm": {
+            "min": 4.8,
+            "max": 5.0
+          }
+        }
+      },
+      "access": {},
+      "symmetry": {},
+      "semantic_aliases": [
+        "threaded_hole"
+      ],
+      "evidence_refs": [
+        "ev_threaded_holes"
+      ],
+      "annotation_status": "confirmed",
+      "unknowns": []
+    }
+  ],
+  "port_groups": [
+    {
+      "id": "outer_pattern",
+      "kind": "repeated_ports",
+      "members": [
+        {
+          "port": "outer_thread_1"
+        },
+        {
+          "port": "outer_thread_2"
+        },
+        {
+          "port": "outer_thread_3"
+        },
+        {
+          "port": "outer_thread_4"
+        },
+        {
+          "port": "outer_thread_5"
+        },
+        {
+          "port": "outer_thread_6"
+        },
+        {
+          "port": "outer_thread_7"
+        },
+        {
+          "port": "outer_thread_8"
+        }
+      ],
+      "frame": null,
+      "symmetry": {},
+      "placement_domain": null,
+      "evidence_refs": []
+    }
+  ],
+  "annotation_status": {
+    "overall": "confirmed"
+  },
+  "evidence": [
+    {
+      "id": "ev_geometry",
+      "source_type": "custom_drawing",
+      "raw_value": "released rotary-table geometry",
+      "normalized_claim": {
+        "target_path": "ports",
+        "value": "dimensioned custom CAD",
+        "unit": "mm"
+      },
+      "source_uri": "projects/two_stage_rotary_table/requirements.md",
+      "locator": "custom-part requirements",
+      "extraction_method": "cadquery",
+      "confidence": 0.0,
+      "notes": ""
+    },
+    {
+      "id": "ev_threaded_holes",
+      "source_type": "custom_drawing",
+      "raw_value": "released metric threaded hole callouts",
+      "normalized_claim": {
+        "target_path": "threaded ports",
+        "value": "M5/M6 tapped holes",
+        "unit": "mm"
+      },
+      "source_uri": "projects/two_stage_rotary_table/requirements.md",
+      "locator": "bearing/tabletop screw patterns",
+      "extraction_method": "cadquery",
+      "confidence": 0.0,
+      "notes": ""
+    }
+  ],
+  "provenance": {
+    "generated_by": "tools.build_two_stage_rotary_table"
+  }
+}

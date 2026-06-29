@@ -16,6 +16,22 @@ guest CAD needs no login).
 
 ## When to pivot vs scrape
 
+- Current efficient pattern: web search for a direct PN lead first; if that fails, use narrow category/facet URLs
+  only as candidate-PN indexes. Some narrowed McMaster category pages expose product rows in
+  `document.body.innerText`, but category facets are not proof that one PN has every visible constraint.
+- Confirm every selected PN with `data.mcmaster_fetch.read_specs(pn)` before accepting it. Use the product title
+  as the first rejection gate for wrong class, wrong rail height/profile, wrong tooth form, wrong width, wrong
+  bore family, or accessory-only products.
+- For cut-to-length/configured stock, one product page can satisfy multiple BOM lengths if it confirms the
+  allowed length range and ordering increment. Record the configured lengths in the manifest.
+- Record likely-to-recur near-matches as rejected candidates so later passes do not repeat the same checks.
+
+- **Fast discovery path:** before navigating McMaster category pages, search the web for
+  `"<part description>" McMaster` or `"<standard/designation>" "McMaster-Carr"`.
+  This is often far faster than driving McMaster's virtualized catalog UI and usually
+  surfaces direct product pages, category titles, or candidate part numbers to probe with
+  `data.mcmaster_fetch.read_specs(pn)`. Treat search results as leads only; confirm every
+  candidate on its McMaster product page/drawing before recording evidence.
 - Do NOT repeatedly poll/screenshot an empty virtualized grid. If the product grid won't populate (innerText is
   just facet labels), **stop** and either: probe a candidate PN directly with `read_specs`, use the search box
   redirect to a faceted URL whose text has PNs, or pivot the search to Misumi (preferred — see
