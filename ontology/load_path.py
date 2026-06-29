@@ -146,6 +146,14 @@ class LoadPathReport:
                 continue
             chain = " -> ".join([e.to for e in b.path]) if b.path else "(no path)"
             lines.append(f"   {ref:10s} {b.name:16s} via {ref} -> {chain}")
+            for e in b.path:
+                if e.detail:
+                    lines.append(f"      edge {e.frm} -> {e.to} via {e.via}: {e.detail}")
+        failed = [e for e in self.edges if e.state == UNHELD]
+        if failed:
+            lines.append("   FAILED EDGES:")
+            for e in failed:
+                lines.append(f"      {e.frm} -> {e.to} via {e.via}: {e.detail}")
         return "\n".join(lines)
 
 
@@ -215,6 +223,7 @@ def evaluate(instances, library, placements, ground: list, mode: str = "validati
     for inst in instances:
         rep = inst.evaluate(library, placements)
         verdict = {r.name: r.verdict for r in rep.results}
+        detail_by_name = {r.name: f"{r.verdict} {r.detail}" for r in rep.results}
         cstate, cdetail = _closure_state(inst, library, instances, placements)
         sem, semdetail = _SEM.preflight(inst, library)   # directive Section 4/5
         sstate = _SEM_CAP[sem]
@@ -234,8 +243,15 @@ def evaluate(instances, library, placements, ground: list, mode: str = "validati
             final_state = min(gstate, cstate, sstate)
             if mode == "validation" and final_state < CONFIRMED:
                 final_state = UNHELD
+            failed_details = [
+                f"{p}={detail_by_name.get(p, 'MISSING')}"
+                for p, v in zip(e.via_checks, vs)
+                if v in (None, "UNKNOWN", "FAIL")
+            ]
+            failed_text = f"; failed={failed_details}" if failed_details else ""
             edges.append(Edge(frm, to, final_state, inst.template.id,
-                              f"checks={vs}; closure={cdetail}; semantics={sem}({semdetail})"))
+                              f"checks={dict(zip(e.via_checks, vs))}; closure={cdetail}; "
+                              f"semantics={sem}({semdetail}){failed_text}"))
 
     # adjacency: body -> [(neighbor, edge)]
     adj: dict[str, list] = {}

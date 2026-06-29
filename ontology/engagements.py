@@ -75,6 +75,7 @@ class EngagementUse:
     engagement_id: str
     a: str
     b: str
+    reverse_load: bool = False
 
 
 @dataclass(frozen=True)
@@ -236,6 +237,10 @@ def derive_template(comp: TemplateComposition):
             raise ValueError(f"{comp.id}: slot {slot!r} has incompatible engagement endpoint requirements")
         participants[slot] = existing or participant
 
+    engagement_loads: list[LoadPathEdge] = []
+    closure_fastener_slot = comp.closure.fastener_slot if isinstance(comp.closure, FastenerClosure) else ""
+    closure_checks: list[str] = []
+
     for use in comp.engagements:
         etype = ENGAGEMENTS[use.engagement_id]
         add_participant(use.a, etype.a)
@@ -245,8 +250,18 @@ def derive_template(comp: TemplateComposition):
             enforce.append(Relation(etype.relation, f"{use.a}.{fa}", f"{use.b}.{fb}"))
         for predicate in etype.checks:
             checks.append(Check(predicate, use.a, use.b))
+            if closure_fastener_slot and closure_fastener_slot in (use.a, use.b):
+                closure_checks.append(predicate)
         if etype.load.carries:
-            load_paths.append(LoadPathEdge(use.a, use.b, list(etype.checks)))
+            frm, to = (use.b, use.a) if use.reverse_load else (use.a, use.b)
+            engagement_loads.append(LoadPathEdge(frm, to, list(etype.checks)))
+
+    for edge in engagement_loads:
+        if closure_fastener_slot and edge.frm != closure_fastener_slot and edge.to != closure_fastener_slot:
+            merged = list(dict.fromkeys([*edge.via_checks, *closure_checks]))
+            load_paths.append(LoadPathEdge(edge.frm, edge.to, merged))
+        else:
+            load_paths.append(edge)
 
     closure = _derive_closure(comp)
     summary = derive_kinematics(comp)

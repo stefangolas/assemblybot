@@ -1,0 +1,4 @@
+{
+  "description": "One placeholder fastener attempts to satisfy a four-hole mounted part pattern.",
+  "expected_issue": "fastened_face_mount on ['holder', 'plate']: 1/4 fasteners instantiated"
+}

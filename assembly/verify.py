@@ -55,6 +55,7 @@ def verify_assembly(name, placements, urls=None, *, lib=None, instances=None, gr
             print(f"  load_path: UNACCOUNTED (placed, no structural instance) {unacc}")
         if verbose and [r for r in unheld if r not in unacc]:
             print(f"  load_path: UNHELD {[r for r in unheld if r not in unacc]}")
+            print(rep.text())
     else:
         status["load_path"] = "SKIP"
         if verbose:

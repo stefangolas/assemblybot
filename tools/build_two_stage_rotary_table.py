@@ -780,11 +780,13 @@ def main() -> None:
             "clamp_fastener": f"{ref}.thread",
         }))
 
-    def face_mount(mounted: str, support: str, fastener: str) -> None:
+    def face_mount(mounted: str, support: str, fastener: str, receiver: str | None = None) -> None:
+        receiver = receiver or f"{support.rsplit('.', 1)[0]}.thread_receiver"
         inst.append(TEMPLATES["fastened_face_mount"].bind({
             "mounted": mounted,
             "support": support,
             "fastener": f"{fastener}.thread",
+            "receiver": receiver,
         }))
 
     for ref in bearing_fasteners[1]:

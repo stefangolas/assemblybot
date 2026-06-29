@@ -1,0 +1,4 @@
+{
+  "description": "A structural part declares an expected mount port, but no attachment instance binds that port.",
+  "expected_issue": "holder.primary_mount: expected holder.mount_face via fastened_face_mount was not realized"
+}

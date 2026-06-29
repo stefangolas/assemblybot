@@ -1,0 +1,4 @@
+{
+  "description": "Two structural parts overlap by contact-depth tolerance but have no attachment edge.",
+  "expected_issue": "holder <-> plate: 0.250 mm contact but no attachment edge"
+}

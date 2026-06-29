@@ -138,6 +138,16 @@ def verify_canonical(path, *, verbose=True):
     def union(a, b):
         parent[find(a)] = find(b)
     attached = set()
+    attached_ref_pairs = set()
+
+    def ref_of(addr: str) -> str:
+        return addr.replace(":", ".", 1).split(".", 1)[0]
+
+    def add_attached_pair(a_addr: str, b_addr: str) -> None:
+        a_ref, b_ref = ref_of(a_addr), ref_of(b_addr)
+        if a_ref != b_ref:
+            attached_ref_pairs.add((min(a_ref, b_ref), max(a_ref, b_ref)))
+
     for inst in instances:
         for rel in inst.template.enforce:
             a = inst.bindings.get(_slot(rel.a))
@@ -145,11 +155,13 @@ def verify_canonical(path, *, verbose=True):
             if a and b:
                 na, nb = node_from_addr(a), node_from_addr(b)
                 attached.add((min(na, nb), max(na, nb)))
+                add_attached_pair(a, b)
         if inst.template.result.type not in JT:
             for edge in inst.template.load_paths:
                 if edge.frm in inst.bindings and edge.to in inst.bindings:
                     union(node_from_addr(inst.bindings[edge.frm]),
                           node_from_addr(inst.bindings[edge.to]))
+                    add_attached_pair(inst.bindings[edge.frm], inst.bindings[edge.to])
 
     def designed(a, b):
         if a == b or _bearing_base(a) == _bearing_base(b):
@@ -188,6 +200,8 @@ def verify_canonical(path, *, verbose=True):
                     f"{inst.template.id}.{slot}: fastener closure has no primitive check involving the fastener"
                 )
     fastener_pattern_issues = _fastener_pattern_count_issues(instances, lib)
+    expected_engagement_issues = _expected_engagement_issues(instances, lib, non_structural)
+    unattached_contact_issues = _unattached_contact_issues(asm, urls, lib, non_structural, attached_ref_pairs)
 
     if verbose:
         print(f"VERIFY {name}  ({len(lib)} structural parts, {len(instances)} attachments, "
@@ -200,6 +214,10 @@ def verify_canonical(path, *, verbose=True):
             print(f"  fastener_primitives: UNDER-SPECIFIED fastener closures {fastener_primitive_issues}")
         if fastener_pattern_issues:
             print(f"  fastener_patterns: UNDER-INSTANTIATED fastener patterns {fastener_pattern_issues}")
+        if expected_engagement_issues:
+            print(f"  expected_engagements: MISSING intended engagements {expected_engagement_issues}")
+        if unattached_contact_issues:
+            print(f"  unattached_contacts: CONTACT without attachment {unattached_contact_issues}")
 
     passed, status = verify_assembly(name, placements, urls, lib=lib, instances=instances, ground=ground,
                                      designed=designed, rotating=rotating, axis=axis,
@@ -209,12 +227,16 @@ def verify_canonical(path, *, verbose=True):
     status["structural_visibility"] = "FAIL" if hidden_structural_refs else "PASS"
     status["fastener_primitives"] = "FAIL" if fastener_primitive_issues else "PASS"
     status["fastener_patterns"] = "FAIL" if fastener_pattern_issues else "PASS"
+    status["expected_engagements"] = "FAIL" if expected_engagement_issues else "PASS"
+    status["unattached_contacts"] = "FAIL" if unattached_contact_issues else "PASS"
     return (
         passed
         and not unverified_render_refs
         and not hidden_structural_refs
         and not fastener_primitive_issues
         and not fastener_pattern_issues
+        and not expected_engagement_issues
+        and not unattached_contact_issues
     ), status
 
 
@@ -241,7 +263,7 @@ def _fastener_pattern_count_issues(instances, lib) -> list[str]:
                 continue
 
             non_fastener_bindings = tuple(sorted(
-                (slot, addr)
+                (slot, _pattern_bucket_addr(inst.template.participants.get(slot), addr))
                 for slot, addr in inst.bindings.items()
                 if not getattr(inst.template.participants.get(slot), "is_fastener", False)
             ))
@@ -253,10 +275,7 @@ def _fastener_pattern_count_issues(instances, lib) -> list[str]:
                 pdef = lib.get(ref)
                 if not pdef:
                     continue
-                try:
-                    expected = max(expected, int(pdef.normalized_parameters.get("mount_fastener_count", 1)))
-                except Exception:
-                    pass
+                expected = max(expected, _expected_fastener_count_from_addr(addr, pdef))
             if expected <= 1:
                 continue
             key = (inst.template.id, non_fastener_bindings, fastener_slot)
@@ -272,4 +291,94 @@ def _fastener_pattern_count_issues(instances, lib) -> list[str]:
             issues.append(
                 f"{template_id} on {data['refs']}: {present}/{expected} fasteners instantiated"
             )
+    return sorted(issues)
+
+
+def _expected_fastener_count_from_addr(addr: str, pdef) -> int:
+    if ":" in addr:
+        _, group_id = addr.split(":", 1)
+        group = next((g for g in getattr(pdef, "port_groups", []) if g.id == group_id), None)
+        if group:
+            return len(group.members)
+    try:
+        return int(pdef.normalized_parameters.get("mount_fastener_count", 1))
+    except Exception:
+        return 1
+
+
+def _pattern_bucket_addr(participant, addr: str) -> str:
+    if getattr(participant, "family", "") == "threaded" and getattr(participant, "polarity", "") == "internal":
+        return addr.replace(":", ".", 1).split(".", 1)[0]
+    return addr
+
+
+def _expected_engagement_issues(instances, lib, non_structural=None) -> list[str]:
+    non_structural = set(non_structural or [])
+    realized = []
+    for inst in instances:
+        for slot, addr in inst.bindings.items():
+            realized.append((inst.template.id, slot, addr))
+
+    issues = []
+    for ref, pdef in lib.items():
+        if ref in non_structural:
+            continue
+        expected = (getattr(pdef, "annotation_status", {}) or {}).get("expected_ports", {})
+        if not isinstance(expected, dict):
+            continue
+        for name, spec in expected.items():
+            if not isinstance(spec, dict):
+                continue
+            if spec.get("required", True) is False:
+                continue
+            port = spec.get("port")
+            group = spec.get("group")
+            template = spec.get("template")
+            if not port and not group:
+                port = name
+            addr = f"{ref}:{group}" if group else f"{ref}.{port}"
+            matched = False
+            for inst_id, _, bound in realized:
+                if template and inst_id != template:
+                    continue
+                if bound == addr:
+                    matched = True
+                    break
+            if not matched:
+                detail = f" via {template}" if template else ""
+                issues.append(f"{ref}.{name}: expected {addr}{detail} was not realized")
+    return sorted(issues)
+
+
+def _unattached_contact_issues(asm, urls, lib, non_structural, attached_ref_pairs) -> list[str]:
+    if not urls:
+        return []
+    from assembly import interference as IF
+
+    meshes = IF.load_placed(asm, ROOT)
+    if not meshes:
+        return []
+    depths = IF._pair_depths(meshes, list(meshes))
+    return _unattached_contact_issues_from_depths(
+        depths,
+        set(lib),
+        set(non_structural or []),
+        attached_ref_pairs,
+    )
+
+
+def _unattached_contact_issues_from_depths(depths, structural_refs, non_structural, attached_ref_pairs,
+                                           min_depth=0.02, max_depth=0.60) -> list[str]:
+    issues = []
+    for pair, depth in depths.items():
+        a, b = sorted(tuple(pair))
+        if a not in structural_refs or b not in structural_refs:
+            continue
+        if a in non_structural or b in non_structural:
+            continue
+        key = (min(a, b), max(a, b))
+        if key in attached_ref_pairs:
+            continue
+        if min_depth <= depth <= max_depth:
+            issues.append(f"{a} <-> {b}: {depth:.3f} mm contact but no attachment edge")
     return sorted(issues)

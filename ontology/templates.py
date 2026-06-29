@@ -27,7 +27,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 
 from . import ports_match as PM
-from .engagements import EngagementUse, IntendedFreedom, IntegralClosure, TemplateComposition, derive_template
+from .engagements import EngagementUse, FastenerClosure, IntendedFreedom, IntegralClosure, TemplateComposition, derive_template
 
 # predicate name -> (call-shape, function). Fixed engine dispatch (NOT per-template
 # code). Shapes: pair_cyl f(insert,receiver,place_i,place_r); pair_pp f(a,b);
@@ -366,69 +366,52 @@ _reg(AttachmentTemplate(
     result=JointSpec("fixed"),
 ))
 
-_reg(AttachmentTemplate(
+_reg(derive_template(TemplateComposition(
     id="radial_screw_against_cylindrical_target",
-    participants={
-        "body_bore": Participant("cylindrical", "receiver", role="body bore around cylindrical target"),
-        "target": Participant("cylindrical", "insert", role="shaft/journal/cylindrical clamped target"),
-        "screw": Participant("threaded", "external", role="radial clamp or set screw", is_fastener=True),
-        "thread": Participant("threaded", "internal", role="radial threaded hole in the clamping body"),
+    engagements=(
+        EngagementUse("CYL_FIT", "target", "body_bore", reverse_load=True),
+        EngagementUse("THREAD_MATE", "screw", "thread"),
+        EngagementUse("TIP_CONTACT", "screw", "target"),
+    ),
+    closure=FastenerClosure("screw", "radial screw threads through body and contacts target"),
+    participant_roles={
+        "body_bore": "body bore around cylindrical target",
+        "target": "shaft/journal/cylindrical clamped target",
+        "screw": "radial clamp or set screw",
+        "thread": "radial threaded hole in the clamping body",
     },
-    enforce=[Relation("coaxial", "body_bore.axis", "target.axis"),
-             Relation("coaxial", "screw.axis", "thread.axis")],
-    checks=[Check("radial_fit", "target", "body_bore"),
-            Check("axial_overlap", "target", "body_bore"),
-            Check("thread_match", "screw", "thread"),
-            Check("thread_engagement", "screw", "thread"),
-            Check("tip_or_clamp_contact", "screw", "target")],
-    closure=[ClosureRequirement("fastener", "screw",
-                                detail="radial screw threads through body and contacts target")],
-    load_paths=[LoadPathEdge("body_bore", "target",
-                             ["radial_fit", "axial_overlap", "tip_or_clamp_contact"]),
-                LoadPathEdge("screw", "body_bore", ["thread_match", "thread_engagement"])],
-    result=JointSpec("fixed"),
-))
+)))
 
-_reg(AttachmentTemplate(
+_reg(derive_template(TemplateComposition(
     id="clamp_keyed_hub_on_journal",
-    participants={
-        "hub": Participant("cylindrical", "receiver", role="clamp/keyed hub bore"),
-        "journal": Participant("cylindrical", "insert", role="shaft journal"),
-        "clamp_fastener": Participant("threaded", "external", role="clamp screw or keyed-hub retainer", is_fastener=True),
+    engagements=(
+        EngagementUse("CYL_FIT", "journal", "hub", reverse_load=True),
+        EngagementUse("TIP_CONTACT", "clamp_fastener", "journal"),
+    ),
+    closure=FastenerClosure("clamp_fastener", "clamp/keyed hub fastener provides torque-retaining closure"),
+    participant_roles={
+        "hub": "clamp/keyed hub bore",
+        "journal": "shaft journal",
+        "clamp_fastener": "clamp screw or keyed-hub retainer",
     },
-    enforce=[Relation("coaxial", "hub.axis", "journal.axis")],
-    checks=[Check("radial_fit", "journal", "hub"),
-            Check("axial_overlap", "journal", "hub")],
-    closure=[ClosureRequirement("fastener", "clamp_fastener",
-                                detail="clamp/keyed hub fastener provides torque-retaining closure")],
-    load_paths=[
-        LoadPathEdge("hub", "journal", ["radial_fit", "axial_overlap"]),
-        LoadPathEdge("clamp_fastener", "hub", []),
-    ],
-    result=JointSpec("fixed"),
-))
+)))
 
-_reg(AttachmentTemplate(
+_reg(derive_template(TemplateComposition(
     id="pilot_clamped_hub_to_carrier",
-    participants={
-        "hub": Participant("cylindrical", "receiver", role="pulley pilot bore"),
-        "pilot": Participant("cylindrical", "insert", role="carrier locating pilot"),
-        "hub_seat": Participant("planar", "contact", role="pulley mounting face"),
-        "seat": Participant("planar", "contact", role="carrier flange face"),
-        "clamp_fastener": Participant("threaded", "external", role="pulley-to-carrier screw", is_fastener=True),
+    engagements=(
+        EngagementUse("CYL_FIT", "pilot", "hub", reverse_load=True),
+        EngagementUse("PLANAR_SEAT", "hub_seat", "seat"),
+        EngagementUse("HEAD_SEAT", "clamp_fastener", "hub_seat"),
+    ),
+    closure=FastenerClosure("clamp_fastener", "pulley is clamped to the carrier flange by real screws"),
+    participant_roles={
+        "hub": "pulley pilot bore",
+        "pilot": "carrier locating pilot",
+        "hub_seat": "pulley mounting face",
+        "seat": "carrier flange face",
+        "clamp_fastener": "pulley-to-carrier screw",
     },
-    enforce=[Relation("coaxial", "hub.axis", "pilot.axis")],
-    checks=[Check("radial_fit", "pilot", "hub"),
-            Check("bounded_area_overlap", "hub_seat", "seat"),
-            Check("head_seat", "clamp_fastener", "hub_seat")],
-    closure=[ClosureRequirement("fastener", "clamp_fastener",
-                                detail="pulley is clamped to the carrier flange by real screws")],
-    load_paths=[
-        LoadPathEdge("hub", "pilot", ["radial_fit", "bounded_area_overlap", "head_seat"]),
-        LoadPathEdge("clamp_fastener", "hub", ["head_seat"]),
-    ],
-    result=JointSpec("fixed"),
-))
+)))
 
 _reg(AttachmentTemplate(
     id="inner_race_axial_retention",
@@ -564,25 +547,21 @@ _reg(AttachmentTemplate(
     result=JointSpec("fixed"),
 ))
 
-_reg(AttachmentTemplate(
+_reg(derive_template(TemplateComposition(
     id="fastened_face_mount",
-    # A directly fastened face contact where the detailed bolt pattern is not the
-    # deciding datum. The fastener participant is still a real modeled fastener in
-    # the library; the load path is not inferred from coincident placement alone.
-    participants={
-        "mounted": Participant("planar", "contact", role="mounted face"),
-        "support": Participant("planar", "contact", role="supporting face"),
-        "fastener": Participant("threaded", "external", role="mounting screw", is_fastener=True),
+    engagements=(
+        EngagementUse("PLANAR_SEAT", "mounted", "support"),
+        EngagementUse("THREAD_MATE", "fastener", "receiver"),
+        EngagementUse("HEAD_SEAT", "fastener", "mounted"),
+    ),
+    closure=FastenerClosure("fastener", "modeled mounting fastener provides closure"),
+    participant_roles={
+        "mounted": "mounted face",
+        "support": "supporting face",
+        "fastener": "mounting screw",
+        "receiver": "threaded receiver or nut that the mounting screw engages",
     },
-    enforce=[Relation("oppose_and_seat", "mounted.face", "support.face")],
-    checks=[Check("bounded_area_overlap", "mounted", "support"),
-            Check("head_seat", "fastener", "mounted")],
-    closure=[ClosureRequirement("fastener", "fastener",
-                                detail="modeled mounting fastener provides closure")],
-    load_paths=[LoadPathEdge("mounted", "support", ["bounded_area_overlap", "head_seat"]),
-                LoadPathEdge("fastener", "support", ["head_seat"])],
-    result=JointSpec("fixed"),
-))
+)))
 
 _reg(derive_template(TemplateComposition(
     id="journal_supported_by_bearing",
