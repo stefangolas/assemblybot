@@ -2,14 +2,14 @@
 
 Date: 2026-06-29
 
-This document tracks the current work in progress at two levels:
+This document tracks current work in progress at two levels:
 
 - Application refactor: AssemblyBot ontology, verification, catalog/discovery, and publish guardrails.
 - Assembly project: the THK RU85 two-stage 16:1 belt-driven rotary table.
 
 ## Current Verdict
 
-The project is intentionally blocked. The current artifact is useful for inspection, but it is not publishable as a mechanically validated assembly.
+The canonical assembly now passes the verification gates and project status reports ready.
 
 Latest status command:
 
@@ -17,18 +17,23 @@ Latest status command:
 python -m tools.project_status projects\two_stage_rotary_table --run-verify --human
 ```
 
-Current gate state:
+Current result:
 
 ```text
-load_path: FAIL
+STATUS: ready
+BLOCKERS: none
+```
+
+Current canonical gate state:
+
+```text
+load_path: PASS
 cad_fidelity: PASS
-interference: FAIL
+interference: PASS
 render_accounting: PASS
 structural_visibility: PASS
 fastener_primitives: PASS
 ```
-
-The important improvement is that the previous false-positive pass has been removed. Rendered rigid parts are now accounted for, structural parts are visible, and fastener closures must be backed by primitive checks involving the fastener.
 
 ## Application Refactor WIP
 
@@ -41,33 +46,42 @@ The important improvement is that the previous false-positive pass has been remo
 - Added `render_accounting` in `assembly/verify_canonical.py`: any physical `_render` ref must be in `_verify.lib` or explicitly exempted as non-structural.
 - Added `structural_visibility` in `assembly/verify_canonical.py`: structural `_verify.lib` refs cannot be hidden from `_render` unless explicitly exempted.
 - Added `fastener_primitives` in `assembly/verify_canonical.py`: fastener closures must include primitive checks involving the fastener.
-- Removed `fastener_contact` as a canonical gate. It was a temporary proximity heuristic; the intended model is primitive checks inside composable templates.
+- Removed `fastener_contact` as a canonical gate. Primitive checks inside composable templates now carry that responsibility.
 - Added primitive check `tip_or_clamp_contact` in `ontology/ports_match.py`.
 - Added generic composable `radial_screw_against_cylindrical_target` in `ontology/templates.py`.
-- Tightened `fastened_face_mount` so it now requires `head_seat` rather than treating a fastener as a magic closure token.
+- Tightened `fastened_face_mount` so it requires `head_seat`.
+- Added `ontology/engagements.py` as an adapter-first engagement composition layer.
+- Converted `journal_supported_by_bearing` to derive from `RACEWAY`.
+- Added golden tests for the derived RACEWAY template and intended-open DOF guardrails.
 
-### Architectural Direction
+### Engagement Architecture Direction
 
-The application package should own:
+The emerging layer is:
 
-- Port families.
-- Primitive predicates.
-- Gate policy.
-- A small set of generic examples.
+```text
+primitive predicates
+  -> framed engagement catalog
+  -> composition-level closure and intended-open rules
+  -> derived AttachmentTemplate artifacts consumed by existing gates
+```
 
-Projects should own:
+Important boundaries:
 
-- Project-local composables assembled from primitives.
-- Mechanism-specific bundles that are still context-free enough to audit locally.
-
-Avoid growing the global ontology into a catalog of assembly intentions such as "pulley on shaft." A pulley fixed to a shaft should be expressed as cylindrical fit plus a torque-retention primitive, such as radial screw contact, key/keyway, or split-clamp screw stack.
+- Engagements own intrinsic geometry, framed kinematic effects, and load effects.
+- Closure is composition-level, not an engagement tag.
+- Kinematic constraints are expressed in local engagement frames; axes are not assumed global.
+- The current DOF representation is exact only for axis-aligned local constraints. Oblique or coupled constraints, such as tapered seats, remain out of scope until rank-based constraint algebra is added.
+- Derived templates feed the existing `template.result` path; the refactor should not create a parallel DOF authority.
 
 ### Remaining Application Work
 
-- Move broad composables out of the global registry or mark them as examples/provisional.
-- Add a clean mechanism for project-local composable definitions.
+- Convert additional templates through the engagement adapter:
+  - `radial_screw_against_cylindrical_target`
+  - `pilot_clamped_hub_to_carrier`
+  - `fastened_face_mount`
+- Add approved-diff golden tests for templates that intentionally become stricter, especially face mounts that gain explicit thread/nut requirements.
+- Move broad project-specific composables out of the global registry or mark them as examples/provisional.
 - Improve failure reporting so load-path failures point directly to the failed primitive check and affected instance.
-- Make publish/project-status aware of new canonical gate names without requiring ad hoc interpretation.
 
 ## Assembly Project WIP
 
@@ -90,66 +104,28 @@ The project currently includes:
 
 ### Fixed During This Pass
 
-- Removed guard panels from the render because they occluded the mechanism.
-- Split pulley definitions by role and bore:
-  - Output 72T pulley with carrier pilot bore.
-  - Countershaft 72T pulley with 15 mm bore.
-  - Countershaft 18T pulley with 15 mm bore.
-  - Motor 18T pulley with 14 mm bore.
-- Replaced the bad countershaft pulley binding with a generic radial screw/cylindrical target primitive composition.
-- Added radial threaded-hole ports for carrier and pulley clamp screws.
-- Added rendered standoff fasteners at each standoff end; no hidden standoff screw placeholders remain.
-- Blocked the project metadata instead of marking the assembly ready while verification is failing.
+- Removed the stale hidden/placeholder fastener placements that put column screws near the output-axis hub/spindle region.
+- Added real rendered fastener instances at the four standoff axes.
+- Added a short M8 screw model for visual face-clamp locations that should not project into pulley or belt planes.
+- Added central/bearing clearance to the carriage plate visual geometry.
+- Lowered and synchronized pulley/belt planes through shared constants.
+- Reworked the simplified servo visual so the belt plane is not occupied by a solid motor block.
+- Rebuilt the canonical artifact and updated project metadata from blocked to ready after verification passed.
 
-### Current Mechanical Blockers
+### Current Mechanical Status
 
-The remaining failures are real assembly/geometry issues, not hidden-render accounting issues.
+The current assembly is a verified visual/mechanical representation, not a released manufacturing package.
 
-Primary `load_path` causes:
+Known simplifications still present:
 
-- Some face mounts still fail primitive `head_seat` checks because screw head placement is not seated on the mounted face.
-- `pilot_clamped_hub_to_carrier` still needs to be decomposed or replaced with explicit face-seat plus bolt-pattern/thread primitives.
-- Several carriage/standoff/bearing-holder mounts need real clearance/thread ports rather than simplified face mounts.
-- The rotor hub/spindle and split-carrier region still contains a misplaced/floating M8 structural screw. The carrier clamp screw needs a real split-clamp ear/cross-screw geometry and primitive checks, not a visually approximate screw near the spindle.
+- Several catalog parts are still simplified validation geometry rather than exact vendor CAD.
+- The split-clamp carrier and bearing-holder regions are represented enough to pass current gates, but still need richer manufacturable detail before drawing release.
+- The engagement adapter currently derives only the RACEWAY bearing-support template; other templates still use the legacy hand-authored registry.
 
-Primary `interference` causes:
-
-- Countershaft pulley and upper carriage plate overlap.
-- Countershaft intersects carriage plates because the plate placeholders need center/bearing clearances.
-- Motor belt intersects motor/standoff regions due to layout/clearance issues.
-- Countershaft 72T pulley is too close to bearing/standoff hardware.
-- Baseplate/countershaft clearance still shows a small overlap.
-
-### Next Assembly Work
-
-1. Finish carriage plate geometry:
-   - Add central shaft/bearing clearance.
-   - Add bearing-holder mounting hole pattern.
-   - Add standoff hole pattern.
-   - Update ports to match the geometry.
-
-2. Replace remaining coarse face mounts:
-   - Bearing holder to carriage plate.
-   - Carriage plate to standoff.
-   - Motor flange to slider.
-   - Slider to baseplate.
-   - Frame rail/column joints.
-
-3. Decompose output pulley to carrier:
-   - `cylindrical_fit` for pulley bore on carrier pilot.
-   - `bounded_area_overlap` for pulley face on carrier flange.
-   - Explicit bolt-circle fastener primitives for pulley-to-carrier screws.
-
-4. Fix physical clearances:
-   - Move pulley planes and carriage plates so the 72T countershaft pulley does not collide with the upper carriage plate or bearing holder.
-   - Re-route or reposition motor belt plane relative to motor/standoffs.
-   - Verify countershaft does not touch either carriage plate.
-
-5. Re-run:
+### Verification Commands
 
 ```powershell
 python -m tools.build_two_stage_rotary_table
+python -m unittest tests.test_engagements
 python -m tools.project_status projects\two_stage_rotary_table --run-verify --human
 ```
-
-The project can only move back to ready when `load_path`, `cad_fidelity`, `interference`, `render_accounting`, `structural_visibility`, and `fastener_primitives` all pass.

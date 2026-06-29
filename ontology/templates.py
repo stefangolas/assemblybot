@@ -27,6 +27,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 
 from . import ports_match as PM
+from .engagements import EngagementUse, IntendedFreedom, IntegralClosure, TemplateComposition, derive_template
 
 # predicate name -> (call-shape, function). Fixed engine dispatch (NOT per-template
 # code). Shapes: pair_cyl f(insert,receiver,place_i,place_r); pair_pp f(a,b);
@@ -583,20 +584,16 @@ _reg(AttachmentTemplate(
     result=JointSpec("fixed"),
 ))
 
-_reg(AttachmentTemplate(
+_reg(derive_template(TemplateComposition(
     id="journal_supported_by_bearing",
-    participants={
-        "journal": Participant("cylindrical", "insert", role="shaft journal"),
-        "bearing": Participant("cylindrical", "receiver", role="bearing inner bore"),
+    engagements=(EngagementUse("RACEWAY", "journal", "bearing"),),
+    closure=IntegralClosure("raceway", "bearing raceway supports the shaft radially"),
+    intended_open=(IntendedFreedom("journal", ("rz",)),),
+    participant_roles={
+        "journal": "shaft journal",
+        "bearing": "bearing inner bore",
     },
-    enforce=[Relation("coaxial", "journal.axis", "bearing.axis")],
-    checks=[Check("radial_fit", "journal", "bearing"),
-            Check("axial_overlap", "journal", "bearing")],
-    closure=[ClosureRequirement("integral", "raceway",
-                                detail="bearing raceway supports the shaft radially")],
-    load_paths=[LoadPathEdge("journal", "bearing", ["radial_fit", "axial_overlap"])],
-    result=JointSpec("revolute", axis_slot="journal"),
-))
+)))
 
 _reg(AttachmentTemplate(
     id="tslot_captured_mount",

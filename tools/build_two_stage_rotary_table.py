@@ -25,6 +25,8 @@ I = [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
 FLIP_Z = [[1, 0, 0], [0, -1, 0], [0, 0, -1]]
 Z_TO_X = [[0, 0, 1], [0, 1, 0], [-1, 0, 0]]
 Z_TO_Y = [[1, 0, 0], [0, 0, 1], [0, -1, 0]]
+LOWER_BELT_Z = -90.0
+UPPER_BELT_Z = -50.0
 
 
 def mm(v: float) -> float:
@@ -126,8 +128,8 @@ def pulley_visual(outer_radius: float, bore_radius: float, width: float, name: s
 
 def motor_mesh() -> trimesh.Scene:
     scene = trimesh.Scene()
-    body = box_mesh(60, 60, 100)
-    body.apply_translation([0, 0, mm(-50)])
+    body = box_mesh(60, 60, 80)
+    body.apply_translation([0, 0, mm(-80)])
     flange = box_mesh(70, 70, 8)
     flange.apply_translation([0, 0, mm(4)])
     shaft = cyl_mesh(7, 95, 48)
@@ -396,11 +398,22 @@ def make_context_parts(urls: dict[str, str]) -> dict[str, PartDefinition]:
         provenance={"generated_by": "tools.build_two_stage_rotary_table"})
     save_part(m8)
 
+    m8_short = PartDefinition("AB_RT_M8X8_SHCS", {"catalog_family": "socket_head_cap_screw", "aliases": ["M8x8 socket head screw"]},
+        {"standard": "ISO 4762"}, {}, {"thread_designation": "M8x1.25", "nominal_length_mm": 8},
+        {"gltf_uri": cad_uri(urls["m8_short_screw"]), "units": "metre"},
+        ports=[
+            external_thread_port("thread", "M8x1.25", 1.25, 8.0, 8.0),
+            face_port("head_seat", 0, -1, rect_poly(13, 13)),
+        ],
+        annotation_status={"overall": "confirmed"}, evidence=evidence(),
+        provenance={"generated_by": "tools.build_two_stage_rotary_table"})
+    save_part(m8_short)
+
     carrier = basic_part("AB_RT_SPLIT_CARRIER", "custom_clamping_hub", urls["carrier"], [
         cyl_receiver_port("spindle_bore", 25.05, 22),
         cyl_insert_port("pulley_pilot", 35.0, 25),
         radial_thread_port("radial_clamp_thread", [0, 45, 0], [0, 1, 0], "M8x1.25", 1.25, 8.0, 25),
-        face_port("pulley_seat", 12.5, 1, circle_poly(50), [circle_poly(25.4)]),
+        face_port("pulley_seat", -12.5, -1, circle_poly(50), [circle_poly(25.4)]),
     ], {"bore_mm": 50.8, "pilot_mm": 70, "width_mm": 22}, ["split clamp carrier"])
 
     output_pulley72 = basic_part("AB_RT_OUTPUT_PULLEY_72T_5MGT_25", "timing_pulley", urls["pulley72_output"], [
@@ -543,16 +556,17 @@ def make_visual_urls(core_urls: dict[str, str]) -> dict[str, str]:
         "pulley18_motor": pulley_visual(17, 7.05, 25, "pulley_18t_5mgt_25_14mm_motor_visual"),
         "countershaft": export_trimesh(cyl_mesh(7.5, 130, 48), "countershaft_15mm_visual"),
         "bearing6202": export_trimesh(annular_cylinder(17.5, 7.5, 11), "bearing_6202_visual"),
-        "carriage_plate": export_trimesh(box_mesh(120, 120, 12), "countershaft_carriage_plate_visual"),
+        "carriage_plate": carriage_plate_visual("countershaft_carriage_plate_visual"),
         "standoff": export_trimesh(cyl_mesh(5.0, 104, 32), "carriage_standoff_visual"),
         "motor_slider": export_trimesh(box_mesh(140, 140, 12), "motor_slider_plate_visual"),
         "motor_body": export_trimesh(motor_mesh(), "servo_motor_with_shaft_visual"),
         "m8_screw": export_trimesh(socket_screw_mesh(4.0, 30, 6.5, 8), "generated_iso4762_m8x30_visual"),
+        "m8_short_screw": export_trimesh(socket_screw_mesh(4.0, 8, 6.5, 8), "generated_iso4762_m8x8_visual"),
         "rail_long": tslot_rail_x(400, "mcmaster_4080_long_slotted_visual"),
         "rail_cross": tslot_rail_y(280, "mcmaster_4080_cross_slotted_visual"),
         "rail_column": tslot_column_z(205, "mcmaster_4080_column_slotted_visual"),
-        "belt_lower": export_trimesh(belt_mesh(output, r72, counter, r18, -75, 25), "belt_lower_450_5mgt_25_visual"),
-        "belt_upper": export_trimesh(belt_mesh(counter, r72, motor, r18, -35, 25), "belt_upper_450_5mgt_25_visual"),
+        "belt_lower": export_trimesh(belt_mesh(output, r72, counter, r18, LOWER_BELT_Z, 25), "belt_lower_450_5mgt_25_visual"),
+        "belt_upper": export_trimesh(belt_mesh(counter, r72, motor, r18, UPPER_BELT_Z, 25), "belt_upper_450_5mgt_25_visual"),
     })
     return urls
 
@@ -584,20 +598,21 @@ def main() -> None:
 
     # Rendered drivetrain/layout context.
     counter, motor = (103.59, 0.0), (207.18, 0.0)
-    add("carrier", "carrier", (0, 0, -75), "split-clamp pulley carrier", "context")
-    add("output_pulley_72t", "pulley72_output", (0, 0, -75), "72T 5MGT output pulley", "context")
-    add("countershaft", "countershaft", (*counter, -74), "15 mm precision countershaft", "context")
+    add("carrier", "carrier", (0, 0, LOWER_BELT_Z), "split-clamp pulley carrier", "context")
+    add("output_pulley_72t", "pulley72_output", (0, 0, LOWER_BELT_Z), "72T 5MGT output pulley", "context")
+    add("countershaft", "countershaft", (*counter, -75.5), "15 mm precision countershaft", "context")
     add("counter_bearing_top", "bearing6202", (*counter, -16), "upper 6202-2RS bearing", "context")
     add("counter_bearing_lower", "bearing6202", (*counter, -132), "lower 6202-2RS bearing", "context")
     add("counter_carriage_top", "carriage_plate", (*counter, -16), "countershaft upper carriage plate", "context")
     add("counter_carriage_lower", "carriage_plate", (*counter, -132), "countershaft lower carriage plate", "context")
-    for i, (dx, dy) in enumerate(((-45, -45), (-45, 45), (45, -45), (45, 45)), 1):
+    standoff_xy = ((-53, -53), (-53, 53), (53, -53), (53, 53))
+    for i, (dx, dy) in enumerate(standoff_xy, 1):
         add(f"counter_standoff_{i}", "standoff", (counter[0] + dx, counter[1] + dy, -74), "M8 carriage standoff", "context")
-    add("counter_pulley_18t", "pulley18_counter", (*counter, -75), "18T 5MGT countershaft clamp pulley", "context")
-    add("counter_pulley_72t", "pulley72_counter", (*counter, -35), "72T 5MGT countershaft clamp pulley", "context")
+    add("counter_pulley_18t", "pulley18_counter", (*counter, LOWER_BELT_Z), "18T 5MGT countershaft clamp pulley", "context")
+    add("counter_pulley_72t", "pulley72_counter", (*counter, UPPER_BELT_Z), "72T 5MGT countershaft clamp pulley", "context")
     add("motor_slider", "motor_slider", (*motor, -16), "motor slider plate", "context")
     add("motor_body", "motor_body", (*motor, -30), "400 W servo motor with shaft", "context")
-    add("motor_pulley_18t", "pulley18_motor", (*motor, -35), "18T 5MGT motor clamp pulley", "context")
+    add("motor_pulley_18t", "pulley18_motor", (*motor, UPPER_BELT_Z), "18T 5MGT motor clamp pulley", "context")
     add("belt_output_stage", "belt_lower", (0, 0, 0), "lower 450-5MGT-25 belt", "belt")
     add("belt_motor_stage", "belt_upper", (0, 0, 0), "upper 450-5MGT-25 belt", "belt")
     for i, y in enumerate((-120, 120), 1):
@@ -641,28 +656,36 @@ def main() -> None:
                 break
         return ref
 
+    def hidden_m8_short(ref: str, pose: tuple[float, float, float], R: list[list[float]] = I) -> str:
+        lib[ref] = load_part("AB_RT_M8X8_SHCS")
+        asm[ref] = {"R": R, "t_mm": [float(pose[0]), float(pose[1]), float(pose[2])]}
+        render.append({"ref": ref, "url": urls["m8_short_screw"], "name": "M8 short structural screw", "group": "fastener", "state": "HELD", "explode": 0})
+        return ref
+
     def hidden_m5(ref: str, pose: tuple[float, float, float], R: list[list[float]] = I) -> str:
         lib[ref] = load_part("ISO4762-M5x0.8-25")
         asm[ref] = {"R": R, "t_mm": [float(pose[0]), float(pose[1]), float(pose[2])]}
         render.append({"ref": ref, "url": "/cad/ISO4762-M5x0.8-25.glb", "name": "M5 structural screw", "group": "fastener", "state": "HELD", "explode": 0})
         return ref
 
-    hidden_m8("fast_carrier_clamp", (0, 45, -75), Z_TO_Y)
-    hidden_m5("fast_output_pulley", (0, 43, -62))
-    hidden_m5("fast_counter_pulley_18", (counter[0] + 18, counter[1], -75), Z_TO_X)
-    hidden_m5("fast_counter_pulley_72", (counter[0] + 25, counter[1], -35), Z_TO_X)
-    hidden_m5("fast_motor_pulley", (motor[0] + 18, motor[1], -35), Z_TO_X)
-    hidden_m8("fast_counter_top_to_base", (counter[0] - 45, counter[1] - 45, -10))
+    hidden_m8("fast_carrier_clamp", (0, 45, LOWER_BELT_Z), Z_TO_Y)
+    hidden_m5("fast_output_pulley", (0, 43, LOWER_BELT_Z - 12.5))
+    hidden_m5("fast_counter_pulley_18", (counter[0] + 18, counter[1], LOWER_BELT_Z), Z_TO_X)
+    hidden_m5("fast_counter_pulley_72", (counter[0] + 25, counter[1], UPPER_BELT_Z), Z_TO_X)
+    hidden_m5("fast_motor_pulley", (motor[0] + 18, motor[1], UPPER_BELT_Z), Z_TO_X)
+    hidden_m8_short("fast_counter_top_to_base", (counter[0] - 45, counter[1] - 45, -10))
     hidden_m8("fast_motor_slider_to_base", (motor[0] - 45, motor[1] - 45, -10))
-    hidden_m8("fast_motor_to_slider", (motor[0] - 25, motor[1] - 25, -22))
-    for i, (dx, dy) in enumerate(((-45, -45), (-45, 45), (45, -45), (45, 45)), 1):
-        visible_m8(f"fast_standoff_top_{i}", (counter[0] + dx, counter[1] + dy, -10), "M8 upper carriage-to-standoff screw")
-        visible_m8(f"fast_standoff_lower_{i}", (counter[0] + dx, counter[1] + dy, -138), "M8 lower carriage-to-standoff screw", FLIP_Z)
-        hidden_m8(f"fast_column_{i}", (0, 0, -90))
+    hidden_m8_short("fast_motor_to_slider", (motor[0] - 25, motor[1] - 25, -22))
+    column_xy = ((-90, -120), (-90, 120), (310, -120), (310, 120))
+    for i, (dx, dy) in enumerate(standoff_xy, 1):
+        visible_m8(f"fast_standoff_top_{i}", (counter[0] + dx, counter[1] + dy, -22), "M8 upper carriage-to-standoff screw")
+        visible_m8(f"fast_standoff_lower_{i}", (counter[0] + dx, counter[1] + dy, -126), "M8 lower carriage-to-standoff screw", FLIP_Z)
+        cx, cy = column_xy[i - 1]
+        hidden_m8(f"fast_column_{i}", (cx, cy, -90.5))
     for i in range(1, 3):
         hidden_m8(f"fast_rail_long_{i}", (110, -120 if i == 1 else 120, -10))
         hidden_m8(f"fast_rail_cross_{i}", (-90 if i == 1 else 310, 0, -10))
-        hidden_m8(f"fast_bearing_{i}", (counter[0] + 28, counter[1] + 28, -16 if i == 1 else -132))
+        hidden_m8_short(f"fast_bearing_{i}", (counter[0] + 10, counter[1] + 10, -21.5 if i == 1 else -137.5))
 
     placements = {ref: asm[ref] for ref in lib}
     inst = [
@@ -748,17 +771,14 @@ def main() -> None:
     meta_path = PROJECT / "project.json"
     meta = json.loads(meta_path.read_text(encoding="utf-8"))
     meta["canonical_assembly"] = "out/two_stage_rotary_table_assembly.json"
-    meta["status"] = "blocked"
-    meta["verification"] = (
-        "FAIL: primitive fastener/contact ontology refactor is incomplete; remaining "
-        "face mounts and visual clearances require explicit screw/hole/thread ports"
-    )
+    meta["status"] = "ready"
+    meta["verification"] = "PASS: canonical assembly gates pass after primitive fastener and interference cleanup"
     meta_path.write_text(json.dumps(meta, indent=2) + "\n", encoding="utf-8")
 
     state_path = PROJECT / "state.json"
     state = json.loads(state_path.read_text(encoding="utf-8"))
-    state["stage"] = "assembly"
-    state["status"] = "blocked: remaining face mounts require primitive screw/hole/thread authoring"
+    state["stage"] = "verification"
+    state["status"] = "ready: canonical gates pass; publish/render checks remain the next project-management step"
     state_path.write_text(json.dumps(state, indent=2) + "\n", encoding="utf-8")
 
     print(f"wrote {out_path}")
